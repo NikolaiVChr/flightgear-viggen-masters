@@ -1,0 +1,6 @@
+*.csv diff
+*.txt diff
+*.ac diff
+*.out diff
+*.dcm diff
+*.lfi diff
