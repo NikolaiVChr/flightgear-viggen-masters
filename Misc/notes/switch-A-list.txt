@@ -1,0 +1,223 @@
+top
+vertical
+bottom
+
+
+======================================
+right panels
+======================================
+
+a2
+ON
+ANTI COLLISION LIGHT
+OFF
+
+a2
+ON
+BEACON LIGHT
+OFF
+
+a2
+ON
+NAVIGATION LIGHT
+OFF
+
+a2
+ON
+LANDING LIGHT
+OFF
+
+a1
+ON
+OXYGEN
+OFF
+
+a2
+ON
+DME
+OFF
+
+a2
+ON
+RADAR ALTIMETER
+OFF
+
+?
+ON
+STALL WARNING
+OFF
+
+a4
+CLOSED
+AFTERBURNER CUTOFF
+OPEN
+
+a1
+ON
+ELECTRIC RESERVE
+OFF
+
+a4
+MANUAL
+FUEL REGULATION
+AUTOMATIC
+
+a2
+ON
+ELEC FUELPUMP
+OFF
+
+a2
+ON
+PNEU FUEL FLOW
+OFF
+
+a2
+ON
+DROP TANK
+OFF
+
+?
+ON
+HUD SIDESLIP
+OFF
+
+?
+ON
+HUD
+OFF
+
+
+
+
+================================================================
+Left panels
+================================================================
+
+a3
+CLOSED
+CUTOFF
+OPEN
+
+a2
+ON
+GENERATOR
+OFF
+
+a3
+ON
+MAIN ELECTRICITY
+OFF
+
+a4
+ON
+ENGINE START
+OFF
+
+a1
+LEFT
+YAW TRIM
+RIGHT
+
+a1
+LEFT
+ROLL TRIM
+RIGHT
+
+a1
+ON
+AIRCONDITIONER
+OFF
+
+?
+ON
+NOSEWHEEL STEERING
+OFF
+
+?
+ON
+YAW DAMPER
+OFF
+
+?
+ON
+PITCH DAMPER
+OFF
+
+?
+ON
+ROLL DAMPER
+OFF
+
+?
+ON
+PARKING BRAKE
+OFF
+
+?
+OPEN
+CANOPY
+CLOSE
+
+?
+UP
+GEARS
+DOWN
+
+?
+ON
+BATTERY
+OFF
+
+?
+EXTERNAL
+ELECTRIC SUPPLY
+GENERATOR
+
+?
+AUTO
+LANDING REVERSE
+OFF
+
+a4
+ON
+RADAR
+OFF
+
+a4
+ON
+RADAR SCREEN
+OFF
+
+?
+AUTO
+LANDING MODE
+ON
+
+?
+ON
+TILS
+OFF
+
+
+========================
+3-way
+========================
+
+OFF
+SMOKE
+YELLOW
+BLUE
+
+WARM
+AUTO
+COLD
+
+FORWARD
+PITCH TRIM
+BACK
+
+HIGH
+HYDR FUELPUMP
+OFF
+LOW
