@@ -7,37 +7,37 @@ bottom
 right panels
 ======================================
 
-a2
+a2	DONE
 ON
 ANTI COLLISION LIGHT
 OFF
 
-a2
+a2	DONE
 ON
 BEACON LIGHT
 OFF
 
-a2
+a2	DONE
 ON
 NAVIGATION LIGHT
 OFF
 
-a2
+a2	DONE
 ON
 LANDING LIGHT
 OFF
 
-a1
+a1	DONE
 ON
 OXYGEN
 OFF
 
-a2
+a2	DONE
 ON
 DME
 OFF
 
-a2
+a2	DONE
 ON
 RADAR ALTIMETER
 OFF
@@ -52,7 +52,7 @@ CLOSED
 AFTERBURNER CUTOFF
 OPEN
 
-a1
+a1	DONE
 ON
 ELECTRIC RESERVE
 OFF
@@ -62,17 +62,17 @@ MANUAL
 FUEL REGULATION
 AUTOMATIC
 
-a2
+a2	DONE
 ON
 ELEC FUELPUMP
 OFF
 
-a2
+a2	DONE
 ON
 PNEU FUEL FLOW
 OFF
 
-a2
+a2	DONE
 ON
 DROP TANK
 OFF
@@ -94,17 +94,17 @@ OFF
 Left panels
 ================================================================
 
-a3
+a3	DONE
 CLOSED
 CUTOFF
 OPEN
 
-a2
+a2	DONE
 ON
 GENERATOR
 OFF
 
-a3
+a3	DONE
 ON
 MAIN ELECTRICITY
 OFF
@@ -114,17 +114,17 @@ ON
 ENGINE START
 OFF
 
-a1
+a1	DONE
 LEFT
 YAW TRIM
 RIGHT
 
-a1
+a1	DONE
 LEFT
 ROLL TRIM
 RIGHT
 
-a1
+a1	DONE
 ON
 AIRCONDITIONER
 OFF
@@ -204,20 +204,24 @@ OFF
 3-way
 ========================
 
+d1
+SMOKE   (title)
 OFF
-SMOKE
-YELLOW
+YELLOW  (you decide)
 BLUE
 
-WARM
-AUTO
-COLD
+d1  (no title)
+WARM (left)
+AUTO (middle)
+COLD (right)
 
-FORWARD
-PITCH TRIM
-BACK
+d1
+FORWARD    (right)
+PITCH TRIM (title)
+BACK       (left)
 
-HIGH
-HYDR FUELPUMP
-OFF
-LOW
+d1
+OFF           (left)
+HYDR FUELPUMP (title)
+HIGH          (middle)
+LOW           (right)
