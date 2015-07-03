@@ -19,7 +19,7 @@
  $OPTINS ROUGFC=0.01016$
  $SYNTHS 
  # Locations of CoG, canards, main wings and tail
- XCG=1.94878, ZCG=0.0, XW=-3.35, ZW=0.0, XH=-0.80506, ZH=-0.2004, XV=2.45, ZV=0.0,
+ XCG=1.94878, ZCG=0.0, XW=-3.11723, ZW=0.36, XH=-0.80506, ZH=-0.2004, XV=1.12, ZV=0.0,
  # incidence of canards and wings
  ALIW=0.0, ALIH=0.0$
 #
@@ -52,32 +52,33 @@
   #
   # 2.0 for swept-wing, no area rule
   ITYPE=2.0$
-
+ #
  # Canards
+ #
+NACA-W-4-3205
  $WGPLNF 
- # chord tip
- CHRDTP=0.59,
- # outer span from breakpoint
- SSPNOP=2.0,
- # exposed semispan
- SSPNE=2.15,
- # semispan
- SSPN=2.95,
- # chord at breakpoint
- CHRDBP=3.74,
- # root chord
- CHRDR=4.69,
- # inner sweep deg
+ # chord tip x
+ CHRDTP=0.5948,
+ # outer span from breakpoint x
+ SSPNOP=1.53734,
+ # exposed semispan x
+ SSPNE=1.53734,
+ # semispan x
+ SSPN=2.58336,
+ # chord at breakpoint x
+ CHRDBP=3.329,
+ # root chord x
+ CHRDR=3.329,
+ # inner sweep deg x
  SAVSI=0.0,
- # outer sweep deg
- SAVSO=50.0,
+ # outer sweep deg x
+ SAVSO=56.0,
  # wing twist, positive is leading edge up deg
- TWISTA=0.0,
+ TWISTA=1.0,
  # % chord from where the sweep is measured
  CHSTAT=0.25,
  # double delta planform
  TYPE=2.0$
-NACA-W-6-64-206
 #
 # main wing
 #
@@ -101,33 +102,29 @@ NACA-W-6-64-206
  # wing twist, positive is leading edge up deg x
  TWISTA=1.0,
  # % chord from where the sweep is measured x
- CHSTAT=0.0,
+ CHSTAT=0.25,
  # double delta planform x
  TYPE=2.0$
-NACA-H-6-64-206
+NACA-H-4-1505
 #
 # Vertical tail
 #
  $VTPLNF 
- # chord tip
- CHRDTP=0.8,
- # exposed semispan
- SSPNE=2.85,
- # semispan
- SSPN=3.75,
- # root chord
- CHRDR=4.5,
+ # chord tip x
+ CHRDTP=0.6625,
+ # exposed semispan x
+ SSPNE=2.329,
+ # semispan x
+ SSPN=3.42742,
+ # root chord 
+ CHRDR=5.17431,
  # inner sweep deg
- SAVSI=43.0,
+ SAVSI=40.0,
  # % chord from where the sweep is measured
  CHSTAT=0.25,
  # Straight tapered planform
  TYPE=1.0$
-NACA-V-6-66-012
- #
- # propulsion
- $JETPWR NENGSJ=1.0, JIALOC=-3.21, JEALOC=7.8, JELLOC=0.0, JEVLOC=0.0,
- JEANGL=0.0, AIETLJ=0.0, JETOTP=5500.0, JERAD=0.75$
+NACA-V-5-16006
  #
  #Inertia
  $INERTA ACTYPE=4.0$
@@ -135,4 +132,41 @@ CASEID SAAB JA-37 VIGGEN
 DERIV DEG
 DIM M
 BUILD
+SAVE
+NEXT CASE
+	#
+	# propulsion
+	CASEID Viggen engine ENG=RM8B
+	$JETPWR
+	# 1 engine
+	NENGSJ=1.0,
+	# inlet and outlet
+	JIALOC=-3.40896, JEALOC=6.05546,
+	# lateral and vertical location of engine
+	JELLOC=0.0,	JEVLOC=0.0,
+	# exit angle
+	JEANGL=0.0,
+	# incidence
+	AIETLJ=0.0,
+	# inlet area (aproximated)
+	JINLTA=0.75,
+	# exit pressure (Newton?)
+	JETOTP=110300.0,
+	# radius of outlet
+	JERAD=0.5485,
+	# thrust to test for
+	THSTCJ=0.0$
+SAVE
+NEXT CASE
+	$JETPWR THSTCJ=0.25$
+SAVE
+NEXT CASE
+	$JETPWR THSTCJ=0.5$
+SAVE
+NEXT CASE
+	$JETPWR THSTCJ=0.75$
+SAVE
+NEXT CASE
+	$JETPWR THSTCJ=1.0$
+SAVE
 NEXT CASE
