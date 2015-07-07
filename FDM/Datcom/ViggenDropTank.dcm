@@ -1,0 +1,67 @@
+#
+# Datcom+ Pro
+#                 Saab JA-37 Viggen
+#
+CASEID SAAB JA-37 VIGGEN - Droptank
+DERIV DEG
+DIM M
+PART
+BUILD
+PLOT
+ $FLTCON TR=1.0,
+  # 
+  # HYPERS=1.0,
+  # mach numbers to test
+  NMACH=1.0, MACH(1)=0.6,
+  # alpha values to test
+  NALPHA=16.0, 
+         ALSCHD(1)= -2.0, 0.0, 2.0, 4.0, 8.0, 10.0,
+             12.0, 14.0, 16.0, 17.0, 23.0, 30.0, 60.0,
+             90.0, 120.0, 175.0,
+ # altitudes to test
+ NALT=1.0,ALT(1)=0.0,
+  # Loop: 2: vary Mach, at fixed altitude
+  # RNNUB: not needed when not using NACA
+  # WT: weight
+  LOOP=1.0,
+  # RNNUB(1)=5.7E6,
+  WT=100.0$
+ #
+ # surface coating: painted camoflage
+ $OPTINS ROUGFC=0.01016,
+ #
+ # ref wing area
+ SREF=46.0,
+ #
+ # ref chord
+ CBARR=7.4,
+ #
+ # ref span
+ BLREF=10.0$
+ $SYNTHS 
+ # Locations of CoG, canards, main wings and tail
+ XCG=1.0, ZCG=0.0$
+#
+# Fuselage
+#
+# 9 stations, method=2: Also valid for high alpha
+#
+ $BODY METHOD=2.0, BNOSE=2.0, BTAIL=2.0, BLN=0.04621, BLA=0.02, DS=0.08646, NX=9.0, 
+   #
+   # the x positions of stations
+  X(1)=0.04621, 0.1817, 0.39724, 0.67813, 1.00524, 1.35627, 2.71254, 3.644, 4.35496,
+   #
+   # body height to width ratio of the elliptical body
+   ELLIP=1.0,
+   #
+   # the half width
+  R(1)=0.08646, 0.16703, 0.23621, 0.28931, 0.32269, 0.33406, 0.33406, 0.30046, 0.25464,
+   #
+   # ZU is the height above the centerline
+  ZU(1)=0.08646, 0.16703, 0.23621, 0.28931, 0.32269, 0.33406, 0.33406, 0.30046, 0.25464,
+   #
+   # ZL is the height below the centerline
+  ZL(1)=-0.08646, -0.16703, -0.23621, -0.28931, -0.32269, -0.33406, -0.33406, -0.30046, -0.25464,
+  #
+  # 2.0 for swept-wing, no area rule
+  ITYPE=2.0$
