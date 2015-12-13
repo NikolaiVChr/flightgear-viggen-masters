@@ -1,0 +1,35 @@
+metric
+fighter jet
+275 km/h stall speed (FG)
+17800 kg max takeoff weight
+10731 kg empty weight
+16.4 meter length
+delta
+10.6 meter wingspan
+46 m2 wingarea
+2.21 wing aspect ratio (datcom)
+0.096 taper ratio (datcom)
+4.73 chord (datcom MAC)
+0 incidence
+default dihedral
+40.849 deg sweep at q.chord (datcom)
+default htail area
+default htail arm
+5.115 m2 vtail area
+5.8515 meter vtail arm
+1 turbine at aft fuselage
+66.6 kN mil thrust
+0.97 bypass ratio
+44.8 overall pressure ratio
+augmented
+no water injection
+conventional controls with yaw damper
+retractable landing gear
+steering nosewheel
+not taildragger
+flaps
+no spoilers
+no speedbrake
+no arrestor hook
+no chute
+no catapult
