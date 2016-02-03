@@ -1,0 +1,54 @@
+radarcanon - black
+symbolcanon - white
+
+61.5 deg sideways
+
+15, 30, 60 and 120 km distance settings in lower right corner
+
+black vertical lines at 30 degs and 0 degs
+
+8.33% 16.66% 33.33% 66.66% black horizontal arcs
+
+current destination marked by white circle 10% size of current distance setting
+
+white attitude and altitude info. And artificial horizon with gap in middle.
+
+Landing: (when distination is a runway)
+--------
+
+A white line is drawn in the circel 30/60 dist= 20km long - 15 dist= 10km long - 120 dist= 40km
+
+In navigation mode the circel center is the runway.
+
+In landing mode the line is tangent to the circel to show if left or right turn is required.
+
+Memory mode:
+------------
+
+30 seconds fixed image
+
+RB-04E
+------
+
+Two horzontal short arcs at 12 and 24 km show firing range min and max. 18 deg total length
+
+The white lines are shifted to show actual course from planes centerline.
+
+RB-24:
+------
+
+- + - in black over the radar image at -10, 0 and 10 deg.
+
+Need 200V.
+
+Leaves plane 0.7 sec after fire impusle.
+
+Wont fire at G-force greater than 2.
+
+KCA:
+----
+
+No lines, symbols or radar image.
+
+
+
