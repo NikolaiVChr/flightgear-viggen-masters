@@ -1,21 +1,21 @@
 <?xml version="1.0"?>
 <?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
 
-<fdm_config name="SaabViggenJA37" version="2.0" release="ALPHA"
+<fdm_config name="Viggen" version="2.0" release="ALPHA"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
 
  <fileheader>
-  <author> Aeromatic v 3.1.0 </author>
-  <filecreationdate> 13 Dec 2015 </filecreationdate>
-  <version>$Revision: 1.49 $</version>
-  <description> Models a SaabViggenJA37. </description>
+  <author> Aeromatic v 3.2.5 </author>
+  <filecreationdate> 03 Feb 2016 </filecreationdate>
+  <version>$Revision: 1.64 $</version>
+  <description> Models a Viggen. </description>
  </fileheader>
 
 <!--
-  File:     SaabViggenJA37.xml
+  File:     Viggen.xml
   Inputs:
-    name:          SaabViggenJA37
+    name:          Viggen
     type:          1 engine transonic/supersonic fighter
     stall speed:   148.49kts
     max weight:    39249.00 lb
@@ -23,7 +23,7 @@
     wing: 
      span:         34.78 ft
      area:         495.14 sq-ft
-     chord:        15.52 ft
+     mean chord:   15.52 ft
      aspect ratio: 2.21:1
      taper ratio:  0.10:1
      incidence:    2.00 degrees
@@ -43,12 +43,12 @@
   Outputs:
     wing loading:  79.27 lb/sq-ft
     payload:       9228.81 lbs
-    CL-alpha:      0.20 per radian
-    CL-0:          0.08
+    CL-alpha:      0.74 per radian
+    CL-0:          0.23
     CL-max:        1.06
     CD-0:          0.02
     K:             0.12
-    Mcrit:         -0.38
+    Mcrit:         1.02
 -->
 
  <metrics>
@@ -202,7 +202,7 @@
   <contact type="STRUCTURE" name="LEFT_WING">
     <location unit="IN">
      <x>   387.40 </x>
-     <y>   -17.39 </y>
+     <y>  -208.66 </y>
      <z>   -16.14 </z>
     </location>
    <static_friction>  1 </static_friction>
@@ -214,7 +214,7 @@
   <contact type="STRUCTURE" name="RIGHT_WING">
     <location unit="IN">
      <x>   387.40 </x>
-     <y>    17.39 </y>
+     <y>   208.66 </y>
      <z>   -16.14 </z>
     </location>
    <static_friction>  1 </static_friction>
@@ -225,11 +225,207 @@
 
  </ground_reactions>
 
- <system file="Aircraft control.xml"/>
- <system file="Landing Gear.xml"/>
- <system file="Flaps.xml"/>
+ <flight_control name="FCS: Viggen">
 
- <flight_control name="FCS: SaabViggenJA37">
+  <property value="1">fcs/yaw-damper-enable</property>
+
+  <channel name="Pitch">
+   <summer name="Pitch Trim Sum">
+      <input>fcs/elevator-cmd-norm</input>
+      <input>fcs/pitch-trim-cmd-norm</input>
+      <clipto>
+        <min> -1 </min>
+        <max>  1 </max>
+      </clipto>
+   </summer>
+
+   <aerosurface_scale name="Elevator Control">
+      <input>fcs/pitch-trim-sum</input>
+      <range>
+        <min> -0.35 </min>
+        <max>  0.35 </max>
+      </range>
+      <output>fcs/elevator-pos-rad</output>
+   </aerosurface_scale>
+
+   <aerosurface_scale name="Elevator Normalization">
+      <input>fcs/elevator-pos-rad</input>
+      <domain>
+        <min> -0.35 </min>
+        <max>  0.35 </max>
+      </domain>
+      <range>
+        <min> -1 </min>
+        <max>  1 </max>
+      </range>
+      <output>fcs/elevator-pos-norm</output>
+   </aerosurface_scale>
+  </channel>
+
+  <channel name="Roll">
+   <summer name="Roll Trim Sum">
+      <input>fcs/aileron-cmd-norm</input>
+      <input>fcs/roll-trim-cmd-norm</input>
+      <clipto>
+        <min> -1 </min>
+        <max>  1 </max>
+      </clipto>
+   </summer>
+
+   <aerosurface_scale name="Left Aileron Control">
+      <input>fcs/roll-trim-sum</input>
+      <range>
+        <min> -0.35 </min>
+        <max>  0.35 </max>
+      </range>
+      <output>fcs/left-aileron-pos-rad</output>
+   </aerosurface_scale>
+
+   <aerosurface_scale name="Right Aileron Control">
+      <input>fcs/roll-trim-sum</input>
+      <range>
+        <min> -0.35 </min>
+        <max>  0.35 </max>
+      </range>
+      <output>fcs/right-aileron-pos-rad</output>
+   </aerosurface_scale>
+
+   <aerosurface_scale name="Left Aileron Normalization">
+      <input>fcs/left-aileron-pos-rad</input>
+      <domain>
+        <min> -0.35 </min>
+        <max>  0.35 </max>
+      </domain>
+      <range>
+        <min> -1 </min>
+        <max>  1 </max>
+      </range>
+      <output>fcs/left-aileron-pos-norm</output>
+   </aerosurface_scale>
+
+   <aerosurface_scale name="Right Aileron Normalization">
+      <input>fcs/right-aileron-pos-rad</input>
+      <domain>
+        <min> -0.35 </min>
+        <max>  0.35 </max>
+      </domain>
+      <range>
+        <min> -1 </min>
+        <max>  1 </max>
+      </range>
+      <output>fcs/right-aileron-pos-norm</output>
+   </aerosurface_scale>
+  </channel>
+
+  <channel name="Yaw">
+   <summer name="Rudder Command Sum">
+      <input>fcs/rudder-cmd-norm</input>
+      <input>fcs/yaw-trim-cmd-norm</input>
+      <clipto>
+        <min> -1 </min>
+        <max>  1 </max>
+      </clipto>
+   </summer>
+
+   <scheduled_gain name="Yaw Damper Rate">
+      <input>velocities/r-aero-rad_sec</input>
+      <table>
+        <independentVar lookup="row">velocities/ve-kts</independentVar>
+         <tableData>
+            30     0.00
+            60     2.00
+         </tableData>
+      </table>
+      <gain>fcs/yaw-damper-enable</gain>
+   </scheduled_gain>
+
+   <summer name="Rudder Sum">
+      <input>fcs/rudder-command-sum</input>
+      <input>fcs/yaw-damper-rate</input>
+      <clipto>
+        <min> -1.1 </min>
+        <max>  1.1 </max>
+      </clipto>
+   </summer>
+
+   <aerosurface_scale name="Rudder Control">
+      <input>fcs/rudder-sum</input>
+      <domain>
+        <min> -1.1 </min>
+        <max>  1.1 </max>
+      </domain>
+      <range>
+        <min> -0.35 </min>
+        <max>  0.35 </max>
+      </range>
+      <output>fcs/rudder-pos-rad</output>
+   </aerosurface_scale>
+
+   <aerosurface_scale name="Rudder Normalization">
+      <input>fcs/rudder-pos-rad</input>
+      <domain>
+        <min> -0.35 </min>
+        <max>  0.35 </max>
+      </domain>
+      <range>
+        <min> -1 </min>
+        <max>  1 </max>
+      </range>
+      <output>fcs/rudder-pos-norm</output>
+   </aerosurface_scale>
+  </channel>
+
+
+  <channel name="Landing Gear">
+   <kinematic name="Landing Gear Control">
+     <input>gear/gear-cmd-norm</input>
+     <traverse>
+       <setting>
+          <position> 0 </position>
+          <time>     0 </time>
+       </setting>
+       <setting>
+          <position> 1 </position>
+          <time>     5 </time>
+       </setting>
+     </traverse>
+     <output>gear/gear-pos-norm</output>
+   </kinematic>
+  </channel>
+
+  <channel name="Flaps">
+   <kinematic name="Flaps Control">
+    <input>fcs/flap-cmd-norm</input>
+    <traverse>
+      <setting>
+         <position>  0 </position>
+         <time>      0 </time>
+      </setting>
+      <setting>
+         <position> 15 </position>
+         <time>      4 </time>
+      </setting>
+      <setting>
+         <position> 30 </position>
+         <time>      3 </time>
+      </setting>
+    </traverse>
+    <output>fcs/flap-pos-deg</output>
+   </kinematic>
+
+   <aerosurface_scale name="Flap Normalization">
+    <input>fcs/flap-pos-deg</input>
+    <domain>
+      <min>  0 </min>
+      <max> 30 </max>
+    </domain>
+    <range>
+      <min> 0 </min>
+      <max> 1 </max>
+    </range>
+    <output>fcs/flap-pos-norm</output>
+   </aerosurface_scale>
+  </channel>
 
  </flight_control>
 
@@ -245,10 +441,10 @@
           <table>
             <independentVar lookup="row">aero/alpha-rad</independentVar>
             <tableData>
-              -0.20 0.0397
-               0.00  0.0800
-               4.88  1.0619
-               0.60  0.4728
+              -0.20 0.0786
+               0.00  0.2262
+               1.13  1.0619
+               0.60  0.5605
             </tableData>
           </table>
       </product>
@@ -261,7 +457,7 @@
           <property>metrics/Sw-sqft</property>
           <property>velocities/q-aero-rad_sec</property>
           <property>aero/ci2vel</property>
-          <value> 3.0986 </value>
+          <value> 2.3435 </value>
         </product>
       </function>
 
@@ -272,7 +468,7 @@
            <property>metrics/Sw-sqft</property>
            <property>aero/alphadot-rad_sec</property>
            <property>aero/ci2vel</property>
-           <value> 2.9440 </value>
+           <value> 2.2266 </value>
         </product>
       </function>
 
@@ -292,7 +488,7 @@
            <property>aero/qbar-psf</property>
            <property>metrics/Sw-sqft</property>
            <property>fcs/flap-pos-deg</property>
-           <value> 0.0107 </value>
+           <value> 0.0093 </value>
        </product>
     </function>
 
@@ -309,11 +505,11 @@
           <table>
             <independentVar lookup="row">aero/alpha-rad</independentVar>
             <tableData>
-             -1.57    1.5000
-             -0.26    0.0094
-              0.00    0.0073
-              0.26    0.0094
-              1.57    1.5000
+             -1.57    1.4086
+             -1.13    0.1265
+              0.00    0.0210
+              1.13    0.1265
+              1.57    1.4086
             </tableData>
           </table>
        </product>
@@ -325,7 +521,7 @@
            <property>aero/qbar-psf</property>
            <property>metrics/Sw-sqft</property>
            <property>aero/cl-squared</property>
-           <value> 0.5602 </value>
+           <value> 0.2791 </value>
          </product>
     </function>
 
@@ -338,7 +534,7 @@
             <independentVar lookup="row">velocities/mach</independentVar>
             <tableData>
                 0.00    0.0000
-                -0.38    0.0000
+                1.02    0.0000
                 1.10    0.0230
                 1.80    0.0150
             </tableData>
@@ -390,7 +586,7 @@
            <property>aero/qbar-psf</property>
            <property>metrics/Sw-sqft</property>
            <property>fcs/flap-pos-deg</property>
-           <value> 0.0025 </value>
+           <value> 0.0021 </value>
          </product>
     </function>
 
@@ -408,7 +604,6 @@
            <value> -0.2568 </value>
        </product>
     </function>
-
     <function name="aero/force/Side_roll_rate">
        <description>Side_force_due_to_roll_rate</description>
        <product>
@@ -416,7 +611,15 @@
            <property>metrics/Sw-sqft</property>
            <property>aero/bi2vel</property>
            <property>velocities/p-aero-rad_sec</property>
-           <value> -0.0556 </value>
+           <table>
+             <independentVar lookup="row">aero/Re</independentVar>
+             <tableData>
+                 1010434 -96.1224
+                15003748  -0.4360
+                19954984  -0.2465
+                29757688  -0.1108
+             </tableData>
+           </table>
        </product>
     </function>
 
@@ -452,7 +655,7 @@
            <property>metrics/Sw-sqft</property>
            <property>metrics/cbarw-ft</property>
            <property>aero/alpha-rad</property>
-           <value> -0.0596 </value>
+           <value> -0.0589 </value>
        </product>
     </function>
 
@@ -466,8 +669,8 @@
           <table>
             <independentVar lookup="row">velocities/mach</independentVar>
             <tableData>
-              0.0    -0.9444
-              2.0    -0.2361
+              0.0    -0.7047
+              2.0    -0.1762
             </tableData>
           </table>
        </product>
@@ -481,7 +684,7 @@
            <property>metrics/cbarw-ft</property>
            <property>aero/ci2vel</property>
            <property>velocities/q-aero-rad_sec</property>
-           <value> -5.6821 </value>
+           <value> -3.2502 </value>
        </product>
     </function>
 
@@ -493,7 +696,7 @@
            <property>metrics/cbarw-ft</property>
            <property>aero/ci2vel</property>
            <property>aero/alphadot-rad_sec</property>
-           <value> -5.3987 </value>
+           <value> -3.0880 </value>
        </product>
     </function>
 
@@ -508,7 +711,15 @@
            <property>metrics/Sw-sqft</property>
            <property>metrics/bw-ft</property>
            <property>aero/beta-rad</property>
-           <value> -0.0178 </value>
+           <table>
+             <independentVar lookup="row">aero/alpha-rad</independentVar>
+             <independentVar lookup="column">aero/Re</independentVar>
+             <tableData>
+                          1010434 15003748 19954984 29757688
+                 -0.1745  -0.1427  -0.1427  -0.1427  -0.1072
+                  0.3491  61.4232   0.1968   0.0756  -0.0467
+             </tableData>
+           </table>
        </product>
     </function>
 
@@ -520,7 +731,7 @@
            <property>metrics/bw-ft</property>
            <property>aero/bi2vel</property>
            <property>velocities/p-aero-rad_sec</property>
-           <value> -0.0156 </value>
+           <value> 0.1165 </value>
        </product>
     </function>
 
@@ -532,7 +743,15 @@
            <property>metrics/bw-ft</property>
            <property>aero/bi2vel</property>
            <property>velocities/r-aero-rad_sec</property>
-           <value> 0.1849 </value>
+           <table>
+             <independentVar lookup="row">aero/alpha-rad</independentVar>
+             <independentVar lookup="column">aero/Re</independentVar>
+             <tableData>
+                          1010434 15003748 19954984 29757688
+                 -0.1745   0.1243   0.1243   0.1243   0.1809
+                  0.3491  98.3251   0.6659   0.4725   0.2775
+             </tableData>
+           </table>
        </product>
     </function>
 
@@ -587,7 +806,15 @@
            <property>metrics/bw-ft</property>
            <property>aero/bi2vel</property>
            <property>velocities/p-rad_sec</property>
-           <value> -0.0142 </value>
+           <table>
+             <independentVar lookup="row">aero/Re</independentVar>
+             <tableData>
+                 1010434 -24.5260
+                15003748  -0.1112
+                19954984  -0.0629
+                29757688  -0.0283
+             </tableData>
+           </table>
        </product>
     </function>
 
@@ -599,7 +826,7 @@
            <property>metrics/bw-ft</property>
            <property>aero/bi2vel</property>
            <property>velocities/r-aero-rad_sec</property>
-           <value> -0.1565 </value>
+           <value> -0.1604 </value>
        </product>
     </function>
 
