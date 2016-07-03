@@ -33,3 +33,15 @@ no speedbrake
 no arrestor hook
 no chute
 no catapult
+
+
+AJ37
+====
+1 turbine at aft fuselage
+65.6 kN mil thrust
+1.07 bypass ratio
+44.8 overall pressure ratio
+augmented
+no water injection
+
+115.6 Max aug
