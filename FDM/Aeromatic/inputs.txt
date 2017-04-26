@@ -1,3 +1,5 @@
+JA37
+====
 metric
 fighter jet
 275 km/h stall speed (FG)
@@ -45,3 +47,17 @@ augmented
 no water injection
 
 115.6 Max aug
+
+Generic
+=======
+1 turbine at aft fuselage
+12680 lbf mil thrust (upgrade: 14670)
+0.71 bypass ratio
+25 overall pressure ratio
+augmented
+no water injection
+
+was initially powered by the turbofan, rated at 12,240 lb.s.t. dry, 14,670 lb.s.t. full military, and 23,830 lb.s.t. with afterburning. (generic.net)
+21420 lbf aug thrust (upgrade: 23830) 23,830?
+tsfc: 0.72
+atsfc: 2.1
