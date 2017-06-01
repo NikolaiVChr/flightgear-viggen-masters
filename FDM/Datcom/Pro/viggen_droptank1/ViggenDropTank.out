@@ -1,0 +1,163 @@
+ THIS SOFTWARE AND ANY ACCOMPANYING DOCUMENTATION
+ IS RELEASED "AS IS".  THE U.S. GOVERNMENT MAKES NO
+ WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, CONCERNING
+ THIS SOFTWARE AND ANY ACCOMPANYING DOCUMENTATION,
+ INCLUDING, WITHOUT LIMITATION, ANY WARRANTIES OF
+ MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE.
+ IN NO EVENT WILL THE U.S. GOVERNMENT BE LIABLE FOR ANY
+ DAMAGES, INCLUDING LOST PROFITS, LOST SAVINGS OR OTHER
+ INCIDENTAL OR CONSEQUENTIAL DAMAGES ARISING OUT OF THE 
+ USE, OR INABILITY TO USE, THIS SOFTWARE OR ANY
+ ACCOMPANYING DOCUMENTATION, EVEN IF INFORMED IN ADVANCE
+ OF THE POSSIBILITY OF SUCH DAMAGES.
+
+
+
+
+
+
+
+
+                                        ****************************************************
+                                        *    USAF STABILITY AND CONTROL  DIGITAL DATCOM    *
+                                        *    PROGRAM REV. JAN 96   DIRECT INQUIRIES TO:    *
+                                        *   WRIGHT LABORATORY  (WL/FIGC)  ATTN: W. BLAKE   *
+                                        *         WRIGHT PATTERSON AFB, OHIO  45433        *
+                                        *    PHONE (513) 255-6764,   FAX (513) 258-4054    *
+                                        ****************************************************
+1                         CONERR - INPUT ERROR CHECKING
+0 ERROR CODES - N* DENOTES THE NUMBER OF OCCURENCES OF EACH ERROR
+0 A - UNKNOWN VARIABLE NAME
+0 B - MISSING EQUAL SIGN FOLLOWING VARIABLE NAME
+0 C - NON-ARRAY VARIABLE HAS AN ARRAY ELEMENT DESIGNATION - (N)
+0 D - NON-ARRAY VARIABLE HAS MULTIPLE VALUES ASSIGNED
+0 E - ASSIGNED VALUES EXCEED ARRAY DIMENSION
+0 F - SYNTAX ERROR
+
+0******************************  INPUT DATA CARDS  ******************************
+
+ CASEID SAAB JA-37 VIGGEN - Droptank                                             
+ DERIV DEG                                                                       
+ DIM M                                                                           
+ PART                                                                            
+ BUILD                                                                           
+ PLOT                                                                            
+  $FLTCON TR=1.0,                                                                
+  NMACH=1.0, MACH(1)=0.6,                                                        
+  NALPHA=20.0,                                                                   
+  ALSCHD(1)= -2.0, 0.0, 2.0, 4.0, 8.0, 12.0,                                     
+  16.0, 20.0, 24.0, 28.0, 32.0, 36.0, 40.0, 45.0, 50.0, 60.0, 70.0,              
+  89.0, 120.0, 175.0,                                                            
+  NALT=1.0,ALT(1)=0.0,                                                           
+  LOOP=1.0,                                                                      
+  WT=100.0$                                                                      
+  $OPTINS ROUGFC=0.01016,                                                        
+  SREF=46.0,                                                                     
+  CBARR=7.4,                                                                     
+  BLREF=10.0$                                                                    
+  $SYNTHS                                                                        
+  XCG=1.0, ZCG=0.0$                                                              
+  $BODY METHOD=2.0, BNOSE=2.0, BTAIL=2.0, BLN=0.04621, BLA=0.02, DS=0.08646,     
+  NX=9.0,                                                                        
+  X(1)=0.04621, 0.1817, 0.39724, 0.67813, 1.00524, 1.35627, 2.71254, 3.644,      
+  4.35496,                                                                       
+  ELLIP=1.0,                                                                     
+  R(1)=0.08646, 0.16703, 0.23621, 0.28931, 0.32269, 0.33406, 0.33406, 0.30046,   
+  0.25464,                                                                       
+  ZU(1)=0.08646, 0.16703, 0.23621, 0.28931, 0.32269, 0.33406, 0.33406, 0.30046,  
+  0.25464,                                                                       
+  ZL(1)=-0.08646, -0.16703, -0.23621, -0.28931, -0.32269, -0.33406, -0.33406,    
+  -0.30046, -0.25464,                                                            
+  ITYPE=2.0$                                                                     
+1          THE FOLLOWING IS A LIST OF ALL INPUT CARDS FOR THIS CASE.
+0
+ CASEID SAAB JA-37 VIGGEN - Droptank                                             
+ DERIV DEG                                                                       
+ DIM M                                                                           
+ PART                                                                            
+ BUILD                                                                           
+ PLOT                                                                            
+  $FLTCON TR=1.0,                                                                
+  NMACH=1.0, MACH(1)=0.6,                                                        
+  NALPHA=20.0,                                                                   
+  ALSCHD(1)= -2.0, 0.0, 2.0, 4.0, 8.0, 12.0,                                     
+  16.0, 20.0, 24.0, 28.0, 32.0, 36.0, 40.0, 45.0, 50.0, 60.0, 70.0,              
+  89.0, 120.0, 175.0,                                                            
+  NALT=1.0,ALT(1)=0.0,                                                           
+  LOOP=1.0,                                                                      
+  WT=100.0$                                                                      
+  $OPTINS ROUGFC=0.01016,                                                        
+  SREF=46.0,                                                                     
+  CBARR=7.4,                                                                     
+  BLREF=10.0$                                                                    
+  $SYNTHS                                                                        
+  XCG=1.0, ZCG=0.0$                                                              
+  $BODY METHOD=2.0, BNOSE=2.0, BTAIL=2.0, BLN=0.04621, BLA=0.02, DS=0.08646,     
+  NX=9.0,                                                                        
+  X(1)=0.04621, 0.1817, 0.39724, 0.67813, 1.00524, 1.35627, 2.71254, 3.644,      
+  4.35496,                                                                       
+  ELLIP=1.0,                                                                     
+  R(1)=0.08646, 0.16703, 0.23621, 0.28931, 0.32269, 0.33406, 0.33406, 0.30046,   
+  0.25464,                                                                       
+  ZU(1)=0.08646, 0.16703, 0.23621, 0.28931, 0.32269, 0.33406, 0.33406, 0.30046,  
+  0.25464,                                                                       
+  ZL(1)=-0.08646, -0.16703, -0.23621, -0.28931, -0.32269, -0.33406, -0.33406,    
+  -0.30046, -0.25464,                                                            
+  ITYPE=2.0$                                                                     
+0 INPUT DIMENSIONS ARE IN M , SCALE FACTOR IS 1.0000
+
+ WARNING*** BODY ALONE DYNAMIC DERIVATIVE METHOD VALID FOR NOSE CYLINDER ONLY
+            TAIL EFFECTS IGNORED]
+1                               AUTOMATED STABILITY AND CONTROL METHODS PER APRIL 1976 VERSION OF DATCOM
+                                         CHARACTERISTICS AT ANGLE OF ATTACK AND IN SIDESLIP
+                                                   DATCOM BODY ALONE CONFIGURATION
+                                                   SAAB JA-37 VIGGEN - Droptank
+ 
+ -----------------------  FLIGHT CONDITIONS  ------------------------           --------------  REFERENCE DIMENSIONS  ------------
+  MACH    ALTITUDE   VELOCITY    PRESSURE    TEMPERATURE     REYNOLDS             REF.      REFERENCE LENGTH   MOMENT REF. CENTER
+ NUMBER                                                       NUMBER              AREA       LONG.     LAT.     HORIZ      VERT
+              M        M/SEC      N/ M**2       DEG K         1/ M                M**2         M         M         M         M
+0  .600        .00     204.15   1.0133E+05     288.150     1.3914E+07            46.000      7.400    10.000     1.000      .000
+0                                                               -------------------DERIVATIVE (PER DEGREE)-------------------
+0 ALPHA     CD       CL       CM       CN       CA       XCP        CLA          CMA          CYB          CNB          CLB
+0
+   -2.0     .001     .000    -.0001    .000     .001     .178    1.658E-04    3.867E-05   -1.658E-04   -2.861E-05    0.000E+00
+     .0     .001     .000     .0000    .000     .001   ******    1.729E-04    3.420E-05   -1.729E-04   -2.531E-05    0.000E+00
+    2.0     .001     .000     .0001    .000     .001     .178    1.983E-04    2.967E-05   -1.983E-04   -2.196E-05    0.000E+00
+    4.0     .001     .001     .0001    .001     .001     .136    2.473E-04    2.052E-05   -2.473E-04   -1.518E-05    0.000E+00
+    8.0     .001     .002     .0002    .002     .001     .077    3.365E-04    1.889E-06   -3.365E-04   -1.398E-06    0.000E+00
+   12.0     .002     .003     .0001    .004     .001     .035    4.117E-04   -1.685E-05   -4.117E-04    1.247E-05    0.000E+00
+   16.0     .003     .005     .0000    .006     .001     .005    4.686E-04   -3.543E-05   -4.686E-04    2.622E-05    0.000E+00
+   20.0     .004     .007    -.0001    .008     .001    -.019    5.066E-04   -5.386E-05   -5.066E-04    3.986E-05    0.000E+00
+   24.0     .005     .009    -.0004    .011     .001    -.038    5.224E-04   -7.158E-05   -5.224E-04    5.297E-05    0.000E+00
+   28.0     .007     .011    -.0007    .013     .001    -.054    5.174E-04   -8.872E-05   -5.174E-04    6.565E-05    0.000E+00
+   32.0     .009     .013    -.0011    .016     .001    -.068    4.945E-04   -1.057E-04   -4.945E-04    7.819E-05    0.000E+00
+   36.0     .012     .015    -.0016    .020     .001    -.080    4.700E-04   -1.258E-04   -4.700E-04    9.309E-05    0.000E+00
+   40.0     .015     .017    -.0021    .023     .001    -.092    4.245E-04   -1.451E-04   -4.245E-04    1.074E-04    0.000E+00
+   45.0     .020     .019    -.0029    .028     .001    -.105    3.077E-04   -1.599E-04   -3.077E-04    1.183E-04    0.000E+00
+   50.0     .025     .020    -.0037    .032     .000    -.116    1.557E-04   -1.689E-04   -1.557E-04    1.250E-04    0.000E+00
+   60.0     .036     .020    -.0055    .041     .000    -.134   -1.928E-04   -1.727E-04    1.928E-04    1.278E-04    0.000E+00
+   70.0     .046     .016    -.0072    .048     .000    -.148   -5.285E-04   -1.454E-04    5.285E-04    1.076E-04    0.000E+00
+   89.0     .054     .001    -.0091    .054     .000    -.168   -7.363E-04   -3.369E-05    7.363E-04    2.493E-05    0.000E+00
+  120.0     .030    -.018    -.0068    .035     .000    -.192   -2.734E-04    9.093E-05    2.734E-04   -6.729E-05    0.000E+00
+  175.0    -.001     .000    -.0001    .000     .001    -.219    9.093E-04    1.535E-04   -9.093E-04   -1.136E-04    0.000E+00
+0*** VEHICLE WEIGHT =    100.00 N. 
+0*** LEVEL FLIGHT LIFT COEFFICIENT =  .00038
+1                             AUTOMATED STABILITY AND CONTROL METHODS PER APRIL 1976 VERSION OF DATCOM
+                                             CONFIGURATION AUXILIARY AND PARTIAL OUTPUT
+                                                   DATCOM BODY ALONE CONFIGURATION
+                                                   SAAB JA-37 VIGGEN - Droptank
+ -----------------------  FLIGHT CONDITIONS  ------------------------           --------------  REFERENCE DIMENSIONS  ------------
+  MACH    ALTITUDE   VELOCITY    PRESSURE    TEMPERATURE     REYNOLDS             REF.      REFERENCE LENGTH   MOMENT REF. CENTER
+ NUMBER                                                       NUMBER              AREA       LONG.     LAT.     HORIZ      VERT
+              M        M/SEC      N/ M**2       DEG K         1/ M                M**2         M         M         M         M
+0  .600        .00     204.15   1.0133E+05     288.150     1.3914E+07            46.000      7.400    10.000     1.000      .000
+
+
+                                                       BASIC BODY PROPERTIES
+
+            WETTED AREA      XCG     ZCG     BASE AREA     ZERO LIFT DRAG   BASE DRAG   FRICTION DRAG   PRESSURE DRAG
+              .8118E+01     1.00     .00        .2037         .1079E-02     .3076E-03     .7717E-03         NA  
+0*** NA PRINTED WHEN METHOD NOT APPLICABLE
+1
+1 END OF JOB.
