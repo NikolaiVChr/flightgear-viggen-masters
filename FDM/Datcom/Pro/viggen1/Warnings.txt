@@ -1,0 +1,23 @@
+       Datcom+ Pro version 3.5.5 started.
+
+Using the global version of Datcom.ini.
+
+
+
+The first fuselage station X value is      -7.91
+Be aware that Datcom transfers the origin to the nose.
+Therefore, your distances to CG, HTail, VTail might be
+different that what you entered
+
+
+
+Press any key to continue . . .
+
+ Last fuselage station is not closed.
+
+
+In WGPLNF, check the values for SSPNOP and SSPNE. They are suspiously close
+in value. If you only have a single panel wing, do not specify SSPNOP
+It can really screw up that surface.
+   SSPNOP =     5.0438
+   SSPNE  =     5.0438

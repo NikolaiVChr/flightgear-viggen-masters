@@ -1,0 +1,394 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="http://jsbsim.sourceforge.net/JSBSim.xsl"?>
+<fdm_config name="Viggen" version="2.0" release="PRODUCTION"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://jsbsim.sourceforge.net/JSBSim.xsd">
+
+	<fileheader>
+		<author> Datcom+ Pro </author>
+		<filecreationdate> 2017-06-01  06:48 </filecreationdate>
+		<version> 3.5.5 </version>
+		<description> Datcom+ Pro generated model for Viggen </description>
+		<reference refID="None" author="n/a" title="n/a" date="n/a"/>
+	</fileheader>
+
+
+<!-- **********************************************************************
+        METRICS and CONSTANTS
+     *******************************************************************-->
+	<metrics>
+		<wingarea  unit="M2">     46.0000  </wingarea>
+		<wingspan  unit="M" >     10.0000  </wingspan>
+		<chord     unit="M" >      7.4000  </chord>
+		<htailarea unit="M2">     44.9451  </htailarea>
+		<htailarm  unit="M" >      4.5785  </htailarm>
+		<vtailarea unit="M2">     10.0026  </vtailarea>
+		<vtailarm  unit="M" >      5.8515  </vtailarm>
+		<location name="AERORP" unit="M">
+			<x>     5.9070  </x>
+			<y>      .0000  </y>
+			<z>      .3600  </z>
+		</location>
+
+ 		<!-- These values are not needed in JSBSim but are used in FlightGear. -->
+		<location name="EYEPOINT" unit="M">
+			<x>     .0000 </x>
+			<y>     .0000 </y>
+			<z>     .0000 </z>
+		</location>
+		<location name="VRP" unit="M">
+			<x>     .0000 </x>
+			<y>     .0000 </y>
+			<z>     .0000 </z>
+		</location>
+
+		<property value="57.2958279  "> RADIANS-TO-DEGREES </property>
+		<property value="0.0174532778"> DEGREES-TO-RADIANS </property>
+		<property value="0.5924838   "> FPS-TO-KNOTS       </property>
+		<property value="60.0"> FPS-TO-FPM </property>
+
+	</metrics>
+
+<!-- **********************************************************************
+        MASS_BALANCE
+     *******************************************************************-->
+	<mass_balance>
+      <!-- Estimated by Roskam equations for ACTYPE= 4
+           Single-Engine Transonic of Supersonic Fighter -->
+		<ixx unit="KG*M2">  19541.2852  </ixx>
+		<iyy unit="KG*M2">  71225.5156  </iyy>
+		<izz unit="KG*M2">  65562.4922  </izz>
+		<ixz unit="KG*M2">   3210.2771  </ixz>
+		<emptywt unit="KG">  10731.0000  </emptywt>
+		<location name="CG" unit="M">
+		      <x>         9.56  </x>
+		      <y>          .00  </y>
+		      <z>          .00  </z>
+		</location>
+	</mass_balance>
+
+<!-- **********************************************************************
+        UNDERCARRIAGE
+     *******************************************************************-->
+	<ground_reactions>
+		<!-- DATCOM does not calculate ground reactions parameters. -->
+	</ground_reactions>
+
+<!-- **********************************************************************
+        PROPULSION
+     *******************************************************************-->
+	<propulsion>
+
+		<engine file="RM8B">
+			<location unit="M">
+				<x>      9.23 </x>
+				<y>       .00 </y>
+				<z>       .00 </z>
+			</location>
+			<orient unit="DEG">
+				<roll>       .0000 </roll>
+				<pitch>      .0000 </pitch>
+				<yaw>        .0000 </yaw>
+			</orient>
+			<feed> 0 </feed>
+			<thruster file="direct">
+				<location unit="M">
+					<x>     13.96 </x>
+					<y>       .00 </y>
+					<z>     .0000 </z>
+				</location>
+				<orient unit="DEG">
+					<roll>      .0000 </roll>
+					<pitch>     .0000 </pitch>
+					<yaw>         .00 </yaw>
+				</orient>
+			</thruster>
+		</engine>
+
+		<tank type="FUEL" number="0" >
+			<location unit="M">
+				<x>   .00 </x>
+				<y>   .00 </y>
+				<z>   .00 </z>
+			</location>
+			<radius   unit="M" >      .00 </radius>
+			<capacity unit="KG">      .01 </capacity>
+			<contents unit="KG">      .00 </contents>
+			<density  unit="LBS/GAL"> 6.4  </density>
+			<priority> 1 </priority>
+		</tank>
+
+		<!--    THRUST COEFFICIENT
+			Datcom uses a different formula than JSBSim does to calculate thrust coefficent. 
+			Datcom uses:
+				Tc = Total Thrust / ( q * s)
+			contained in property: propulsion/total-thrust-coefficient
+
+			whereas JSBSim calculates per-engine thrust coefficient
+				Tc = Thrust / ( RPS^2 * D^4 * rho )
+			contained in property: propulsion/engine[x]/thrust-coefficient
+		-->
+		<function name="propulsion/total-thrust-coefficient">
+			<description> Total thrust coefficient calculation </description>
+			<quotient>
+				<property>propulsion/engine/thrust-lbs</property>
+				<property>aero/qbar-area</property>
+			</quotient>
+		</function>
+
+	</propulsion>
+	
+
+<!-- **********************************************************************
+        AUTOPILOT
+     *******************************************************************-->
+   <!-- This is provided so that you can write an autopilot 
+        model for your aircraft, based on a generic autopilot      -->
+
+    <autopilot file="autopilot"/>
+
+<!-- **********************************************************************
+        FLIGHT CONTROLS
+     *******************************************************************-->
+	<flight_control name="FCS: Viggen">
+
+		<channel name="Pitch">
+			<summer name="fcs/pitch-control-sum">
+				<input> fcs/elevator-cmd-norm </input>
+				<input> fcs/pitch-trim-cmd-norm </input>
+				<input> ap/longitudinal-cmd </input>
+				<clipto>
+					<min> -1.0 </min>
+					<max>  1.0 </max>
+				</clipto>
+			</summer>
+
+			<aerosurface_scale name="Elevator-Position-in-deg">
+				<input> fcs/pitch-control-sum </input>
+				<zero_centered> true </zero_centered>
+				<domain>
+					<min> -1.0 </min>
+					<max>  1.0 </max>
+				</domain>
+				<range>
+					<min>-40.00</min>
+					<max> 35.00</max>
+				</range>
+				<output> fcs/elevator-pos-deg </output>
+			</aerosurface_scale>
+		</channel>
+
+
+		<channel name="Roll">
+			<summer name="fcs/roll-control-sum">
+				<input> fcs/aileron-cmd-norm </input>
+				<input> fcs/roll-trim-cmd-norm </input>
+				<input> ap/lateral-cmd </input>
+				<clipto>
+					<min> -1.0 </min>
+					<max>  1.0 </max>
+				</clipto>
+			</summer>
+
+
+<!-- No ailerons present, so this will require work -->
+
+
+		</channel>
+
+
+		<channel name="Yaw">
+
+			<!-- Datcom doesn't calculate rudder parameters, but this is included for completeness -->
+			<summer name="fcs/yaw-control-sum">
+				<input> fcs/rudder-cmd-norm </input>
+				<input> fcs/yaw-trim-cmd-norm </input>
+				<input> ap/directional-cmd </input>
+				<clipto>
+				<min> -1.0 </min>
+				<max>  1.0 </max>
+				</clipto>
+			</summer>
+
+			<aerosurface_scale name="fcs/rudder">
+				<input> fcs/yaw-control-sum </input>
+				<zero_centered> true </zero_centered>
+				<domain>
+				<min> -1.0 </min>
+				<max>  1.0 </max>
+				</domain>
+				<range>
+				<min> -20.0 </min>
+				<max>  20.0 </max>
+				</range>
+				<output> fcs/rudder-pos-deg </output>
+			</aerosurface_scale>
+
+		</channel>
+
+
+		<channel name="Flaps">
+			<kinematic name="flap-control">
+				<input> fcs/flap-cmd-norm </input>
+				<traverse>
+					<setting>
+						<position> -.133 </position>			<!--  -4.00 deg -->
+						<time>       .00 </time>
+					</setting>
+					<setting>
+						<position>  .000 </position>			<!--    .00 deg -->
+						<time>      2.00 </time>
+					</setting>
+					<setting>
+						<position>  .500 </position>			<!--  15.00 deg -->
+						<time>      4.00 </time>
+					</setting>
+					<setting>
+						<position> 1.000 </position>			<!--  30.00 deg -->
+						<time>      6.00 </time>
+					</setting>
+				</traverse>
+				<output> fcs/flap-pos-norm </output>
+			</kinematic>
+
+			<aerosurface_scale name="fcs/flap-position">
+				<input> fcs/flap-pos-norm </input>
+					<zero_centered> false </zero_centered>
+					<domain>
+						<min>  0.0 </min>
+						<max>  1.0 </max>
+					</domain>
+					<range>
+						<min> -4.00 </min>
+						<max> 30.00 </max>
+					</range>
+					<output> fcs/flap-pos-deg </output>
+			</aerosurface_scale>
+
+		</channel>
+
+
+		<channel name="Landing Gear">
+			<kinematic name="gear-control">
+				<input>gear/gear-cmd-norm</input>
+				<traverse>
+					<setting>
+						<position> 0 </position>
+						<time>     0 </time>
+					</setting>
+					<setting>
+						<position> 1 </position>
+						<time>     5 </time>
+					</setting>
+				</traverse>
+				<output>gear/gear-pos-norm</output>
+			</kinematic>
+		</channel>
+
+	</flight_control>
+
+
+<!-- **********************************************************************
+                                    AERODYNAMICS
+     *******************************************************************-->
+	<!-- Link to the aerodynamics file -->
+	<aerodynamics file="Viggen_aero.xml"/>
+
+<!-- ********************************************************************** -->
+
+     <!--
+     We are specifying exact parameters that we want to record,
+     instead of using the groups, because the contents of
+     the groups may change with different versions of JSBSim,
+     which screws up the parameters for the Gnuplot scripts.
+     If you add parameters, add them at the end of this list.
+     -->
+
+	<output name="Viggen.tab" type="TABULAR" rate="20">
+
+		<!-- Properties 2-5 (Time is always #1) -->
+		<property> velocities/vc-kts </property>
+		<property> position/h-sl-ft </property>
+		<property> position/h-agl-ft </property>
+		<property> position/lat-gc-deg </property>
+		<!-- Properties 6-10 -->
+		<property> position/long-gc-deg </property>
+		<property> attitude/pitch-deg </property>
+		<property> attitude/roll-deg </property>
+		<property> attitude/heading-true-deg </property>
+		<property> aero/alpha-deg </property>
+		<!-- Properties 11-15 -->
+		<property> aero/alpha-rad </property>
+		<property> aero/beta-deg </property>
+		<property> aero/beta-rad </property>
+		<property> aero/alphadot-deg_sec </property>
+		<property> aero/alphadot-rad_sec </property>
+		<!-- Properties 16-20 -->
+		<property> aero/betadot-deg_sec </property>
+		<property> aero/betadot-rad_sec </property>
+		<property> flight-path/gamma-rad </property>
+		<property> velocities/mach </property>
+		<property> velocities/vt-fps </property>
+		<!-- Properties 21-25 -->
+		<property> velocities/h-dot-fps </property>
+		<property> velocities/h-dot-fpm </property>
+		<property> velocities/q-deg_sec </property>
+		<property> velocities/p-deg_sec </property>
+		<property> velocities/r-deg_sec </property>
+		<!-- Properties 26-30 -->
+		<property> velocities/q-rad_sec </property>
+		<property> velocities/p-rad_sec </property>
+		<property> velocities/r-rad_sec </property>
+		<property> attitude/pitch-rad </property>
+		<property> attitude/roll-rad </property>
+		<!-- Properties 31-35 -->
+		<property> attitude/heading-true-rad </property>
+		<property> accelerations/pdot-rad_sec2 </property>
+		<property> accelerations/qdot-rad_sec2 </property>
+		<property> accelerations/rdot-rad_sec2 </property>
+		<property> accelerations/Nz </property>
+		<!-- Properties 36-40 -->
+		<property> gear/gear-cmd-norm </property>
+		<property> gear/gear-pos-norm </property>
+		<property> position/h-sl-meters </property>
+		<property> inertia/cg-x-in </property>
+		<property> inertia/cg-y-in </property>
+		<!-- Properties 41-45 -->
+		<property> inertia/cg-z-in </property>
+		<property> inertia/empty-weight-lbs </property>
+		<property> inertia/weight-lbs </property>
+		<property> fcs/elevator-cmd-norm </property>
+		<property> fcs/pitch-trim-cmd-norm </property>
+		<!-- Properties 46-50 -->
+		<property> fcs/pitch-control-sum </property>
+		<property> ap/longitudinal-cmd </property>
+		<property> fcs/elevator-pos-norm </property>
+		<property> fcs/elevator-pos-deg </property>
+		<property> fcs/aileron-cmd-norm </property>
+		<!-- Properties 51-55 -->
+		<property> fcs/roll-trim-cmd-norm </property>
+		<property> ap/lateral-cmd </property>
+		<property> fcs/roll-control-sum </property>
+		<property> fcs/left-aileron-pos-deg </property>
+		<property> fcs/right-aileron-pos-deg </property>
+		<!-- Properties 56-60 -->
+		<property> fcs/rudder-cmd-norm </property>
+		<property> fcs/yaw-trim-cmd-norm </property>
+		<property> ap/directional-cmd </property>
+		<property> fcs/yaw-control-sum </property>
+		<property> fcs/rudder-pos-deg </property>
+		<!-- Properties 61-65 -->
+		<property> fcs/flap-cmd-norm </property>
+		<property> fcs/flap-pos-norm </property>
+		<property> fcs/flap-pos-deg </property>
+		<property> fcs/throttle-pos-norm </property>
+		<property> propulsion/engine/n1 </property>
+		<!-- Properties 66+ -->
+		<property> propulsion/engine/n2 </property>
+		<property> propulsion/engine/thrust-lbs </property>
+		<property> propulsion/total-thrust-coefficient </property>
+
+   </output>
+
+</fdm_config>
+

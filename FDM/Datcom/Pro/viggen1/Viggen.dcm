@@ -1,0 +1,215 @@
+#
+# Datcom+ Pro
+#                 Saab JA-37 Viggen
+#
+CASEID SAAB JA-37 VIGGEN - Fuselage, canards and flaps
+DERIV DEG
+DIM M
+PART
+BUILD
+PLOT
+ $FLTCON TR=1.0,
+  # 
+  # HYPERS=1.0,
+  # mach numbers to test
+  NMACH=1.0, MACH(1)=0.6,
+  # alpha values to test
+  NALPHA=20.0, 
+         ALSCHD(1)= -2.0, 0.0, 2.0, 4.0, 8.0, 12.0,
+             16.0, 20.0, 24.0, 28.0, 32.0, 36.0, 40.0, 45.0, 50.0, 60.0, 70.0,
+             89.0, 120.0, 175.0,
+ # altitudes to test
+ NALT=1.0,ALT(1)=0.0,
+  # Loop: 2: vary Mach, at fixed altitude
+  # RNNUB: not needed when not using NACA
+  # WT: weight
+  LOOP=1.0,
+  # RNNUB(1)=5.7E6,
+  WT=10731.0$
+ #
+ # surface coating: painted camoflage
+ $OPTINS ROUGFC=0.01016,
+ #
+ # ref wing area
+ SREF=46.0,
+ #
+ # ref chord
+ CBARR=7.4,
+ #
+ # ref span
+ BLREF=10.0$
+ $SYNTHS 
+ # Locations of CoG, canards, main wings and tail
+ XCG=1.64878, ZCG=0.0, XW=-3.11723, ZW=0.36, XH=-0.71907, ZH=-0.2004, XV=1.37543, ZV=0.0,
+ # incidence of canards and wings
+ ALIW=2.5, ALIH=0.0$
+#
+# Fuselage
+#
+# 8 stations, method=2: Also valid for high alpha
+#
+ $BODY METHOD=2.0, BNOSE=1.0, BTAIL=2.0, NX=8.0, 
+   #
+   # the x positions of stations
+  X(1)=-7.90772, -7.25245, -5.42535, -3.55876, -3.39088, -0.11063, 2.72454, 6.82005,
+   #
+   # body height to width ratio of the elliptical body
+   ELLIP=1.0,
+   #
+   # the half width
+  R(1)=0.0, 0.01367, 0.48322, 0.5899, 1.19139, 1.19139, 1.19139, 0.5859,
+   #
+   # ZU is the height above the centerline
+  ZU(1)=-0.59573, -0.51489, 0.19325, 0.93442, 0.93442, 0.93442, 1.20291, 1.04839,
+   #
+   # ZL is the height below the centerline
+  ZL(1)=-0.59573, -0.55677, -0.81813, -0.84723, -0.84723, -0.84723, -0.84725, -0.59328,
+  #
+  # 2.0 for swept-wing, no area rule
+  ITYPE=2.0$
+ #
+ # Canards
+ #
+ $WGPLNF 
+ # chord tip x
+ CHRDTP=0.5948,
+ # outer span from breakpoint x
+ SSPNOP=1.53734,
+ # exposed semispan x
+ SSPNE=1.53735,
+ # semispan x
+ SSPN=2.58336,
+ # chord at breakpoint x
+ CHRDBP=3.329,
+ # root chord x
+ CHRDR=3.329,
+ # inner sweep deg x
+ SAVSI=0.0,
+ # outer sweep deg x
+ SAVSO=56.0,
+ # wing twist, positive is leading edge up deg
+ TWISTA=0.0,
+ # % chord from where the sweep is measured
+ CHSTAT=0.0,
+ # double delta planform
+ TYPE=2.0$
+#NACA-W-4-3205
+$WGSCHR TYPEIN=1.0, NPTS=16.0,
+XCORD(1)=  0.000, 0.008, 0.016, 0.030, 0.063, 0.128, 0.222, 0.312, 0.423, 0.517, 0.604,  0.686,  0.766,  0.846, 0.944, 1.000,
+YUPPER(1)= 0.000, 0.012, 0.015, 0.020, 0.033, 0.046, 0.055, 0.055, 0.051, 0.045, 0.040,  0.031,  0.026,  0.017, 0.004, 0.002,
+YLOWER(1)= 0.000,-0.001,-0.002, 0.000, 0.004, 0.008, 0.009, 0.006, 0.003, 0.003, 0.000, -0.002, -0.001, -0.000, 0.001, 0.002$
+ #
+ # Flaps
+ $SYMFLP FTYPE=1.0,
+    # test these positions
+    NDELTA=4.0, DELTA(1)=-4.0, 0.0, 15.0, 30.0,
+ 	# chords inner and outer
+ 	CHRDFI=0.7028, CHRDFO=0.3088,
+ 	# positions of inner and outer edge of flaps from center of aircraft
+ 	SPANFI=1.17723, SPANFO=2.58336,
+ 	# rounded nose
+ 	NTYPE=1.0$
+SAVE
+NEXT CASE
+CASEID SAAB JA-37 VIGGEN - Delta wings and ailerons
+#
+# main wing
+#
+ $HTPLNF 
+ # chord tip
+ CHRDTP=0.6347,
+ # outer span from breakpoint
+ SSPNOP=2.59357,
+ # exposed semispan 
+ SSPNE=4.34189,
+ # semispan
+ SSPN=5.11247,
+ # chord at break point
+ CHRDBP=4.812,
+ # root chord
+ CHRDR=7.423,
+ # inner sweep deg
+ SAVSI=43.45,
+ # outer sweep deg
+ SAVSO=56.96,
+ # wing twist, positive is leading edge up deg
+ TWISTA=0.0,
+ # % chord from where the sweep is measured
+ CHSTAT=0.0,
+ # double delta planform x
+ TYPE=2.0$
+#NACA-H-4-1505
+# defining main delta wings as coords:
+$HTSCHR TYPEIN=1.0, NPTS=18.0,
+XCORD(1)= 0.00000000, 0.00048451, 0.00399093, 0.01504226, 0.03925892, 0.08187726, 0.14649808, 0.23354108, 0.33936783,
+          0.45682562, 0.57653173, 0.68906114, 0.78665771, 0.86587575, 0.92318010, 0.96111259, 0.98637623, 1.00000000,
+YUPPER(1)= 0.00000000,  0.00133211,  0.00370053,  0.00589531,  0.00877784,  0.01299366,  0.01832046,  0.02304890,  0.02773613,
+           0.02792433,  0.02532440,  0.02198627,  0.01682935,  0.01144416,  0.00704526,  0.00362004,  0.00124899,  0.00000000,
+YLOWER(1)= 0.00000000, -0.00155097, -0.00330106, -0.00412686, -0.00514979, -0.00708271, -0.00986824, -0.01238042, -0.01349987,
+          -0.01393313, -0.01228548, -0.00885812, -0.00704966, -0.00575343, -0.00394579, -0.00208228, -0.00070832,  0.00000000$
+ #
+ # Elevons
+ $SYMFLP FTYPE=1.0,
+    # test these positions
+    NDELTA=9.0,
+    DELTA(1)= -40.0, -30.0, -20.0, -10.0, 0.0, 10.0, 20.0, 30.0, 35.0,
+ 	# chords inner and outer
+ 	CHRDFI=0.8102, CHRDFO=0.4553,
+ 	# positions of inner and outer edge of from center of aircraft
+ 	SPANFI=0.99843, SPANFO=5.11376,
+  # rounded nose
+  NTYPE=1.0$
+SAVE
+NEXT CASE
+CASEID SAAB JA-37 VIGGEN - Vertical tail
+#
+# Vertical tail
+#
+ $VTPLNF 
+ # chord tip x
+ CHRDTP=0.6625,
+ # exposed semispan x
+ SSPNE=2.329,
+ # semispan x
+ SSPN=3.42742,
+ # root chord 
+ CHRDR=5.17431,
+ # inner sweep deg
+ SAVSI=51.52,
+ # % chord from where the sweep is measured
+ CHSTAT=0.0,
+ # Straight tapered planform
+ TYPE=1.0$
+#NACA-V-5-16006 	
+$VTSCHR TYPEIN=1.0, NPTS=17.0,
+XCORD(1)= 0.0000, 0.0125, 0.0250, 0.0500, 0.0750, 0.1000, 0.1500, 0.2000, 0.3000, 0.4000, 0.5000, 0.6000, 0.7000, 0.8000, 0.9000, 0.9500, 1.0000,
+YUPPER(1)= 0.00000, 0.00646, 0.00903, 0.01255, 0.01516, 0.01729, 0.02067, 0.02332, 0.02709, 0.02927, 0.03000, 0.02917, 0.02635, 0.02099, 0.01259, 0.00707, 0.00060,
+YLOWER(1)= 0.00000, -0.00646, -0.00903, -0.01255, -0.01516, -0.01729, -0.02067, -0.02332, -0.02709, -0.02927, -0.03000, -0.02917, -0.02635, -0.02099, -0.01259, -0.00707, -0.00060$
+ #
+ # Inertia
+ $INERTA ACTYPE=4.0, NFUELT=1.0, FUELQT(1)=0.0$
+SAVE
+NEXT CASE
+CASEID SAAB JA-37 VIGGEN - Engine 0%
+	#
+	# propulsion
+	CASEID Viggen engine ENG=RM8B
+	$JETPWR
+	# 1 engine
+	NENGSJ=1.0,
+	# inlet and outlet
+	JIALOC=-3.40896, JEALOC=6.05546,
+	# lateral and vertical location of engine
+	JELLOC=0.0,	JEVLOC=0.0,
+	# exit angle
+	JEANGL=0.0,
+	# incidence
+	AIETLJ=0.0,
+	# inlet area (aproximated)
+	JINLTA=0.75,
+	# exit pressure (Newton?)
+	JETOTP=110300.0,
+	# radius of outlet
+	JERAD=0.5485,
+	# thrust to test for
+	#THSTCJ=0.0$
