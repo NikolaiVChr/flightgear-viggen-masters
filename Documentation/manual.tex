@@ -1,0 +1,47 @@
+\usepackage[english]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\usepackage{graphicx}
+\usepackage{hyperref}
+\usepackage{wallpaper}
+\usepackage{xcolor}
+\usepackage{geometry}
+
+\pagestyle{headings}
+
+\begin{document}
+\newgeometry{bottom=2cm}
+\ThisCenterWallPaper{1.0}{images/title}
+\begin{titlepage}
+  \centering
+  \sf
+  {\Huge Saab \ifAJS{AJS 37}\ifJA{JA 37Di} Viggen}
+  \\[1cm]
+  {\Huge Flightgear Flight Manual}
+  \\[16cm]
+  \color{white}
+  \emph{model by}\\
+  Anders Lejczak, Justin Nicholson, Enrico Castaldi,\\
+  Joshua Davidson, Nicola B.\ Bernardelli, Isaac Protiva,\\
+  Nikolai V.\ Chr.
+\end{titlepage}
+\restoregeometry
+
+\currentpdfbookmark{contents}{Contents}
+\tableofcontents
+
+\chapter*{Introduction}
+\currentpdfbookmark{introduction}{Introduction}
+\addcontentsline{toc}{chapter}{Introduction}
+
+\part{Aircraft Presentation}
+\chapter{Aircraft Overview}
+\chapter{Controls and Instrumentation}
+\chapter{Systems}
+
+\part{Operation}
+\chapter{Standard Procedures}
+\chapter{Emergency Procedures}
+
+\end{document}
