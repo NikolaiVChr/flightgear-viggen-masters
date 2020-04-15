@@ -8,3 +8,19 @@ Thumbs.db
 *.blend7
 *.blend8
 *.blend9
+
+# Latex
+*.aux
+*.lof
+*.log
+*.lot
+*.fls
+*.out
+*.toc
+*.fmt
+*.dvi
+*.ps
+*.pdf
+*.fdb_latexmk
+*.synctex
+*.synctex.gz
