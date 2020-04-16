@@ -48,19 +48,43 @@ The Saab Viggen was originally intended as a multi-role combat aeroplane. Howeve
 \item[JA] Jakt, Attack (air defence with secondary attack role)
 \end{description}
 
-The variants explicitly modelled and subject to this manual are the \emph{JA 37Di} (featuring some of the glass instrument panels used in the JAS Gripen) and the \emph{AJS 37}, which resulted out of a modification programme providing existing AJ 37, SF 37 and SH 37 variants with a limited multi-role (attack, fighter and reconnaissance) capability.
+The Viggen variants explicitly modelled in FlighGear and subject to this manual are of the most modern variant for the fighter respectively the attack variant:
+\begin{itemize}
+ \item the \emph{JA 37Di} featuring some of the glass instrument panels used in the JAS 39 Gripen --- \texttt{Di} for digital
+ \item the \emph{AJS 37} which resulted out of a modification programme providing existing AJ 37, SF 37 and SH 37 variants with a limited multi-role (attack, fighter and reconnaissance) capability.
+ \end{itemize} 
 
 \section{References}
+
+\subsection{Original Manuals}
+A significant part of the original manuals are available on the internet, and in recent years also many of the formerly classified chapters (as far as the information is not still valid due to (re-)use in the Gripen) have been become available. As the Viggen could not be sold to other countries\footnote{Austrian pilots went through a training programme on the Viggen to familiarise with modern combat airplane, but never bought it}, a significant part of the text and illustrations are in Swedish.
+
+The following manuals are core to the understanding of flying a Viggen in military operations. Where possible, references are made in this manual to text elements in the original manuals. Also, this manual does typically not repeat illustrations from the original handbooks, but show a screenshot from the simulation instead, so you can compare).
+
+\begin{table}[!th]
+\begin{tabular}{|l|l|c|r|}
+\hline
+Ref & Title & Date & Pages \\
+\hline
+AJS\_Del1 & FPL AJS37 Speciell Förarinstruktion Del 1 (M5800--370011) & 1994--11--15 & 517 \\
+AJS\_Del2 & FPL AJS37 Speciell Förarinstruktion Del 2 (M5800--370011) & 1994-11-01 & 222 \\
+AJS\_Del3 & FPL AJS37 Speciell Förarinstruktion Del 3 (M5800--370011) & 1994-11-15 & 295 \\
+JA\_Vol1 & Flight Manual A/C JA37 Volume 1 (M5800-370051) & 1999--01--20 & 497 \\
+\hline
+\end{tabular}
+\caption{Overview of flight manuals from the original Viggen}
+\end{table}
+
 \subsection{FlightGear Related}
 \begin{itemize}
-\item The \href{http://wiki.flightgear.org/Saab_37_Viggen}{FG wiki article} contains a feature overview, links to forum articles etc.
+\item The \href{http://wiki.flightgear.org/Saab_37_Viggen}{FG wiki article} contains a compreensive feature overview, links to forum articles etc. However, the wiki is not always up to date.
 \item \href{http://opredflag.com/}{Operation Red Flag (OPRF)} is a FlightGear military simulation community discussing, developing and using many of the combat features in the Viggen.
-\item On Discord there is a dedicated \href{https://discord.gg/jc5pSM5}{Viggen server} and a \href{https://discord.gg/SmGFnJN}{OPRF server}.
+\item On Discord there is a dedicated \href{https://discord.gg/jc5pSM5}{Viggen server} and a \href{https://discord.gg/SmGFnJN}{OPRF server}. Say hello and discuss the Viggen's features, development and your flight experience. Preliminary help with issues can be gotten as well, confirmed issues should be reported in the Viggen's \href{https://github.com/NikolaiVChr/flightgear-saab-ja-37-viggen/issues}{issue tracker} for resolution.
 \item The \href{https://www.youtube.com/playlist?list=PLogi97V-ki0GfCLqimTtIq9RIVcm-GRFE}{Flightgear Saab 37 Viggen YouTube Playlist} includes amongst others a set of tutorial videos featuring the JA and the AJS variant.
 \end{itemize}
 
 \subsection{Other Combat Flight Simulators}
-Both \href{https://www.digitalcombatsimulator.com/en/index.php}{DCS} and \href{https://www.benchmarksims.org/}{BMS Falcon} have flyable Viggens. Especially for DCS there is an abundance of resources available on the internet (e.g. YouTube). Please note that while there can be valuable additional content, the capabilities modelled will differ.
+Both \href{https://www.digitalcombatsimulator.com/en/index.php}{DCS} and \href{https://www.benchmarksims.org/}{BMS Falcon} have flyable Viggens. Especially for DCS there is an abundance of resources available on the internet (e.g. YouTube). Please note that while there can be valuable additional information and context provided in content from other simulators, the capabilities modelled will differ.
 
 \subsection{Swedish Documentation Sites}
 \begin{itemize}
@@ -88,8 +112,12 @@ The JA-37Di and the AJS-37 variants of the Viggen are downloaded and installed a
 
 The guide you are reading is keeping up with the latest Git version and therefore the features available in the FGAddon version might be different. Unless you have a good reason not to do so, please consider using the Git version and keep it updated.
 
-
 In the \emph{Aircraft} tab in the Launcher make sure to choose the correct variant for your next flight.
+
+\chapter{FlightGear Compatibility}
+The Viggen is tested against FlightGear version 2018.3.x is tested. Earlier version will probably not work, later might.
+
+Rendering framework in FlightGear: The aircraft is sort of \href{http://wiki.flightgear.org/Project_Rembrandt}{Rembrandt} ready without glaring issues. \href{http://wiki.flightgear.org/Atmospheric_light_scattering}{ALS} is actively maintained and extended in the Viggen and therefore recommended.
 
 \chapter{FlightGear Menu Entries}
 \section{Help}
@@ -102,7 +130,7 @@ The Help menu contains 2 menu items, which are Viggen specific:
 \section{AJS-37}
 This menu contains a set of menu items, which ease some configurations, which are not available otherwise or would be tedious to do.
 \begin{itemize}
-\item Select Livery
+\item Select Livery: there is a vairety of liveries available, some of which are fictional. Note that the dialog does not take care of whether a livery belongs to the AJS or JADi version: if you want to fly authentic, you need to know yourself.
 \item Auto start/stop: Lets you start and stop the plane. The progress is shown in the top centre of the screen in blue text. \glqq Engine ready\grqq is the final notification of the start-up sequence. The shut-down sequence is done, when the aircraft is dark.
 \item Repair
 \item Loadout: Opens a custom dialog to allow fast selection of a suitable loadout. This is an alternative to menu item Fuel and Payload in menu Equipment. It will make sure that you only select weapon combinations, which were valid in the real Viggen.
@@ -117,9 +145,32 @@ This menu contains a set of menu items, which ease some configurations, which ar
 \end{itemize}
 
 \section{View}
-In menu item \emph{Rendering Options} you should preferably enable \emph{Light Scattering (ALS)} on the right side in \emph{Shader Effects}. Select \emph{Custom settings (fine tuning)} and in \emph{Shader Options} set the slider related to \emph{Model} to the right side (highest setting). This is amonst otheres needed to get nice flood lights in the cockpit at night.
+In menu item \emph{Rendering Options}:
+\begin{itemize}
+\item Enable \emph{Atomospheric Light Scattering (ALS)} on the right side in \emph{Shader Effects}. Select \emph{Custom settings (fine tuning)} and in \emph{Shader Options} set the slider related to \emph{Model} to the right side (highest setting). This is amonst otheres needed to get nice flood lights in the cockpit at night.
+\item Enable Particles
+\item Enable Precipitation (you get nice rain drops on the canopy when it rains)
+\item 3D clouds: on
+\end{itemize}
 
-The \emph{View options} menu item allows to enable tooltips on mouse over / mouse press for gauges and knobs.
+The \emph{View options} menu item allows to show tooltips on mouse over / mouse press for gauges and knobs.
+
+In menu item \emph{Cockpit View Options}
+\begin{itemize}
+\item Disable \glqq Dynamic cockpit view \grqq
+\item Disable \glqq View movement due to G-Force\grqq
+\item Enable \glqq Blackout and Redout due to G-force\grqq. It will be enabled automatically if you enable discharge messages.
+\end{itemize}
+
+In menu item \emph{Adjust LOD Ranges}, section \emph{AI/MP aircraft}: select \glqq High Detail only\grqq if you use FG version 2019.1 or higher, else set \glqq Use detailed MP models\grqq.
+
+\section{Weather Menu Item in Environment}
+Enable \emph{Detailed Weather} and press \emph{Advanced Settings ...} to set the following options (after all: the Viggen is an all-weather fighter and can handle it --- if your computer hardware can handle it):
+\begin{itemize}
+\item Wind-model: aloft-waypoints
+\item Terrain presampling
+\item Realistic visibility
+\end{itemize}
 
 \part{Aircraft Presentation}
 This manual does not contain a generic presentation of the real Viggen. There are many books and internet resources, which do a good job for this. A comprehensive book in English covering all variants is \glqq Saab 37 Viggen --- The ultimate portfolio\grqq by Jan Jørgensen (published in 2014 by \href{http://www.nordicairpower.com/}{Nordic Airpower}).
@@ -133,11 +184,15 @@ What is presented her is how the aircraft is modelled in FlightGear.
 \part{Flight Operation}
 \chapter{Standard Procedures}
 \chapter{Emergency Procedures}
+\chapter{Miscallaneous Notes}
+\section{JA37 DI Related}
+Be mindful of failure messages in the TI display FAIL menu, if a gear locking mechanism fails due to being deployed at too high speed, that gear will not be able to support the weight of the aircraft till you repair it from the menu.
 
 \part{Weapons Operation}
 \chapter{Ground and Sea Attack}
 \chapter{Air to Air}
 \section{Cannon}
 \url{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/Flygvapennytt_1993-2.pdf} has an article and 2 pictures about the automatic aiming mode for the cannon in the JA version (in Swedish).
+
 
 \end{document}
