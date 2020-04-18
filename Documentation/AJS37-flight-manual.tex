@@ -1,6 +1,7 @@
 \documentclass[a4paper]{report}
 
-\newcommand{\ifJA}[1]{}
-\newcommand{\ifAJS}[1]{#1}
+\usepackage{ifthen}
+\newboolean{AJS}
+\setboolean{AJS}{true}
 
 \input{manual}

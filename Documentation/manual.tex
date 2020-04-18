@@ -17,7 +17,7 @@
 \begin{titlepage}
   \centering
   \sf
-  {\Huge Saab \ifAJS{AJS 37}\ifJA{JA 37Di} Viggen}
+  {\Huge Saab \ifthenelse{\boolean{AJS}}{AJS 37}{JA 37Di} Viggen}
   \\[1cm]
   {\Huge Flightgear Flight Manual}
   \\[16cm]
@@ -36,6 +36,8 @@
 \currentpdfbookmark{introduction}{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
+Welcome! You are reading the \ifthenelse{\boolean{AJS}}{AJS 37}{JA 37Di} version of this manual. There is a similar manual for the \ifthenelse{\boolean{AJS}}{JA 37Di}{AJS 37} variant of the Viggen.
+
 This guide intends to be a pilot's handbook for the Saab 37 Viggen aircraft modelled for the \href{http://www.flightgear.org}{FlightGear (FG)} flight simulator. The manual assumes acquaintance with FlightGear and does in general not provide any generic help to use the simulator.
 
 The original aircraft's objective was military combat --- and that is also an explicit part of this manual.
@@ -49,9 +51,9 @@ The Saab Viggen was originally intended as a multi-role combat aeroplane. Howeve
 \item[JA] Jakt, Attack (air defence with secondary attack role)
 \end{description}
 
-The Viggen variants explicitly modelled in FlighGear and subject to this manual are of the most modern variant for the fighter respectively the attack variant:
+The Viggen variants explicitly modelled in FlighGear are the most modern variant for the fighter respectively the attack variant:
 \begin{itemize}
- \item the \emph{JA 37Di} featuring some of the glass instrument panels used in the JAS 39 Gripen --- \texttt{Di} for digital
+ \item the \emph{JA 37Di} featuring some of the glass instrument panels used in the JAS 39 Gripen --- \texttt{Di} for digital. 
  \item the \emph{AJS 37} which resulted out of a modification programme providing existing AJ 37, SF 37 and SH 37 variants with a limited multi-role (attack, fighter and reconnaissance) capability.
  \end{itemize} 
 
@@ -60,7 +62,7 @@ The Viggen variants explicitly modelled in FlighGear and subject to this manual 
 \subsection{Original Manuals}
 A significant part of the original manuals are available on the internet, and in recent years also many of the formerly classified chapters (as far as the information is not still valid due to (re-)use in the Gripen) have been become available. As the Viggen could not be sold to other countries\footnote{Austrian pilots went through a training programme on the Viggen to familiarise with modern combat airplane, but never bought it}, a significant part of the text and illustrations are in Swedish.
 
-The following manuals are core to the understanding of flying a Viggen in military operations. Where possible, references are made in this manual to text elements in the original manuals. Also, this manual does typically not repeat illustrations from the original handbooks, but show a screenshot from the simulation instead, so you can compare).
+The following manuals are core to the understanding of flying a Viggen in military operations. Where possible, references are made in this manual to text elements in the original manuals. Also, this manual does typically not repeat illustrations from the original handbooks, but shows a screenshot from the simulation instead, so you can compare.
 
 \begin{table}[!th]
 \begin{tabular}{|l|l|c|r|}
