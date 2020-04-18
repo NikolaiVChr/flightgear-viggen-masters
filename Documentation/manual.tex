@@ -7,6 +7,7 @@
 \usepackage{wallpaper}
 \usepackage{xcolor}
 \usepackage{geometry}
+\usepackage{pdflscape}
 
 \pagestyle{headings}
 
@@ -103,7 +104,9 @@ Both \href{https://www.digitalcombatsimulator.com/en/index.php}{DCS} and \href{h
 \end{itemize}
 \end{itemize} 
 
-\chapter{FlightGear Download and Installation}
+
+\chapter{Generic FlightGear Operations}
+\section{Download and Installation}
 The JA-37Di and the AJS-37 variants of the Viggen are downloaded and installed as one set. You can choose between two options to download and install:
 \begin{itemize}
 \item The \href{https://github.com/NikolaiVChr/flightgear-saab-ja-37-viggen}{Git repository} has the latest version of the Viggen and is the preferred way to keep up with the constant evolution of the FlightGear model. If you are using the Git repository, make sure to add the correct directory path\footnote{E.g. /home/pingu/fg\_aircraft/flightgear-saab-ja-37-viggen/Aircraft} to the \emph{Additional aircraft folders} section in tab \emph{Add-ons} in the FlightGear launcher.
@@ -114,20 +117,20 @@ The guide you are reading is keeping up with the latest Git version and therefor
 
 In the \emph{Aircraft} tab in the Launcher make sure to choose the correct variant for your next flight.
 
-\chapter{FlightGear Compatibility}
+\section{Compatibility}
 The Viggen is tested against FlightGear version 2018.3.x is tested. Earlier version will probably not work, later might.
 
 Rendering framework in FlightGear: The aircraft is sort of \href{http://wiki.flightgear.org/Project_Rembrandt}{Rembrandt} ready without glaring issues. \href{http://wiki.flightgear.org/Atmospheric_light_scattering}{ALS} is actively maintained and extended in the Viggen and therefore recommended.
 
-\chapter{FlightGear Menu Entries}
-\section{Help}
+\section{Menu Entries and In-Flight Configuration}
+\subsection{Menu Help}
 The Help menu contains 2 menu items, which are Viggen specific:
 \begin{itemize}
 \item Aircraft Help: the top section contains the most important key bindings for the Viggen\footnote{The displayed list is only a selection. For the total list you need to delve into the installation directory and look into flightgear-saab-ja-37-viggen/Aircraft/JA37/Systems/ja37-input.xml.}. The lower section contains a set of tipps to get your started with flying.
 \item Aircraft Checklists: A set of interactive checklists especially for start-up, taxi, take-off and landing.
 \end{itemize}
 
-\section{AJS-37}
+\subsection{Menu AJS-37}
 This menu contains a set of menu items, which ease some configurations, which are not available otherwise or would be tedious to do.
 \begin{itemize}
 \item Select Livery: there is a vairety of liveries available, some of which are fictional. Note that the dialog does not take care of whether a livery belongs to the AJS or JADi version: if you want to fly authentic, you need to know yourself.
@@ -144,7 +147,7 @@ This menu contains a set of menu items, which ease some configurations, which ar
 \item MP Options: use this dialog to enable/disable weapons messages over MP.
 \end{itemize}
 
-\section{View}
+\subsection{Menu View}
 In menu item \emph{Rendering Options}:
 \begin{itemize}
 \item Enable \emph{Atomospheric Light Scattering (ALS)} on the right side in \emph{Shader Effects}. Select \emph{Custom settings (fine tuning)} and in \emph{Shader Options} set the slider related to \emph{Model} to the right side (highest setting). This is amonst otheres needed to get nice flood lights in the cockpit at night.
@@ -164,7 +167,7 @@ In menu item \emph{Cockpit View Options}
 
 In menu item \emph{Adjust LOD Ranges}, section \emph{AI/MP aircraft}: select \glqq High Detail only\grqq if you use FG version 2019.1 or higher, else set \glqq Use detailed MP models\grqq.
 
-\section{Weather Menu Item in Environment}
+\subsection{Weather in Menu Environment}
 Enable \emph{Detailed Weather} and press \emph{Advanced Settings ...} to set the following options (after all: the Viggen is an all-weather fighter and can handle it --- if your computer hardware can handle it):
 \begin{itemize}
 \item Wind-model: aloft-waypoints
@@ -194,5 +197,43 @@ Be mindful of failure messages in the TI display FAIL menu, if a gear locking me
 \section{Cannon}
 \url{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/Flygvapennytt_1993-2.pdf} has an article and 2 pictures about the automatic aiming mode for the cannon in the JA version (in Swedish).
 
+\appendix
+\begin{landscape}
+\chapter{Viggen Related Videos}
+The following selection of videos has been made based on operational content or visibility of details. There exist many more videos --- some of which with higher quality from recent air shows. If you miss a video below, let us know.
+
+\begin{table}[!th]
+\begin{tabular}{|p{5cm}|c|c|c|p{9cm}|}
+\hline
+Title & Length & Subtitles & Year & Comments \\
+\hline
+
+\href{https://www.youtube.com/watch?v=kBq5qA8r4dA}{SF/SH37 \& JA37 VIGGEN at F13 Wing} & 18 min & yes & 2000 & Mostly about the reconnaissance and photo version\\
+\href{https://www.youtube.com/watch?v=0sRACNVVmpE}{Saab 37 Viggen 2001 1-2} & 15 min & no & ?? & Historic part plus early versions\\
+\href{https://www.youtube.com/watch?v=pAPteuBsRGg}{Saab 37 Viggen 2001 1-2} & 14 min & no & ?? & Mostly about the evolution of the JA. Some footage of HUD and CI/TI screens.\\
+\href{https://www.youtube.com/watch?v=fmqXa0oetUA}{VI FLÖG HÅRT OCH STRIDSMÄSSIGT} & 15 min & no & ?? & A fighter pilot tells stories\\
+\href{https://www.youtube.com/watch?v=ErK3zaNRccE&}{Jaktviggenpilot på Bråvallajakten} & 14 min & no & 1989 & A day in the live of a fighter pilot\\
+\href{https://www.youtube.com/watch?v=qaNt9_sQdGI}{Kurvstrid (Dogfight) SAAB JA37C VIGGEN} & 8 min & yes & ?? & Various dogfights with some HUD visibility\\
+\href{https://www.youtube.com/watch?v=oB6-jJEWjWk}{S som i Speed - Göran flyger Viggen} & 6 min & no & 1996 & Some low level flying\\
+\href{https://www.youtube.com/watch?v=gwgJNdWZlj0}{SH-37 Viggen Sea Surveillance} & 4 min & n/a & ?? & Some nice sequences of the AJS CI and a few glipse of the HUD\\
+\href{https://www.youtube.com/watch?v=mgPS5-SbI0c}{Viggen attackuppdrag} & 2 min & no & ?? & Attack with rockets using pop-up method. Some sequences of the HUD.\\
+\href{https://www.youtube.com/watch?v=eQjAp7bTnUg}{Kalla Krigets Fordon avsnitt 6: SAAB 37 Viggen} & 9 min & no & 2016 & A bit of history and relation between the plane and the road base system. During the very last seconds some close-up sequences of the CI.\\
+\href{https://www.youtube.com/watch?v=slm9ksxU0HY}{Viggen Road base exercise} & 6 min & n/a & ?? & As the title says.\\
+\href{https://www.youtube.com/watch?v=hWrsP3hq5M8}{AJ-37 Viggen Low Level Flying} & 4 min & n/a & ?? & As the title says. Some HUD sequences incl. rocket attack.\\
+\href{https://www.youtube.com/watch?v=UOszNlNeRVs}{SAAB 37 Viggen} & 4 min & n/a & ?? & Some nice air ballet plus a few sequences of the CI.\\
+\href{https://www.youtube.com/watch?v=IbsYsUvCy7s}{Rörlig klargöring JA37 Arlanda} & 43 min & no & 1996 & Ground operations of JA 37 on an improvised stand at Arlanda airport\\
+\href{https://vimeo.com/60091080}{Viggen i Älskar, älskar inte} & 4 min & no & ?? & Excerpts from the feature film, Älskar, älskar inte. Nice dogfighting between JA and AJS plus some CI sequences\\
+
+\hline
+\end{tabular}
+\caption{Selected videos featuring the Viggen. Unless described otherwise in the comments, the language is Swedish}
+\end{table}
+
+% Videos watched but not found interesting enough
+% \href{https://www.youtube.com/watch?v=rFZKvO95bQ0}{2018-10-17 Svensk stridspilot under det kalla kriget}
+% \href{https://www.youtube.com/watch?v=RHVzkVwI68w}{Vetenskapens Värld - Viggen} Mostly project and politics history until first viggen operational
+% \href{https://www.youtube.com/watch?v=M8HF1gH0MPc}{37 Viggen - The Power of Viggen!} Mostly flight display
+% \href{https://www.youtube.com/watch?v=Z_EnkvE6LZA}{Fredens Hav}
+\end{landscape}
 
 \end{document}
