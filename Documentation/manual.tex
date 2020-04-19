@@ -4,7 +4,7 @@
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
-
+\usepackage{menukeys}
 \usepackage{graphicx}
 \usepackage{hyperref}
 \usepackage{wallpaper}
@@ -23,7 +23,7 @@
   \sf
   {\Huge Saab \ifthenelse{\boolean{AJS}}{AJS 37}{JA 37Di} Viggen}
   \\[1cm]
-  {\Huge Flightgear Flight Manual}
+  {\Huge FlightGear Flight Manual}
   \\[16cm]
   \color{white}
   \emph{model by}\\
@@ -46,7 +46,7 @@ This guide intends to be a pilot's handbook for the Saab 37 Viggen aircraft mode
 
 The original aircraft's objective was military combat --- and that is also an explicit part of this manual.
 
-The Saab Viggen was originally intended as a multi-role combat aeroplane. However, while largely a sngle type of aircraft/airframe was able to fulfill multiple roles, it was only the Viggen's Swedish successor Saab JAS 39 Gripen that was able to fulfill the requirements for a multi-purpose combat airplane. Consequently, the Viggen type designations reflect their operational roles:
+The Saab Viggen was originally intended as a multi-role combat aeroplane. However, while largely a single type of aircraft/air frame was able to fulfill multiple roles, it was only the Viggen's Swedish successor Saab JAS 39 Gripen that was able to fulfill the requirements for a multi-purpose combat airplane. Consequently, the Viggen type designations reflect their operational roles:
 \begin{description}
 \item[AJ] Attack, Jakt (surface attack with secondary air defence role)
 \item[SK] Skol (conversion training)
@@ -55,15 +55,15 @@ The Saab Viggen was originally intended as a multi-role combat aeroplane. Howeve
 \item[JA] Jakt, Attack (air defence with secondary attack role)
 \end{description}
 
-The Viggen variants explicitly modelled in FlighGear are the most modern variant for the fighter respectively the attack variant:
+The Viggen variants explicitly modelled in FlightGear are the most modern variant for the fighter respectively the attack variant:
 \begin{itemize}
  \item the \emph{JA 37Di} featuring some of the glass instrument panels used in the JAS 39 Gripen --- \texttt{Di} for digital. 
  \item the \emph{AJS 37} which resulted out of a modification programme providing existing AJ 37, SF 37 and SH 37 variants with a limited multi-role (attack, fighter and reconnaissance) capability.
  \end{itemize}
  
- Note that there also is a AJ 37 variant modelled, however it is not keps ut-to-date and does not have the developers' focus.
+ Note that there also is a AJ 37 variant modelled, however it is not kept up-to-date and does not have the developers' focus.
  
- In the root directory of the Viggen aircraft in Flightgear (e.g. in something like \emph{flightgear-saab-ja-37-viggen/Aircraft/JA37}) there is a file called \emph{features.txt}. Over time all these features will be described in this manual --- until then please have a look at that text file to get a feeling for the impressive amount of features implemented (especially in the JADi variant).
+ In the root directory of the Viggen aircraft in FlightGear (e.g. in something like \emph{flightgear-saab-ja-37-viggen/Aircraft/JA37}) there is a file called \emph{features.txt}. Over time all these features will be described in this manual --- until then please have a look at that text file to get a feeling for the impressive amount of features implemented (especially in the JA Di variant).
 
 \section{References}
 
@@ -88,7 +88,7 @@ JA\_Vol1 & Flight Manual A/C JA37 Volume 1 (M5800-370051) & 1999--01--20 & 497 \
 
 \subsection{FlightGear Related}
 \begin{itemize}
-\item The \href{http://wiki.flightgear.org/Saab_37_Viggen}{FG wiki article} contains a compreensive feature overview, links to forum articles etc. However, the wiki is not always up to date.
+\item The \href{http://wiki.flightgear.org/Saab_37_Viggen}{FG wiki article} contains a comprehensive feature overview, links to forum articles etc. However, the wiki is not always up to date.
 \item \href{http://opredflag.com/}{Operation Red Flag (OPRF)} is a FlightGear military simulation community discussing, developing and using many of the combat features in the Viggen.
 \item On Discord there is a dedicated \href{https://discord.gg/jc5pSM5}{Viggen server} and a \href{https://discord.gg/SmGFnJN}{OPRF server}. Say hello and discuss the Viggen's features, development and your flight experience. Preliminary help with issues can be gotten as well, confirmed issues should be reported in the Viggen's \href{https://github.com/NikolaiVChr/flightgear-saab-ja-37-viggen/issues}{issue tracker} for resolution.
 \item The \href{https://www.youtube.com/playlist?list=PLogi97V-ki0GfCLqimTtIq9RIVcm-GRFE}{Flightgear Saab 37 Viggen YouTube Playlist} includes amongst others a set of tutorial videos featuring the JA and the AJS variant.
@@ -119,7 +119,7 @@ Both \href{https://www.digitalcombatsimulator.com/en/index.php}{DCS} and \href{h
 \section{Download and Installation}
 The JA-37Di and the AJS-37 variants of the Viggen are downloaded and installed as one set. You can choose between two options to download and install:
 \begin{itemize}
-\item The \href{https://github.com/NikolaiVChr/flightgear-saab-ja-37-viggen}{Git repository} has the latest version of the Viggen and is the preferred way to keep up with the constant evolution of the FlightGear model. If you are using the Git repository, make sure to add the correct directory path\footnote{E.g. /home/pingu/fg\_aircraft/flightgear-saab-ja-37-viggen/Aircraft} to the \emph{Additional aircraft folders} section in tab \emph{Add-ons} in the FlightGear launcher.
+\item The \href{https://github.com/NikolaiVChr/flightgear-saab-ja-37-viggen}{Git repository} has the latest version of the Viggen and is the preferred way to keep up with the constant evolution of the FlightGear model. If you are using the Git repository, make sure to add the correct directory path\footnote{E.g. \directory{/home/pingu/fg\_aircraft/flightgear-saab-ja-37-viggen/Aircraft}} to the \emph{Additional aircraft folders} section in tab \emph{Add-ons} in the FlightGear launcher.
 \item FlightGear's official hangar \href{http://wiki.flightgear.org/FGAddon}{FGAddon} is peridically updated with stable versions from the Git version. 
 \end{itemize}
 
@@ -136,20 +136,20 @@ Rendering framework in FlightGear: The aircraft is sort of \href{http://wiki.fli
 \subsection{Menu Help}
 The Help menu contains 2 menu items, which are Viggen specific:
 \begin{itemize}
-\item Aircraft Help: the top section contains the most important key bindings for the Viggen\footnote{The displayed list is only a selection. For the total list you need to delve into the installation directory and look into flightgear-saab-ja-37-viggen/Aircraft/JA37/Systems/ja37-input.xml.}. The lower section contains a set of tipps to get your started with flying.
+\item Aircraft Help: the top section contains the most important key bindings for the Viggen\footnote{The displayed list is only a selection. For the total list you need to delve into the installation directory and look into \directory{flightgear-saab-ja-37-viggen/Aircraft/JA37/Systems/ja37-input.xml}.}. The lower section contains a set of tips to get your started with flying.
 \item Aircraft Checklists: A set of interactive checklists especially for start-up, taxi, take-off and landing.
 \end{itemize}
 
 \subsection{Menu AJS-37}
 This menu contains a set of menu items, which ease some configurations, which are not available otherwise or would be tedious to do.
 \begin{itemize}
-\item Select Livery: there is a vairety of liveries available, some of which are fictional. Note that the dialog does not take care of whether a livery belongs to the AJS or JADi version: if you want to fly authentic, you need to know yourself.
+\item Select Livery: there is a variety of liveries available, some of which are fictional. Note that the dialog does not take care of whether a livery belongs to the AJS or JA Di version: if you want to fly authentic, you need to know yourself.
 \item Auto start/stop: Lets you start and stop the plane. The progress is shown in the top centre of the screen in blue text. \glqq Engine ready\grqq is the final notification of the start-up sequence. The shut-down sequence is done, when the aircraft is dark.
 \item Repair
 \item Loadout: Opens a custom dialog to allow fast selection of a suitable loadout. This is an alternative to menu item Fuel and Payload in menu Equipment. It will make sure that you only select weapon combinations, which were valid in the real Viggen.
-\item Refule: Standard: all tanks full, but no external centre tank
-\item Refule: Long distance: adds fuel to the drop tank on the centre fuselage pylon.
-\item Refule: Test flight: reduced fuel amount to ca. 80\% of the standard
+\item Refuel: Standard: all tanks full, but no external centre tank
+\item Refuel: Long distance: adds fuel to the drop tank on the centre fuselage pylon.
+\item Refuel: Test flight: reduced fuel amount to ca. 80\% of the standard
 \item Performance Monitor
 \item Systems Monitor
 \item Toggle external power: note that this is one of the things added and removed automatically when using the auto start/stop function.
@@ -160,7 +160,7 @@ This menu contains a set of menu items, which ease some configurations, which ar
 \subsection{Menu View}
 In menu item \emph{Rendering Options}:
 \begin{itemize}
-\item Enable \emph{Atomospheric Light Scattering (ALS)} on the right side in \emph{Shader Effects}. Select \emph{Custom settings (fine tuning)} and in \emph{Shader Options} set the slider related to \emph{Model} to the right side (highest setting). This is amonst otheres needed to get nice flood lights in the cockpit at night.
+\item Enable \emph{Atmospheric Light Scattering (ALS)} on the right side in \emph{Shader Effects}. Select \emph{Custom settings (fine tuning)} and in \emph{Shader Options} set the slider related to \emph{Model} to the right side (highest setting). This is amongst others needed to get nice flood lights in the cockpit at night.
 \item Enable Particles
 \item Enable Precipitation (you get nice rain drops on the canopy when it rains)
 \item 3D clouds: on
@@ -175,7 +175,7 @@ In menu item \emph{Cockpit View Options}
 \item Enable \glqq Blackout and Redout due to G-force\grqq. It will be enabled automatically if you enable discharge messages.
 \end{itemize}
 
-In menu item \emph{Adjust LOD Ranges}, section \emph{AI/MP aircraft}: select \glqq High Detail only\grqq if you use FG version 2019.1 or higher, else set \glqq Use detailed MP models\grqq.
+In menu item \emph{Adjust LOD Ranges}, section \emph{AI/MP aircraft}: select \glqq High Detail only\grqq if you use FlightGear version 2019.1 or higher, else set \glqq Use detailed MP models\grqq.
 
 \subsection{Weather in Menu Environment}
 Enable \emph{Detailed Weather} and press \emph{Advanced Settings ...} to set the following options (after all: the Viggen is an all-weather fighter and can handle it --- if your computer hardware can handle it):
@@ -208,8 +208,8 @@ What is presented her is how the aircraft is modelled in FlightGear.
 \part{Flight Operation}
 \chapter{Standard Procedures}
 \chapter{Emergency Procedures}
-\chapter{Miscallaneous Notes}
-\section{JA37 DI Related}
+\chapter{Miscellaneous Notes}
+\section{JA 37Di Related}
 Be mindful of failure messages in the TI display FAIL menu, if a gear locking mechanism fails due to being deployed at too high speed, that gear will not be able to support the weight of the aircraft till you repair it from the menu.
 
 \part{Weapons Operation}
@@ -218,29 +218,29 @@ Be mindful of failure messages in the TI display FAIL menu, if a gear locking me
 \ifthenelse{\boolean{AJS}}{
 \section{Rb 05A missile}
 \label{Rb05A}
-The Rb 05A was a jam-proof, radio guided super-sonic missile developed in Sweden with similar characteristis as the AGM-65 Maverick. While an optical/IR guidance system was planned, it never got realised because the Maverick was adapted as the Rb 75 instead. The missile was constructed for use against grond and naval targets, but later it was discovered that it could also be used against slow-manoeuvring air targets. 
+The Rb 05A was a jam-proof, radio guided super-sonic missile developed in Sweden with similar characteristics as the AGM-65 Maverick. While an optical/IR guidance system was planned, it never got realised because the Maverick was adapted as the Rb 75 instead. The missile was constructed for use against ground and naval targets, but later it was discovered that it could also be used against slow-manoeuvring air targets. 
 
-As the missile was guided visually by the pilot, a smoke free propellant was used and there was a flare in the back. During the first 1.7 seconds of the missile's flight, it was autoguided to fly into the pilot's visual field in fron of the aircraft's nose.
+As the missile was guided visually by the pilot, a smoke free propellant was used and there was a flare in the back. During the first 1.7 seconds of the missile's flight, it was auto guided to fly into the pilot's visual field in front of the aircraft's nose.
 
 To manually guide the missile in the real Viggen, a mini-joystick on the right console was used with the right hand. Therefore, one of the following was used to free the right hand from the stick:
 \begin{itemize}
  \item Take the stick with the left hand and fly the airplane. Reference: [AJS\_2, ch. II, p. 86]
- \item If missile guidance is done during the aircraft flying horisontal, then use autopilot for altitude. If it is done during a light dive, use autopilot for attitude. Reference: [AJS\_3, sec. 7, ch. 5, p. 210]
+ \item If missile guidance is done during the aircraft flying horizontal, then use autopilot for altitude. If it is done during a light dive, use autopilot for attitude. Reference: [AJS\_3, sec. 7, ch. 5, p. 210]
 \end{itemize}
 
 On page 25 in issue 4/1972 of the Swedish magazine \url{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/Flygvapennytt_1972-4.pdf}{FlygvapenNytt} there is a good description of the capabilities and evolution of the weapon.
 
-Operations (reference: [AJS\_3, sec. 7, ch. 5, p. 210] for decription, [AJS\_2, ch. II, p. 86] for procedure):
+Operations (reference: [AJS\_3, sec. 7, ch. 5, p. 210] for description, [AJS\_2, ch. II, p. 86] for procedure):
 \begin{enumerate}
- \item Fly fast and low, navigate to the preprogrammed pop-up point in \emph{NAV} mode.
+ \item Fly fast and low, navigate to the pre-programmed pop-up point in \emph{NAV} mode.
  \item Before reaching the pop-up point:
  \begin{itemize}
   \item Correct the atmospheric pressure.
   \item Choose mode \emph{ANF} (not yet modelled correctly in FlightGear).
-  \item Set the \emph{J/A} weapons knob to Rb 05A with the correct fuse (MARK for ground, SJÖ for naval). Not yet modelled correctly in FlightGear: instead choose the Rb 05A by pressing \textbf{\texttt{w}} until displayed on the HUD.
+  \item Set the \emph{J/A} weapons knob to Rb 05A with the correct fuse (MARK for ground, SJÖ for naval). Not yet modelled correctly in FlightGear: instead choose the Rb 05A by pressing \keys{w} until displayed on the HUD.
   \item Check that the autopilot is on \emph{SPAK} only.
  \end{itemize}
- \item A fast pop-up is done to 300-400 metres above ground at the pre-programmed pop-up point --- either with pitch only or in a half roll.
+ \item A fast pop-up is done to 300--400 metres above ground at the pre-programmed pop-up point --- either with pitch only or in a half roll.
  \item Identify the target and fly level or slightly downwards. The nose does not have to point to the target. 
  \item Consider engaging the \emph{ATT} or \emph{ALT} autopilot mode.
  \item Fire within 9 km of the target at a speed between 700 km/h and 1150 km/h.
@@ -255,17 +255,17 @@ Operations in FlightGear:
  \item Fire with the trigger.
  \item Guide the missile by using one of the following methods:
  \begin{itemize}
-  \item Use the keybinding \textbf{\texttt{y}} to toggle the joystick to be a cursor and then use the usual axis to guide the missile. Note: needs to be done after the trigger has been pressed. To be able to use the joystick for the flight controls again, you need to press \textbf{\texttt{y}} again. If the ground collision warning is triggered, then the joystick is automatically set back to control the aircraft again, but you will have lost guidance on the missile.
-  \item Bind the following to axis of your joystick or throttle: textbf{\texttt{/controls/displays/cursor-slew-x}} and textbf{\texttt{/controls/displays/cursor-slew-y}}. This makes it possible to have different sinsitivity from the joystick. Note that it is the same binding as e.g. used in the JA 37Di variant --- but the AJS does not have a screen with a cursor (and the JA 37Di does not have the Rb 05A).
+  \item Use the keybinding \keys{y} to toggle the joystick to be a cursor and then use the usual axis to guide the missile. Note: needs to be done after the trigger has been pressed. To be able to use the joystick for the flight controls again, you need to press \keys{y} again. If the ground collision warning is triggered, then the joystick is automatically set back to control the aircraft again, but you will have lost guidance on the missile.
+  \item Bind the following to axis of your joystick or throttle: \textbf{\texttt{/controls/displays/cursor-slew-x}} and \textbf{\texttt{/controls/displays/cursor-slew-y}}. This makes it possible to have different sensitivity from the joystick. Note that it is the same binding as e.g. used in the JA 37Di variant --- but the AJS does not have a screen with a cursor (and the JA 37Di does not have the Rb 05A).
  \end{itemize}
 
 \end{itemize}
 
 Tips:
 \begin{itemize}
- \item Make sure to fly within the recommended speed of 700 km/h-1150 km/h. You might loose sight of the light at the back of the missile at a distance around 2 km due to some restrictions in FlightGear. And would probably not be able to see the target anyway.
- \item Make sure to fly either streight horisonal or in a light dive. If you have your nose up, you might loose track of the missile and/or target. Note that one of the advantages of this missile is that it can be guided considerable off boresight.
- \item Especially for large objects (factory) make sure to aim in the middle of the object and on gound level. The proximity fuse might otherwise not recognise it.
+ \item Make sure to fly within the recommended speed of 700 km/h--1150 km/h. You might loose sight of the light at the back of the missile at a distance around 2 km due to some restrictions in FlightGear. And would probably not be able to see the target anyway.
+ \item Make sure to fly either straight horizontal or in a light dive. If you have your nose up, you might loose track of the missile and/or target. Note that one of the advantages of this missile is that it can be guided considerable off bore sight.
+ \item Especially for large objects (factory) make sure to aim in the middle of the object and on ground level. The proximity fuse might otherwise not recognise it.
 \end{itemize}
 
 }{}
@@ -273,7 +273,7 @@ Tips:
 \chapter{Air to Air}
 \ifthenelse{\boolean{AJS}}{
 \section{Rb 05A missile}
-The Rb 05A could also be used against slow flying air targets like helicpoters or transport planes. See section \ref{Rb05A} on page \pageref{Rb05A} for a description. The difference to ground/naval attack is that the distance had to be measured with the radar.
+The Rb 05A could also be used against slow flying air targets like helicopters or transport planes. See section \ref{Rb05A} on page \pageref{Rb05A} for a description. The difference to ground/naval attack is that the distance had to be measured with the radar.
 
 }{}
 
