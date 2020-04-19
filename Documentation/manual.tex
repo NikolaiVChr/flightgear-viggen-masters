@@ -1,3 +1,6 @@
+% Todos:
+% features.txt in the root directory
+
 \usepackage[english]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -8,6 +11,7 @@
 \usepackage{xcolor}
 \usepackage{geometry}
 \usepackage{pdflscape}
+\usepackage{gensymb}
 
 \pagestyle{headings}
 
@@ -46,7 +50,7 @@ The Saab Viggen was originally intended as a multi-role combat aeroplane. Howeve
 \begin{description}
 \item[AJ] Attack, Jakt (surface attack with secondary air defence role)
 \item[SK] Skol (conversion training)
-\item[SH] Spaning, Havövervakning (reconnaissance, sea surveillance)
+\item[SH] Spaning, Havövervakning (reconnaissance, sea/naval surveillance)
 \item[SF] Spaning, Foto (reconnaissance, photography)
 \item[JA] Jakt, Attack (air defence with secondary attack role)
 \end{description}
@@ -55,14 +59,18 @@ The Viggen variants explicitly modelled in FlighGear are the most modern variant
 \begin{itemize}
  \item the \emph{JA 37Di} featuring some of the glass instrument panels used in the JAS 39 Gripen --- \texttt{Di} for digital. 
  \item the \emph{AJS 37} which resulted out of a modification programme providing existing AJ 37, SF 37 and SH 37 variants with a limited multi-role (attack, fighter and reconnaissance) capability.
- \end{itemize} 
+ \end{itemize}
+ 
+ Note that there also is a AJ 37 variant modelled, however it is not keps ut-to-date and does not have the developers' focus.
+ 
+ In the root directory of the Viggen aircraft in Flightgear (e.g. in something like \emph{flightgear-saab-ja-37-viggen/Aircraft/JA37}) there is a file called \emph{features.txt}. Over time all these features will be described in this manual --- until then please have a look at that text file to get a feeling for the impressive amount of features implemented (especially in the JADi variant).
 
 \section{References}
 
 \subsection{Original Manuals}
 A significant part of the original manuals are available on the internet, and in recent years also many of the formerly classified chapters (as far as the information is not still valid due to (re-)use in the Gripen) have been become available. As the Viggen could not be sold to other countries\footnote{Austrian pilots went through a training programme on the Viggen to familiarise with modern combat airplane, but never bought it}, a significant part of the text and illustrations are in Swedish.
 
-The following manuals are core to the understanding of flying a Viggen in military operations. Where possible, references are made in this manual to text elements in the original manuals. Also, this manual does typically not repeat illustrations from the original handbooks, but shows a screenshot from the simulation instead, so you can compare.
+The following manuals are core to the understanding of flying a Viggen in military operations. Where possible, references are made in this manual to text elements in the original manuals(e.g. [AJS\_Del1, sec. 20, ch. 3.4.2, p. 312]). Also, this manual does typically not repeat illustrations from the original handbooks, but shows a screenshot from the simulation instead, so you can compare.
 
 \begin{table}[!th]
 \begin{tabular}{|l|l|c|r|}
@@ -185,6 +193,17 @@ What is presented her is how the aircraft is modelled in FlightGear.
 \chapter{Aircraft Overview}
 \chapter{Controls and Instrumentation}
 \chapter{Systems}
+% TODO: https://github.com/NikolaiVChr/flightgear-saab-ja-37-viggen/issues/120
+%\section{Course Correction for Magnetic Deviation}
+%Like in the real Viggen there are two ways to set the course correction, which makes sure that the instruments show true North instead of magnetic North (e.g. in north Norway the deviation is larger than 12\degree):
+%\begin{itemize}
+% \item Automatic: Simplified the computer averages the deviation between measured between 110 and 200 km/h during take-off.
+% \item Manual: Make sure your airplane is properly aligned with the runway. Press FIXME. The reason for doing it manually is if the runway is slippery or there are strong crosswinds, which might change the way the nose points and therefore give a wrong deviation measurement. 
+%\end{itemize}
+
+%Please note that the computer in the real Viggen also makes some comparisons with the stored runway heading(s) to decrease the risk of failures. Warning light \emph{NAV SYST} would lit up. However, this is not modelled in FlightGear. 
+
+%\ifthenelse{\boolean{AJS}}{Reference: [AJS\_1, sec. 20, ch. 3.4, p. 312]}{}
 
 \part{Flight Operation}
 \chapter{Standard Procedures}
@@ -194,8 +213,70 @@ What is presented her is how the aircraft is modelled in FlightGear.
 Be mindful of failure messages in the TI display FAIL menu, if a gear locking mechanism fails due to being deployed at too high speed, that gear will not be able to support the weight of the aircraft till you repair it from the menu.
 
 \part{Weapons Operation}
-\chapter{Ground and Sea Attack}
+
+\chapter{Ground and Naval Attack}
+\ifthenelse{\boolean{AJS}}{
+\section{Rb 05A missile}
+\label{Rb05A}
+The Rb 05A was a jam-proof, radio guided super-sonic missile developed in Sweden with similar characteristis as the AGM-65 Maverick. While an optical/IR guidance system was planned, it never got realised because the Maverick was adapted as the Rb 75 instead. The missile was constructed for use against grond and naval targets, but later it was discovered that it could also be used against slow-manoeuvring air targets. 
+
+As the missile was guided visually by the pilot, a smoke free propellant was used and there was a flare in the back. During the first 1.7 seconds of the missile's flight, it was autoguided to fly into the pilot's visual field in fron of the aircraft's nose.
+
+To manually guide the missile in the real Viggen, a mini-joystick on the right console was used with the right hand. Therefore, one of the following was used to free the right hand from the stick:
+\begin{itemize}
+ \item Take the stick with the left hand and fly the airplane. Reference: [AJS\_2, ch. II, p. 86]
+ \item If missile guidance is done during the aircraft flying horisontal, then use autopilot for altitude. If it is done during a light dive, use autopilot for attitude. Reference: [AJS\_3, sec. 7, ch. 5, p. 210]
+\end{itemize}
+
+On page 25 in issue 4/1972 of the Swedish magazine \url{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/Flygvapennytt_1972-4.pdf}{FlygvapenNytt} there is a good description of the capabilities and evolution of the weapon.
+
+Operations (reference: [AJS\_3, sec. 7, ch. 5, p. 210] for decription, [AJS\_2, ch. II, p. 86] for procedure):
+\begin{enumerate}
+ \item Fly fast and low, navigate to the preprogrammed pop-up point in \emph{NAV} mode.
+ \item Before reaching the pop-up point:
+ \begin{itemize}
+  \item Correct the atmospheric pressure.
+  \item Choose mode \emph{ANF} (not yet modelled correctly in FlightGear).
+  \item Set the \emph{J/A} weapons knob to Rb 05A with the correct fuse (MARK for ground, SJÖ for naval). Not yet modelled correctly in FlightGear: instead choose the Rb 05A by pressing \textbf{\texttt{w}} until displayed on the HUD.
+  \item Check that the autopilot is on \emph{SPAK} only.
+ \end{itemize}
+ \item A fast pop-up is done to 300-400 metres above ground at the pre-programmed pop-up point --- either with pitch only or in a half roll.
+ \item Identify the target and fly level or slightly downwards. The nose does not have to point to the target. 
+ \item Consider engaging the \emph{ATT} or \emph{ALT} autopilot mode.
+ \item Fire within 9 km of the target at a speed between 700 km/h and 1150 km/h.
+ \item Guide the missile visually using the collimation principle --- to begin with roughly and then more and more accurate until the missile' flare covers the target.
+ \item When the missile has hit the target, evade as quickly as possible and choose \emph{NAV} mode.
+\end{enumerate}
+
+Operations in FlightGear:
+\begin{itemize}
+ \item There is no need to lock the target. There is no functionality to set the trigger to unsafe\footnote{In the real Viggen a battery would be activated and the missile would have to be shot within 40 seconds or it would get unusable.}. And there is no specific HUD mode (as in the real Viggen).
+
+ \item Fire with the trigger.
+ \item Guide the missile by using one of the following methods:
+ \begin{itemize}
+  \item Use the keybinding \textbf{\texttt{y}} to toggle the joystick to be a cursor and then use the usual axis to guide the missile. Note: needs to be done after the trigger has been pressed. To be able to use the joystick for the flight controls again, you need to press \textbf{\texttt{y}} again. If the ground collision warning is triggered, then the joystick is automatically set back to control the aircraft again, but you will have lost guidance on the missile.
+  \item Bind the following to axis of your joystick or throttle: textbf{\texttt{/controls/displays/cursor-slew-x}} and textbf{\texttt{/controls/displays/cursor-slew-y}}. This makes it possible to have different sinsitivity from the joystick. Note that it is the same binding as e.g. used in the JA 37Di variant --- but the AJS does not have a screen with a cursor (and the JA 37Di does not have the Rb 05A).
+ \end{itemize}
+
+\end{itemize}
+
+Tips:
+\begin{itemize}
+ \item Make sure to fly within the recommended speed of 700 km/h-1150 km/h. You might loose sight of the light at the back of the missile at a distance around 2 km due to some restrictions in FlightGear. And would probably not be able to see the target anyway.
+ \item Make sure to fly either streight horisonal or in a light dive. If you have your nose up, you might loose track of the missile and/or target. Note that one of the advantages of this missile is that it can be guided considerable off boresight.
+ \item Especially for large objects (factory) make sure to aim in the middle of the object and on gound level. The proximity fuse might otherwise not recognise it.
+\end{itemize}
+
+}{}
+
 \chapter{Air to Air}
+\ifthenelse{\boolean{AJS}}{
+\section{Rb 05A missile}
+The Rb 05A could also be used against slow flying air targets like helicpoters or transport planes. See section \ref{Rb05A} on page \pageref{Rb05A} for a description. The difference to ground/naval attack is that the distance had to be measured with the radar.
+
+}{}
+
 \section{Cannon}
 \url{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/Flygvapennytt_1993-2.pdf} has an article and 2 pictures about the automatic aiming mode for the cannon in the JA version (in Swedish).
 
