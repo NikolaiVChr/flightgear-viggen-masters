@@ -1,11 +1,14 @@
 \documentclass[a4paper]{report}
 
-\usepackage{ifthen}
-\newboolean{AJS}
-
-%%%% Change this for different manual versions.
-\setboolean{AJS}{true}
-
+%%%% Manual variants (JA or AJS)
+\usepackage{etoolbox}
+\newbool{AJS}
+% Change this for different manual versions.
+\setbool{AJS}{true}
+% Shortcut commands
+\newcommand{\AJSonly}[1]{\ifbool{AJS}{#1}{}}
+\newcommand{\JAonly}[1]{\ifbool{AJS}{}{#1}}
+\newcommand{\variant}{\ifbool{AJS}{AJS 37}{JA 37D}}
 
 
 % Todos:
@@ -25,13 +28,16 @@
 
 \pagestyle{headings}
 
+\setcounter{tocdepth}{1}
+
+
 \begin{document}
 \newgeometry{bottom=2cm}
 \ThisCenterWallPaper{1.0}{images/title}
 \begin{titlepage}
   \centering
   \sf
-  {\Huge Saab \ifthenelse{\boolean{AJS}}{AJS 37}{JA 37Di} Viggen}
+  {\Huge Saab \variant{} Viggen}
   \\[1cm]
   {\Huge FlightGear Flight Manual}
   \\[16cm]
@@ -40,7 +46,7 @@
   Anders Lejczak, Justin Nicholson, Enrico Castaldi,\\
   Joshua Davidson, Nicola B.\ Bernardelli, Isaac Protiva,\\
   Colin Geniet, Nikolai V.\ Chr.\\
-  \emph{Document by}\\
+  \emph{Manual by}\\
   Colin Geniet, Rick Gruber-Riemer
 \end{titlepage}
 \restoregeometry
@@ -52,7 +58,8 @@
 \currentpdfbookmark{introduction}{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-Welcome! You are reading the \ifthenelse{\boolean{AJS}}{AJS 37}{JA 37Di} version of this manual. There is a similar manual for the \ifthenelse{\boolean{AJS}}{JA 37Di}{AJS 37} variant of the Viggen.
+Welcome! You are reading the \variant{} version of this manual.
+There is a similar manual for the \ifAJS{JA 37Di}{AJS 37} variant of the Viggen.
 
 This guide intends to be a pilot's handbook for the Saab 37 Viggen aircraft modelled for the \href{http://www.flightgear.org}{FlightGear (FG)} flight simulator. The manual assumes acquaintance with FlightGear and does in general not provide any generic help to use the simulator.
 
@@ -234,7 +241,7 @@ What is presented her is how the aircraft is modelled in FlightGear.
 
 %Please note that the computer in the real Viggen also makes some comparisons with the stored runway heading(s) to decrease the risk of failures. Warning light \emph{NAV SYST} would lit up. However, this is not modelled in FlightGear. 
 
-%\ifthenelse{\boolean{AJS}}{Reference: [AJS\_1, sec. 20, ch. 3.4, p. 312]}{}
+%\AJSonly{Reference: [AJS\_1, sec. 20, ch. 3.4, p. 312]}
 
 \part{Flight Operation}
 \chapter{Standard Procedures}
@@ -246,7 +253,7 @@ Be mindful of failure messages in the TI display FAIL menu, if a gear locking me
 \part{Weapons Operation}
 
 \chapter{Ground and Naval Attack}
-\ifthenelse{\boolean{AJS}}{
+\AJSonly{
 \section{Rb 05A missile}
 \label{Rb05A}
 \begin{figure}[h]
@@ -319,14 +326,14 @@ Tips:
  \item Turn off the radar \keys{r} to reduce clutter in the HUD by target symbols.
 \end{itemize}
 
-}{}
+}
 
 \chapter{Air to Air}
-\ifthenelse{\boolean{AJS}}{
+\AJSonly{
 \section{Rb 05A missile}
 The Rb 05A could also be used against slow flying air targets like helicopters or transport planes. See section \ref{Rb05A} on page \pageref{Rb05A} for a description. The difference to ground/naval attack is that the distance had to be measured with the radar.
 
-}{}
+}
 
 \section{Cannon}
 \url{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/Flygvapennytt_1993-2.pdf} has an article and 2 pictures about the automatic aiming mode for the cannon in the JA version (in Swedish).
