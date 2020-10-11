@@ -10,6 +10,8 @@
 \newcommand{\JAonly}[1]{\ifbool{AJS}{}{#1}}
 \newcommand{\variant}{\ifbool{AJS}{AJS 37}{JA 37D}}
 
+\newcommand{\versionnumber}{4.319}
+
 
 % Todos:
 % features.txt in the root directory
@@ -45,122 +47,80 @@
   \emph{Model by}\\
   Anders Lejczak, Justin Nicholson, Enrico Castaldi,\\
   Joshua Davidson, Nicola B.\ Bernardelli, Isaac Protiva,\\
-  Colin Geniet, Nikolai V.\ Chr.\\
+  Colin Geniet, Nikolai V.\ Chr.\\[0.2cm]
   \emph{Manual by}\\
-  Colin Geniet, Rick Gruber-Riemer
+  Colin Geniet, Rick Gruber-Riemer\\[1cm]
+  Version \versionnumber{}
 \end{titlepage}
 \restoregeometry
 
 \currentpdfbookmark{contents}{Contents}
 \tableofcontents
 
-\chapter{Introduction}
+\chapter*{Introduction}
 \currentpdfbookmark{introduction}{Introduction}
 \addcontentsline{toc}{chapter}{Introduction}
 
-Welcome! You are reading the \variant{} version of this manual.
-There is a similar manual for the \ifAJS{JA 37Di}{AJS 37} variant of the Viggen.
+\section*{The Saab 37 Viggen}
+The Saab 37 Viggen is a Swedish, supersonic, single-seat military aircraft,
+notable for its short takeoff and landing capability offered by a thrust reverser.
+It was developed in the 1960's, entered service in 1971, and was retired in 2005.
+While the Viggen was intended as a multi-role aircraft,
+it never truly achieved that goal---unlike its successor the JAS 39 Gripen.
+Instead, the Viggen was developed into a multitude of versions for different roles:
+surface attack (AJ 37), reconnaissance (SF 37, SH 37), and fighter interceptor (JA 37).
 
-This guide intends to be a pilot's handbook for the Saab 37 Viggen aircraft modelled for the \href{http://www.flightgear.org}{FlightGear (FG)} flight simulator. The manual assumes acquaintance with FlightGear and does in general not provide any generic help to use the simulator.
-
-The original aircraft's objective was military combat --- and that is also an explicit part of this manual.
-
-The Saab Viggen was originally intended as a multi-role combat aeroplane. However, while largely a single type of aircraft/air frame was able to fulfill multiple roles, it was only the Viggen's Swedish successor Saab JAS 39 Gripen that was able to fulfill the requirements for a multi-purpose combat airplane. Consequently, the Viggen type designations reflect their operational roles:
-\begin{description}
-\item[AJ] Attack, Jakt (surface attack with secondary air defence role)
-\item[SK] Skol (conversion training)
-\item[SH] Spaning, Havövervakning (reconnaissance, sea/naval surveillance)
-\item[SF] Spaning, Foto (reconnaissance, photography)
-\item[JA] Jakt, Attack (air defence with secondary attack role)
-\end{description}
-
-The Viggen variants explicitly modelled in FlightGear are the most modern variant for the fighter respectively the attack variant:
-\begin{itemize}
- \item the \emph{JA 37Di} featuring some of the glass instrument panels used in the JAS 39 Gripen --- the \emph{i} in \emph{Di} is due to a modification of 20 airframes for international duties. Instruments labeled in English and feet/knots instead of meter/kmh. 
- \item the \emph{AJS 37} which resulted out of a modification programme providing existing AJ 37, SF 37 and SH 37 variants with a limited multi-role (attack, fighter and reconnaissance) capability.
- \end{itemize}
- 
- Note that there also is a AJ 37 variant modelled, however it is not kept up-to-date and does not have the developers' focus.
- 
- In the root directory of the Viggen aircraft in FlightGear (e.g. in something like \emph{flightgear-saab-ja-37-viggen/Aircraft/JA37}) there is a file called \emph{features.txt}. Over time all these features will be described in this manual --- until then please have a look at that text file to get a feeling for the impressive amount of features implemented (especially in the JA Di variant).
-
-\section{References}
-
-\subsection{Original Manuals}
-A significant part of the original manuals are available on the internet, and in recent years also many of the formerly classified chapters (as far as the information is not still valid due to (re-)use in the Gripen) have been become available. As the Viggen could not be sold to other countries\footnote{Austrian pilots went through a training programme on the Viggen to familiarise with modern combat airplane, but never bought it}, a significant part of the text and illustrations are in Swedish.
-
-The following manuals are core to the understanding of flying a Viggen in military operations. Where possible, references are made in this manual to text elements in the original manuals(e.g. [AJS\_Del1, sec. 20, ch. 3.4.2, p. 312]). Also, this manual does typically not repeat illustrations from the original handbooks, but shows a screenshot from the simulation instead, so you can compare.
-
-\begin{table}[!th]
-\begin{tabular}{|l|l|c|r|}
-\hline
-Ref & Title & Date & Pages \\
-\hline
-AJ\_Del2 & FPL AJ37 Speciell Förarinstruktion Del 2 kap 1 (M5800--370011) & 1975--02--01 & 181 \\
-AJS\_Del1 & FPL AJS37 Speciell Förarinstruktion Del 1 (M5800--370011) & 1994--11--15 & 517 \\
-AJS\_Del2 & FPL AJS37 Speciell Förarinstruktion Del 2 (M5800--370011) & 1994--11--01 & 222 \\
-AJS\_Del3 & FPL AJS37 Speciell Förarinstruktion Del 3 (M5800--370011) & 1994--11--15 & 295 \\
-JA\_Vol1 & Flight Manual A/C JA37 Volume 1 (M5800-370051) & 1999--01--20 & 497 \\
-\hline
+\subsubsection*{Specification (JA 37)}
+\begin{tabular}{l@{\hspace{2cm}}l}
+  Wing span                               & 10.60m \\
+  Length                                  & 16.40m \\
+  Height                                  & 5.93m \\
+  Main wing area                          & 46.00m$^2$ \\
+  Max takeoff weight                      & ca. 20000kg \\
+  Max static thrust                       & 66.6kN dry, 110.3kN with afterburner \\
 \end{tabular}
-\caption{Overview of flight manuals from the original Viggen}
-\end{table}
 
-\subsection{FlightGear Related}
-\begin{itemize}
-\item The \href{http://wiki.flightgear.org/Saab_37_Viggen}{FG wiki article} contains a comprehensive feature overview, links to forum articles etc. However, the wiki is not always up to date.
-\item \href{http://opredflag.com/}{Operation Red Flag (OPRF)} is a FlightGear military simulation community discussing, developing and using many of the combat features in the Viggen.
-\item On Discord there is a dedicated \href{https://discord.gg/jc5pSM5}{Viggen server} and a \href{https://discord.gg/SmGFnJN}{OPRF server}. Say hello and discuss the Viggen's features, development and your flight experience. Preliminary help with issues can be gotten as well, confirmed issues should be reported in the Viggen's \href{https://github.com/NikolaiVChr/flightgear-saab-ja-37-viggen/issues}{issue tracker} for resolution.
-\item The \href{https://www.youtube.com/playlist?list=PLogi97V-ki0GfCLqimTtIq9RIVcm-GRFE}{Flightgear Saab 37 Viggen YouTube Playlist} includes amongst others a set of tutorial videos featuring the JA and the AJS variant.
-\end{itemize}
+\section*{FlightGear Model}
+This flight manual is intended for the Saab 37 Viggen model
+for the \href{http://www.flightgear.org}{FlightGear} flight simulator.
+The model is available through FlightGear's official hangar
+\href{http://wiki.flightgear.org/FGAddon}{FGAddon}.
+Alternatively, development versions can be found in the Github repository
+\footnote{\url{https://github.com/NikolaiVChr/flightgear-saab-ja-37-viggen}}.
+Two variants of the Viggen have been developed in this model:
+\begin{description}
+  \item[JA 37D] A modernised fighter interceptor version from the 1990's.
+    It notably features some of the glass instrument panels used in the JAS 39 Gripen.
+  \item[AJS 37] Primarily a surface attack version,
+    which resulted out of a modification programme providing some existing Viggens
+    with limited multi-role (attack, fighter, and reconnaissance) capabilities.
+\end{description}
+This version of the manual is for the \variant{}.
 
-\subsection{Other Combat Flight Simulators}
-Both \href{https://www.digitalcombatsimulator.com/en/index.php}{DCS} and \href{https://www.benchmarksims.org/}{BMS Falcon} have flyable Viggens. Especially for DCS there is an abundance of resources available on the internet (e.g. YouTube). Please note that while there can be valuable additional information and context provided in content from other simulators, the capabilities modelled will differ.
-
-\subsection{Swedish Documentation Sites}
-\begin{itemize}
-\item Arboga Elektronikhistoriska Förening: \url{https://www.aef.se}, e.g. 
-\begin{itemize}
-\item \href{https://www.aef.se/Avionik/Notiser/PS-37/PS-37A.htm}{Spanings- och siktesradar PS-37/A (for the AJS)}
-\item \href{https://www.aef.se/Avionik/Notiser/Siktesradar_PS-46_1.htm}{Flygradarinstallation JA37 ---Siktesradar PS46} (includes links to 2 articles from Ericsson)
-\item \href{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/FVN_oversikt.htm}{FlygvapenNytt 1960 – 2003}: \url{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/Flygvapennytt_1991-2.pdf} announced the AJS Viggen and \url{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/Flygvapennytt_1994-4.pdf} had follow-up articles.
-\end{itemize}
-\item Digitalt Museum: \url{https://digitaltmuseum.se/}:
-\begin{itemize}
-\item Aeroseum Göteborg: \url{https://digitaltmuseum.se/owners/S-AER}
-\item Flygvapenmuseum: \url{https://digitaltmuseum.se/owners/S-FV}
-\item Teknikland: \url{https://digitaltmuseum.se/owners/S-TL}
-\item Sveriges militärhistoriska arv: \url{https://digitaltmuseum.se/owners/S-MHA}
-\end{itemize}
-\end{itemize} 
+\paragraph*{Compatibility Note}
+This manual was designed for version \versionnumber{} of the Viggen model.
+Minimum supported FlightGear version is 2018.3.x.
+Using the latest stable FlightGear version is generally recommended.
 
 
+\part{Aircraft Presentation}
+\chapter{Aircraft Overview}
+\chapter{Controls and Instrumentation}
+\chapter{Systems}
+% TODO: https://github.com/NikolaiVChr/flightgear-saab-ja-37-viggen/issues/120
+%\section{Course Correction for Magnetic Deviation}
+%Like in the real Viggen there are two ways to set the course correction, which makes sure that the instruments show true North instead of magnetic North (e.g. in north Norway the deviation is larger than 12\degree):
+%\begin{itemize}
+% \item Automatic: Simplified the computer averages the deviation between measured between 110 and 200 km/h during take-off.
+% \item Manual: Make sure your airplane is properly aligned with the runway. Press FIXME. The reason for doing it manually is if the runway is slippery or there are strong crosswinds, which might change the way the nose points and therefore give a wrong deviation measurement. 
+%\end{itemize}
+
+%Please note that the computer in the real Viggen also makes some comparisons with the stored runway heading(s) to decrease the risk of failures. Warning light \emph{NAV SYST} would lit up. However, this is not modelled in FlightGear. 
+
+%\AJSonly{Reference: [AJS\_1, sec. 20, ch. 3.4, p. 312]}
+
+\part{Flight Operation}
 \chapter{Generic FlightGear Operations}
-\section{Download and Installation}
-The JA-37Di and the AJS-37 variants of the Viggen are downloaded and installed as one set. You can choose between two options to download and install:
-\begin{itemize}
-\item The \href{https://github.com/NikolaiVChr/flightgear-saab-ja-37-viggen}{Git repository} has the latest version of the Viggen and is the preferred way to keep up with the constant evolution of the FlightGear model. If you are using the Git repository, make sure to add the correct directory path\footnote{E.g. \directory{/home/pingu/fg\_aircraft/flightgear-saab-ja-37-viggen/Aircraft}} to the \emph{Additional aircraft folders} section in tab \emph{Add-ons} in the FlightGear launcher.
-\item FlightGear's official hangar \href{http://wiki.flightgear.org/FGAddon}{FGAddon} is peridically updated with stable versions from the Git version. 
-\end{itemize}
-
-The guide you are reading is keeping up with the latest Git version and therefore the features available in the FGAddon version might be different. Unless you have a good reason not to do so, please consider using the Git version and keep it updated.
-
-\begin{figure}[h]
-\includegraphics[width=15cm]{images/fg_launcher_choose_aircraft_variant.png}
-\caption[Choose Viggen variant in Launcher]{In the \emph{Aircraft} tab of the FlightGear Launcher make sure to choose the correct variant for your next flight.}
-\end{figure}
-
-\section{Compatibility}
-The Viggen is tested against FlightGear version 2020.2.x. Earlier long-term support versions of FlightGear will probably work (e.g. 2018.3.x), development versions of FlightGear might work but are not recommended.
-
-Rendering framework in FlightGear: The aircraft is sort of \href{http://wiki.flightgear.org/Project_Rembrandt}{Rembrandt} ready without glaring issues. \href{http://wiki.flightgear.org/Atmospheric_light_scattering}{ALS} is actively maintained and extended in the Viggen and therefore recommended.
-
-\begin{figure}[h]
-\centering
- \includegraphics[width=10cm]{images/launcher_settings_renderer.png}
- \caption[Choose rendering settings in Launcher]{In the \emph{Settings} tab of the FlightGear Launcher consider using the Atomospheric Light Scattering (ALS) renderer.}
-\end{figure}
-
 \section{Menu Entries and In-Flight Configuration}
 \subsection{Menu Help}
 The Help menu contains 2 menu items, which are Viggen specific:
@@ -195,55 +155,7 @@ This menu contains a set of menu items, which ease some configurations, which ar
  \caption{Viggen specific options dialog}
 \end{figure}
 
-\subsection{Menu View}
-In menu item \emph{Rendering Options}:
-\begin{itemize}
-\item Enable \emph{Atmospheric Light Scattering (ALS)} on the right side in \emph{Shader Effects}. Select \emph{Custom settings (fine tuning)} and in \emph{Shader Options} set the slider related to \emph{Model} to the right side (highest setting). This is amongst others needed to get nice flood lights in the cockpit at night.
-\item Enable Particles
-\item Enable Precipitation (you get nice rain drops on the canopy when it rains)
-\item 3D clouds: on (if your computer can run it)
-\end{itemize}
 
-The \emph{View options} menu item allows to show tooltips on mouse over / mouse press for gauges and knobs. It is recommended to enable \emph{show frame rate} (number displayed at the lower right edge of the screen) and set your graphic settings such that the value is at least 15 and preferably higher than 20. This has not only an influence on how smooth the rendering looks (no shuttering), but also how good the flight model simulation is calculated.
-
-In menu item \emph{Cockpit View Options}
-\begin{itemize}
-\item Disable \glqq Dynamic cockpit view \grqq
-\item Disable \glqq View movement due to G-Force\grqq
-\item Enable \glqq Blackout and Redout due to G-force\grqq. It will be enabled automatically if you enable discharge messages.
-\end{itemize}
-
-In menu item \emph{Adjust LOD Ranges}, section \emph{AI/MP aircraft}: select \glqq High Detail only\grqq if you use FlightGear version 2019.1 or higher, else set \glqq Use detailed MP models\grqq.
-
-\subsection{Weather in Menu Environment}
-Enable \emph{Detailed Weather} and press \emph{Advanced Settings ...} to set the following options (after all: the Viggen is an all-weather fighter and can handle it --- if your computer hardware can handle it):
-\begin{itemize}
-\item Wind-model: aloft-waypoints
-\item Terrain presampling
-\item Realistic visibility
-\end{itemize}
-
-\part{Aircraft Presentation}
-This manual does not contain a generic presentation of the real Viggen. There are many books and internet resources, which do a good job for this. A comprehensive book in English covering all variants is \glqq Saab 37 Viggen --- The ultimate portfolio\grqq by Jan Jørgensen (published in 2014 by \href{http://www.nordicairpower.com/}{Nordic Airpower}).
-
-What is presented her is how the aircraft is modelled in FlightGear.
-
-\chapter{Aircraft Overview}
-\chapter{Controls and Instrumentation}
-\chapter{Systems}
-% TODO: https://github.com/NikolaiVChr/flightgear-saab-ja-37-viggen/issues/120
-%\section{Course Correction for Magnetic Deviation}
-%Like in the real Viggen there are two ways to set the course correction, which makes sure that the instruments show true North instead of magnetic North (e.g. in north Norway the deviation is larger than 12\degree):
-%\begin{itemize}
-% \item Automatic: Simplified the computer averages the deviation between measured between 110 and 200 km/h during take-off.
-% \item Manual: Make sure your airplane is properly aligned with the runway. Press FIXME. The reason for doing it manually is if the runway is slippery or there are strong crosswinds, which might change the way the nose points and therefore give a wrong deviation measurement. 
-%\end{itemize}
-
-%Please note that the computer in the real Viggen also makes some comparisons with the stored runway heading(s) to decrease the risk of failures. Warning light \emph{NAV SYST} would lit up. However, this is not modelled in FlightGear. 
-
-%\AJSonly{Reference: [AJS\_1, sec. 20, ch. 3.4, p. 312]}
-
-\part{Flight Operation}
 \chapter{Standard Procedures}
 \chapter{Emergency Procedures}
 \chapter{Miscellaneous Notes}
@@ -339,6 +251,60 @@ The Rb 05A could also be used against slow flying air targets like helicopters o
 \url{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/Flygvapennytt_1993-2.pdf} has an article and 2 pictures about the automatic aiming mode for the cannon in the JA version (in Swedish).
 
 \appendix
+
+\chapter{References}
+
+A comprehensive book in English covering all variants is \glqq Saab 37 Viggen --- The ultimate portfolio\grqq by Jan Jørgensen (published in 2014 by \href{http://www.nordicairpower.com/}{Nordic Airpower}).
+
+\subsection{Original Manuals}
+A significant part of the original manuals are available on the internet, and in recent years also many of the formerly classified chapters (as far as the information is not still valid due to (re-)use in the Gripen) have been become available. As the Viggen could not be sold to other countries\footnote{Austrian pilots went through a training programme on the Viggen to familiarise with modern combat airplane, but never bought it}, a significant part of the text and illustrations are in Swedish.
+
+The following manuals are core to the understanding of flying a Viggen in military operations. Where possible, references are made in this manual to text elements in the original manuals(e.g. [AJS\_Del1, sec. 20, ch. 3.4.2, p. 312]). Also, this manual does typically not repeat illustrations from the original handbooks, but shows a screenshot from the simulation instead, so you can compare.
+
+\begin{table}[!th]
+\begin{tabular}{|l|l|c|r|}
+\hline
+Ref & Title & Date & Pages \\
+\hline
+AJ\_Del2 & FPL AJ37 Speciell Förarinstruktion Del 2 kap 1 (M5800--370011) & 1975--02--01 & 181 \\
+AJS\_Del1 & FPL AJS37 Speciell Förarinstruktion Del 1 (M5800--370011) & 1994--11--15 & 517 \\
+AJS\_Del2 & FPL AJS37 Speciell Förarinstruktion Del 2 (M5800--370011) & 1994--11--01 & 222 \\
+AJS\_Del3 & FPL AJS37 Speciell Förarinstruktion Del 3 (M5800--370011) & 1994--11--15 & 295 \\
+JA\_Vol1 & Flight Manual A/C JA37 Volume 1 (M5800-370051) & 1999--01--20 & 497 \\
+\hline
+\end{tabular}
+\caption{Overview of flight manuals from the original Viggen}
+\end{table}
+
+\subsection{FlightGear Related}
+\begin{itemize}
+\item The \href{http://wiki.flightgear.org/Saab_37_Viggen}{FG wiki article} contains a comprehensive feature overview, links to forum articles etc. However, the wiki is not always up to date.
+\item \href{http://opredflag.com/}{Operation Red Flag (OPRF)} is a FlightGear military simulation community discussing, developing and using many of the combat features in the Viggen.
+\item On Discord there is a dedicated \href{https://discord.gg/jc5pSM5}{Viggen server} and a \href{https://discord.gg/SmGFnJN}{OPRF server}. Say hello and discuss the Viggen's features, development and your flight experience. Preliminary help with issues can be gotten as well, confirmed issues should be reported in the Viggen's \href{https://github.com/NikolaiVChr/flightgear-saab-ja-37-viggen/issues}{issue tracker} for resolution.
+\item The \href{https://www.youtube.com/playlist?list=PLogi97V-ki0GfCLqimTtIq9RIVcm-GRFE}{Flightgear Saab 37 Viggen YouTube Playlist} includes amongst others a set of tutorial videos featuring the JA and the AJS variant.
+\end{itemize}
+
+\subsection{Other Combat Flight Simulators}
+Both \href{https://www.digitalcombatsimulator.com/en/index.php}{DCS} and \href{https://www.benchmarksims.org/}{BMS Falcon} have flyable Viggens. Especially for DCS there is an abundance of resources available on the internet (e.g. YouTube). Please note that while there can be valuable additional information and context provided in content from other simulators, the capabilities modelled will differ.
+
+\subsection{Swedish Documentation Sites}
+\begin{itemize}
+\item Arboga Elektronikhistoriska Förening: \url{https://www.aef.se}, e.g. 
+\begin{itemize}
+\item \href{https://www.aef.se/Avionik/Notiser/PS-37/PS-37A.htm}{Spanings- och siktesradar PS-37/A (for the AJS)}
+\item \href{https://www.aef.se/Avionik/Notiser/Siktesradar_PS-46_1.htm}{Flygradarinstallation JA37 ---Siktesradar PS46} (includes links to 2 articles from Ericsson)
+\item \href{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/FVN_oversikt.htm}{FlygvapenNytt 1960 – 2003}: \url{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/Flygvapennytt_1991-2.pdf} announced the AJS Viggen and \url{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/Flygvapennytt_1994-4.pdf} had follow-up articles.
+\end{itemize}
+\item Digitalt Museum: \url{https://digitaltmuseum.se/}:
+\begin{itemize}
+\item Aeroseum Göteborg: \url{https://digitaltmuseum.se/owners/S-AER}
+\item Flygvapenmuseum: \url{https://digitaltmuseum.se/owners/S-FV}
+\item Teknikland: \url{https://digitaltmuseum.se/owners/S-TL}
+\item Sveriges militärhistoriska arv: \url{https://digitaltmuseum.se/owners/S-MHA}
+\end{itemize}
+\end{itemize} 
+
+
 \begin{landscape}
 \chapter{Viggen Related Videos}
 The following selection of videos has been made based on operational content or visibility of details. There exist many more videos --- some of which with higher quality from recent air shows. If you miss a video below, let us know.
