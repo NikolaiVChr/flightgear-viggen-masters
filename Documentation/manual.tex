@@ -26,10 +26,12 @@
   {\Huge FlightGear Flight Manual}
   \\[16cm]
   \color{white}
-  \emph{model by}\\
+  \emph{Model by}\\
   Anders Lejczak, Justin Nicholson, Enrico Castaldi,\\
   Joshua Davidson, Nicola B.\ Bernardelli, Isaac Protiva,\\
-  Nikolai V.\ Chr.
+  Colin Geniet, Nikolai V.\ Chr.\\
+  \emph{Document by}\\
+  Colin Geniet, Rick Gruber-Riemer
 \end{titlepage}
 \restoregeometry
 
@@ -128,13 +130,19 @@ The guide you are reading is keeping up with the latest Git version and therefor
 
 \begin{figure}[h]
 \includegraphics[width=15cm]{images/fg_launcher_choose_aircraft_variant.png}
-\caption[Choose Viggen variant in Launcher]{In the \emph{Aircraft} tab in the FlightGear Launcher make sure to choose the correct variant for your next flight.}
+\caption[Choose Viggen variant in Launcher]{In the \emph{Aircraft} tab of the FlightGear Launcher make sure to choose the correct variant for your next flight.}
 \end{figure}
 
 \section{Compatibility}
-The Viggen is tested against FlightGear version 2018.3.x is tested. Earlier version will probably not work, later might.
+The Viggen is tested against FlightGear version 2020.2.x. Earlier long-term support versions of FlightGear will probably work (e.g. 2018.3.x), development versions of FlightGear might work but are not recommended.
 
 Rendering framework in FlightGear: The aircraft is sort of \href{http://wiki.flightgear.org/Project_Rembrandt}{Rembrandt} ready without glaring issues. \href{http://wiki.flightgear.org/Atmospheric_light_scattering}{ALS} is actively maintained and extended in the Viggen and therefore recommended.
+
+\begin{figure}[h]
+\centering
+ \includegraphics[width=10cm]{images/launcher_settings_renderer.png}
+ \caption[Choose rendering settings in Launcher]{In the \emph{Settings} tab of the FlightGear Launcher consider using the Atomospheric Light Scattering (ALS) renderer.}
+\end{figure}
 
 \section{Menu Entries and In-Flight Configuration}
 \subsection{Menu Help}
@@ -148,21 +156,18 @@ The Help menu contains 2 menu items, which are Viggen specific:
 This menu contains a set of menu items, which ease some configurations, which are not available otherwise or would be tedious to do.
 \begin{itemize}
 \item Select Livery: there is a variety of liveries available, some of which are fictional. Note that the dialog does not take care of whether a livery belongs to the AJS or JA Di version: if you want to fly authentic, you need to know yourself.
-\item Auto start/stop: Lets you start and stop the plane. The progress is shown in the top centre of the screen in blue text. \glqq Engine ready\grqq is the final notification of the start-up sequence. The shut-down sequence is done, when the aircraft is dark.
+\item Auto start/stop: Lets you start and stop the plane without needing to switch switches etc. yourself. The progress is shown in the top centre of the screen in blue text. \glqq Engine ready\grqq is the final notification of the start-up sequence. The shut-down sequence is done, when the aircraft is dark.
 \item Repair: repairs system failures etc. when you are on the ground. If you have crashed, then there is no help.
-\item Loadout: Opens a custom dialog to allow fast selection of a suitable loadout. This is an alternative to menu item Fuel and Payload in menu Equipment. It will make sure that you only select weapon combinations, which were valid in the real Viggen.
+\item Fuel/Loadout: Opens a custom dialog to allow fast selection of a suitable loadout and fuel settings. This is an alternative to menu item Fuel and Payload in menu Equipment. It will make sure that you only select weapon combinations, which were valid in the real Viggen.
 
 \begin{figure}[h]
 \centering
  \includegraphics[width=10cm]{images/fg_loadout_dialog.png}
- \caption{Viggen specific loadout dialog}
+ \caption{Viggen specific fuel and loadout selection dialog}
 \end{figure}
 
-\item Refuel: Standard: all tanks full, but no external centre tank
-\item Refuel: Long distance: adds fuel to the drop tank on the centre fuselage pylon.
-\item Refuel: Test flight: reduced fuel amount to ca. 80\% of the standard
-\item Performance Monitor
-\item Systems Monitor
+\item Performance Monitor: shows performance values, some of which are also available on original instruments (mostly for developers)
+\item Systems Monitor: ditto for systems (mostly for developers)
 \item Toggle external power: note that this is one of the things added and removed automatically when using the auto start/stop function.
 \item Options: various configuration options. Note that the Viggen was a Swedish fighter and therefore the most authentic settings are with Swedish labels and for the AJS with metric instead of imperial units.
 \end{itemize}
@@ -179,10 +184,10 @@ In menu item \emph{Rendering Options}:
 \item Enable \emph{Atmospheric Light Scattering (ALS)} on the right side in \emph{Shader Effects}. Select \emph{Custom settings (fine tuning)} and in \emph{Shader Options} set the slider related to \emph{Model} to the right side (highest setting). This is amongst others needed to get nice flood lights in the cockpit at night.
 \item Enable Particles
 \item Enable Precipitation (you get nice rain drops on the canopy when it rains)
-\item 3D clouds: on
+\item 3D clouds: on (if your computer can run it)
 \end{itemize}
 
-The \emph{View options} menu item allows to show tooltips on mouse over / mouse press for gauges and knobs.
+The \emph{View options} menu item allows to show tooltips on mouse over / mouse press for gauges and knobs. It is recommended to enable \emph{show frame rate} (number displayed at the lower right edge of the screen) and set your graphic settings such that the value is at least 15 and preferably higher than 20. This has not only an influence on how smooth the rendering looks (no shuttering), but also how good the flight model simulation is calculated.
 
 In menu item \emph{Cockpit View Options}
 \begin{itemize}
@@ -264,7 +269,7 @@ Operations (reference: [AJS\_3, sec. 7, ch. 5, p. 210] for description, [AJS\_2,
  \item Before reaching the pop-up point:
  \begin{itemize}
   \item Correct the atmospheric pressure.
-  \item Choose mode \emph{ANF} (not yet modelled correctly in FlightGear).
+  \item Choose mode \emph{ANF}.
   \item Set the \emph{J/A} weapons knob to Rb 05A with the correct fuse (MARK for ground, SJÖ for naval). Not yet modelled correctly in FlightGear: instead choose the Rb 05A by pressing \keys{w} until displayed on the HUD.
   \item Check that the autopilot is on \emph{SPAK} only.
  \end{itemize}
@@ -343,7 +348,7 @@ Title & Length & Subtitles & Year & Comments \\
 \href{https://www.youtube.com/watch?v=IbsYsUvCy7s}{Rörlig klargöring JA37 Arlanda} & 43 min & no & 1996 & Ground operations of JA 37 on an improvised stand at Arlanda airport\\
 \href{https://vimeo.com/60091080}{Viggen i Älskar, älskar inte} & 4 min & no & ?? & Excerpts from the feature film, Älskar, älskar inte. Nice dogfighting between JA and AJS plus some CI sequences\\
 \href{https://www.youtube.com/watch?v=eT00_OVrv7o}{JA-37 and SK-37E Night Ops} & 7 min & no & ?? & Night flying with good pictures of exhaust, navigation and beacon lights\\
-\href{https://www.youtube.com/watch?v=0ocSUd9_5Tw}{JA37 F21 1982-2004} & 17 min & no ?? & Around min 5 and 15 there are longer sequences of the HUD in weapons mode (JA variant)\\
+\href{https://www.youtube.com/watch?v=0ocSUd9_5Tw}{JA37 F21 1982-2004} & 17 min & no & ?? & Around min 5 and 15 there are longer sequences of the HUD in weapons mode (JA variant)\\
 
 \hline
 \end{tabular}
