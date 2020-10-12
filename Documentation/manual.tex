@@ -4,7 +4,7 @@
 \usepackage{etoolbox}
 \newbool{AJS}
 % Change this for different manual versions.
-\setbool{AJS}{true}
+\setbool{AJS}{false}
 % Shortcut commands
 \newcommand{\AJSonly}[1]{\ifbool{AJS}{#1}{}}
 \newcommand{\JAonly}[1]{\ifbool{AJS}{}{#1}}
@@ -27,6 +27,12 @@
 \usepackage{geometry}
 \usepackage{pdflscape}
 \usepackage{gensymb}
+\usepackage{multicol}
+\usepackage{enumitem}
+
+\usepackage{titlesec}
+\titleformat{\chapter}[hang]{\bfseries\Huge}{\chaptertitlename\space\thechapter{}:}{1ex minus .1ex}{}
+\titlespacing{\chapter}{0pt}{*0}{*3}
 
 \pagestyle{headings}
 
@@ -85,7 +91,7 @@ This flight manual is intended for the Saab 37 Viggen model
 for the \href{http://www.flightgear.org}{FlightGear} flight simulator.
 The model is available through FlightGear's official hangar
 \href{http://wiki.flightgear.org/FGAddon}{FGAddon}.
-Alternatively, development versions can be found in the Github repository
+Alternatively, development versions can be found in the Github repository%
 \footnote{\url{https://github.com/NikolaiVChr/flightgear-saab-ja-37-viggen}}.
 Two variants of the Viggen have been developed in this model:
 \begin{description}
@@ -104,8 +110,178 @@ Using the latest stable FlightGear version is generally recommended.
 
 
 \part{Aircraft Presentation}
-\chapter{Aircraft Overview}
-\chapter{Controls and Instrumentation}
+\chapter{Cockpit Overview}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{\ifbool{AJS}{images/panels/AJS-front-panel}{images/panels/JA-front-panel}}
+
+  \begin{multicols}{2}
+    \begin{enumerate}[nosep]
+      \item Thrust reverser status light
+      \item Thrust reverser handle
+    \ifbool{AJS}{
+      \item Autopilot pushbuttons/lights
+      \item Autothrottle lights
+      \item Airspeed/Mach indicator
+      \item Radio frequency selector
+      \item Angle of attack indicator
+      \item Master warning lights and button
+      \item HUD brightness knobs
+      \item Attitude/director indicator (ADI)
+      \item Altimeter
+      \item Central indicator (CI)
+    }{
+      \item Backup attitude indicator
+      \item Altimeter
+      \item Backup altimeter
+      \item Autopilot pushbuttons/lights
+      \item G-meter
+      \item Master warning lights and button
+      \item Angle of attack indicator
+      \item Autothrottle lights
+      \item Airspeed/Mach indicator
+      \item Afterburner zone lights
+      \item Attitude/director indicator (ADI)
+      \item RPM indicator (N2)
+      \item Engine pressure ratio indicator
+      \item HUD brightness knobs
+      \item Target display (MI)
+    }
+      \item Parking brake handle
+    \ifbool{AJS}{
+      \item Clock
+      \item HUD settings switches
+      \item Backup attitude indicator
+      \item Backup altimeter
+      \item Backup heading indicator
+      \item 'Weapon released' light
+      \item G-meter
+      \item Backup airspeed indicator
+      \item RPM indicator (N2)
+      \item Afterburner zone lights
+      \item Engine pressure ratio indicator
+      \item Transonic / low speed reverse light
+      \item Waypoint type / number indicator
+      \item Waypoint distance indicator
+    }{
+      \item Heading indicator
+      \item Backup heading pushbutton/light
+      \item Fast-reset pushbutton/light
+      \item Transonic / low speed reverse light
+      \item Horizontal situation display (TI)
+    }
+      \item Fuel gauge
+      \item Left warning lights panel
+      \item Right warning lights panel
+    \end{enumerate}
+  \end{multicols}
+
+  \caption{Cockpit---front panel}
+  \label{fig:front-panel}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{\ifbool{AJS}{images/panels/AJS-left-panel}{images/panels/JA-left-panel}}
+
+  \begin{multicols}{2}
+    \begin{enumerate}[nosep]
+      \item Autothrottle lever
+      \item Landing gear lever
+      \item IR missile quick select
+      \item Warning sounds volume
+      \item Air conditioning controls
+      \item Instruments light knob
+      \item Panel light knob
+      \item Backup trim controls
+      \item Yaw trim centered light
+      \item Trim reset button
+      \item Radio control panel (not implemented)
+      \item Canopy jettison button
+      \item Radar control panel (not implemented)
+    \AJSonly{\item Main mode selector knob}
+      \item Engine start switch
+      \item Generator switch
+      \item Master power switch
+      \item Fuel cutoff switch
+    \JAonly{\item Radio channel selector KV3}
+      \item Radio channel selector KV1 (not implemented)
+      \item Warning lights test button
+      \item Roll trim centered light
+      \item Pitch trim indicator
+      \item Brake pressure indicator
+      \item Cabin pressure indicator
+      \item Taxi/landing lights switch
+    \end{enumerate}
+  \end{multicols}
+
+  \caption{Cockpit---left panel}
+  \label{fig:left-panel}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \includegraphics[width=\textwidth]{\ifbool{AJS}{images/panels/AJS-right-panel}{images/panels/JA-right-panel}}
+
+  \begin{multicols}{2}
+    \begin{enumerate}[nosep]
+      \item Automatic fuel regulator switch
+      \item Afterburner cutoff switch
+      \item Emergency ram air turbine switch
+      \item Pitch gearing switch
+      \item Fuses panel
+      \item ILS switch
+      \item Weapons panel
+      \item Countermeasures panel
+      \item Manual fuel control switches
+      \item Ignition plug switch
+    \AJSonly{
+      \item Nozzle position indicator
+      \item Exhaust temperature indicator
+    }
+      \item Oxygen pressure indicator
+      \item Oxygen cutoff switch
+    \AJSonly{
+      \item Radar altimeter switch
+      \item DME switch---no functionality
+    }
+      \item Navigation panel
+    \AJSonly{
+      \item TILS channel selection knob
+      \item TILS channel group switch
+    }
+    \JAonly{
+      \item Radar altimeter switch
+      \item GPWS switch
+    }
+      \item Windshield defogging knob
+      \item Test panel
+    \JAonly{
+      \item Nozzle position indicator
+      \item Exhaust temperature indicator
+    }
+      \item Data panel \AJSonly{(not implemented)}
+      \item RWR control panel
+    \JAonly{
+      \item Navigation radio panel
+    }
+      \item Transponder
+      \item Formation lights switch
+      \item Navigation lights switch
+      \item Anti-collision lights switch
+      \item Identification transponder panel
+      \item Formation lights intensity knob
+    \end{enumerate}
+  \end{multicols}
+
+  \caption{Cockpit---right panel}
+  \label{fig:right-panel}
+\end{figure}
+
+
+
+\chapter{Instrumentation}
 \chapter{Systems}
 % TODO: https://github.com/NikolaiVChr/flightgear-saab-ja-37-viggen/issues/120
 %\section{Course Correction for Magnetic Deviation}
