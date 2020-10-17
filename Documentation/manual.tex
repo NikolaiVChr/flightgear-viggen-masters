@@ -4,7 +4,7 @@
 \usepackage{etoolbox}
 \newbool{AJS}
 % Change this for different manual versions.
-\setbool{AJS}{false}
+\setbool{AJS}{true}
 % Shortcut commands
 \newcommand{\AJSonly}[1]{\ifbool{AJS}{#1}{}}
 \newcommand{\JAonly}[1]{\ifbool{AJS}{}{#1}}
@@ -77,14 +77,14 @@ it never truly achieved that goal---unlike its successor the JAS 39 Gripen.
 Instead, the Viggen was developed into a multitude of versions for different roles:
 surface attack (AJ 37), reconnaissance (SF 37, SH 37), and fighter interceptor (JA 37).
 
-\subsubsection*{Specification (JA 37)}
+\subsubsection*{Specification (\ifbool{AJS}{AJS}{JA} 37)}
 \begin{tabular}{l@{\hspace{2cm}}l}
   Wing span                               & 10.60m \\
-  Length                                  & 16.40m \\
-  Height                                  & 5.93m \\
+  Length                                  & \ifbool{AJS}{16.30}{16.40}m \\
+  Height                                  & \ifbool{AJS}{5.81}{5.93}m \\
   Main wing area                          & 46.00m$^2$ \\
   Max takeoff weight                      & ca. 20000kg \\
-  Max static thrust                       & 66.6kN dry, 110.3kN with afterburner \\
+  Max static thrust                       & \ifbool{AJS}{65.6}{66.6}kN dry, \ifbool{AJS}{115.6}{110.3}kN with afterburner \\
 \end{tabular}
 
 \section*{FlightGear Model}
