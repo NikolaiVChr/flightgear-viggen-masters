@@ -119,15 +119,15 @@ Using the latest stable FlightGear version is generally recommended.
 
   \begin{multicols}{2}
     \begin{enumerate}[nosep]
-      \item Thrust reverser status light
-      \item Thrust reverser handle
+      \item \label{item:rev-light} Thrust reverser status light
+      \item \label{item:rev-handle} Thrust reverser handle
     \ifbool{AJS}{
-      \item Autopilot pushbuttons/lights
-      \item Autothrottle lights
+      \item \label{item:autopilot} Autopilot pushbuttons/lights
+      \item \label{item:autothrottle-lights} Autothrottle lights
       \item \label{item:airspeed} Airspeed/Mach indicator
       \item Radio frequency selector
       \item \label{item:aoa} Angle of attack indicator
-      \item Master warning lights and button
+      \item \label{item:master-warning} Master warning lights and button
       \item HUD brightness knobs
       \item \label{item:adi} Attitude/director indicator (ADI)
       \item \label{item:altimeter} Altimeter
@@ -136,11 +136,11 @@ Using the latest stable FlightGear version is generally recommended.
       \item \label{item:attitude-bck} Backup attitude indicator
       \item \label{item:altimeter} Altimeter
       \item \label{item:altimeter-bck} Backup altimeter
-      \item Autopilot pushbuttons/lights
+      \item \label{item:autopilot} Autopilot pushbuttons/lights
       \item \label{item:gmeter} G-meter
-      \item Master warning lights and button
+      \item \label{item:master-warning} Master warning lights and button
       \item \label{item:aoa} Angle of attack indicator
-      \item Autothrottle lights
+      \item \label{item:autothrottle-lights} Autothrottle lights
       \item \label{item:airspeed} Airspeed/Mach indicator
       \item \label{item:zone} Afterburner zone lights
       \item \label{item:adi} Attitude/director indicator (ADI)
@@ -156,25 +156,25 @@ Using the latest stable FlightGear version is generally recommended.
       \item \label{item:attitude-bck} Backup attitude indicator
       \item \label{item:altimeter-bck} Backup altimeter
       \item \label{item:heading-bck} Backup heading indicator
-      \item `Weapon released' light
+      \item \label{item:release} `Weapon released' light
       \item \label{item:gmeter} G-meter
       \item \label{item:airspeed-bck} Backup airspeed indicator
       \item \label{item:rpm} RPM indicator (N2)
       \item \label{item:zone} Afterburner zone lights
       \item \label{item:epr} Engine pressure ratio indicator
-      \item Transonic / low speed reverse light
+      \item \label{item:transonic} Transonic / low speed reverse light
       \item \label{item:wpnum} Waypoint type / number indicator
       \item \label{item:wpdist} Waypoint distance indicator
     }{
       \item \label{item:heading} Heading indicator
       \item \label{item:heading-bck-but} Backup heading pushbutton/light
-      \item Fast-reset pushbutton/light
-      \item Transonic / low speed reverse light
+      \item \label{item:fast-reset} Fast-reset pushbutton/light
+      \item \label{item:transonic} Transonic / low speed reverse light
       \item Horizontal situation display (TI)
     }
       \item \label{item:fuel} Fuel gauge
-      \item Left warning lights panel
-      \item Right warning lights panel
+      \item \label{item:left-warning} Left warning lights panel (cf.~\cref{fig:warning-panels}).
+      \item \label{item:right-warning} Right warning lights panel (cf.~\cref{fig:warning-panels}).
     \end{enumerate}
   \end{multicols}
 
@@ -283,7 +283,7 @@ Using the latest stable FlightGear version is generally recommended.
 
 % Reference to the 'Cockpit Overview' chapter figures.
 % Two arguments: figure reference and item reference in the figure.
-\newcommand{\cockpitref}[2]{\hyperref[#2]{fig~\ref*{#1}:\ref*{#2}}}
+\newcommand{\cockpitref}[2]{\hyperref[#2]{fig~\labelcref*{#1}:\labelcref*{#2}}}
 
 \chapter{Instrumentation and Indicators}
 \section{Flight Instruments}
@@ -427,6 +427,95 @@ Under standard conditions, the gauge indicates \ifbool{AJS}{107}{112}\% with ful
 and \ifbool{AJS}{132}{136}\% with the external tank in addition.
 A second black-white pointer indicates required fuel quantity (not implemented).
 The fuel gauge requires AC power.
+
+\section{Warning Lights Panels}
+\begin{figure}[ht!]
+  \centering
+  \includegraphics[width=0.45\textwidth]{images/panels/left-warning-panel.png}
+  \includegraphics[width=0.45\textwidth]{images/panels/right-warning-panel.png}
+  \caption{Left and right warning panels (\cockpitref{fig:front-panel}{item:left-warning,item:right-warning})}
+  \label{fig:warning-panels}
+\end{figure}
+
+\begin{description}
+  \item[Fire (x2)] Engine fire (blinking).
+  \item[Fuel distrib] Fuel distribution system failure (blinking, steady if hydraulics failure).
+  \item[X-Tank fuel] Blinking: external fuel tank pump failure.
+    Steady: external fuel tank pump inactive due to low engine RPM.
+  \item[Tank pump] Fuel pump failure (blinking, steady if electrical failure).
+  \item[Gear] Blinking: gear up at low speed and altitude.
+    Steady: landing gear extending/retracting.
+  \item[Stuck in rev.] Thrust reverser engaged and failed (blinking).
+  \item[Nose/Left/Right gear] Gear down and locked (steady).
+  \item[Speedbrake] Blinking: speedbrakes failure. Steady: speedbrakes extended.
+  \item[Electrical] Failure in electrical system (blinking).
+  \item[Elec. Reserve] Emergency ram air turbine failure, or abnormal engagement (blinking).
+  \item[Hydraulic 1/2] Low pressure in hydraulic systems (blinking).
+  \item[Auto throttle] Steady: normal auto-throttle disengagement.
+    Blinking: abnormal auto-throttle disengagement, or failure.
+    Pull auto-throttle to off (up) position to reset.
+  \item[No reverse] Failure of thrust reverse of tertiary air intake (blinking).
+  \item[Hydr. Reserve] Low pressure in backup hydraulic system (blinking).
+  \item[Oil pressure] Low pressure in engine oil system (blinking).
+  \item[Oil temp.] High engine oil temperature (blinking).
+  \item[Flightstick,Attitude,Altitude] Abnormal disengagement of corresponding or higher autopilot mode (blinking).
+    To reset, acknowledge master warning, then press any autopilot button.
+  \item[Fire GTS] Fire in engine start system (blinking).
+  \item[Pitch gearing] Failure in elevator reduction gearing (blinking).
+  \item[Cabin alt.] Low cabin pressure (blinking).
+  \item[Canopy/Seat] Failure of canopy or ejection seat (blinking).
+  \item[Ignition sys] Engine ignition active (blinking).
+  \item[Start sys] Engine start sequence in progress (steady).
+  \item[Man. fuel reg] Automatic fuel regulation disengaged (steady).
+  \item[Central CPU] Main computer failure (blinking).
+  \item[Primary data] Flight data computer failure (blinking).
+  \item[Inertia nav.] Inertia navigation central aligning (steady).
+  \item[Radar] Radar failure (blinking).
+  \item[Transponder] Identification transponder failure (steady).
+  \item[Alpha] Failure in angle of attack sensor (blinking).
+  \item[Oxygen] Oxygen supply closed, or low pressure (blinking).
+  \item[Outlet temp] High exhaust gas temperature (blinking).
+  \item[Fuel amount] Low fuel quantity (blinking).
+  \item[Weapons] Weapon systems failure (blinking).
+\end{description}
+
+\section{Other Indicator Lights}
+\paragraph{Master Warning (\cockpitref{fig:front-panel}{item:master-warning})}
+The master warning consists of two flashing red lights, together with a sound warning.
+It generally lights up together with a light on the warning panels.
+Pressing the button between the lights acknowledges the warning.
+Depending on the nature of the warning,
+the master warning lights may remain steady after acknowledgement.
+
+\paragraph{Reverser (\cockpitref{fig:front-panel}{item:rev-light})}
+Green light, indicates that the reverser handle
+(\cockpitref{fig:front-panel}{item:rev-handle}) is pulled,
+and the reverser is armed (but not necessarily active).
+
+\paragraph{Autopilot (\cockpitref{fig:front-panel}{item:autopilot})}
+Three green pushbuttons/lights.
+Used to select one of the autopilot modes: stability assist (STICK/SPAK),
+attitude hold (ATT), altitude hold (ALT/HÖJD).
+When an autopilot mode is active, the light for it and any lower mode are lit.
+The lights can blink to indicate special flight conditions under which the
+autopilot is not fully functional.
+
+\paragraph{Autothrottle (\cockpitref{fig:front-panel}{item:autothrottle-lights})}
+The orange A/T (AFK) light indicates that autothrottle is active.
+The pushbutton/light 15,5\textdegree{} is used to select the high-alpha landing mode
+(requires landing gear down).
+
+\paragraph{Transonic / Low Speed Reverse(\cockpitref{fig:front-panel}{item:transonic})}
+Yellow light, indicates that the aircraft is in the transonic regime.
+
+On the ground, it instead lights up when the reverser is active at low airspeed,
+indicating a risk of hot air ingestion and engine fire.
+A low throttle setting (EPR<1.4) should be maintained in this case.
+
+% Not implemented
+%\paragraph{Weapon Released (\cockpitref{fig:front-panel}{item:release})}
+%\paragraph{Fast Reset}
+
 
 %\chapter{Systems}
 % TODO: https://github.com/NikolaiVChr/flightgear-saab-ja-37-viggen/issues/120
