@@ -281,12 +281,11 @@ Using the latest stable FlightGear version is generally recommended.
 \end{figure}
 
 
-
-\chapter{Instrumentation and Indicators}
 % Reference to the 'Cockpit Overview' chapter figures.
 % Two arguments: figure reference and item reference in the figure.
 \newcommand{\cockpitref}[2]{\hyperref[#2]{fig~\ref*{#1}:\ref*{#2}}}
 
+\chapter{Instrumentation and Indicators}
 \section{Flight Instruments}
 \paragraph{Altitude Indicator (\cockpitref{fig:front-panel}{item:altimeter})}
 The long pointer is graduated in 100m, the short one in 1000m.
@@ -378,7 +377,7 @@ It is fully mechanical.
 
 \paragraph{Backup Heading Indicator (\cockpitref{fig:front-panel}{item:heading-bck})}
 The backup heading pointer indicates aircraft heading on a fixed scale.
-The backup heading indicator requires AC power. A red-white flag indicates power failure.
+The backup heading indicator requires AC power.
 }
 \JAonly{
 \paragraph{Backup Heading Indicator (\cockpitref{fig:front-panel}{item:heading-bck-but})}
@@ -390,9 +389,10 @@ When the button light is lit, backup heading is displayed.
 The backup gyrocompass requires AC power.
 }
 
-\paragraph{Backup Attitude Indicator (\cockpitref{fig:front-panel}{item:altimeter-bck})}
+\paragraph{Backup Attitude Indicator (\cockpitref{fig:front-panel}{item:attitude-bck})}
 The backup horizon indicates pitch and roll angles.
 The display is mechanical, but the gyro uses AC power.
+A red-white flag indicates power failure.
 The instrument will continue to function with reasonable accuracy for a few minutes after loss of AC power.
 
 \section{Engine Instruments}
