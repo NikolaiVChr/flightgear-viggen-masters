@@ -524,6 +524,8 @@ The main mode selector knob \cockpitref{fig:left-panel}{item:main-mode}
 is located on the radar panel, next to the throttle.
 It selects an aircraft main operation mode, corresponding to different phases of a flight.
 The knob can be rotated with the keybindings \keys{M} / \keys{\shift-M}.
+
+\subsection{Main Modes}
 \begin{description}
   \item[FK/TST] Built-in test. Not implemented (does the same as BER/PRE).
   \item[BER/PRE] Standby mode. Used during start-up and taxi.
@@ -531,10 +533,36 @@ The knob can be rotated with the keybindings \keys{M} / \keys{\shift-M}.
   \item[NAV] Navigation mode. Used during most of the flight, including takeoff.
   \item[ANF/CBT] Combat mode. Allows using weapons. See \cref{chap:weapon-operation}.
   \item[SPA/REC] Reconnaissance mode. Not implemented (does the same as NAV, minus the takeoff submode).
-  \item[LANDING NAV] Instruments landing mode.
-    Used for landing with ILS (requires the destination airport to be set in route manager).
+  \item[LANDING NAV] Instruments landing mode. Requires the destination airport to be set in the route manager.
+    It enables inertia navigation guidance for the approach, and ILS guidance for the final.
   \item[LANDING P/O] Visual landing mode.
 \end{description}
+
+\subsection{Example of Use}
+A typical flight may use the following modes.
+Initially, the mode is BER/PRE.
+Shortly before takeoff (e.g.\ when entering the runway), the mode is switched to NAV.
+In order to use weapons, the mode is switched to ANF/CBT,
+then back to NAV when resuming normal flight.
+
+In general, LANDING mode is selected up to 20km away from the destination.
+LANDING NAV mode will give indications to follow a full approach pattern,
+and enables ILS guidance for final, if available.
+LANDING P/O simply gives a target glide slope indicator on the HUD, to help with visual landing.
+One can also begin the approach in LANDING NAV mode,
+and later switch to LANDING P/O to finish the approach visually.
+
+\subsection{Alternative Landing Approaches}
+For the LANDING NAV mode, the approach pattern can be changed 
+by the following operations (called `flip-flop').
+\begin{itemize}
+  \item Switching to LANDING P/O, then back to LANDING NAV select the short approach mode,
+    with a 10km final instead of a 20km final.
+  \item Switching to NAV, then back to LANDING NAV resets the landing mode.
+    A new approach pattern starts, with a long (20km) final.
+    (any non-landing mode can be used instead of NAV).
+\end{itemize}
+
 }
 
 
@@ -618,12 +646,14 @@ A summary of the key bindings can also be found in \menu{Help>Aircraft Help}.
 \JAonly{
   \item[\keys{H}] Toggle master arm.
 }
-  \item[\keys{E}] Fire weapon.
   \item[\keys{C}] Cycle weapons.
+  \item[\keys{U}] \ifbool{AJS}{Select IR missile}{Select cannon}
 \AJSonly{
-  \item[\keys{\shift+E}] Uncage IR missile seeker (requires lock).
+  \item[\keys{\shift+U}] Uncage IR missile seeker (requires lock).
     Held: cage/reset IR missile seeker.
 }
+  \item[\keys{\shift+E}] Toggle trigger safety.
+  \item[\keys{E}] Fire weapon.
   \item[\keys{Q}] Release flare/chaff.
 \end{description}
 
