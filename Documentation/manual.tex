@@ -201,7 +201,7 @@ Using the latest stable FlightGear version is generally recommended.
       \item Radio control panel (not implemented)
       \item Canopy jettison button
       \item Radar control panel (not implemented)
-    \AJSonly{\item Main mode selector knob}
+    \AJSonly{\item \label{item:main-mode} Main mode selector knob}
       \item Engine start switch
       \item Generator switch
       \item Master power switch
@@ -514,10 +514,34 @@ A low throttle setting (EPR<1.4) should be maintained in this case.
 
 % Not implemented
 %\paragraph{Weapon Released (\cockpitref{fig:front-panel}{item:release})}
-%\paragraph{Fast Reset}
+%\paragraph{Fast Reset (\cockpitref{fig:front-panel}{item:fast-reset})}}
 
+
+\ifAJS{
+\chapter{Control Panels}
+\section{Main Mode Selector}
+The main mode selector knob \cockpitref{fig:left-panel}{item:main-mode}
+is located on the radar panel, next to the throttle.
+It selects an aircraft main operation mode, corresponding to different phases of a flight.
+The knob can be rotated with the keybindings \keys{M} / \keys{\shift-M}.
+\begin{description}
+  \item[FK/TST] Built-in test. Not implemented (does the same as BER/PRE).
+  \item[BER/PRE] Standby mode. Used during start-up and taxi.
+    The displays (HUD and CI) are turned off in this mode.
+  \item[NAV] Navigation mode. Used during most of the flight, including takeoff.
+  \item[ANF/CBT] Combat mode. Allows using weapons. See \cref{chap:weapon-operation}.
+  \item[SPA/REC] Reconnaissance mode. Not implemented (does the same as NAV, minus the takeoff submode).
+  \item[LANDING NAV] Instruments landing mode.
+    Used for landing with ILS (requires the destination airport to be set in route manager).
+  \item[LANDING P/O] Visual landing mode.
+\end{description}
+}
+
+
+%\chapter{Displays}
 
 %\chapter{Systems}
+
 % TODO: https://github.com/NikolaiVChr/flightgear-saab-ja-37-viggen/issues/120
 %\section{Course Correction for Magnetic Deviation}
 %Like in the real Viggen there are two ways to set the course correction, which makes sure that the instruments show true North instead of magnetic North (e.g. in north Norway the deviation is larger than 12\degree):
