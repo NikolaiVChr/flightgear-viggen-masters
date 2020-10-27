@@ -30,6 +30,7 @@
 \usepackage{multicol}
 \usepackage{enumitem}
 \usepackage{cleveref}
+\usepackage{alltt}
 
 \pagestyle{headings}
 
@@ -523,7 +524,7 @@ A low throttle setting (EPR<1.4) should be maintained in this case.
 The main mode selector knob \cockpitref{fig:left-panel}{item:main-mode}
 is located on the radar panel, next to the throttle.
 It selects an aircraft main operation mode, corresponding to different phases of a flight.
-The knob can be rotated with the keybindings \keys{M} / \keys{\shift-M}.
+The knob can be rotated with the keybindings \keys{M} / \keys{\shift+M}.
 
 \subsection{Main Modes}
 \begin{description}
@@ -531,7 +532,7 @@ The knob can be rotated with the keybindings \keys{M} / \keys{\shift-M}.
   \item[BER/PRE] Standby mode. Used during start-up and taxi.
     The displays (HUD and CI) are turned off in this mode.
   \item[NAV] Navigation mode. Used during most of the flight, including takeoff.
-  \item[ANF/CBT] Combat mode. Allows using weapons. See \cref{chap:weapon-operation}.
+  \item[ANF/CBT] Combat mode. Allows using weapons. See \cref{chap:weapons}.
   \item[SPA/REC] Reconnaissance mode. Not implemented (does the same as NAV, minus the takeoff submode).
   \item[LANDING NAV] Instruments landing mode. Requires the destination airport to be set in the route manager.
     It enables inertia navigation guidance for the approach, and ILS guidance for the final.
@@ -734,96 +735,132 @@ The dialog \menu{\ifbool{AJS}{AJS-37}{JA-37Di}>Options} contains the following c
 
 
 \chapter{Standard Procedures}
-\chapter{Emergency Procedures}
-\chapter{Miscellaneous Notes}
-\section{JA 37Di Related}
-Be mindful of failure messages in the TI display FAIL menu, if a gear locking mechanism fails due to being deployed at too high speed, that gear will not be able to support the weight of the aircraft till you repair it from the menu.
+To come! Please check FlightGear built-in checklists
+\menu{Help>Aircraft Checklists} in the meantime.
 
-\chapter{Ground and Naval Attack}
-\AJSonly{
-\section{Rb 05A missile}
-\label{Rb05A}
-\begin{figure}[h]
-\centering
- \includegraphics[width=15cm]{images/rb_05a_load_with_akan.png}
- \caption{AJS 37 with 2 Rb 05A on the inner pylons}
-\end{figure}
+%\chapter{Emergency Procedures}
 
-The Rb 05A was a jam-proof, radio guided super-sonic missile developed in Sweden with similar characteristics as the AGM-65 Maverick. While an optical/IR guidance system was planned, it never got realised because the Maverick was adapted as the Rb 75 instead. The missile was constructed for use against ground and naval targets, but later it was discovered that it could also be used against slow-manoeuvring air targets. 
-
-As the missile was guided visually by the pilot, a smoke free propellant was used and there was a flare in the back. During the first 1.7 seconds of the missile's flight, it was auto guided to fly into the pilot's visual field in front of the aircraft's nose.
-
-\begin{figure}[h]
-\centering
- \includegraphics[width=10cm]{images/rb_05a_start_popup.png}
- \caption{The Rb 05A is guided automatically into the pilot's view just after the launch.}
-\end{figure}
-
-To manually guide the missile in the real Viggen, a mini-joystick on the right console was used with the right hand. Therefore, one of the following was used to free the right hand from the stick:
-\begin{itemize}
- \item Take the stick with the left hand and fly the airplane. Reference: [AJS\_2, ch. II, p. 86]
- \item If missile guidance is done during the aircraft flying horizontal, then use autopilot for altitude. If it is done during a light dive, use autopilot for attitude. Reference: [AJS\_3, sec. 7, ch. 5, p. 210]
-\end{itemize}
-
-On page 25 in issue 4/1972 of the Swedish magazine \href{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/Flygvapennytt_1972-4.pdf}{FlygvapenNytt} there is a good description of the capabilities and evolution of the weapon.
-
-Operations (reference: [AJS\_3, sec. 7, ch. 5, p. 210] for description, [AJS\_2, ch. II, p. 86] for procedure):
+\chapter{Weapons Operation}
+\label{chap:weapons}
+\section{Generalities}
+The generic weapon employment procedure is the following.
 \begin{enumerate}
- \item Fly fast and low, navigate to the pre-programmed pop-up point in \emph{NAV} mode.
- \item Before reaching the pop-up point:
- \begin{itemize}
-  \item Correct the atmospheric pressure.
-  \item Choose mode \emph{ANF}.
-  \item Set the \emph{J/A} weapons knob to Rb 05A with the correct fuse (MARK for ground, SJÖ for naval). Not yet modelled correctly in FlightGear: instead choose the Rb 05A by pressing \keys{w} until displayed on the HUD.
-  \item Check that the autopilot is on \emph{SPAK} only.
- \end{itemize}
- \item A fast pop-up is done to 300--400 metres above ground at the pre-programmed pop-up point --- either with pitch only or in a half roll.
- \item Identify the target and fly level or slightly downwards. The nose does not have to point to the target. 
- \item Consider engaging the \emph{ATT} or \emph{ALT} autopilot mode.
- \item Fire within 9 km of the target at a speed between 700 km/h and 1150 km/h.
- \item Guide the missile visually using the collimation principle --- to begin with roughly and then more and more accurate until the missile' flare covers the target.
- \item When the missile has hit the target, evade as quickly as possible and choose \emph{NAV} mode.
+  \ifbool{AJS}{
+  \item Main mode selector to ANF/CBT.
+    (\cockpitref{fig:left-panel}{item:main-mode}, shortcuts \keys{M}/\keys{\shift+M}).
+  }{
+  \item Master arm on (shortcut \keys{H}).
+  }
+    Combat mode will only be enabled in the air with gear up and locked.
+    In combat mode, the HUD presentation changes slightly.
+    Weapon type is indicated in the lower left, ammunition in the lower right.
+  \item Select the weapon type with \keys{C}, or \keys{U} to select
+    \ifbool{AJS}{IR missiles}{the cannon}.
+  \item Unsafe the trigger with \keys{\shift+E}.
+    This arms the selected weapon.
+
+    For gun, rockets, and bombs, the aim (or CCIP) indicator appears on the HUD.
+    Missiles will start looking for a target.
+
+    Trigger unsafing is normally done once the target is in sight or on radar,
+    and the choice to engage it has been made.
+  \item For missiles, ensure that the missile has locked onto the target.
+  \item Fire the weapon with \keys{E}.
+  \item Secure the trigger with \keys{\shift+E}.
 \end{enumerate}
 
-\begin{figure}[h]
-\centering
- \includegraphics[width=10cm]{images/rb_05a_before_impact_ship.png}
- \caption[Flare at back of missile for guidance]{The flare at the back of the missile is used for visual guidance. Here it can be seen just moments before hitting the ship --- clearly off the bore sight and flight path of the aircraft.}
+\subsection{Trigger Safety Usage}
+The trigger safety role is not merely to prevent unintentional fire.
+It is an import part of the fire control system:
+as a general rule, the trigger safety arms the selected weapon.
+As a consequence, improper use of trigger safety will prevent weapon usage.
+Below are some errors and caveats to look out for.
+\begin{itemize}
+  \item Unsafing the trigger arms the selected weapon.
+    Thus it must be done \emph{after} entering combat mode and selecting the desired weapon.
+  \item If a new weapon is selected while the trigger is unsafe,
+    the new weapon will not be armed (until the trigger is safed and unsafed again).
+
+    Similarly, if the trigger is kept unsafe while exiting combat mode,
+    upon re-entering combat mode, the weapon will not be armed.
+  \item After firing a missile, the next missile is only selected upon securing the trigger.
+    It is not possible to fire several missiles in succession without securing the trigger in-between.
+\end{itemize}
+
+\AJSonly{
+\section{Rb 05A}
+The Rb 05A is a remote-controlled missile.
+It is primarily intended for use against ground and naval targets,
+but can also be used against slow-manoeuvring air targets thanks to a proximity fuse.
+The missile is guided visually by the pilot.
+A flare at the back of the missile helps the pilot to keep sight of it (\cref{fig:rb05-flare}).
+
+\begin{figure}
+  \centering
+  \includegraphics[height=0.3\textwidth]{images/rb_05a_start_popup.png}
+  \includegraphics[height=0.3\textwidth]{images/rb_05a_before_impact_ship.png}
+  \caption[Rb 05A flare for visual guidance]{Rb 05A flare for visual guidance.
+    On the left, the missile is entering the pilot's field of view just after launch.
+    On the right, the missile is about to hit the target ship,
+    and the missile flare is visible over the ship
+  }
+  \label{fig:rb05-flare}
 \end{figure}
 
-Operations in FlightGear:
+\subsection{Controls}
+In flightgear, there are two options to control the Rb 05A
+(note: these controls are the same as for the JA 37 radar cursor).
 \begin{itemize}
- \item There is no need to lock the target. There is no functionality to set the trigger to unsafe\footnote{In the real Viggen a battery would be activated and the missile would have to be shot within 40 seconds or it would get unusable.}. And there is no specific HUD mode (as in the real Viggen).
+  \item Bind the controls to a joystick axis \menu{File>Joystick Configuration}.
+    The controls are named \menu{Cursor Horizontal} and \menu{Cursor Vertical}.
 
- \item Fire with the trigger.
- \item Guide the missile by using one of the following methods:
- \begin{itemize}
-  \item Use the keybinding \keys{y} to toggle the joystick to be a cursor and then use the usual axis to guide the missile. Note: needs to be done after the trigger has been pressed. To be able to use the joystick for the flight controls again, you need to press \keys{y} again. If the ground collision warning is triggered, then the joystick is automatically set back to control the aircraft again, but you will have lost guidance on the missile.
-  \item Bind the following to axis of your joystick or throttle: \textbf{\texttt{/controls/displays/cursor-slew-x}} and \textbf{\texttt{/controls/displays/cursor-slew-y}}. This makes it possible to have different sensitivity from the joystick. Note that it is the same binding as e.g. used in the JA 37Di variant --- but the AJS does not have a screen with a cursor (and the JA 37Di does not have the Rb 05A).
- \end{itemize}
+    Alternatively, manually edit the joystick configuration files to bind the properties
+    \begin{alltt}
+      /controls/displays/cursor-slew-x
 
+      /controls/displays/cursor-slew-y
+    \end{alltt}
+
+  \item Press \keys{Y} to use the main flight controls
+    (joystick, mouse, arrow keys, whatever you use to control the aircraft)
+    to instead control the Rb 05A.
+    Normal flight controls are restored by pressing \keys{Y} again.
+    A ground collision warning will also immediately restore normal flight controls.
+
+    It is recommended to enable autopilot before doing so.
 \end{itemize}
 
-Tips:
+\subsection{Procedure}
+\begin{enumerate}
+  \item Main mode selector to ANF/CBT.
+    (\cockpitref{fig:left-panel}{item:main-mode}, shortcuts \keys{M}/\keys{\shift+M}).
+  \item Select the Rb 05A (cycle weapons with \keys{C}).
+  \item Once in firing position, consider engaging autopilot in ATT or HÖJD/ALT mode to reduce pilot workload.
+  \item Identify the target visually.
+  \item Unsafe the trigger and fire within 9km of the target.
+  \item After 1.7s, missile controls are enabled.
+    At this point, it should be well within the pilot field of view.
+  \item When the missile hits, take evasive manoeuvres, secure the trigger, and switch to NAV mode.
+\end{enumerate}
+
+Remarks.
 \begin{itemize}
- \item Make sure to fly within the recommended speed of 700 km/h--1150 km/h. You might loose sight of the light at the back of the missile and would probably not be able to see the target anyway.
- \item The missile flies for ca. 24 seconds. The max. distance of 9 km can only be reached if the flight path is relatively straight and the aircraft's speed at launch is within the recommended parameters. Therefore, the missile might explode after 24 seconds before it reaches the target, e.g. if the steering commands by the pilot make it swing a lot and thereby loose speed. See also [AJ\_2, ch. 1:6, figure 51, p. 64].
- \item Make sure to fly either straight horizontal or in a light dive. If you have your nose up, you might loose track of the missile and/or target. Note that one of the advantages of this missile is that it can be guided considerable off bore sight.
- \item Especially for large objects (factory) make sure to aim in the middle of the object and on ground level. The proximity fuse might otherwise not recognise it.
- \item Turn off the radar \keys{r} to reduce clutter in the HUD by target symbols.
+  \item Recommended speed is 700-1150 km/h.
+  \item Recommended attitude is a level flight or slight dive,
+    so as to not loose sight of the target and the missile.
+  \item Recommended altitude is 300-400 meters above ground.
+  \item The target do not need to be directly in front of the aircraft
+    as the missile can be guided considerably to the side.
+    However, doing so makes it harder to aim the missile, and reduces effective range.
+  \item The missile flies for ca.\ 24 seconds, giving it a maximum effective range of ca.\ 9 km.
+  \item It is easiest to aim the missile using the collimation principle:
+    try to keep the missile flare covering the target at all time.
 \end{itemize}
-
 }
 
-\chapter{Air to Air}
-\AJSonly{
-\section{Rb 05A missile}
-The Rb 05A could also be used against slow flying air targets like helicopters or transport planes. See section \ref{Rb05A} on page \pageref{Rb05A} for a description. The difference to ground/naval attack is that the distance had to be measured with the radar.
+\end{document}
 
-}
-
-\section{Cannon}
-\url{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/Flygvapennytt_1993-2.pdf} has an article and 2 pictures about the automatic aiming mode for the cannon in the JA version (in Swedish).
+%\url{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/Flygvapennytt_1993-2.pdf} has an article and 2 pictures about the automatic aiming mode for the cannon in the JA version (in Swedish).
 
 \appendix
 
@@ -920,4 +957,3 @@ Title & Length & Subtitles & Year & Comments \\
 % \href{https://www.youtube.com/watch?v=Z_EnkvE6LZA}{Fredens Hav}
 \end{landscape}
 
-\end{document}
