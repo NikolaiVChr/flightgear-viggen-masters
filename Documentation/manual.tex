@@ -518,7 +518,7 @@ A low throttle setting (EPR<1.4) should be maintained in this case.
 %\paragraph{Fast Reset (\cockpitref{fig:front-panel}{item:fast-reset})}}
 
 
-\ifAJS{
+\AJSonly{
 \chapter{Control Panels}
 \section{Main Mode Selector}
 The main mode selector knob \cockpitref{fig:left-panel}{item:main-mode}
@@ -563,7 +563,6 @@ by the following operations (called `flip-flop').
     A new approach pattern starts, with a long (20km) final.
     (any non-landing mode can be used instead of NAV).
 \end{itemize}
-
 }
 
 
@@ -634,7 +633,7 @@ A summary of the key bindings can also be found in \menu{Help>Aircraft Help}.
 \paragraph{Radar Controls}
 \begin{description}
   \item[\keys{R}] Toggle radar.
-  \item[\keys{Y}] Use flight controls to controls radar cursor.
+  \item[\keys{Y}] Use flight controls to controls radar cursor (cf.\ \cref{sec:cursor})
   \item[\keys{[} / \keys{]}] Decrease/increase radar range (positions: 15km, 30km, 60km, 120km).
   \item[\keys{N}] Select next radar track.
   \item[\keys{\shift+N}] Select center-most radar track.
@@ -657,6 +656,35 @@ A summary of the key bindings can also be found in \menu{Help>Aircraft Help}.
   \item[\keys{E}] Fire weapon.
   \item[\keys{Q}] Release flare/chaff.
 \end{description}
+
+\subsection{Radar Stick Controls}
+\label{sec:cursor}
+The radar stick is used to control the cursor on the \ifbool{AJS}{CI}{MI and TI}.
+There are three ways to control it:
+\begin{itemize}
+  \item Enable the option \menu{\ifbool{AJS}{AJS-37}{JA-37Di}>Options>Arrow keys control radar cursor}
+    and use the arrow keys.
+  \item Add joystick bindings to control the cursor.
+    This can be done under \menu{File>Joystick Configuration},
+    the controls are named \menu{Cursor Horizontal}, \menu{Cursor Vertical}, and \menu{Cursor Click}.
+    Alternatively, manually edit joystick configuration files to bind the properties
+    \begin{alltt}
+/controls/displays/cursor-slew-x
+/controls/displays/cursor-slew-y
+/controls/display/cursor-click
+    \end{alltt}
+  \item Press \keys{Y} to use the main flight controls
+    (joystick, mouse, arrow keys, whatever you use to control the aircraft)
+    to instead control the cursor.
+    In this mode, elevator and aileron controls are used to move the cursor,
+    and the trigger \keys{E} is used to click.
+    Normal flight controls are restored by pressing \keys{Y} again.
+    A ground collision warning will also immediately restore normal flight controls.
+
+    Consider using autopilot when controlling the cursor in this way.
+\end{itemize}
+
+\AJSonly{The same controls are also used for the Rb 05A remote controlled missile.}
 
 \section{\variant{} Menu}
 The menu \menu{\ifbool{AJS}{AJS-37}{JA-37Di}} contains Viggen-specific dialogs and menus.
@@ -723,6 +751,10 @@ The dialog \menu{\ifbool{AJS}{AJS-37}{JA-37Di}>Options} contains the following c
     Purely visual. Only available when using the Atmospheric Light Scattering (ALS) FlightGear renderer.
   \item[\menu{Rust in cockpit}]
     Purely visual. Only available when using the Atmospheric Light Scattering (ALS) FlightGear renderer.
+  \item[\menu{Arrow keys control radar cursor}]
+    When enabled, the arrow keys will control the radar stick to move the cursor on the different displays.
+    When disabled, the arrow keys are used for flight controls (FlightGear default behaviour).
+    Cf.\ \cref{sec:cursor} for more details regarding cursor controls.
   \item[\menu{Enable multiplayer damage}]
     Allows to deal and receive damage from other compatible aircrafts
     (other Viggens, F-14, F-15, F-16, M-2000, MiG-21, etc.) in multiplayer.
@@ -807,28 +839,9 @@ A flare at the back of the missile helps the pilot to keep sight of it (\cref{fi
   \label{fig:rb05-flare}
 \end{figure}
 
-\subsection{Controls}
-In flightgear, there are two options to control the Rb 05A
-(note: these controls are the same as for the JA 37 radar cursor).
-\begin{itemize}
-  \item Bind the controls to a joystick axis \menu{File>Joystick Configuration}.
-    The controls are named \menu{Cursor Horizontal} and \menu{Cursor Vertical}.
-
-    Alternatively, manually edit the joystick configuration files to bind the properties
-    \begin{alltt}
-      /controls/displays/cursor-slew-x
-
-      /controls/displays/cursor-slew-y
-    \end{alltt}
-
-  \item Press \keys{Y} to use the main flight controls
-    (joystick, mouse, arrow keys, whatever you use to control the aircraft)
-    to instead control the Rb 05A.
-    Normal flight controls are restored by pressing \keys{Y} again.
-    A ground collision warning will also immediately restore normal flight controls.
-
-    It is recommended to enable autopilot before doing so.
-\end{itemize}
+In FlightGear, the Rb 05A uses the same controls as the radar stick, cf.\ \cref{sec:cursor}.\footnote{%
+  In the real Viggen, a separate control stick on the right console was used.
+}
 
 \subsection{Procedure}
 \begin{enumerate}
@@ -838,7 +851,8 @@ In flightgear, there are two options to control the Rb 05A
   \item Once in firing position, consider engaging autopilot in ATT or HÖJD/ALT mode to reduce pilot workload.
   \item Identify the target visually.
   \item Unsafe the trigger and fire within 9km of the target.
-  \item After 1.7s, missile controls are enabled.
+  \item After 1.7s, missile controls are enabled
+    (cf.\ \cref{sec:cursor} for control methods).
     At this point, it should be well within the pilot field of view.
   \item When the missile hits, take evasive manoeuvres, secure the trigger, and switch to NAV mode.
 \end{enumerate}
@@ -857,7 +871,6 @@ Remarks.
     try to keep the missile flare covering the target at all time.
 \end{itemize}
 }
-
 \end{document}
 
 %\url{https://www.aef.se/Flygvapnet/Tidskrifter/FV_Nytt/Flygvapennytt_1993-2.pdf} has an article and 2 pictures about the automatic aiming mode for the cannon in the JA version (in Swedish).
