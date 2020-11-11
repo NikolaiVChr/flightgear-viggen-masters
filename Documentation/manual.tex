@@ -31,6 +31,7 @@
 \usepackage{enumitem}
 \usepackage{cleveref}
 \usepackage{alltt}
+\usepackage{wrapfig}
 
 \pagestyle{headings}
 
@@ -289,99 +290,149 @@ Using the latest stable FlightGear version is generally recommended.
 \newcommand{\cockpitref}[2]{\hyperref[#2]{fig~\labelcref*{#1}:\labelcref*{#2}}}
 
 \chapter{Instrumentation and Indicators}
-\section{Flight Instruments}
-\paragraph{Altitude Indicator (\cockpitref{fig:front-panel}{item:altimeter})}
-The long pointer is graduated in 100m, the short one in 1000m.
-The indicator can only display altitudes in the range 0--10km, after which it will cycle back to 0.
 
-The knob is used to set reference pressure, which is displayed in hPa on a digital counter.
-Pulling the knob (click the center of the knob)
-sets the altimeter to the standard reference pressure 1013hPa.
-The pressure counter is covered with the text `STD' in this case.
-
-The altimeter requires AC power. A red-white flag indicates power failure.
-
-\paragraph{Airspeed/Mach Indicator (\cockpitref{fig:front-panel}{item:airspeed})}
-The airspeed indicator is graduated in km/h on a pseudo-logarithmic scale,
-up to \ifbool{AJS}{1400}{1500}km/h.
-The airspeed indicator is fully mechanical.
-
-The digital Mach indicator has a range of M 0--2.5. It is partially covered at M <0.4.
-The Mach indicator requires AC power.
-A red-white flag indicates power failure of the Mach indicator (but not of the airspeed indicator).
-
-\AJSonly{
-  The knob controls an index on the airspeed scale, with no functionality.
+\newcommand{\sidepicture}[2]{%
+  \noindent
+  \begin{minipage}[t]{0.7\textwidth}
+    \vspace{0pt}
+    \setlength{\parindent}{1em}
+    #1
+  \end{minipage}
+  \hspace{0.1\textwidth}
+  \begin{minipage}[t]{0.2\textwidth}
+    \vspace{0pt}
+    \centering
+    #2
+  \end{minipage}
 }
+
+
+\section{Flight Instruments}
+\sidepicture{
+  \paragraph{Altitude Indicator (\cockpitref{fig:front-panel}{item:altimeter})}
+  The long pointer is graduated in 100m, the short one in 1000m.
+  The indicator can only display altitudes in the range 0--10km, after which it will cycle back to 0.
+
+  The knob is used to set reference pressure, which is displayed in hPa on a digital counter.
+  Pulling the knob (click the center of the knob)
+  sets the altimeter to the standard reference pressure 1013hPa.
+  The pressure counter is covered with the text `STD' in this case.
+
+  The altimeter requires AC power. A red-white flag indicates power failure.
+}{\includegraphics[width=\textwidth]{images/instruments/altimeter}}
+
+\sidepicture{
+  \paragraph{Airspeed/Mach Indicator (\cockpitref{fig:front-panel}{item:airspeed})}
+  The airspeed indicator is graduated in km/h on a pseudo-logarithmic scale,
+  up to \ifbool{AJS}{1400}{1500}km/h.
+  The airspeed indicator is fully mechanical.
+
+  The digital Mach indicator has a range of M 0--2.5. It is partially covered at M <0.4.
+  The Mach indicator requires AC power.
+  A red-white flag indicates power failure of the Mach indicator (but not of the airspeed indicator).
+
+  \AJSonly{
+    The knob controls an index on the airspeed scale, with no functionality.
+  }
+}{\includegraphics[width=\textwidth]{images/instruments/airspeed}}
+
 
 \ifbool{AJS}{
-\paragraph{Heading Indicator (\cockpitref{fig:front-panel}{item:CI})}
-The heading indicator forms a ring around the radar display (CI).
-The heading scale ring itself rotates, and is read against a fixed index.
-A second yellow moving index indicates bearing to the next waypoint.
-The heading indicator requires AC power. A red-white flag indicates power failure.
-}{
-\paragraph{Heading Indicator (\cockpitref{fig:front-panel}{item:heading})}
-The heading scale itself rotates to indicate aircraft heading, read against a fixed index.
-The thin pointer indicates commanded heading, or bearing to the destination.
-The wide pointer indicates track angle to the target, or runway direction (at landing).
-The heading indicator requires AC power. A red-white flag indicates power failure.
+\sidepicture{
+  \paragraph{Heading Indicator (\cockpitref{fig:front-panel}{item:CI})}
+  The heading indicator forms a ring around the radar display (CI).
+  The heading scale ring itself rotates, and is read against a fixed index.
+  A second yellow moving index indicates bearing to the next waypoint.
+  The heading indicator requires AC power. A red-white flag indicates power failure.
 
-The heading indicator can also display the output of the backup gyrocompass, cf.~\cref{par:backup-heading}.
+
+}{\includegraphics[width=\textwidth]{images/instruments/heading-AJS}}
+}{
+\sidepicture{
+  \paragraph{Heading Indicator (\cockpitref{fig:front-panel}{item:heading})}
+  The heading scale itself rotates to indicate aircraft heading, read against a fixed index.
+  The thin pointer indicates commanded heading, or bearing to the destination.
+  The wide pointer indicates track angle to the target, or runway direction (at landing).
+  The heading indicator requires AC power. A red-white flag indicates power failure.
+
+  The heading indicator can also display the output of the backup gyrocompass, cf.~\cref{par:backup-heading}.
+}{\includegraphics[width=\textwidth]{images/instruments/heading-JA}}
 }
 
-\paragraph{Attitude/Director Indicator (\cockpitref{fig:front-panel}{item:adi})}
-The ADI consists of a sphere which rotates in 3 axes, indicating pitch, roll, and course.
-The two flight director needles (horizontal and vertical) show ILS deviation for landing.
-The ADI requires AC power. A red flag indicates power failure.
+\sidepicture{
+  \paragraph{Attitude/Director Indicator (\cockpitref{fig:front-panel}{item:adi})}
+  The ADI consists of a sphere which rotates in 3 axes, indicating pitch, roll, and course.
+  The two flight director needles (horizontal and vertical) show ILS deviation for landing.
+  The ADI requires AC power. A red flag indicates power failure.
+}{\includegraphics[width=\textwidth]{images/instruments/adi}}
 
-\paragraph{Angle-of-Attack Indicator (\cockpitref{fig:front-panel}{item:aoa})}
-The AoA indicator is graduated in degrees, from -4\textdegree{} to 30\textdegree{}.
-When on the ground, the indicator displays pitch angle instead of AoA.
-The AoA indicator requires DC power.
-In case of power failure, the pointer returns to the -4\textdegree{} position.
+\sidepicture{
+  \paragraph{Angle-of-Attack Indicator (\cockpitref{fig:front-panel}{item:aoa})}
+  The AoA indicator is graduated in degrees, from -4\textdegree{} to 30\textdegree{}.
+  When on the ground, the indicator displays pitch angle instead of AoA.
+  The AoA indicator requires DC power.
+  In case of power failure, the pointer returns to the -4\textdegree{} position.
+}{\includegraphics[width=0.8\textwidth]{images/instruments/alpha}}
 
-\paragraph{Accelerometer (\cockpitref{fig:front-panel}{item:gmeter})}
-The accelerometer shows G-load (acceleration along the vertical axis), between -2g and +9g.
-A second pointer shows the maximum (positive) acceleration reached.
-The button resets the maximum acceleration pointer.
-The accelerometer is fully mechanical.
+\sidepicture{
+  \paragraph{Accelerometer (\cockpitref{fig:front-panel}{item:gmeter})}
+  The accelerometer shows G-load (acceleration along the vertical axis), between -2g and +9g.
+  A second pointer shows the maximum (positive) acceleration reached.
+  The button resets the maximum acceleration pointer.
+  The accelerometer is fully mechanical.
+}{\includegraphics[width=0.7\textwidth]{images/instruments/accelerometer}}
+
 
 \AJSonly{
-\paragraph{Clock (\cockpitref{fig:front-panel}{item:clock})}
-The clock has two scales: the inner one indicates time, and the outer one is used for the stopwatch.
-The lower-left knob is used to adjust time.
-The top-right button controls the stopwatch.
-The first push starts the stopwatch, the second push stops it, and the third push resets it.
+\sidepicture{
+  \paragraph{Clock (\cockpitref{fig:front-panel}{item:clock})}
+  The clock has two scales. The inner scale and the white pointers indicates time.
+  The outer scale and the yellow pointers are used for the stopwatch.
+  The lower-left knob is used to adjust time.
+  The top-right button controls the stopwatch.
+  The first push starts the stopwatch, the second push stops it, and the third push resets it.
+}{\includegraphics[width=0.7\textwidth]{images/instruments/clock}}
 
-\paragraph{Waypoint Distance Indicator (\cockpitref{fig:front-panel}{item:wpdist})}
-Indicates the distance to the next waypoint.
-At distances <40km, the scale is graduated in km.
-At distances >40km, the scale is graduated in Nordic miles (1mil = 10km), and indicates distances up to 400km.
-A small screen indicates the unit in use, as either `km' or `mil'.
+\sidepicture{
+  \paragraph{Waypoint Distance Indicator (\cockpitref{fig:front-panel}{item:wpdist})}
+  Indicates the distance to the next waypoint.
+  At distances <40km, the scale is graduated in km.
+  At distances >40km, the scale is graduated in Nordic miles (1mil = 10km), and indicates distances up to 400km.
+  A small screen indicates the unit in use, as either `km' or `mil'.
+}{\includegraphics[width=0.8\textwidth]{images/instruments/distance}}
 
-\paragraph{Destination Indicator (\cockpitref{fig:front-panel}{item:wpnum})}
-Indicates the type and number of the next waypoint.
-The first character indicates waypoint type: B for regular waypoints, L start and landing bases.
-The second character indicates waypoint number, or S for the starting base.
+\sidepicture{
+  \paragraph{Destination Indicator (\cockpitref{fig:front-panel}{item:wpnum})}
+  Indicates the type and number of the next waypoint.
+  The first character indicates waypoint type: B for regular waypoints,
+  L for departure and landing bases.
+  The second character indicates the waypoint number, or S for the departure base.
+}{\includegraphics[width=0.7\textwidth]{images/instruments/waypoint}}
 }
 
 \section{Backup Instruments}
-\paragraph{Backup Altimeter (\cockpitref{fig:front-panel}{item:altimeter-bck})}
-The long pointer is graduated in 100m, the short one in 1000m.
-The indicator can only display altitudes in the range 0--10km, after which it will cycle back to 0.
-The knob is used to set reference pressure, which is displayed in hPa on a digital counter.
-The backup altimeter is fully mechanical.
+\sidepicture{
+  \paragraph{Backup Altimeter (\cockpitref{fig:front-panel}{item:altimeter-bck})}
+  The long pointer is graduated in 100m, the short one in 1000m.
+  The indicator can only display altitudes in the range 0--10km, after which it will cycle back to 0.
+  The knob is used to set reference pressure, which is displayed in hPa on a digital counter.
+  The backup altimeter is fully mechanical.
+}{\includegraphics[width=0.7\textwidth]{images/instruments/altimeter_backup}}
 
 \AJSonly{
-\paragraph{Backup Airspeed Indicator (\cockpitref{fig:front-panel}{item:airspeed-bck})}
-The backup airspeed indicator is graduated in km/h on a pseudo-logarithmic scale, up to 800km/h.
-It is fully mechanical.
+\sidepicture{
+  \paragraph{Backup Airspeed Indicator (\cockpitref{fig:front-panel}{item:airspeed-bck})}
+  The backup airspeed indicator is graduated in km/h on a pseudo-logarithmic scale, up to 800km/h.
+  It is fully mechanical.
+}{\includegraphics[width=0.7\textwidth]{images/instruments/airspeed_backup}}
 
-\paragraph{Backup Heading Indicator (\cockpitref{fig:front-panel}{item:heading-bck})}
-The backup heading pointer indicates aircraft heading on a fixed scale.
-The backup heading indicator requires AC power.
+\sidepicture{
+  \paragraph{Backup Heading Indicator (\cockpitref{fig:front-panel}{item:heading-bck})}
+  The backup heading pointer indicates aircraft heading on a fixed scale.
+  The backup heading indicator requires AC power.
+}{\includegraphics[width=0.7\textwidth]{images/instruments/heading_backup}}
 }
+
 \JAonly{
 \paragraph{Backup Heading Indicator (\cockpitref{fig:front-panel}{item:heading-bck-but})}
 \label{par:backup-heading}
@@ -392,44 +443,59 @@ When the button light is lit, backup heading is displayed.
 The backup gyrocompass requires AC power.
 }
 
-\paragraph{Backup Attitude Indicator (\cockpitref{fig:front-panel}{item:attitude-bck})}
-The backup horizon indicates pitch and roll angles.
-The display is mechanical, but the gyro uses AC power.
-A red-white flag indicates power failure.
-The instrument will continue to function with reasonable accuracy for a few minutes after loss of AC power.
+\sidepicture{
+  \paragraph{Backup Attitude Indicator (\cockpitref{fig:front-panel}{item:attitude-bck})}
+  The backup horizon indicates pitch and roll angles.
+  The display is mechanical, but the gyro uses AC power.
+  A red-white flag indicates power failure.
+  The instrument will continue to function with reasonable accuracy for a few minutes after loss of AC power.
+}{\includegraphics[width=0.7\textwidth]{images/instruments/adi_backup}}
 
 \section{Engine Instruments}
-\paragraph{RPM Indicator (\cockpitref{fig:front-panel}{item:rpm})}
-The RPM indicator shows high pressure compressor speed (N2), on a scale graduated up to 110\%.
-It requires AC power.
+\sidepicture{
+  \paragraph{RPM Indicator (\cockpitref{fig:front-panel}{item:rpm})}
+  The RPM indicator shows high pressure compressor speed (N2), on a scale graduated up to 110\%.
+  It requires AC power.
+}{\includegraphics[width=0.7\textwidth]{images/instruments/rpm}}
 
-\paragraph{Engine Pressure Ratio Indicator (\cockpitref{fig:front-panel}{item:epr})}
-The EPR indicator shows the pressure ratio between the intake and the outlet of the turbine.
-It requires AC power.
+\sidepicture{
+  \paragraph{Engine Pressure Ratio Indicator (\cockpitref{fig:front-panel}{item:epr})}
+  The EPR indicator shows the pressure ratio between the intake and the outlet of the turbine
+  (before the afterburner stage).
+  It requires AC power.
+}{\includegraphics[width=0.7\textwidth]{images/instruments/epr}}
 
-\paragraph{Exhaust Gas Temperature Indicator (\cockpitref{fig:right-panel}{item:egt})}
-The EGT gauge indicates gas temperature after the turbine
-(before the afterburner) in \textdegree{}C.
-It requires DC power.
+\sidepicture{
+  \paragraph{Exhaust Gas Temperature Indicator (\cockpitref{fig:right-panel}{item:egt})}
+  The EGT gauge indicates gas temperature after the turbine
+  (before the afterburner stage) in \textdegree{}C.
+  It requires DC power.
+}{\includegraphics[width=0.7\textwidth]{images/instruments/egt}}
 
-\paragraph{Nozzle Position Indicator (\cockpitref{fig:right-panel}{item:nozzle})}
-The nozzle indicator shows the position of the engine exhaust nozzle and the current afterburner zone.
-It requires DC power.
+\sidepicture{
+  \paragraph{Nozzle Position Indicator (\cockpitref{fig:right-panel}{item:nozzle})}
+  The nozzle indicator shows the position of the engine exhaust nozzle and the current afterburner zone.
+  It requires DC power.
+}{\includegraphics[width=0.7\textwidth]{images/instruments/nozzle}}
 
-\paragraph{Afterburner Zone Indicator (\cockpitref{fig:front-panel}{item:zone})}
-The afterburner zone lights activate to indicate the afterburner zones (1 to 3)
-commanded by the throttle lever position.
-The lights are commanded purely by the throttle position,
-and not the afterburner zones which are actually lit:
-for instance moving the throttle in the afterburner zone during thrust reverse
-causes the lights to activate, despite afterburner being inhibited during reverse.
+\sidepicture{
+  \paragraph{Afterburner Zone Indicator (\cockpitref{fig:front-panel}{item:zone})}
+  The afterburner zone lights activate to indicate the afterburner zones (1 to 3)
+  commanded by the throttle lever position.
+  The lights are commanded purely by the throttle position,
+  and not the afterburner zones which are actually lit:
+  for instance moving the throttle in the afterburner zone during thrust reverse
+  causes the lights to activate, despite afterburner being inhibited during reverse.
+}{\includegraphics[width=\textwidth]{images/instruments/zone}}
 
-\paragraph{Fuel Gauge (\cockpitref{fig:front-panel}{item:fuel})}
-The fuel gauge indicates fuel quantity as a percentage.
-Under standard conditions, the gauge indicates \ifbool{AJS}{107}{112}\% with full internal tanks,
-and \ifbool{AJS}{132}{136}\% with the external tank in addition.
-A second black-white pointer indicates required fuel quantity (not implemented).
-The fuel gauge requires AC power.
+\sidepicture{
+  \paragraph{Fuel Gauge (\cockpitref{fig:front-panel}{item:fuel})}
+  The fuel gauge indicates fuel quantity as a percentage.
+  Under standard conditions, the gauge indicates \ifbool{AJS}{107}{112}\% with full internal tanks,
+  and \ifbool{AJS}{132}{136}\% with the external tank in addition.
+  A second black-white pointer indicates required fuel quantity (not implemented).
+  The fuel gauge requires AC power.
+}{\includegraphics[width=\textwidth]{images/instruments/fuel}}
 
 \section{Warning Lights Panels}
 \begin{figure}[ht!]
