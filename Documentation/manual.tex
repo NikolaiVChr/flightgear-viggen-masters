@@ -635,6 +635,7 @@ by the following operations (called `flip-flop').
 }
 
 \section{Identification Friend or Foe (IFF)}
+\label{sec:iff}
 IFF is a radar system designed to identify friendly aircrafts\footnotemark{}.
 Each aircraft can set a \emph{query code} for its IFF system,
 and aircrafts with the same query code set will be identified as friendly.
@@ -642,8 +643,9 @@ Thus, allied aircrafts can identify each other by using a shared code,
 agreed upon before a mission.
 In FlightGear, other aircrafts with a compatible IFF system include the F-16 and the MiG-21.
 \footnotetext{%
-  Despite the name, IFF can by no mean distinguish an enemy aircraft from
-  e.g.\ a civilian aircraft, or an aircraft with a non-functioning IFF system.
+  Despite the name, IFF can by no mean identify foes.
+  An enemy aircraft is undistinguishable from e.g.\ a civilian aircraft,
+  or an aircraft with a non-functioning IFF system.
 }
 
 \AJSonly{
@@ -651,12 +653,14 @@ The AJS variant of the Viggen is only equipped with the transponder part of the 
 it can be identified by other aircrafts, but can not identify them.
 }
 
+\paragraph{Control Panel}
 The IFF control panel \cockpitref{fig:right-panel}{item:iff}
 is located on the rear right side of the cockpit.
 The right knob is the power knob, with 3 positions: OFF/FRÅN, AUTO (on when airborne), ON/TILL.
 The left knob is used to set the query code, between 1 and 11.
 
 \JAonly{
+\paragraph{Identification of Contacts}
 When a radar contact is selected, an IFF interrogation is automatically performed.
 If the aircraft is identified as friendly, it is displayed with a cross on the MI and the HUD,
 and with a green symbol on the TI.
@@ -665,6 +669,12 @@ Additionally, pressing \keys{\ctrl+F} sends an IFF interrogation to the radar co
 on which the MI cursor is pointing. If it is identified as friendly,
 a cross is displayed over this contact on the MI
 (such manual IFF interrogation are not displayed on the HUD or the TI).
+
+\paragraph{Friendly Callsigns}
+The menu \menu{JA-37Di>Friends (IFF)} allows to set a list of friendly callsigns.
+Aircrafts with these callsigns will always be identified as friendly by IFF,
+even if they do not have the same IFF query code.
+This allows to operate with other aircrafts which do not have a compatible IFF system.
 }
 
 
@@ -808,8 +818,8 @@ The following entries are present.
     this dialog is quicker and ensures some realism, but allows less choices.
   \item[\menu{Performance monitor}] Display aircraft performance (mostly for development).
   \item[\menu{Systems monitor}] Display internal status of some systems (mostly for development).
-  %\JAonly{\item[\menu{Friends and Foes}] TODO
-  %}
+  \item[\menu{Combat log}] Multiplayer damage log (damage dealt and received).
+\JAonly{\item[\menu{Friends (IFF)}] Allows to set a list of friendly callsigns for IFF (cf.\ \cref{sec:iff}).}
   \item[\menu{Toggle external power}] External electrical power, normally used for startup.
     An electrical power truck is shown to the right of the aircraft when enabled.
     Only available when fully stopped.
@@ -861,7 +871,7 @@ The dialog \menu{\ifbool{AJS}{AJS-37}{JA-37Di}>Options} contains the following c
 
     For fairness, this option can only be toggled when stopped on the ground.
     It also enforces some realism options: blackout, normal simulation speed,
-    no external views, and disabling fuel, payload and repair menus while in flight.
+    no external views, and disabling fuel, payload, repair, and combat log menus while in flight.
 \end{description}
 
 
