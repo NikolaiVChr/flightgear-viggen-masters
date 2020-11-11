@@ -275,7 +275,7 @@ Using the latest stable FlightGear version is generally recommended.
       \item Formation lights switch
       \item Navigation lights switch
       \item Anti-collision lights switch
-      \item Identification transponder panel
+      \item \label{item:iff} Identification transponder panel
       \item Formation lights intensity knob
     \end{enumerate}
   \end{multicols}
@@ -586,8 +586,9 @@ A low throttle setting (EPR<1.4) should be maintained in this case.
 %\paragraph{Fast Reset (\cockpitref{fig:front-panel}{item:fast-reset})}}
 
 
-\AJSonly{
 \chapter{Control Panels}
+
+\AJSonly{
 \section{Main Mode Selector}
 The main mode selector knob \cockpitref{fig:left-panel}{item:main-mode}
 is located on the radar panel, next to the throttle.
@@ -631,6 +632,39 @@ by the following operations (called `flip-flop').
     A new approach pattern starts, with a long (20km) final.
     (any non-landing mode can be used instead of NAV).
 \end{itemize}
+}
+
+\section{Identification Friend or Foe (IFF)}
+IFF is a radar system designed to identify friendly aircrafts\footnotemark{}.
+Each aircraft can set a \emph{query code} for its IFF system,
+and aircrafts with the same query code set will be identified as friendly.
+Thus, allied aircrafts can identify each other by using a shared code,
+agreed upon before a mission.
+In FlightGear, other aircrafts with a compatible IFF system include the F-16 and the MiG-21.
+\footnotetext{%
+  Despite the name, IFF can by no mean distinguish an enemy aircraft from
+  e.g.\ a civilian aircraft, or an aircraft with a non-functioning IFF system.
+}
+
+\AJSonly{
+The AJS variant of the Viggen is only equipped with the transponder part of the IFF system:
+it can be identified by other aircrafts, but can not identify them.
+}
+
+The IFF control panel \cockpitref{fig:right-panel}{item:iff}
+is located on the rear right side of the cockpit.
+The right knob is the power knob, with 3 positions: OFF/FRÅN, AUTO (on when airborne), ON/TILL.
+The left knob is used to set the query code, between 1 and 11.
+
+\JAonly{
+When a radar contact is selected, an IFF interrogation is automatically performed.
+If the aircraft is identified as friendly, it is displayed with a cross on the MI and the HUD,
+and with a green symbol on the TI.
+
+Additionally, pressing \keys{\ctrl+F} sends an IFF interrogation to the radar contact
+on which the MI cursor is pointing. If it is identified as friendly,
+a cross is displayed over this contact on the MI
+(such manual IFF interrogation are not displayed on the HUD or the TI).
 }
 
 
