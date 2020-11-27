@@ -601,10 +601,10 @@ The knob can be rotated with the keybindings \keys{M} / \keys{\shift+M}.
   \item[BER/PRE] Standby mode. Used during start-up and taxi.
     The displays (HUD and CI) are turned off in this mode.
   \item[NAV] Navigation mode. Used during most of the flight, including takeoff.
-  \item[ANF/CBT] Combat mode. Allows using weapons. See \cref{chap:weapons}.
+  \item[ANF/CBT] Combat mode. See \cref{chap:weapons}.
   \item[SPA/REC] Reconnaissance mode. Not implemented (does the same as NAV, minus the takeoff submode).
   \item[LANDING NAV] Instruments landing mode. Requires the destination airport to be set in the route manager.
-    It enables inertia navigation guidance for the approach, and ILS guidance for the final.
+    It enables inertial navigation guidance for the approach, and ILS guidance during final.
   \item[LANDING P/O] Visual landing mode.
 \end{description}
 
@@ -623,7 +623,7 @@ One can also begin the approach in LANDING NAV mode,
 and later switch to LANDING P/O to finish the approach visually.
 
 \subsection{Alternative Landing Approaches}
-For the LANDING NAV mode, the approach pattern can be changed 
+For the LANDING NAV mode, the approach pattern can be changed
 by the following operations (called `flip-flop').
 \begin{itemize}
   \item Switching to LANDING P/O, then back to LANDING NAV select the short approach mode,
@@ -889,46 +889,50 @@ To come! Please check FlightGear built-in checklists
 \section{Generalities}
 The generic weapon employment procedure is the following.
 \begin{enumerate}
+  \item Select weapon type with \keys{C},
+    \ifbool{AJS}{or \keys{U} to select A/A missiles.}
+    {or through the TI display, or with \keys{\shift+C} / \keys{U}
+     to quick-select the cannon and A/A missiles respectively.}
   \ifbool{AJS}{
-  \item Main mode selector to ANF/CBT.
+  \item Main mode selector to ANF/CBT
     (\cockpitref{fig:left-panel}{item:main-mode}, shortcuts \keys{M}/\keys{\shift+M}).
   }{
-  \item Master arm on (shortcut \keys{H}).
+  \item Engage aiming mode with \keys{H}.
+    (If quick select keys \keys{\shift+C} / \keys{U} are used,
+    aiming mode is automatically engaged).
   }
-    Combat mode will only be enabled in the air with gear up and locked.
-    In combat mode, the HUD presentation changes slightly.
-    Weapon type is indicated in the lower left, ammunition in the lower right.
-  \item Select the weapon type with \keys{C}, or \keys{U} to select
-    \ifbool{AJS}{IR missiles}{the cannon}.
-  \item Unsafe the trigger with \keys{\shift+E}.
-    This arms the selected weapon.
-
-    For gun, rockets, and bombs, the aim (or CCIP) indicator appears on the HUD.
-    Missiles will start looking for a target.
-
-    Trigger unsafing is normally done once the target is in sight or on radar,
-    and the choice to engage it has been made.
-  \item For missiles, ensure that the missile has locked onto the target.
+  \item Open trigger safety with \keys{\shift+E} to arm the selected weapon.
+  \item \ifbool{AJS}{Depending on weapon type,}{For missiles,} lock onto the target.
   \item Fire the weapon with \keys{E}.
   \item Secure the trigger with \keys{\shift+E}.
 \end{enumerate}
 
+Remarks:
+\begin{itemize}
+  \item Upon switching to \ifbool{AJS}{mode ANF/CBT}{aiming mode},
+    the HUD changes to a weapon-specific aiming presentation.
+    \AJSonly{For the Rb 04, Rb 15, Rb 05, and m/90,
+    this aiming mode is the same as the usual navigation HUD.}
+  \item It is possible to fire \ifbool{AJS}{in mode NAV instead of ANF/CBT}{without using the aiming mode}.
+    In this case, \ifbool{AJS}{the aiming presentation}{a simplified aiming presentation}
+    is engaged when opening the trigger safety.
+\end{itemize}
+
 \subsection{Trigger Safety Usage}
 The trigger safety role is not merely to prevent unintentional fire.
-It is an import part of the fire control system:
-as a general rule, the trigger safety arms the selected weapon.
+It is an import part of the fire control system as it arms the weapon.
 As a consequence, improper use of trigger safety will prevent weapon usage.
-Below are some errors and caveats to look out for.
-\begin{itemize}
-  \item Unsafing the trigger arms the selected weapon.
-    Thus it must be done \emph{after} entering combat mode and selecting the desired weapon.
-  \item If a new weapon is selected while the trigger is unsafe,
-    the new weapon will not be armed (until the trigger is safed and unsafed again).
 
-    Similarly, if the trigger is kept unsafe while exiting combat mode,
-    upon re-entering combat mode, the weapon will not be armed.
-  \item After firing a missile, the next missile is only selected upon securing the trigger.
-    It is not possible to fire several missiles in succession without securing the trigger in-between.
+General guidelines are:
+\begin{itemize}
+  \item Only open the trigger safety once the target is in sight / on radar,
+    and the decision to engage it has been made.
+  \item Only open the trigger safety after the desired weapon is selected.
+    If a new weapon is selected while the trigger is unsafe, the new weapon
+    will not be armed (until the trigger is safed and unsafed again).
+  \item Secure the trigger shortly after firing.
+  \item When firing several missiles in succession,
+    it is necessary to secure the trigger between each weapon.
 \end{itemize}
 
 \AJSonly{
