@@ -181,36 +181,7 @@ which gives a vertical speed of 2.96m/s, the maximum for touchdown.
 If radar altitude is unavailable, transition to flare mode occurs at 30m.
 
 
-\subsection{Aiming Mode}
-\begin{figure}[!ht]
-  \centering
-  \includegraphics[width=0.45\textwidth]{images/displays/ajs-hud-aiming1.png}
-  \includegraphics[width=0.45\textwidth]{images/displays/ajs-hud-aiming2.png}
-
-  \begin{multicols}{2}
-    \begin{enumerate}[nosep]
-      \item \label{item:reticle} Aiming reticle
-      \item \label{item:rdr-range} Radar ranging mark.
-        Indicates that radar is used to compute range to the target.
-      \item Side bars, no functionality.
-      \item \label{item:distline} Distance line.
-        Indicates distance to the target, starting at 8km.
-        The side marks indicate optimal firing distance.
-        The distance line blinks 2 seconds before optimal firing distance.
-      \item \label{item:fire-mark} Firing command indicator.
-        Appears 0.5 seconds before optimal firing distance.
-      \item \label{item:pullup-bars} Pull-up warning bars.
-        Indicates that attack run must be aborted, as safety distance is insufficient.
-    \end{enumerate}
-  \end{multicols}
-  \caption{HUD aiming mode}
-  \label{fig:hud-aiming}
-\end{figure}
-
-Aiming mode HUD is used for certain weapons.
-It is enabled by either switching to ANF/CBT mode or arming the weapon,
-provided that an appropriate weapon type is selected.
-It consists in several aiming and ranging indicators (\cref{fig:hud-aiming}),
-in addition to the digital altitude.
-See \cref{chap:weapons} for more details.
-
+\subsection{Combat Mode}
+Some weapons have specific combat HUD presentations (aiming mode),
+enabled by switching to ANF/CBT mode or arming the weapon.
+See \cref{chap:weapons} for details.

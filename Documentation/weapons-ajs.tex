@@ -1,3 +1,105 @@
+\section{AKAN and ARAK}
+The m/55 AKAN cannon pods and m/70 ARAK rocket pods share
+the same sighting mechanisms and firing procedures.
+
+The m/55 AKAN is a 30mm ADEN cannon pod, with 150 rounds.
+Two can be carried on the main wing pylons.
+
+The m/70 ARAK consists of six 135mm rockets, which are all fired in a 0.6 seconds salvo.
+Four pods can be carried on the main wing and fuselage pylons.
+
+\subsection{Ranging}
+The AJS combines two methods to compute the distance to the target
+(i.e.\ the point on which the aiming reticle is located).
+
+\paragraph{Ranging by Triangulation}
+Triangulation computes the distance to the target based on aircraft altitude
+and the angle between the aiming reticle and the horizon.
+Ranging by triangulation assumes that the target altitude is 0,
+thus it is essential to properly calibrate indicated altitude by
+1.\ setting the altimeter to the target QFE,
+or 2.\ using radar-altimeter corrected altitude (switch HÖJD CI SI in position RHM).
+
+Ranging by triangulation is only available if the aiming reticle is at
+least 5\textdegree{} below the horizon.
+
+\paragraph{Radar Ranging}
+The aircraft main radar is used to compute the range to the ground.
+Radar ranging is only used when the following conditions are met.
+\begin{itemize}[nosep]
+  \item Triangulation ranging is active, and computed distance is at most 7km.
+  \item Main mode selector is ANF/CBT.
+  \item Roll angle is less than 45\textdegree{}, or trigger safety is open.
+\end{itemize}
+
+\paragraph{Remarks}
+Because triangulation ranging is required before radar ranging can be enabled,
+it is essential to at least approximately calibrate the altimeter.
+
+If triangulation ranging is unavailable (reticle is less than 5\textdegree{} below the horizon)
+a fixed distance of 1400m is used to compute reticle position.
+
+\subsection{HUD Aiming Mode}
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.45\textwidth]{images/displays/ajs-hud-aiming1.png}
+  \includegraphics[width=0.45\textwidth]{images/displays/ajs-hud-aiming2.png}
+
+  \begin{multicols}{2}
+    \begin{enumerate}[nosep]
+      \item \label{item:reticle} Aiming reticle
+      \item \label{item:rdr-range} Radar ranging mark.
+      \item Side bars, no functionality.
+      \item \label{item:distline} Distance line.
+      \item \label{item:fire-mark} Firing command lines.
+      \item \label{item:pullup-bars} Evasion warning bars.
+    \end{enumerate}
+  \end{multicols}
+  \caption{HUD aiming mode}
+  \label{fig:hud-aiming}
+\end{figure}
+
+When AKAN or ARAK are selected, the HUD aiming mode (\cref{fig:hud-aiming})
+is enabled by switching to mode ANF/CBT, or arming the weapon (trigger unsafe) in mode NAV.
+
+It comports an aiming reticle (\cockpitref{fig:hud-aiming}{item:reticle}),
+the digital altitude indicator, and a number of indicators and cues for target range,
+which appear in the following order:
+\begin{enumerate}
+  \item The distance line (\cockpitref{fig:hud-aiming}{item:distline})
+    indicates range to the target up to 8km when triangulation ranging is active.
+    The side marks indicate the computed firing distance
+    (minimum firing distance giving sufficient time for safe evasion).
+  \item When radar ranging is active, a vertical bar is displayed above the reticle
+    (\cockpitref{fig:hud-aiming}{item:rdr-range}).
+  \item 2 seconds before computed firing distance, the distance line blinks.
+  \item 0.5 seconds before computed firing distance, the firing command lines appear
+    (\cockpitref{fig:hud-aiming}{item:fire-mark}).
+  \item When the minimum distance for safe evasion is passed,
+    the evasion warning bars start blinking (\cockpitref{fig:hud-aiming}{item:pullup-bars}).
+    This indicates that the attack run should be aborted immediately.
+\end{enumerate}
+
+Minimum distance for safe evasion is computed to keep the aircraft out of the
+explosion debris zone, and assumes a 5g pull, with some margin.
+
+The position of the aiming reticle is correct starting 3 seconds before computed firing distance.
+The aiming reticle includes wind compensation.
+
+
+\section{Rb 75}
+The Rb 75 is a Swedish version of the AGM-65A television-guided missile.
+It is designed for use against ground targets.
+The pilot locks on the target by manually slewing the Rb 75 seeker head using the radar stick.
+
+In the real Viggen, the EP-13 screen to the right of the HUD displayed the Rb
+75 seeker image, and was used to lock on the target.
+
+In FlightGear, the EP-13 screen is not functional.
+Instead, the seeker position is displayed as a small circle on the HUD.
+The seeker is controlled with the radar stick (see \cref{sec:cursor}).
+When the seeker is over the target, it can be locked using the radar stick click/select.
+
 \section{Rb 05A}
 The Rb 05A is a remote-controlled missile.
 It is primarily intended for use against ground and naval targets,
