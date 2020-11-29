@@ -32,6 +32,27 @@ Displays require some preheating before being functional:
   \label{fig:hud}
 \end{figure}
 
+\subsection{Controls}
+HUD brightness is adjusted with knob \cockpitref{fig:front-panel}{item:hud-bright}.
+The following two switches located on the lower right of the HUD
+(\cockpitref{fig:front-panel}{item:hud-switch}) affect the HUD presentation.
+
+\paragraph{SLAV SI (SLV HUD)}
+In navigation mode, this switch enables a decluttered low-altitude mode when
+in position T (ON), see \cref{sec:hud-declutter}.
+
+During optical landing, if in position T (ON), the HUD reference point will
+be aligned with the flight path vector, instead of indicating runway heading.
+
+\paragraph{HÖJD CI SI (ALT DISP)}
+When in position RHM (RAD), the radar altimeter is used to compute a ground
+corrected altitude, which is displayed on the HUD.
+Otherwise, displayed altitude is the same as on the main altimeter.
+
+The switch automatically goes back to position LD (BAR) at altitude >2450m
+and during landing final phase.
+
+\subsection{Navigation Mode}
 \paragraph{Artificial Horizon (\cockpitref{fig:hud}{item:horizon})}
 The artificial horizon and the +5 and -5 degrees pitch lines provide an attitude reference.
 The HUD does not have a full pitch scale, only the horizon and the +5 and -5 degrees lines.
@@ -126,6 +147,7 @@ A vertical center mark, and in some modes two side marks, represent the events.
 \end{itemize}
 
 \subsection{Low Altitude Declutter}
+\label{sec:hud-declutter}
 If the switch SLAV SI is in position T (TILL), a decluttered HUD is displayed at altitude <100m.
 In this decluttered mode, only the flight path vector,
 artificial horizon, and digital altitude are displayed.
