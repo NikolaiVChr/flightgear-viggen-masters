@@ -31,7 +31,6 @@ The HUD requires 40 seconds of preheating after AC power is available, before tu
   \label{fig:hud}
 \end{figure}
 
-\subsection{Navigation Mode}
 \paragraph{Artificial Horizon (\cockpitref{fig:hud}{item:horizon})}
 The artificial horizon and pitch scale provide an attitude reference.
 The pitch scale consists of a line every 5 degrees.
@@ -71,14 +70,64 @@ If the top of the bars is on the horizon, the aircraft is at the commanded altit
 If the top of the bars is above (resp.\ below) the horizon,
 the aircraft is below (resp.\ above) the commanded altitude.
 
+When the FPV is within 1\textdegree{} of the horizon,
+the altitude scale index is fixed on the horizon.
+Under these conditions, the top of the altitude bars
+can be read on the altitude scale to obtain the commanded altitude.
+
 Altitude bars are only displayed below 1000m.
-When autopilot altitude hold is active, boxes are displayed together with the altitude bars.
+When autopilot altitude hold is active, boxes are displayed together with
+(below 1000m) or instead of (above 1000m) the altitude bars.
+
+\subparagraph{Reference Altitude}
+The reference altitude displayed by the altitude bars is set as follows.
+\begin{itemize}[noitemsep]
+  \item During takeoff, the altitude bars are fixed over the horizon.
+    After leaving takeoff mode, reference altitude is set to 500m.
+  \item During flight, the reference button (keybinding \keys{\shift+R})
+    sets the reference altitude to the current altitude.
+  \item If autopilot altitude hold mode is active,
+    the reference altitude is the autopilot altitude.
+  \item When entering landing mode, reference altitude is set to 500m.
+    It can still be modified with the reference button or by engaging autopilot altitude hold.
+\end{itemize}
 
 \paragraph{Airspeed / Mach Indicator (\cockpitref{fig:hud}{item:speed})}
 Digital airspeed is displayed below the FPV,
 with a minimum of 75km/h and a precision of 5km/h
 (40kts and 1kts respectively in imperial units mode).
-Above M0.5, airspeed is replaced by a Mach indicator.
+Above M 0.5, airspeed is replaced by a Mach indicator.
 
 \paragraph{Distance Indicator (\cockpitref{fig:hud}{item:distance})}
 Displays digital distance to the next waypoint.
+
+\paragraph{Radar Altitude}
+When radar altitude is less than 100m, it is displayed digitally
+in the lower left part of the HUD, with the format e.g.\ `R 45'.
+It is hidden until 30s after exiting takeoff mode, and in landing mode.
+
+\paragraph{Ground Collision Warning}
+Ground collision warning is displayed on the HUD as
+a flashing arrow over the FPV, pointing in the pull-up direction.
+
+\paragraph{Text Indications}
+To the lower left of the FPV, plain text indications
+can be shown in the following priority order:
+\begin{enumerate}
+  \item Altimeter setting warning `QFE' (flashing).
+    At takeoff, indicates that the altimeter is incorrectly set.
+    In flight, indicates that the altimeter should be switch to/from STD mode
+    (assumes transition altitude 1500m).
+  \item In landing mode, `TILS' indication when receiving ILS signal.
+    (flashing if glideslope is not available or not in range).
+  \item Selected weapon type (at the earliest 30s after leaving takeoff mode).
+\end{enumerate}
+
+
+\subsection{Takeoff Mode}
+
+\subsection{Landing Mode}
+
+\subsection{Tactical Information}
+
+\subsection{Aiming Mode}
