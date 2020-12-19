@@ -125,9 +125,22 @@ can be shown in the following priority order:
 
 
 \subsection{Takeoff Mode}
+Takeoff mode is enabled when the nose gear is compressed.
+
+During takeoff, the FPV is fixed vertically 10\textdegree{}
+below the aircraft forward axis, and the FPV symbol changes.
+Horizontally, the FPV functions as in navigation mode,
+and will e.g.\ move due to sidewind after rotation.
+
+The distance line is displayed below the FPV, and represents airspeed.
+The diamond upper index indicates aircraft speed,
+and the $\bot$ bottom marker indicates rotation speed.
+When the rotation angle reaches 5\textdegree{}, the distance line is hidden.
+
+Takeoff mode stops when the airspeed exceeds M 0.35,
+or when the flight path angle is at least 3\textdegree{} up,
+or at landing gear retraction.
 
 \subsection{Landing Mode}
 
 \subsection{Tactical Information}
-
-\subsection{Aiming Mode}
