@@ -595,36 +595,38 @@ A blinking light indicates that a weapon was not properly released.
 \chapter{Control Panels}
 
 \AJSonly{
-\section{Main Mode Selector}
-The main mode selector knob \cockpitref{fig:left-panel}{item:main-mode}
-is located on the radar panel, next to the throttle.
-It selects an aircraft main operation mode, corresponding to different phases of a flight.
-The knob can be rotated with the keybindings \keys{M} / \keys{\shift+M}.
+\sidepicture{
+  \section{Main Mode Selector}
+  The main mode selector knob \cockpitref{fig:left-panel}{item:main-mode}
+  is located on the radar panel, next to the throttle.
+  It selects an aircraft main operation mode, corresponding to different phases of a flight.
+  The knob can be rotated with the keybindings \keys{M} / \keys{\shift+M}.
+}{\includegraphics[width=\textwidth]{images/controls/mode-selector}}
 
 \subsection{Main Modes}
 \begin{description}
   \item[FK/TST] Built-in test. Not implemented (does the same as BER/PRE).
-  \item[BER/PRE] Standby mode. Used during start-up and taxi.
-    The displays (HUD and CI) are turned off in this mode.
+  \item[BER/PRE] Standby mode used for start-up and taxi.  Displays (HUD and CI) are turned off.
   \item[NAV] Navigation mode. Used during most of the flight, including takeoff.
   \item[ANF/CBT] Combat mode. See \cref{chap:weapons}.
-  \item[SPA/REC] Reconnaissance mode. Not implemented (does the same as NAV, minus the takeoff submode).
-  \item[LANDING NAV] Instruments landing mode. Requires the destination airport to be set in the route manager.
-    It enables inertial navigation guidance for the approach, and ILS guidance during final.
+  \item[SPA/REC] Reconnaissance mode. Not implemented (does the same as NAV).
+  \item[LANDING NAV] Instruments landing mode.
+    Enables landing guidance using inertial navigation and ILS,
+    provided the destination is set in the route manager.
   \item[LANDING P/O] Visual landing mode.
 \end{description}
 
 \subsection{Example of Use}
 A typical flight may use the following modes.
 Initially, the mode is BER/PRE.
-Shortly before takeoff (e.g.\ when entering the runway), the mode is switched to NAV.
+Shortly before takeoff (when entering the runway), the mode is switched to NAV.
 In order to use weapons, the mode is switched to ANF/CBT,
 then back to NAV when resuming normal flight.
 
-In general, LANDING mode is selected up to 20km away from the destination.
+LANDING mode is typically selected within 20km of the destination.
 LANDING NAV mode will give indications to follow a full approach pattern,
 and enables ILS guidance for final, if available.
-LANDING P/O simply gives a target glide slope indicator on the HUD, to help with visual landing.
+LANDING P/O simply gives indicates runway heading and nominal glide slope on the HUD, for visual landing.
 One can also begin the approach in LANDING NAV mode,
 and later switch to LANDING P/O to finish the approach visually.
 
@@ -634,9 +636,9 @@ by the following operations (called `flip-flop').
 \begin{itemize}
   \item Switching to LANDING P/O, then back to LANDING NAV select the short approach mode,
     with a 10km final instead of a 20km final.
-  \item Switching to NAV, then back to LANDING NAV resets the landing mode.
-    A new approach pattern starts, with a long (20km) final.
-    (any non-landing mode can be used instead of NAV).
+  \item Switching to NAV, then back to LANDING NAV
+    starts a new approach pattern, with a long (20km) final.
+    (NAV can be replaced by any non-landing mode).
 \end{itemize}
 }
 
