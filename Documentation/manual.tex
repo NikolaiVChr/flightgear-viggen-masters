@@ -453,7 +453,7 @@ The backup gyrocompass requires AC power.
 \section{Engine Instruments}
 \sidepicture{
   \paragraph{RPM Indicator (\cockpitref{fig:front-panel}{item:rpm})}
-  The RPM indicator shows high pressure compressor speed (N2), on a scale graduated up to 110\%.
+  The RPM indicator shows the high pressure compressor speed (N2), on a scale graduated up to 110\%.
   It requires AC power.
 }{\includegraphics[width=0.7\textwidth]{images/instruments/rpm}}
 
@@ -521,8 +521,8 @@ The backup gyrocompass requires AC power.
   \item[Hydraulic 1/2] Low pressure in hydraulic systems (blinking).
   \item[Auto throttle] Steady: normal auto-throttle disengagement.
     Blinking: abnormal auto-throttle disengagement, or failure.
-    Pull auto-throttle to off (up) position to reset.
-  \item[No reverse] Failure of thrust reverse of tertiary air intake (blinking).
+    Pull auto-throttle lever to off (up) position to reset.
+  \item[No reverse] Failure of thrust reverse or tertiary air intake (blinking).
   \item[Hydr. Reserve] Low pressure in backup hydraulic system (blinking).
   \item[Oil pressure] Low pressure in engine oil system (blinking).
   \item[Oil temp.] High engine oil temperature (blinking).
@@ -576,12 +576,19 @@ The pushbutton/light 15,5\textdegree{} is used to select the high-alpha landing 
 \paragraph{Transonic / Low Speed Reverse(\cockpitref{fig:front-panel}{item:transonic})}
 Yellow light, indicates that the aircraft is in the transonic regime.
 
-On the ground, it instead lights up when the reverser is active at low airspeed,
-indicating a risk of hot air ingestion and engine fire.
+On the ground, it instead indicates that the reverser is active at low airspeed,
+causing a risk of hot air ingestion and engine fire.
 A low throttle setting (EPR<1.4) should be maintained in this case.
 
+\AJSonly{
+\paragraph{Weapon Released (\cockpitref{fig:front-panel}{item:release})}
+When using Rb 04, Rb 15, and m/71, a steady light indicates that the weapon release sequence is complete.
+The light goes off when securing the trigger safety.
+
+A blinking light indicates that a weapon was not properly released.
+}
+
 % Not implemented
-%\paragraph{Weapon Released (\cockpitref{fig:front-panel}{item:release})}
 %\paragraph{Fast Reset (\cockpitref{fig:front-panel}{item:fast-reset})}}
 
 
