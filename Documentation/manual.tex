@@ -647,8 +647,7 @@ by the following operations (called `flip-flop').
 IFF is a radar system designed to identify friendly aircrafts\footnotemark{}.
 Each aircraft can set a \emph{query code} for its IFF system,
 and aircrafts with the same query code set will be identified as friendly.
-Thus, allied aircrafts can identify each other by using a shared code,
-agreed upon before a mission.
+Thus, allied aircrafts can identify each other by using a shared code, chosen before the mission.
 In FlightGear, other aircrafts with a compatible IFF system include the F-16 and the MiG-21.
 \footnotetext{%
   Despite the name, IFF can by no mean identify foes.
@@ -661,11 +660,22 @@ The AJS variant of the Viggen is only equipped with the transponder part of the 
 it can be identified by other aircrafts, but can not identify them.
 }
 
-\paragraph{Control Panel}
-The IFF control panel \cockpitref{fig:right-panel}{item:iff}
-is located on the rear right side of the cockpit.
-The right knob is the power knob, with 3 positions: OFF/FRÅN, AUTO (on when airborne), ON/TILL.
-The left knob is used to set the query code, between 1 and 11.
+\noindent
+\begin{minipage}[t]{0.55\textwidth}
+  \vspace{0pt}
+  \setlength{\parindent}{1em}
+  \paragraph{Control Panel}
+  The IFF control panel \cockpitref{fig:right-panel}{item:iff}
+  is located on the rear right side of the cockpit.
+  The right knob is the power knob, with 3 positions: OFF/FRÅN, AUTO (on when airborne), ON/TILL.
+  The left knob is used to set the query code, between 1 and 11.
+\end{minipage}
+\hspace{0.1\textwidth}
+\begin{minipage}[t]{0.35\textwidth}
+  \vspace{0pt}
+  \centering
+  \includegraphics[width=\textwidth]{images/controls/iff.png}
+\end{minipage}
 
 \JAonly{
 \paragraph{Identification of Contacts}
@@ -673,9 +683,9 @@ When a radar contact is selected, an IFF interrogation is automatically performe
 If the aircraft is identified as friendly, it is displayed with a cross on the MI and the HUD,
 and with a green symbol on the TI.
 
-Additionally, pressing \keys{\ctrl+F} sends an IFF interrogation to the radar contact
-on which the MI cursor is pointing. If it is identified as friendly,
-a cross is displayed over this contact on the MI
+Additionally, pressing \keys{\ctrl+F} sends an IFF interrogation
+to the radar contact on which the MI cursor is pointing.
+If it is identified as friendly, a cross is displayed over this contact on the MI
 (such manual IFF interrogation are not displayed on the HUD or the TI).
 
 \paragraph{Friendly Callsigns}
