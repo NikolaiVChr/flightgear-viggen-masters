@@ -5,8 +5,8 @@ The displays are turned on when switching the main mode selector
 
 Displays require some preheating before being functional:
 \begin{itemize}
-  \item The HUD turns on at the earliest 30 seconds after AC power is available.
-  \item The CI turns on at the earliest 30 seconds after switching to mode NAV.
+  \item The HUD can turn on 30 seconds after AC power is available.
+  \item The CI can turn on 30 seconds after switching to mode NAV.
 \end{itemize}
 
 \section{Head Up Display (HUD)}
@@ -34,6 +34,7 @@ Displays require some preheating before being functional:
 
 \subsection{Controls}
 HUD brightness is adjusted with knob \cockpitref{fig:front-panel}{item:hud-bright}.
+
 The following two switches located on the lower right of the HUD
 (\cockpitref{fig:front-panel}{item:hud-switch}) affect the HUD presentation.
 
@@ -41,7 +42,7 @@ The following two switches located on the lower right of the HUD
 In navigation mode, this switch enables a decluttered low-altitude mode when
 in position T (ON), see \cref{sec:hud-declutter}.
 
-During optical landing, if in position T (ON), the HUD reference point will
+During optical landing, when in position T (ON), the HUD reference point will
 be aligned with the flight path vector, instead of indicating runway heading.
 
 \paragraph{HÖJD CI SI (ALT DISP)}
@@ -54,8 +55,8 @@ and during landing final phase.
 
 \subsection{Navigation Mode}
 \paragraph{Artificial Horizon (\cockpitref{fig:hud}{item:horizon})}
-The artificial horizon and the +5 and -5 degrees pitch lines provide an attitude reference.
-The HUD does not have a full pitch scale, only the horizon and the +5 and -5 degrees lines.
+The artificial horizon and the $\pm 5 \degree$ pitch lines provide an attitude reference.
+The HUD does not have a full pitch scale, only the horizon and the $\pm 5 \degree$ lines.
 
 Horizontally, the artificial horizon is pointing towards the current destination,
 indicated by the reference point (\cockpitref{fig:hud}{item:refpt}).
@@ -71,7 +72,7 @@ Below 1km the altitude is displayed in meters with a precision of 10m.
 Above 1km the altitude is displayed in kilometers with a precision of 100m.
 Above 10km, the digital altitude cycles back to 0,
 thus 1500m and 11500m are both displayed as `1,5'.
-Negative altitude up to -90m can be displayed.
+Negative altitude down to -90m can be displayed.
 
 \paragraph{Altitude Bars (\cockpitref{fig:hud}{item:alt})}
 The 6 altitude bars indicate the aircraft altitude relative to the reference altitude
@@ -84,7 +85,7 @@ Thus, if the top of the bars is aligned with the horizon, the aircraft is at the
 and if the bottom of the bars is aligned with the horizon, the aircraft is at ground level.
 
 One can imagine the top, resp.\ bottom of the bars as forming a horizontal
-plane in a perspective drawing, located at reference, resp.\ ground altitude.
+plane in a perspective drawing, located at reference altitude, resp.\ ground altitude.
 In this perspective drawing, the vanishing point is the reference point.
 
 If the reference altitude is higher than 500m,
