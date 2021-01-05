@@ -125,16 +125,23 @@ can be shown in the following priority order:
 
 
 \subsection{Takeoff Mode}
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/displays/ja-hud-takeoff.png}
+  \caption{HUD during takeoff}
+  \label{fig:hud-takeoff}
+\end{figure}
+
 Takeoff mode is enabled when the nose gear is compressed.
 
 During takeoff, the FPV is fixed vertically 10\textdegree{}
-below the aircraft forward axis, and the FPV symbol changes.
+below the aircraft forward axis, and the its symbol changes.
 Horizontally, the FPV functions as in navigation mode,
 and will e.g.\ move due to sidewind after rotation.
 
 The distance line is displayed below the FPV, and represents airspeed.
 The diamond upper index indicates aircraft speed,
-and the $\bot$ bottom marker indicates rotation speed.
+and the inverted-T bottom marker indicates recommended rotation speed.
 When the rotation angle reaches 5\textdegree{}, the distance line is hidden.
 
 Takeoff mode stops when the airspeed exceeds M 0.35,
@@ -142,5 +149,61 @@ or when the flight path angle is at least 3\textdegree{} up,
 or at landing gear retraction.
 
 \subsection{Landing Mode}
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/displays/ja-hud-landing.png}
+  \caption{HUD during final}
+  \label{fig:hud-landing}
+\end{figure}
+
+In landing mode, the HUD changes when starting the final.
+The -5\textdegree{} pitch lines are removed,
+and a glideslope line is added 2.86\textdegree{} below the horizon
+(corresponding to a slope of 5\%).
+Altitude scale, digital airspeed, and distance indicator are positioned around the glideslope line.
+Heading scale is positioned over the horizon, and changes to a 1:1 scale.
+Altitude bars are hidden.
+
+If the flight path angle exceeds $\pm 7.5\degree$,
+the default presentation of the pitch scale, digital airspeed, and distance indicator is restored,
+while the heading and altitude scales are hidden.
+
+\paragraph{Speed / AoA Indicator}
+In landing mode, the vertical fin (`tail') of the flight path vector symbol
+moves vertically to indicate deviation from the target speed or angle of attack.
+
+The speed is correct when the bottom of the tail is on the FPV circle
+(default position in navigation mode).
+If the tail is higher than the circle, the aircraft speed is too high.
+If the tail is lower (inside the circle), the aircraft speed is too low.
+
+While the landing gear is up, the target speed is 550km/h.
+Once the landing gear is down and locked, the target angle of attack is
+computed based on aircraft weight, with a maximum of 12\textdegree{}
+(15.5\textdegree{} if the button \cockpitref{fig:front-panel}{item:autothrottle-lights} is pressed and lit).
+
+When the landing gear is down, the fin will blink if the angle of attack is critically high.
+
+\paragraph{ILS Guidance}
+If ILS guidance is used, the reference point on the glideslope line
+indicates the heading to follow to align with the localizer.
+Four vertical bars on the glideslope line indicate ILS glideslope deviation:
+if the top of the bars is above, resp.\ below the glideslope line,
+the aircraft is below, resp.\ above the ILS glideslope.
+
+If ILS is not used (optical landing mode),
+the reference point is aligned with the FPV, and the vertical bars are hidden.
+
+\paragraph{Touchdown}
+Below 35m, the HUD switches to optical landing display (ILS indications disappear).
+Below 15m radar altitude, the HUD switches to flare mode.
+The glideslope line moves up to indicate the descent angle
+which gives a vertical speed of 2.8m/s, the maximum for touchdown.
+If radar altitude is unavailable, transition to flare mode occurs at 35m.
+
+Once the nose gear is compressed, the HUD switches to takeoff mode.
 
 \subsection{Tactical Information}
+Some tactical information is displayed on the HUD when a weapon is selected,
+when a radar contact is tracked, and while in aiming mode.
+%See \cref{chap:weapons} for details.
