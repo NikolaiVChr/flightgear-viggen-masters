@@ -727,7 +727,7 @@ A summary of the key bindings can also be found in \menu{Help>Aircraft Help}.
   \item[\keys{\ctrl+B}] Toggle airbrakes (simplified airbrakes control).
     When the landing gear is down, airbrakes retract as soon as \keys{\ctrl+B} is released.
 }
-  \item[\keys{\backspace}] Toggle thrust reverser
+  \item[\keys{\backspace}] Toggle thrust reverser.
   \item[\keys{\shift+R}] Set reference altitude (goal altitude displayed on HUD).
   \item[\keys{\shift+H}] Cycle HUD brightness.
   \item[\keys{I}] Display target type/callsign on \ifbool{AJS}{HUD}{MI}.
@@ -763,8 +763,9 @@ A summary of the key bindings can also be found in \menu{Help>Aircraft Help}.
 See also \cref{sec:cursor}.
 \begin{description}
   \item[\keys{R}] Toggle radar.
-  \item[\keys{Y}] Use flight controls to controls radar cursor.
   \item[\keys{[} / \keys{]}] Decrease/increase radar range (positions: 15km, 30km, 60km, 120km).
+  \item[\keys{Y}] Use flight controls to controls radar cursor.
+  \item[\keys{N}] Cursor click.
 \JAonly{
   \item[\keys{\shift+N}] Select center-most radar track.
   \item[\keys{\ctrl+N}] Set next waypoint as radar target.
@@ -778,7 +779,7 @@ See also \cref{sec:cursor}.
 \JAonly{\item[\keys{H}] Toggle HUD aiming mode.}
   \item[\keys{C}] Cycle weapons.
 \JAonly{\item[\keys{\shift+C}] Cannon quick select.}
-  \item[\keys{U}] \ifbool{AJS}{Select IR missile.}{Missile quick select.}
+  \item[\keys{U}] \ifbool{AJS}{Gear down: disengage autothrottle. Gear up: select IR missile.}{Missile quick select.}
 \AJSonly{\item[\keys{\shift+U}] Uncage IR missile seeker (requires lock). Held: cage/reset IR missile seeker.}
   \item[\keys{\shift+E}] Toggle trigger safety.
   \item[\keys{E}] Fire weapon.
@@ -803,13 +804,14 @@ There are three ways to control it:
   \item Press \keys{Y} to use the main flight controls
     (joystick, mouse, arrow keys, whatever you use to control the aircraft)
     to instead control the cursor.
-    In this mode, elevator and aileron controls are used to move the cursor,
-    and the trigger \keys{E} is used to click.
+    In this mode, elevator and aileron controls are used to move the cursor.
     Normal flight controls are restored by pressing \keys{Y} again.
     A ground collision warning will also immediately restore normal flight controls.
 
     Consider using autopilot when controlling the cursor in this way.
 \end{itemize}
+
+In all cases, \keys{N} can also be used to click.
 
 \AJSonly{%
   The same controls are used to move and lock the Rb 75 seeker,
