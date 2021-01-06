@@ -354,7 +354,7 @@ Using the latest stable FlightGear version is generally recommended.
   The wide pointer indicates track angle to the target, or runway direction (at landing).
   The heading indicator requires AC power. A red-white flag indicates power failure.
 
-  The heading indicator can also display the output of the backup gyrocompass, cf.~\cref{par:backup-heading}.
+  The heading indicator can also display the output of the backup gyrocompass, cf.~\cref{sec:backup-heading}.
 }{\includegraphics[width=\textwidth]{images/instruments/heading-JA}}
 }
 
@@ -434,7 +434,7 @@ Using the latest stable FlightGear version is generally recommended.
 
 \JAonly{
 \paragraph{Backup Heading Indicator (\cockpitref{fig:front-panel}{item:heading-bck-but})}
-\label{par:backup-heading}
+\label{sec:backup-heading}
 The JA 37 does not have a separate backup heading indicator.
 Instead the main heading indicator can display the output of the backup gyrocompass.
 The button BACKUP HEADING (RESERVKURS) toggles this functionality.
@@ -729,10 +729,15 @@ A summary of the key bindings can also be found in \menu{Help>Aircraft Help}.
     When the landing gear is down, airbrakes retract as soon as \keys{\ctrl+B} is released.
 }
   \item[\keys{\backspace}] Toggle thrust reverser.
-  \item[\keys{\shift+R}] Set reference altitude (goal altitude displayed on HUD).
+  \item[\keys{\shift+R}] Set reference altitude (cf.~\cref{sec:ref-alt}).
   \item[\keys{\shift+H}] Cycle HUD brightness.
-  \item[\keys{I}] Display target type/callsign on \ifbool{AJS}{HUD}{MI}.
+\ifbool{AJS}{
+  \item[\keys{I}] Toggle HUD low altitude declutter (cf.~\cref{sec:hud-slav-switch}).
+  \item[\keys{\shift+I}] Toggle radar or barometric altitude on HUD and CI (cf.~\cref{sec:hud-slav-switch}).
+}{
+  \item[\keys{I}] Display target type/callsign on MI.
   \item[\keys{\shift+I}] Toggle between english/imperial and swedish/metrics display modes.
+}
   \item[\keys{\shift+PageUp} / \keys{\shift+PageDown}] Raise/lower seat position.
   \item[\keys{O}] Open/close canopy.
   \item[\keys{\ctrl+E} $\times3$] Eject
@@ -766,7 +771,7 @@ See also \cref{sec:cursor}.
   \item[\keys{R}] Toggle radar.
   \item[\keys{[} / \keys{]}] Decrease/increase radar range (positions: 15km, 30km, 60km, 120km).
   \item[\keys{Y}] Use flight controls to controls radar cursor.
-  \item[\keys{N}] Cursor click.
+  \item[\keys{L}] Cursor click.
 \JAonly{
   \item[\keys{\shift+N}] Select center-most radar track.
   \item[\keys{\ctrl+N}] Set next waypoint as radar target.
@@ -812,7 +817,7 @@ There are three ways to control it:
     Consider using autopilot when controlling the cursor in this way.
 \end{itemize}
 
-In all cases, \keys{N} can also be used to click.
+In all cases, \keys{L} can also be used to click.
 
 \AJSonly{%
   The same controls are used to move and lock the Rb 75 seeker,
