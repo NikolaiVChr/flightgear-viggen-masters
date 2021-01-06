@@ -36,7 +36,7 @@ The artificial horizon and pitch scale provide an attitude reference.
 The pitch scale consists of a line every 5 degrees.
 Lines above the horizon are solid, lines below the horizon are dashed.
 The artificial horizon itself is distinguished by six center dots.
-Only the three pitch lines closes to the flight path vector are displayed.
+Only the three pitch lines closest to the flight path vector are displayed.
 
 \paragraph{Flight Path Vector (\cockpitref{fig:hud}{item:fpv})}
 The FPV marker indicates the aircraft path direction relative to the ground.
@@ -104,7 +104,7 @@ Displays digital distance to the next waypoint.
 \paragraph{Radar Altitude}
 When radar altitude is less than 100m, it is displayed digitally
 in the lower left part of the HUD, with the format e.g.\ `R 45'.
-It is hidden until 30s after exiting takeoff mode, and in landing mode.
+It is hidden for 30s after exiting takeoff mode, and in landing mode.
 
 \paragraph{Ground Collision Warning}
 Ground collision warning is displayed on the HUD as
@@ -116,7 +116,7 @@ can be shown in the following priority order:
 \begin{enumerate}
   \item Altimeter setting warning `QFE' (flashing).
     At takeoff, indicates that the altimeter is incorrectly set.
-    In flight, indicates that the altimeter should be switch to/from STD mode
+    In flight, indicates that the altimeter should be switched to/from STD mode
     (assumes transition altitude 1500m).
   \item In landing mode, `TILS' indication when receiving ILS signal.
     (flashing if glideslope is not available or not in range).
@@ -135,7 +135,7 @@ can be shown in the following priority order:
 Takeoff mode is enabled when the nose gear is compressed.
 
 During takeoff, the FPV is fixed vertically 10\textdegree{}
-below the aircraft forward axis, and the its symbol changes.
+below the aircraft forward axis, and its symbol changes.
 Horizontally, the FPV functions as in navigation mode,
 and will e.g.\ move due to sidewind after rotation.
 
@@ -144,8 +144,8 @@ The diamond upper index indicates aircraft speed,
 and the inverted-T bottom marker indicates recommended rotation speed.
 When the rotation angle reaches 5\textdegree{}, the distance line is hidden.
 
-Takeoff mode stops when the airspeed exceeds M 0.35,
-or when the flight path angle is at least 3\textdegree{} up,
+Takeoff mode stops once the airspeed exceeds M 0.35,
+when the climb angle is at least 3\textdegree{},
 or at landing gear retraction.
 
 \subsection{Landing Mode}
@@ -157,14 +157,14 @@ or at landing gear retraction.
 \end{figure}
 
 In landing mode, the HUD changes when starting the final.
-The -5\textdegree{} pitch lines are removed,
+The -5\textdegree{} pitch line is removed,
 and a glideslope line is added 2.86\textdegree{} below the horizon
 (corresponding to a slope of 5\%).
 Altitude scale, digital airspeed, and distance indicator are positioned around the glideslope line.
 Heading scale is positioned over the horizon, and changes to a 1:1 scale.
 Altitude bars are hidden.
 
-If the flight path angle exceeds $\pm 7.5\degree$,
+If the climb or dive angle exceeds $\pm 7.5\degree$,
 the default presentation of the pitch scale, digital airspeed, and distance indicator is restored,
 while the heading and altitude scales are hidden.
 
