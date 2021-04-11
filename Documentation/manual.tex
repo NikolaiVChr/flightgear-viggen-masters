@@ -835,31 +835,21 @@ The following entries are present.
     The progress is shown in the top centre of the screen in blue text.
     The final notification of the start-up sequence is `Engine ready'.
     The shut-down sequence is done, when the aircraft is dark.
-  \item[\menu{Repair}] Repairs system failures when on the ground.
-    In case of a full crash, this option is mostly useless;
-    one should restart instead, for instance with \menu{Location>Select Airport}.
-  \item[\menu{Fuel/Loadout}] The fuel slider allows quick selection of fuel quantity,
-    while ensuring proper fuel balance.
-    Fuel quantity is indicated as a percentage, which corresponds to the fuel gauge reading.
-    A level of 100\% corresponds slightly less than full internal tanks.
-
-    The loadout selection buttons in the rest of the screen allow
-    fast selection of preset historical weapon loadouts.
-    The button \menu{Clean loadout} removes any loaded weapon.
-    The button \menu{Reload ammo/flares} reloads ammunition
-    for guns, rocket pods and bomb racks, as well as flares.
-
-    Compared to the standard dialog \menu{Equipment>Fuel and Payload},
-    this dialog is quicker and ensures some realism, but allows less choices.
+  \item[\menu{Repair}] Repairs system failures.
+    In case of a full crash, this option is of limited use;
+    one should restart instead with \menu{File>Reset}.
+\AJSonly{\item[\menu{Ground Crew Panel}] Ground crew weapon panel.}
   \item[\menu{Performance monitor}] Display aircraft performance (mostly for development).
   \item[\menu{Systems monitor}] Display internal status of some systems (mostly for development).
   \item[\menu{Combat log}] Multiplayer damage log (damage dealt and received).
 \JAonly{\item[\menu{Friends (IFF)}] Allows to set a list of friendly callsigns for IFF (cf.\ \cref{sec:iff}).}
+  \item[\menu{Toggle chocks}] Parking chocks. Only available when fully stopped.
   \item[\menu{Toggle external power}] External electrical power, normally used for startup.
     An electrical power truck is shown to the right of the aircraft when enabled.
     Only available when fully stopped.
   \item[\menu{Options}] Viggen specific configuration options, see \cref{sec:options-dialog}.
 \end{description}
+
 
 \section{\variant{} Options}
 \label{sec:options-dialog}
@@ -882,6 +872,10 @@ The dialog \menu{\ifbool{AJS}{AJS-37}{JA-37Di}>Options} contains the following c
     On the TI display (HSD), show non-implemented menus.
   \item[\menu{TI Display: use Internet to fetch map}]
     Enable download of the world map displayed on the TI (HSD).
+}
+\AJSonly{
+  \item[\menu{Automatic ground crew weapon panel settings}]
+    Automatically adjust ground crew weapon panel for current loadout.
 }
   \item[\menu{Rust on fuselage}]
     Purely visual. Only available when using the Atmospheric Light Scattering (ALS) FlightGear renderer.
