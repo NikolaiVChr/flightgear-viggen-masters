@@ -729,28 +729,33 @@ A summary of the key bindings can also be found in \menu{Help>Aircraft Help}.
     When the landing gear is down, airbrakes retract as soon as \keys{\ctrl+B} is released.
 }
   \item[\keys{\backspace}] Toggle thrust reverser.
-  \item[\keys{\shift+R}] Set reference altitude (cf.~\cref{sec:ref-alt}).
-  \item[\keys{\shift+H}] Cycle HUD brightness.
-\ifbool{AJS}{
-  \item[\keys{H}] Toggle HUD up/down position.
-  \item[\keys{I}] Toggle HUD low altitude declutter (cf.~\cref{sec:hud-slav-switch}).
-  \item[\keys{\shift+I}] Toggle radar or barometric altitude on HUD and CI (cf.~\cref{sec:hud-slav-switch}).
-}{
-  \item[\keys{I}] Display target type/callsign on MI.
-  \item[\keys{\shift+I}] Toggle between english/imperial and swedish/metrics display modes.
-}
   \item[\keys{\shift+PageUp} / \keys{\shift+PageDown}] Raise/lower seat position.
   \item[\keys{O}] Open/close canopy.
   \item[\keys{\ctrl+E} $\times3$] Eject
   \item[\keys{J}] Jettison drop tank (in flight only).
   \item[\keys{\shift+S}] Acrobatic smoke.
-\JAonly{\item[\keys{\shift+Y}] Engage landing mode.}
   \item[\keys{\ctrl+Y}] Display landing airport informations (requires runway selected in route manager).
+\end{description}
+
+\paragraph{Displays}
+\begin{description}
+  \item[\keys{\shift+R}] Set reference altitude (cf.~\cref{sec:ref-alt}) \JAonly{/ toggle IR missile boresight mode}.
+\ifbool{AJS}{
+  \item[\keys{H}] Toggle HUD up/down position.
+  \item[\keys{I}] Toggle HUD low altitude declutter (cf.~\cref{sec:hud-slav-switch}).
+  \item[\keys{\shift+I}] Toggle radar or barometric altitude on HUD and CI (cf.~\cref{sec:hud-slav-switch}).
+}{
+  \item[\keys{H}] Toggle HUD aiming mode / engage visual landing mode.
+  \item[\keys{I}] Display target type/callsign on MI.
+  \item[\keys{\shift+I}] Toggle between english/imperial and swedish/metrics display modes.
+  \item[\keys{\shift+Y}] Engage landing mode.
+}
+  \item[\keys{\shift+H}] Cycle HUD brightness.
 \end{description}
 
 \paragraph{View}
 \begin{description}
-  \item[\keys{Q}] Reset view.
+  \item[\keys{\shift+Q}] Reset view.
   \item[\keys{\ctrl+Q}] Zoom on radar display.
   \item[\keys{\ctrl+\shift+Q}] Zoom on HUD.
 \end{description}
@@ -762,7 +767,7 @@ A summary of the key bindings can also be found in \menu{Help>Aircraft Help}.
   \item[\keys{\ctrl+A}] Autopilot altitude hold mode.
   \item[\keys{\ctrl+D}] Disengage all autopilot modes.
   \item[\keys{\ctrl+S}] Toggle autothrottle lever.
-  \item[\keys{\ctrl+G}] Autothrottle quick disengage.
+  \item[\keys{U}] Autothrottle quick disengage \AJSonly{(gear up: IR missile quick select)}.
   \item[\keys{\ctrl+\arrowkeyleft} / \keys{\ctrl+\arrowkeyright}] Trim yaw, or adjust autopilot heading/bank angle.
 \end{description}
 
@@ -783,13 +788,22 @@ See also \cref{sec:cursor}.
 
 \paragraph{Combat}
 \begin{description}
-\JAonly{\item[\keys{H}] Toggle HUD aiming mode.}
-  \item[\keys{C}] Cycle weapons.
-\JAonly{\item[\keys{\shift+C}] Cannon quick select.}
-  \item[\keys{U}] \ifbool{AJS}{Gear down: disengage autothrottle. Gear up: select IR missile.}{Missile quick select.}
-\AJSonly{\item[\keys{\shift+U}] Uncage IR missile seeker (requires lock). Hold for ~1s: cage/reset IR missile seeker.}
+\ifbool{AJS}{
+  \item[\keys{C} / \keys{\shift+C}] Rotate weapon selector knob clockwise/counterclockwise.
+  \item[\keys{U}] IR missile quick select (gear down: autothrottle quick disengage).
+}{
+  \item[\keys{C}] Missile quick select.
+  \item[\keys{\shift+C}] Cannon quick select.
+}
   \item[\keys{\shift+E}] Toggle trigger safety.
   \item[\keys{E}] Fire weapon.
+  \item[\keys{\shift+U}] Uncage IR missile seeker (requires lock). Hold for ~1s: cage/reset IR missile seeker.
+\ifbool{AJS}{
+  \item[\keys{(} / \keys{)}] Decrease/increase A/A sight wingspan / bomb interval.
+}{
+  \item[\keys{(} / \keys{)}] Decrease/increase cannon sight wingspan.
+  \item[\keys{\{} / \keys{\}}] Decrease/increase cannon sight distance.
+}
   \item[\keys{Q}] Release flare/chaff.
 \end{description}
 
@@ -856,6 +870,8 @@ The following entries are present.
 The dialog \menu{\ifbool{AJS}{AJS-37}{JA-37Di}>Options} contains the following configuration options.
 \begin{description}
   \item[\menu{G-suit quality}] Changes resistance to blackout under high G-load.
+  \item[\menu{Head shaking}] Head shaking during ground roll and at high alpha.
+    May conflict with other view control scripts, e.g.\ headtracking.
   \item[\menu{Cockpit labels in Swedish}] Enable historical Swedish cockpit,
     instead of the English translation.
     (Cockpit translation is very incomplete.)
