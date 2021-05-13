@@ -642,6 +642,156 @@ by the following operations (called `flip-flop').
 \end{itemize}
 }
 
+\section{Radios}
+\ifbool{AJS}{
+  The \variant{} is equipped with two communication radios:
+  the FR 22 primary radio, and the FR 24 backup radio.
+
+  The FR 22 operates in the VHF band 103.000--155.975 MHz with 25KHz spacing,
+  and in the UHF band 225.000--399.950 MHz with 50KHz spacing.
+  It can use 762 programmable channels, as well as direct frequency input.
+
+  The FR 24 operates in the VHF band 110.000--147.000 MHz with 50KHz,
+  and is restricted to 4 pre-programmed channels.
+  The FR 24 can be powered by the aircraft battery.
+}{
+  The \variant{} is equipped with two communication radios:
+  the FR 29 primary radio, and the FR 31 secondary radio.
+
+  The FR 29 operates in the VHF band 103.000--159.975 MHz
+  and in the UHF band 225.000--399.975 MHz, both with 25KHz spacing.
+  It consists of two FR 28 transceivers, called A and B.
+  At all time, one transceiver is used for voice communication, while the other is used for data link.
+  Transceiver B (unlike A) can be powered by the aircraft battery,
+  and should thus be used when AC power is unavailable,
+  on the ground before startup or in case of electrical failure.
+  The FR 29 can use 934 programmable channels, as well as direct frequency input.
+
+  The FR 31 operates in the VHF band 104.000--161.975 MHz
+  and in the UHF band 223.000--407.975 MHz, both with 25KHz spacing.
+  It can use 971 programmable channels, as well as direct frequency input.
+}
+
+\subsection{FR \ifbool{AJS}{24}{29} Radio Panel}
+\ifbool{AJS}{%
+  The FR 24 radio panel is used to set the operating mode and volume of both the FR 22 and FR 24,
+  as well as the FR 24 channel.
+  In FlightGear, it is not correctly modelled, and is replaced by the FR 29 panel
+  from the JA variant, which has a similar purpose.
+}{
+  The FR 29 radio panel is used to set the operating mode and volume of the FR 29.
+}
+\begin{figure}[h]
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/controls/fr29.png}
+  \caption{FR \ifbool{AJS}{24}{29} Radio Panel}
+  \begin{enumerate}[nosep]
+    \item \label{item:knob-mode} Mode / channel knob
+    \item \label{item:knob-transceiver} \ifbool{AJS}{No functionality on AJS}{Select FR 28 transceiver A/B}
+    \item \label{item:knob-volume} Volume knob. Inner knob sets \ifbool{AJS}{FR 22 and FR 24}{FR 29} volume.
+      Outer knob sets warnings volume.
+  \end{enumerate}
+  \label{fig:fr29}
+\end{figure}
+
+The radio operation modes, selected with knob \cockpitref{fig:fr29}{item:knob-mode} are the following.
+\begin{description}
+  \item[N+L (NORM+LARM)] \ifbool{AJS}{%
+      FR 22 radio is active, its frequency is set with the FR 22 channel and frequency selectors.
+      FR 24 acts as a receiver for the guard channel 121.5MHz.
+    }{%
+      Frequency is set with the KV1 channel selector.
+      An additional receiver integrated in the FR 28 monitors the guard channel 121.5MHz.
+    }
+  \item[N (NORM)] Same as N+L, without the guard channel receiver\AJSonly{. FR 24 is inactive}.
+  \item[E,F,G,H] Sets the corresponding global channel\AJSonly{ for the FR24.  FR 22 is inactive}.
+  \item[M,L] \ifbool{AJS}{No functionality.}{Sets the corresponding custom channel.}
+\end{description}
+
+\ifbool{AJS}{
+  \subsection{FR 22 Channel and Frequency Selectors}
+  Frequency or channel for the FR 22 radio is set through the FR 22 channel selector and frequency selector.
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/controls/fr22.png}
+    \caption{FR 22 channel selector panel}
+    \begin{enumerate}[nosep]
+      \item \label{item:channel-guard} Guard channel H.
+      \item \label{item:channel-special} Special channels S1,S2,S3 (unlabelled buttons).
+      \item \label{item:channel-freq} Frequency selector button `--'.
+      \item \label{item:channel-base} Airbase channel buttons A/G, B, C/F, C2, D/E.
+      \item \label{item:knob-group} Channel group knob and display (showing channel group 06).
+      \item \label{item:knob-base} Airbase knob and display (showing airbase 21).
+        Every sixth position shows ALLM (`general').
+      \item \label{item:channel-group} Channel buttons 0 to 9.
+    \end{enumerate}
+    \label{fig:fr22}
+  \end{figure}
+
+  To directly select a frequency, press button `--' (\cockpitref{fig:fr22}{item:channel-freq})
+  and set the frequency on the frequency selector panel.
+  Note that invalid frequencies can be set (e.g.\ outside of the FR 22 bands,
+  or with invalid spacing in the UHF band) in which case the FR 22 will not work.
+
+  To select the guard channel H (121.5MHz) or one of the special channels S1,S2,S3,
+  press the corresponding button (\cockpitref{fig:fr22}{item:channel-guard} or
+  \cockpitref{fig:fr22}{item:channel-special}).
+
+  To select an airbase channel, set the airbase number with the airbase knob \cockpitref{fig:fr22}{item:knob-base}
+  and select the channel with one of the airbase channel buttons \cockpitref{fig:fr22}{item:channel-base}.
+  For instance, set the airbase number to 21 and press button A/G for channel 21A.
+
+  To select one of the global channels E,F,G, set the airbase knob \cockpitref{fig:fr22}{item:knob-base}
+  to one of the positions ALLM (every 6th position), and select the channel
+  with one of buttons A/G, C/F, D/E (\cockpitref{fig:fr22}{item:channel-base}).
+
+  To select a generic channel, set the channel group with the group knob \cockpitref{fig:fr22}{item:knob-group}
+  and select the channel with one of the channel buttons \cockpitref{fig:fr22}{item:channel-group}.
+  For instance, set the group number to 06 and press button 2 for channel 062.
+}{
+  \subsection{KV1 Channel Selectors}
+
+  \subsection{FR 31 Radio Panel}
+
+  \subsection{Data Link}
+}
+
+\subsection{Radio Channels}
+The different Viggen radios can use a number of configurable radio channels.
+Available channel names are the following.
+\begin{description}
+  \item[Generic channels] These channels are normally used to communicate between aircrafts, and with fighter control.
+    Their name consists of 3 digits.
+    \ifbool{AJS}{%
+      Channels 010 to 419 can be used.
+    }{%
+      The FR 29 can use channels 000 to 429, and the FR 31 can use channels 000 to 119.
+    }
+  \item[Airbase channels] These channels are normally used to communicate with ATC.
+    Their name consists of an airbase number (2 digits),
+    followed by one of the letters A,B,C,C2,D.
+    \ifbool{AJS}{%
+      Airbase numbers 01 to 69 can be used.
+    }{%
+      The FR 29 can use airbase numbers 00 to 99, and the FR 31 can use airbase numbers 000 to 169
+      (airbase numbers have an additional leading digit on the FR 31).
+    }
+  \item[Guard channel] The international guard channel 121.5MHz, called channel H.
+  \item[Global channels] Three fixed, global channels, called E,F,G\JAonly{ (unavailable on the FR 31)}.
+  \item[Others] \ifbool{AJS}{%
+      The FR 22 has three unlabelled channel buttons, nicknamed S1,S2,S3 in this manual.
+    }{%
+      The FR 29 has two programmable channels called M,L.
+    }
+\end{description}
+
+These channels (except guard channel H) are defined in text configuration files,
+which can be loaded through \menu{\variant{}>Load radio channels}.
+Configuration file syntax is described in \directory{Aircraft/JA37/Doc/channels-example.txt}.
+By default the file \directory{Aircraft/JA37/Nasal/radios/channels-default.txt} is loaded.
+
+
 \section{Identification Friend or Foe (IFF)}
 \label{sec:iff}
 IFF is a radar system designed to identify friendly aircrafts.%
