@@ -32,6 +32,7 @@
 \usepackage{cleveref}
 \usepackage{alltt}
 \usepackage{wrapfig}
+\usepackage{tikz}
 
 \pagestyle{headings}
 
@@ -655,10 +656,9 @@ by the following operations (called `flip-flop').
   and is restricted to 4 pre-programmed channels.
   The FR 24 can be powered by the aircraft battery.
 }{
-  The \variant{} is equipped with two communication radios:
-  the FR 29 primary radio, and the FR 31 secondary radio.
+  The \variant{} is equipped with two communication radios.
 
-  The FR 29 operates in the VHF band 103.000--159.975 MHz
+  The FR 29 primary radio operates in the VHF band 103.000--159.975 MHz
   and in the UHF band 225.000--399.975 MHz, both with 25KHz spacing.
   It consists of two FR 28 transceivers, called A and B.
   At all time, one transceiver is used for voice communication, while the other is used for data link.
@@ -667,7 +667,7 @@ by the following operations (called `flip-flop').
   on the ground before startup or in case of electrical failure.
   The FR 29 can use 934 programmable channels, as well as direct frequency input.
 
-  The FR 31 operates in the VHF band 104.000--161.975 MHz
+  The FR 31 secondary radio operates in the VHF band 104.000--161.975 MHz
   and in the UHF band 223.000--407.975 MHz, both with 25KHz spacing.
   It can use 971 programmable channels, as well as direct frequency input.
 }
@@ -684,17 +684,19 @@ by the following operations (called `flip-flop').
 \begin{figure}[h]
   \centering
   \includegraphics[width=0.4\textwidth]{images/controls/fr29.png}
-  \caption{FR \ifbool{AJS}{24}{29} Radio Panel}
+
   \begin{enumerate}[nosep]
     \item \label{item:knob-mode} Mode / channel knob
     \item \label{item:knob-transceiver} \ifbool{AJS}{No functionality on AJS}{Select FR 28 transceiver A/B}
     \item \label{item:knob-volume} Volume knob. Inner knob sets \ifbool{AJS}{FR 22 and FR 24}{FR 29} volume.
       Outer knob sets warnings volume.
   \end{enumerate}
+  \caption{FR \ifbool{AJS}{24}{29} Radio Panel}
   \label{fig:fr29}
 \end{figure}
 
-The radio operation modes, selected with knob \cockpitref{fig:fr29}{item:knob-mode} are the following.
+The radio operation modes, selected with the \ifbool{AJS}{FR 24}{FR 29} panel knob
+(\cockpitref{fig:fr29}{item:knob-mode}) are the following.
 \begin{description}
   \item[N+L (NORM+LARM)] \ifbool{AJS}{%
       FR 22 radio is active, its frequency is set with the FR 22 channel and frequency selectors.
@@ -715,7 +717,7 @@ The radio operation modes, selected with knob \cockpitref{fig:fr29}{item:knob-mo
   \begin{figure}[h]
     \centering
     \includegraphics[width=0.5\textwidth]{images/controls/fr22.png}
-    \caption{FR 22 channel selector panel}
+
     \begin{enumerate}[nosep]
       \item \label{item:channel-guard} Guard channel H.
       \item \label{item:channel-special} Special channels S1,S2,S3 (unlabelled buttons).
@@ -726,6 +728,7 @@ The radio operation modes, selected with knob \cockpitref{fig:fr29}{item:knob-mo
         Every sixth position shows ALLM (`general').
       \item \label{item:channel-group} Channel buttons 0 to 9.
     \end{enumerate}
+    \caption{FR 22 channel selector panel}
     \label{fig:fr22}
   \end{figure}
 
@@ -738,23 +741,103 @@ The radio operation modes, selected with knob \cockpitref{fig:fr29}{item:knob-mo
   press the corresponding button (\cockpitref{fig:fr22}{item:channel-guard} or
   \cockpitref{fig:fr22}{item:channel-special}).
 
-  To select an airbase channel, set the airbase number with the airbase knob \cockpitref{fig:fr22}{item:knob-base}
-  and select the channel with one of the airbase channel buttons \cockpitref{fig:fr22}{item:channel-base}.
+  To select an airbase channel, set the airbase number with the airbase knob (\cockpitref{fig:fr22}{item:knob-base})
+  and select the channel with one of the airbase channel buttons (\cockpitref{fig:fr22}{item:channel-base}).
   For instance, set the airbase number to 21 and press button A/G for channel 21A.
 
-  To select one of the global channels E,F,G, set the airbase knob \cockpitref{fig:fr22}{item:knob-base}
+  To select one of the global channels E,F,G, set the airbase knob (\cockpitref{fig:fr22}{item:knob-base})
   to one of the positions ALLM (every 6th position), and select the channel
   with one of buttons A/G, C/F, D/E (\cockpitref{fig:fr22}{item:channel-base}).
 
-  To select a generic channel, set the channel group with the group knob \cockpitref{fig:fr22}{item:knob-group}
-  and select the channel with one of the channel buttons \cockpitref{fig:fr22}{item:channel-group}.
+  To select a generic channel, set the channel group with the group knob (\cockpitref{fig:fr22}{item:knob-group})
+  and select the channel with one of the channel buttons (\cockpitref{fig:fr22}{item:channel-group}).
   For instance, set the group number to 06 and press button 2 for channel 062.
 }{
-  \subsection{KV1 Channel Selectors}
+  \subsection{KV1 and KV3 Channel Selectors}
+  The KV1 is used to set the channel of frequency for the FR 29 comm radio.
+  The KV3 is used to set the datalink channel.
+
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{images/controls/kv1.png}
+
+    \begin{enumerate}[nosep]
+      \item \label{item:kv3-display} KV3 datalink identifier and channel display.
+      \item \label{item:kv3-clear} KV3 `clear display' button.
+      \item \label{item:kv1-keypad} Input keypad.
+      \item \label{item:kv1-base-button} Airbase channel mode button.
+      \item \label{item:kv1-base-screen} Airbase channel input screen and clear button.
+      \item \label{item:kv1-nr-button} Generic channel mode button.
+      \item \label{item:kv1-nr-screen} Generic channel input screen and clear button.
+      \item \label{item:kv1-mhz-button} Frequency mode button.
+      \item \label{item:kv1-mhz-screen} Frequency input screen and clear button.
+    \end{enumerate}
+    \caption{KV1 and KV3 channel selector panels}
+    \label{fig:kv1}
+  \end{figure}
+
+  To enter a frequency or channel on one of the four screens
+  (\cockpitref{fig:kv1}{item:kv3-display,item:kv1-base-screen,item:kv1-nr-screen,item:kv1-mhz-screen}),
+  press the corresponding `clear' button and input the new value using the KV1 keypad
+  (\cockpitref{fig:kv1}{item:kv1-keypad}).
+  \begin{itemize}[noitemsep]
+    \item Airbase channels are input in the format XXC, where XX is the airbase number, and C is the channel letter.
+      For instance channel 21B is selected in \cref{fig:kv1}.
+      If the letter is E,F, or G, the airbase number is ignored and the
+      corresponding global channel is selected, e.g.\ 21E will select channel E.
+    \item Generic channels are input with three digits. Channels 000--429 can be used.
+    \item Frequencies are input with five digits, rounded down to 10KHz,
+      For instance frequency 118.300MHz is selected in \cref{fig:kv1}.
+      Since frequencies have 25KHz spacing, the last digit must be one of 0,2,5,7.
+  \end{itemize}
+  An erroneous input is indicated by `$\equiv$', and must the screen must be cleared to correct it.
+  A screen waiting for input will start blinking with symbol `-' after 9 seconds.
+
+  For the FR 29 comm radio, an airbase channel, generic channel, and frequency can be set simultaneously.
+  Which of the three to use is selected with the three mode buttons
+  (\cockpitref{fig:kv1}{item:kv1-base-button,item:kv1-nr-button,item:kv1-mhz-button}).
+
+  When clearing a screen for input, the previous value remains in use until the new input is complete and correct.
+  The old value is restored on the screen when pressing the corresponding mode button,
+  or if a different screen is cleared for input.
+
+  If the airbase of generic channel button is pressed and no screen is waiting for input,
+  pressing a keypad button will change the last character of the current airbase,
+  respectively generic channel.
+  E.g.\ if airbase channel 21A is selected and in use, pressing button 1/B will switch to channel 21B.
 
   \subsection{FR 31 Radio Panel}
+  \begin{figure}[h]
+    \centering
+    \includegraphics[width=0.6\textwidth]{images/controls/fr31.png}
 
-  \subsection{Data Link}
+    \begin{enumerate}[nosep]
+      \item \label{item:keypad} Input keypad.
+      \item \label{item:base} Airbase channel mode button.
+      \item \label{item:nr} Generic channel mode button.
+      \item \label{item:mhz} Frequency mode button.
+      \item \label{item:base} Backup PTT button (not implemented).
+      \item \label{item:screen} Input screen and clear button.
+      \item \label{item:vol} Volume knob.
+    \end{enumerate}
+    \caption{FR 31 radio panel}
+    \label{fig:fr31}
+  \end{figure}
+  To enter a frequency or channel, select the airbase channel, generic
+  channel, or frequency mode with the respective buttons if it is different
+  from the current mode, (\cockpitref{fig:fr31}{item:base,item:nr,item:mhz}),
+  then press the `clear' button and enter the new value with the keypad (\cockpitref{fig:fr31}{item:keypad}).
+  The previous channel or frequency remains in use until the new input is complete.
+  Invalid key presses are ignored.
+  \begin{itemize}[noitemsep]
+    \item Guard channel H is selected by entering a single H, in any mode.
+    \item Airbase channels are input in the format XXXC,
+      where XXX is the airbase number, and C is the channel letter.
+      Airbase numbers 000--169 can be used.
+    \item Generic channels are input with three digits. Channels 000--119 can be used.
+    \item Frequencies are input with five digits, rounded down to 10KHz.
+      Since frequencies have 25KHz spacing, the last digit must be one of 0,2,5,7.
+  \end{itemize}
 }
 
 \subsection{Radio Channels}
@@ -786,10 +869,50 @@ Available channel names are the following.
     }
 \end{description}
 
-These channels (except guard channel H) are defined in text configuration files,
+These channels (except for guard channel H) are defined in text configuration files,
 which can be loaded through \menu{\variant{}>Load radio channels}.
 Configuration file syntax is described in \directory{Aircraft/JA37/Doc/channels-example.txt}.
 By default the file \directory{Aircraft/JA37/Nasal/radios/channels-default.txt} is loaded.
+
+
+\JAonly{
+  \subsection{Data Link}
+  Data link is used to communicate data such as position of friendly aircrafts
+  and of targets with ground control (STRIL) and between fighters (fighter link).
+  A very limited part of fighter link is implemented, allowing aircrafts to share their position,
+  and the position of aircrafts they are tracking.
+  This information is displayed on the TI (\cockpitref{fig:front-panel}{item:TI}).
+
+  Datalink is activated with the DL button in the SYST page on the TI.
+  The KV3 screen (\cockpitref{fig:kv1}{item:kv3-display}) is used to set the datalink channel
+  on the last 3 digits, and a datalink identifier on the first digit.
+  Aircrafts must be on the same datalink channel to communicate.
+  The identifier helps to distinguish between aircrafts on a same datalink channel,
+  provided each aircraft should set it to a different number, (e.g.\ its position in the formation).
+  The identifier is ignored if it is 0.
+
+  \newcommand{\dlfriend}{%
+    \begin{tikzpicture}%
+      \draw (0,0) -- (0,1ex) -- (0.625ex,1.875ex) -- (1.25ex,1ex) -- (1.25ex,0) -- (0,0);
+      \draw (0.625ex,0) -- (0.625ex,0.875ex);
+    \end{tikzpicture}%
+  }
+  \newcommand{\dltarget}{%
+    \begin{tikzpicture}%
+      \draw (0,1ex) circle (1ex);
+      \draw (0,0.5ex) circle (0.5ex);
+    \end{tikzpicture}%
+  }
+
+  On the TI, an aircraft connected through datalink shows
+  as a green \dlfriend{} with its identifier below it, if any.
+  Furthermore, an aircraft A connected through datalink
+  may transmit information about an aircraft B which it is tracking.
+  Then, aircraft B is displayed as \dltarget{} with the identifier of A below it, if any.
+  Aircraft A may also transmit an IFF information for aircraft B.
+  The symbol for B is green if A has identified B as friendly, red if it has identified B as hostile,
+  and yellow if no IFF information is transmitted.
+}
 
 
 \section{Identification Friend or Foe (IFF)}
