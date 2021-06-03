@@ -127,7 +127,7 @@ Using the latest stable FlightGear version is generally recommended.
       \item \label{item:autopilot} Autopilot pushbuttons/lights
       \item \label{item:autothrottle-lights} Autothrottle lights
       \item \label{item:airspeed} Airspeed/Mach indicator
-      \item Radio frequency selector
+      \item \label{item:frequency-sel} FR 22 comm.\ radio frequency selector
       \item \label{item:aoa} Angle of attack indicator
       \item \label{item:master-warning} Master warning lights and button
       \item \label{item:hud-bright} HUD brightness knobs
@@ -153,7 +153,7 @@ Using the latest stable FlightGear version is generally recommended.
     }
       \item Parking brake handle
     \ifbool{AJS}{
-      \item \label{item:clock} Clock
+      \item \label{item:clock} Clock / chronometer
       \item \label{item:hud-switch} HUD settings switches
       \item \label{item:attitude-bck} Backup attitude indicator
       \item \label{item:altimeter-bck} Backup altimeter
@@ -200,7 +200,7 @@ Using the latest stable FlightGear version is generally recommended.
       \item Backup trim controls
       \item Yaw trim centered light
       \item Trim reset button
-      \item Radio control panel (not implemented)
+      \item \label{item:fr29} \ifbool{AJS}{FR 24}{FR 29} comm.\ radio panel
       \item Canopy jettison button
       \item Radar control panel (not implemented)
     \AJSonly{\item \label{item:main-mode} Main mode selector knob}
@@ -208,9 +208,11 @@ Using the latest stable FlightGear version is generally recommended.
       \item Generator switch
       \item Master power switch
       \item Fuel cutoff switch
-    \JAonly{
-      \item Comm.\ radio channel selector KV1
-      \item Datalink channel selector KV3
+    \ifbool{AJS}{
+      \item \label{item:fr22} FR 22 comm.\ radio channel selector
+    }{
+      \item \label{item:kv1} Comm.\ radio channel selector KV1
+      \item \label{item:kv3} Datalink channel selector KV3
     }
       \item Warning lights test button
       \item Roll trim centered light
@@ -231,15 +233,21 @@ Using the latest stable FlightGear version is generally recommended.
 
   \begin{multicols}{2}
     \begin{enumerate}[nosep]
+    \JAonly{
+      \item \label{item:clock} Clock / chronometer
+    }
       \item Automatic fuel regulator switch
       \item Afterburner cutoff switch
       \item Emergency ram air turbine switch
       \item Pitch gearing switch
       \item Fuses panel
-      \item ILS switch
       \item Weapons panel
+    \ifbool{AJS}{
+      \item Transponder
+    }{
       \item Countermeasures panel
-      \item Manual fuel control switches
+      \item Formation lights intensity knob
+    }
       \item Ignition plug switch
     \AJSonly{
       \item \label{item:nozzle} Nozzle position indicator
@@ -252,11 +260,10 @@ Using the latest stable FlightGear version is generally recommended.
       \item DME switch---no functionality
     }
       \item Navigation panel
-    \AJSonly{
+    \ifbool{AJS}{
       \item TILS channel selection knob
       \item TILS channel group switch
-    }
-    \JAonly{
+    }{
       \item Radar altimeter switch
       \item GPWS switch
     }
@@ -269,14 +276,16 @@ Using the latest stable FlightGear version is generally recommended.
       \item Data panel \AJSonly{(not implemented)}
       \item RWR control panel
     \JAonly{
-      \item Comm.\ radio FR31 panel
-    }
+      \item \label{item:fr31} Comm.\ radio FR 31 panel
       \item Transponder
+    }
       \item Formation lights switch
       \item Navigation lights switch
       \item Anti-collision lights switch
       \item \label{item:iff} Identification transponder panel
+    \AJSonly{
       \item Formation lights intensity knob
+    }
     \end{enumerate}
   \end{multicols}
 
@@ -383,16 +392,16 @@ Using the latest stable FlightGear version is generally recommended.
 }{\includegraphics[width=0.7\textwidth]{images/instruments/accelerometer}}
 
 
-\AJSonly{
 \sidepicture{
-  \paragraph{Clock (\cockpitref{fig:front-panel}{item:clock})}
-  The clock has two scales. The inner scale and the white pointers indicates time.
+  \paragraph{Chronometer \ifbool{AJS}{(\cockpitref{fig:front-panel}{item:clock})}{(\cockpitref{fig:right-panel}{item:clock})}}
+  The chronometer has two scales. The inner scale and the white pointers indicate time.
   The outer scale and the yellow pointers are used for the stopwatch.
   The lower-left knob is used to adjust time.
   The top-right button controls the stopwatch.
   The first push starts the stopwatch, the second push stops it, and the third push resets it.
 }{\includegraphics[width=0.7\textwidth]{images/instruments/clock}}
 
+\AJSonly{
 \sidepicture{
   \paragraph{Waypoint Distance Indicator (\cockpitref{fig:front-panel}{item:wpdist})}
   Indicates the distance to the next waypoint.
@@ -674,12 +683,13 @@ by the following operations (called `flip-flop').
 
 \subsection{FR \ifbool{AJS}{24}{29} Radio Panel}
 \ifbool{AJS}{%
-  The FR 24 radio panel is used to set the operating mode and volume of both the FR 22 and FR 24,
-  as well as the FR 24 channel.
+  The FR 24 radio panel (\cockpitref{fig:left-panel}{item:fr29}) is used to set
+  the operating mode and volume of both the FR 22 and FR 24, as well as the FR 24 channel.
   In FlightGear, it is not correctly modelled, and is replaced by the FR 29 panel
   from the JA variant, which has a similar purpose.
 }{
-  The FR 29 radio panel is used to set the operating mode and volume of the FR 29.
+  The FR 29 radio panel (\cockpitref{fig:left-panel}{item:fr29}) is used to set 
+  the operating mode and volume of the FR 29.
 }
 \begin{figure}[h]
   \centering
@@ -706,13 +716,15 @@ The radio operation modes, selected with the \ifbool{AJS}{FR 24}{FR 29} panel kn
       An additional receiver integrated in the FR 28 monitors the guard channel 121.5MHz.
     }
   \item[N (NORM)] Same as N+L, without the guard channel receiver\AJSonly{. FR 24 is inactive}.
-  \item[E,F,G,H] Sets the corresponding global channel\AJSonly{ for the FR24.  FR 22 is inactive}.
+  \item[E,F,G,H] Sets the corresponding global channel\AJSonly{ for the FR 24.  FR 22 is inactive}.
   \item[M,L] \ifbool{AJS}{No functionality.}{Sets the corresponding custom channel.}
 \end{description}
 
 \ifbool{AJS}{
   \subsection{FR 22 Channel and Frequency Selectors}
-  Frequency or channel for the FR 22 radio is set through the FR 22 channel selector and frequency selector.
+  Frequency or channel for the FR 22 radio is set through the
+  FR 22 channel selector (\cockpitref{fig:left-panel}{item:fr22})
+  and frequency selector (\cockpitref{fig:front-panel}{item:frequency-sel}).
 
   \begin{figure}[h]
     \centering
@@ -725,7 +737,7 @@ The radio operation modes, selected with the \ifbool{AJS}{FR 24}{FR 29} panel kn
       \item \label{item:channel-base} Airbase channel buttons A/G, B, C/F, C2, D/E.
       \item \label{item:knob-group} Channel group knob and display (showing channel group 06).
       \item \label{item:knob-base} Airbase knob and display (showing airbase 21).
-        Every sixth position shows ALLM (`general').
+        Every sixth position shows ALLM/GEN.
       \item \label{item:channel-group} Channel buttons 0 to 9.
     \end{enumerate}
     \caption{FR 22 channel selector panel}
@@ -754,8 +766,8 @@ The radio operation modes, selected with the \ifbool{AJS}{FR 24}{FR 29} panel kn
   For instance, set the group number to 06 and press button 2 for channel 062.
 }{
   \subsection{KV1 and KV3 Channel Selectors}
-  The KV1 is used to set the channel of frequency for the FR 29 comm radio.
-  The KV3 is used to set the datalink channel.
+  The KV1 (\cockpitref{fig:left-panel}{item:kv1}) is used to set the channel of frequency for the FR 29 comm radio.
+  The KV3 (\cockpitref{fig:left-panel}{item:kv3}) is used to set the datalink channel.
 
   \begin{figure}[h]
     \centering
@@ -806,7 +818,7 @@ The radio operation modes, selected with the \ifbool{AJS}{FR 24}{FR 29} panel kn
   respectively generic channel.
   E.g.\ if airbase channel 21A is selected and in use, pressing button 1/B will switch to channel 21B.
 
-  \subsection{FR 31 Radio Panel}
+  \subsection{FR 31 Radio Panel (\cockpitref{fig:right-panel}{item:fr31})}
   \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{images/controls/fr31.png}
