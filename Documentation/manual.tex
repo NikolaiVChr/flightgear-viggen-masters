@@ -1283,7 +1283,29 @@ To come! Please check FlightGear built-in checklists
 
 \chapter{Weapons Operation}
 \label{chap:weapons}
-\section{Generalities}
+\AJSonly{
+\section{Loadout Restrictions}
+\label{sec:loadout}
+While the AJS 37 has access to a wide variety of weapons,
+it is restricted in which weapons can be loaded at the same time:
+\begin{itemize}
+  \item \label{rule:unique} Only one type of primary weapon can be loaded at any time.
+  \item Primary weapons are everything except A/A IR missiles (Rb 24, Rb 24J, and Rb 74 Sidewinders).
+    Any combination of A/A IR missiles can be loaded together in addition to the primary weapons.
+  \item There is an exception to rule~\ref{rule:unique}:
+    AKAN gun pods can be loaded together with either Rb 05 or Rb 75 missiles
+    (but not Rb 05 and Rb 75 together).
+\end{itemize}
+
+Loading weapons which violate these restrictions triggers a warning text message,
+and will result in \emph{all} weapons being unusable.
+
+In the \menu{Equipment > Fuel and Payload} dialog,
+the \menu{Loadout Presets} allows to quickly load several combinations of weapons,
+and gives a good overview of the allowed loadouts.
+}
+
+\section{General Procedures}
 The generic weapon employment procedure is the following.
 \begin{enumerate}
   \item Select weapon type with
