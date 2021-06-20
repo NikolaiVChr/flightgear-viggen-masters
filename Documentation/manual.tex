@@ -192,7 +192,7 @@ Using the latest stable FlightGear version is generally recommended.
     \begin{enumerate}[nosep]
       \item Autothrottle lever
       \item Landing gear lever
-      \item Cycle selected pylon button
+      \item \label{item:ir-framstegn} Cycle selected pylon button
       \item Warning sounds volume
       \item Air conditioning controls
       \item Instruments light knob
@@ -241,7 +241,7 @@ Using the latest stable FlightGear version is generally recommended.
       \item Emergency ram air turbine switch
       \item Pitch gearing switch
       \item Fuses panel
-      \item Weapons panel
+      \item \label{item:wpn-panel} Weapons panel
     \ifbool{AJS}{
       \item Transponder
     }{
@@ -980,6 +980,80 @@ Aircrafts with these callsigns will always be identified as friendly by IFF,
 even if they do not have the same IFF query code.
 This allows to operate with other aircrafts which do not have a compatible IFF system.
 }
+
+\AJSonly{
+\section{Weapon Panel}
+\label{sec:weapon-panel}
+The weapon panel (\cockpitref{fig:right-panel}{item:wpn-panel})
+is used to select weapons and adjust their settings.
+
+\begin{figure}[ht]
+  \centering
+  \includegraphics[width=0.9\textwidth]{images/controls/AJS-weapon-panel.png}
+
+  \begin{multicols}{2}
+    \begin{enumerate}[nosep]
+      \item \label{item:jett-payload} Jettison payload button (guarded)
+      \item \label{item:jett-tank} Jettison fuel tank (guarded)
+      \item \label{item:wpn-sel} Weapon selection knob
+      \item \label{item:dist-sel} Wingspan / bomb interval selection knob
+      \item \label{item:impuls} Sequence release / ARAK long range
+      \item Missile search pattern settings (not implemented)
+    \end{enumerate}
+  \end{multicols}
+  \caption{Weapons panel}
+  \label{fig:wpn-panel}
+\end{figure}
+
+\paragraph{Jettison Buttons}
+There are two jettison buttons, guarded by a cover.
+The first (\cockpitref{fig:wpn-panel}{item:jett-payload}) jettisons all external load, except for the outer pylons.
+The second (\cockpitref{fig:wpn-panel}{item:jett-tank}) jettisons only the external fuel tank.
+
+\paragraph{Weapon Selector}
+The weapon selection knob (\cockpitref{fig:wpn-panel}{item:wpn-sel}) has the following positions.
+\begin{description}
+  \item[IR-RB] Rb 24, Rb 24J, and Rb 74 Sidewinders
+  \item[ATTACK] AKAN, ARAK, Rb 04, Rb 15, or m/90
+  \item[AKAN JAKT] AKAN with A/A aiming mode
+  \item[LUFT / RR] Rb 05 with A/A aiming mode, or bombs with radar aiming mode.
+  \item[RB 75 / MARK / DYK] Rb 75, or Rb 05 in A/G mode, or bombs with dive aiming mode.
+  \item[SJÖ / PLAN] Rb 05 in A/S mode, or bombs with level release aiming mode.
+\end{description}
+
+Remarks:
+\begin{itemize}
+  \item Most positions can be used to select several weapons.
+    This means that these weapons are mutually exclusive (they can not be loaded together).
+    See \cref{sec:loadout} for more details.
+  \item Position IR-RB is an exception: different types of sidewinders can be loaded together,
+    and are selected simultaneously by this position.
+    Use button IR-RB FRAMSTEGN (\cockpitref{fig:left-panel}{item:ir-framstegn}) to cycle pylons.
+  \item The different bomb aiming modes are not implemented. Only a generic CCIP exists.
+  \item Rb 05 MARK and SJÖ modes differ only by the fuse setting, which is not implemented.
+\end{itemize}
+
+\paragraph{Wingspan and Bomb Interval Selector}
+This knob (\cockpitref{fig:wpn-panel}{item:dist-sel}) is used to set the bomb release interval,
+and the target wingspan for the HUD in A/A aiming modes. It is graduated in meters from 10m to 60m.
+The three leftmost positions (VÄ, RAKT, HÖ) are used for illumination bombs, which are not implemented.
+
+\paragraph{Sequence Release and ARAK Long Range Mode}
+Switch \cockpitref{fig:wpn-panel}{item:impuls} has different functions depending on the selected weapon.
+\begin{description}
+  \item[Rb 04 / Rb 15] The switch controls sequence release.
+    In position SERIE, both missiles are launched with 2 second interval.
+    In position IMPULS, only one missile is launched at a time.
+  \item[ARAK] The switch controls long range aiming mode.
+    In position SERIE, the normal aiming mode is used.
+    In position IMPULS, a long range standoff aiming mode is used.
+    It allows firing at up to 7km from the target, but with reduced accuracy and more restrictive aiming conditions.
+\end{description}
+Despite the label, this switch has no functionality for bombs
+(it only affected training bombs, which are not implemented).
+}
+
+
 
 \chapter{Displays}
 \ifbool{AJS}{\input{displays-ajs}}{\input{displays-ja}}
