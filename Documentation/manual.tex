@@ -1212,21 +1212,22 @@ To come! Please check FlightGear built-in checklists
 \section{Generalities}
 The generic weapon employment procedure is the following.
 \begin{enumerate}
-  \item Select weapon type with \keys{C},
-    \ifbool{AJS}{or \keys{U} to select A/A missiles.}
-    {or through the TI display, or with \keys{\shift+C} / \keys{U}
-     to quick-select the cannon and A/A missiles respectively.}
+  \item Select weapon type with
+    \ifbool{AJS}{
+      the weapon selector knob (\keys{C} / \keys{\shift+C}),
+      or press \keys{U} for A/A missiles quick selection.
+    }{
+      \keys{C} (A/A missiles), \keys{\shift+C} (cannon), or through the TI display.
+    }
   \ifbool{AJS}{
-  \item Main mode selector to ANF/CBT
-    (\cockpitref{fig:left-panel}{item:main-mode}, shortcuts \keys{M}/\keys{\shift+M}).
+  \item Set main mode selector to ANF/CBT
+    (\cockpitref{fig:left-panel}{item:main-mode}, \keys{M} / \keys{\shift+M}).
   }{
   \item Engage aiming mode with \keys{H}.
-    (If quick select keys \keys{\shift+C} / \keys{U} are used,
-    aiming mode is automatically engaged).
   }
-  \item Open trigger safety with \keys{\shift+E} to arm the selected weapon.
   \item \ifbool{AJS}{Depending on weapon type,}{For missiles,} lock onto the target.
-  \item Fire the weapon with \keys{E}.
+  \item Open trigger safety with \keys{\shift+E} to arm the selected weapon.
+  \item Fire the weapon with \keys{E}. \JAonly{Press and hold for ca.~1 second to fire missiles.}
   \item Secure the trigger with \keys{\shift+E}.
 \end{enumerate}
 
@@ -1242,9 +1243,9 @@ Remarks:
 \end{itemize}
 
 \subsection{Trigger Safety Usage}
-The trigger safety role is not merely to prevent unintentional fire.
-It is an import part of the fire control system as it arms the weapon.
-As a consequence, improper use of trigger safety will prevent weapon usage.
+The trigger safety role is not just to prevent unintentional fire.
+It is an important part of the fire control system as it arms the weapon.
+Improper use of trigger safety will prevent weapon usage.
 
 General guidelines are:
 \begin{itemize}
@@ -1252,10 +1253,9 @@ General guidelines are:
     and the decision to engage it has been made.
   \item Only open the trigger safety after the desired weapon is selected.
     If a new weapon is selected while the trigger is unsafe, the new weapon
-    will not be armed (until the trigger is safed and unsafed again).
+    will not be armed (until the trigger is secured and unsecured again).
   \item Secure the trigger shortly after firing.
-  \item When firing several missiles in succession,
-    it is necessary to secure the trigger between each weapon.
+  \item When firing several missiles in succession, the trigger must be secured between each weapon.
 \end{itemize}
 
 \ifbool{AJS}{\input{weapons-ajs}}{}
