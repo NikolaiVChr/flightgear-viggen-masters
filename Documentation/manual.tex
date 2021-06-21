@@ -10,7 +10,7 @@
 \newcommand{\JAonly}[1]{\ifbool{AJS}{}{#1}}
 \newcommand{\variant}{\ifbool{AJS}{AJS 37}{JA 37D}}
 
-\newcommand{\versionnumber}{5.0.1}
+\newcommand{\versionnumber}{5.1.0}
 
 
 % Todos:
@@ -802,21 +802,19 @@ The radio operation modes, selected with the \ifbool{AJS}{FR 24}{FR 29} panel kn
       For instance frequency 118.300MHz is selected in \cref{fig:kv1}.
       Since frequencies have 25KHz spacing, the last digit must be one of 0,2,5,7.
   \end{itemize}
-  An erroneous input is indicated by `$\equiv$', and must the screen must be cleared to correct it.
-  A screen waiting for input will start blinking with symbol `-' after 9 seconds.
 
-  For the FR 29 comm radio, an airbase channel, generic channel, and frequency can be set simultaneously.
-  Which of the three to use is selected with the three mode buttons
-  (\cockpitref{fig:kv1}{item:kv1-base-button,item:kv1-nr-button,item:kv1-mhz-button}).
-
-  When clearing a screen for input, the previous value remains in use until the new input is complete and correct.
+  The three mode buttons (\cockpitref{fig:kv1}{item:kv1-base-button,item:kv1-nr-button,item:kv1-mhz-button}),
+  are used to select whether the airbase channel, generic channel, or frequency is used.
+  When a screen is cleared for input, its previous value remains in use until the new input is complete and correct.
   The old value is restored on the screen when pressing the corresponding mode button,
   or if a different screen is cleared for input.
+  An erroneous input is indicated by `$\equiv$', and the screen must be cleared to correct it.
+  A screen waiting for input will start blinking with symbol `-' after 9 seconds.
 
-  If the airbase of generic channel button is pressed and no screen is waiting for input,
+  If the airbase or generic channel mode is selected and no screen is waiting for input,
   pressing a keypad button will change the last character of the current airbase,
   respectively generic channel.
-  E.g.\ if airbase channel 21A is selected and in use, pressing button 1/B will switch to channel 21B.
+  E.g.\ if airbase channel 21A is in use, pressing button 1/B will switch to channel 21B.
 
   \subsection{FR 31 Radio Panel (\cockpitref{fig:right-panel}{item:fr31})}
   \begin{figure}[h]
@@ -893,14 +891,14 @@ By default the file \directory{Aircraft/JA37/Nasal/radios/channels-default.txt} 
   and of targets with ground control (STRIL) and between fighters (fighter link).
   A very limited part of fighter link is implemented, allowing aircrafts to share their position,
   and the position of aircrafts they are tracking.
-  This information is displayed on the TI (\cockpitref{fig:front-panel}{item:TI}).
+  This information is displayed on the TI.
 
   Datalink is activated with the DL button in the SYST page on the TI.
   The KV3 screen (\cockpitref{fig:kv1}{item:kv3-display}) is used to set the datalink channel
   on the last 3 digits, and a datalink identifier on the first digit.
   Aircrafts must be on the same datalink channel to communicate.
-  The identifier helps to distinguish between aircrafts on a same datalink channel,
-  provided each aircraft should set it to a different number, (e.g.\ its position in the formation).
+  The identifier helps to distinguish between aircrafts on a same datalink channel.
+  Each aircraft should set it to a different number, (e.g.\ its position in the formation).
   The identifier is ignored if it is 0.
 
   \newcommand{\dlfriend}{%
@@ -1007,15 +1005,18 @@ is used to select weapons and adjust their settings.
 
 \paragraph{Jettison Buttons}
 There are two jettison buttons, guarded by a cover.
-The first (\cockpitref{fig:wpn-panel}{item:jett-payload}) jettisons all external load, except for the outer pylons.
+The first (\cockpitref{fig:wpn-panel}{item:jett-payload}) jettisons all external load,
+except for the outer wing pylons.
 The second (\cockpitref{fig:wpn-panel}{item:jett-tank}) jettisons only the external fuel tank.
 
 \paragraph{Weapon Selector}
-The weapon selection knob (\cockpitref{fig:wpn-panel}{item:wpn-sel}) has the following positions.
+The weapon selection knob (\cockpitref{fig:wpn-panel}{item:wpn-sel}) is used to select weapon types,
+as well as special aiming modes for some weapons.
+The positions allow to select the following weapons.
 \begin{description}
   \item[IR-RB] Rb 24, Rb 24J, and Rb 74 Sidewinders
-  \item[ATTACK] AKAN, ARAK, Rb 04, Rb 15, or m/90
-  \item[AKAN JAKT] AKAN with A/A aiming mode
+  \item[ATTACK] AKAN cannon pods, ARAK rocket pods, Rb 04, Rb 15, or m/90
+  \item[AKAN JAKT] AKAN cannon pods with A/A aiming mode
   \item[LUFT / RR] Rb 05 with A/A aiming mode, or bombs with radar aiming mode.
   \item[RB 75 / MARK / DYK] Rb 75, or Rb 05 in A/G mode, or bombs with dive aiming mode.
   \item[SJÖ / PLAN] Rb 05 in A/S mode, or bombs with level release aiming mode.
@@ -1039,7 +1040,8 @@ and the target wingspan for the HUD in A/A aiming modes. It is graduated in mete
 The three leftmost positions (VÄ, RAKT, HÖ) are used for illumination bombs, which are not implemented.
 
 \paragraph{Sequence Release and ARAK Long Range Mode}
-Switch \cockpitref{fig:wpn-panel}{item:impuls} has different functions depending on the selected weapon.
+The switch SERIE/IMPULS (\cockpitref{fig:wpn-panel}{item:impuls})
+has different functions depending on the selected weapon.
 \begin{description}
   \item[Rb 04 / Rb 15] The switch controls sequence release.
     In position SERIE, both missiles are launched with 2 second interval.
@@ -1050,7 +1052,7 @@ Switch \cockpitref{fig:wpn-panel}{item:impuls} has different functions depending
     It allows firing at up to 7km from the target, but with reduced accuracy and more restrictive aiming conditions.
 \end{description}
 Despite the label, this switch has no functionality for bombs
-(it only affected training bombs, which are not implemented).
+(it is only used for training bombs, which are not implemented).
 }
 
 
@@ -1286,8 +1288,8 @@ To come! Please check FlightGear built-in checklists
 \AJSonly{
 \section{Loadout Restrictions}
 \label{sec:loadout}
-While the AJS 37 has access to a wide variety of weapons,
-it is restricted in which weapons can be loaded at the same time:
+While the AJS 37 has access to a wide variety of weapons, they can not all be loaded at the same time.
+The following restrictions apply:
 \begin{enumerate}
   \item \label{rule:unique} Only one type of primary weapon can be loaded at any time.
   \item Primary weapons are everything except IR missiles (Rb 24, Rb 24J, and Rb 74 Sidewinders).

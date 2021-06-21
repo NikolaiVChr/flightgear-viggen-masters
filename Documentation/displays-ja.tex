@@ -312,14 +312,13 @@ and deviates from the flight path marker to indicate flight path angle.
 Deviation is proportional to the sine of the flight path angle.
 
 \paragraph{Altitude Indications}
-Digital altitude \cockpitref{fig:mi-screen}{item:dig-alt} is displayed above the artificial horizon.
-A marker \cockpitref{fig:mi-screen}{item:alt-index} indicates altitude
-on the altitude scale \cockpitref{fig:mi-screen}{item:altitude},
-on the right side of the screen.
+Digital altitude (\cockpitref{fig:mi-screen}{item:dig-alt}) is displayed above the artificial horizon.
+A marker (\cockpitref{fig:mi-screen}{item:alt-index}) indicates altitude
+on the altitude scale (\cockpitref{fig:mi-screen}{item:altitude}), on the right side.
 
-Altitude bars \cockpitref{fig:mi-screen}{item:alt-bars} are read on the artificial horizon,
+Altitude bars (\cockpitref{fig:mi-screen}{item:alt-bars}) are read against the artificial horizon,
 and indicate reference altitude relative to the current altitude.
-The top of the altitude bars represents commanded altitude,
+The top of the altitude bars represents reference altitude,
 while the artificial horizon represents current altitude.
 If the top of the bars is on the horizon, the aircraft is at the commanded altitude.
 If the top of the bars is above (resp.\ below) the horizon,
@@ -330,12 +329,12 @@ Ground height measured by the radar altimeter is displayed by a chevron index on
 when the radar altitude is less than 600m.
 
 \paragraph{Ground Proximity Warning}
-The distance between the ground symbol \cockpitref{fig:mi-screen}{item:ground}
-and the flight path marker \cockpitref{fig:mi-screen}{item:fpv}
+The distance between the ground symbol (\cockpitref{fig:mi-screen}{item:ground})
+and the flight path marker (\cockpitref{fig:mi-screen}{item:fpv})
 indicates margin from a ground proximity warning.
 When the ground symbol touches the flight path marker, a ground proximity warning occurs.
 On the MI, it is indicated by a flashing arrow on the flight path marker pointing in the pull-up direction,
-as well as the flashing ground proximity warning light \cockpitref{fig:mi}{item:gpw}.
+as well as the flashing ground proximity warning light (\cockpitref{fig:mi}{item:gpw}).
 
 \subsection{Text Messages}
 The following text indications can be displayed on the MI.
@@ -364,7 +363,7 @@ The following indications can be displayed, by order of priority:
 \paragraph{Bottom (\cockpitref{fig:mi-screen}{item:text-help})}
 The following indications can be displayed, by order of priority:
 \begin{enumerate}[nosep]
-  \item Memo for the MI lower buttons \cockpitref{fig:mi}{item:bot-buttons},
+  \item Memo for the MI lower buttons (\cockpitref{fig:mi}{item:bot-buttons}),
     when pressing button `P3' (cf.~\cref{sec:mi-overview}).
   \item RB 99 datalink estimated time to target and chance of hit,
     enabled with button X2.
@@ -372,24 +371,24 @@ The following indications can be displayed, by order of priority:
 
 \subsection{Radar Display}
 The radar display, at the center of the MI screen, is a B-scope,
-i.e.\ the x-axis represents bearing, read against the heading scale \cockpitref{fig:mi-screen}{item:heading},
-and the y-axis represents distance, read against the distance scale \cockpitref{fig:mi-screen}{item:distance}.
+i.e.\ the x-axis represents bearing, read against the heading scale (\cockpitref{fig:mi-screen}{item:heading}),
+and the y-axis represents distance, read against the distance scale (\cockpitref{fig:mi-screen}{item:distance}).
 The heading scale has a range of $\pm 60\degree$ around the aircraft heading.
 The distance scale range is the same as the radar range (modified with \keys{[}/\keys{]}).
-Radar echoes are displayed as small bars \cockpitref{fig:mi-screen}{item:contact}.
+Radar echoes are displayed as small bars (\cockpitref{fig:mi-screen}{item:contact}).
 
 \paragraph{Selected Contact}
-The cursor \cockpitref{fig:mi-screen}{item:cursor} can be moved across the radar display.
+The cursor (\cockpitref{fig:mi-screen}{item:cursor}) can be moved across the radar display.
 Selecting a radar contact allows to track it. See \cref{sec:cursor} for controls.
 When a radar contact is tracked, it is displayed on the HUD and TI,
 and additional information on that contact is displayed on the MI.
-On the radar display, the selected echo is surrounded by a \# sign \cockpitref{fig:mi-screen}{item:selected},
+On the radar display, the selected echo is surrounded by a \# sign (\cockpitref{fig:mi-screen}{item:selected}),
 and a line starting from the selected echo indicates its heading and true speed.
 The contact speed (Mach), distance, and altitude are displayed
-at the top of the MI \cockpitref{fig:mi-screen}{item:tgt-info}.
+at the top of the MI (\cockpitref{fig:mi-screen}{item:tgt-info}).
 In FlightGear, the contact callsign and aircraft type are also displayed just below
 (\keys{I} to toggle between callsign and type).
-A dot \cockpitref{fig:mi-screen}{item:azimuth} indicates the contact azimuth and elevation,
+A dot (\cockpitref{fig:mi-screen}{item:azimuth}) indicates the contact azimuth and elevation,
 read relative to the flight path marker.
 
 \paragraph{IFF}
@@ -402,13 +401,15 @@ These symbols are summarized in \cref{fig:mi-iff}.
 See also \cref{sec:iff} regarding the IFF system.
 
 \begin{figure}
-  \centering
-  \includegraphics[width=0.3\textwidth]{images/displays/MI-iff.png}
+  \begin{tikzpicture}
+    \draw node at (0,0) {\includegraphics[width=0.3\textwidth]{images/displays/MI-iff.png}};
+    \draw node at (-5,1) {Selected radar contact};
+    \draw node at (-5,-1) {Manual IFF query};
+    \draw node at (-1.2,2.5) {Hostile};
+    \draw node at (1.2,2.5) {Friendly};
+  \end{tikzpicture}
 
-  \caption{MI IFF symbols.
-    Top row: selected radar contact. Bottom row: manual IFF query.
-    Left column: no IFF return. Right column: friendly IFF return.
-  }
+  \caption{MI IFF symbols.}
   \label{fig:mi-iff}
 \end{figure}
 
@@ -419,7 +420,7 @@ indicating target range relative to missile performance.
 The cues appear in the following order, as the target distance diminishes:
 \begin{enumerate}[nosep]
   \item At the maximum firing range, a circle arc with the top-left quadrant missing appears.
-  \item As the target range decreases, this circle grows until reaching optimal launch range.
+  \item As the target range decreases, this circle grows until reaching optimistic launch range.
   \item When the target is in the no-escape-zone, the top-left arc appears, completing the circle.
   \item When the target is inside the minimum firing range, the circle is replaced by a large cross.
 \end{enumerate}
