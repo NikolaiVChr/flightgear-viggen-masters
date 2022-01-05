@@ -509,61 +509,102 @@ The backup gyrocompass requires AC power.
 \section{Warning Lights Panels}
 \begin{figure}[ht!]
   \centering
-  \includegraphics[width=0.45\textwidth]{images/panels/left-warning-panel.png}
-  \includegraphics[width=0.45\textwidth]{images/panels/right-warning-panel.png}
+  \includegraphics[width=0.40\textwidth]{
+    \ifbool{AJS}{images/panels/AJS-left-warning-panel}{images/panels/JA-left-warning-panel}
+  }
+  \includegraphics[width=0.40\textwidth]{
+    \ifbool{AJS}{images/panels/AJS-right-warning-panel}{images/panels/JA-right-warning-panel}
+  }
   \caption{Left and right warning panels (\cockpitref{fig:front-panel}{item:left-warning,item:right-warning})}
   \label{fig:warning-panels}
 \end{figure}
 
-\begin{description}
-  \item[Fire (x2)] Engine fire (blinking).
-  \item[Fuel distrib] Fuel distribution system failure (blinking, steady if hydraulics failure).
-  \item[X-Tank fuel] Blinking: external fuel tank pump failure.
-    Steady: external fuel tank pump inactive due to low engine RPM.
-  \item[Tank pump] Fuel pump failure (blinking, steady if electrical failure).
-  \item[Gear] Blinking: gear up at low speed and altitude.
-    Steady: landing gear extending/retracting.
-  \item[Stuck in rev.] Thrust reverser engaged and failed (blinking).
-  \item[Nose/Left/Right gear] Gear down and locked (steady).
-  \item[Speedbrake] Blinking: speedbrakes failure. Steady: speedbrakes extended.
-  \item[Electrical] Failure in electrical system (blinking).
-  \item[Elec. Reserve] Emergency ram air turbine failure, or abnormal engagement (blinking).
-  \item[Hydraulic 1/2] Low pressure in hydraulic systems (blinking).
-  \item[Auto throttle] Steady: normal auto-throttle disengagement.
-    Blinking: abnormal auto-throttle disengagement, or failure.
-    Pull auto-throttle lever to off (up) position to reset.
-  \item[No reverse] Failure of thrust reverse or tertiary air intake (blinking).
-  \item[Hydr. Reserve] Low pressure in backup hydraulic system (blinking).
-  \item[Oil pressure] Low pressure in engine oil system (blinking).
-  \item[Oil temp.] High engine oil temperature (blinking).
-  \item[Flightstick,Attitude,Altitude] Abnormal disengagement of corresponding or higher autopilot mode (blinking).
-    To reset, acknowledge master warning, then press any autopilot button.
-  \item[Fire GTS] Fire in engine start system (blinking).
-  \item[Pitch gearing] Failure in elevator reduction gearing (blinking).
-  \item[Cabin alt.] Low cabin pressure (blinking).
-  \item[Canopy/Seat] Failure of canopy or ejection seat (blinking).
-  \item[Ignition sys] Engine ignition active (blinking).
-  \item[Start sys] Engine start sequence in progress (steady).
-  \item[Man. fuel reg] Automatic fuel regulation disengaged (steady).
-  \item[Central CPU] Main computer failure (blinking).
-  \item[Primary data] Flight data computer failure (blinking).
-  \item[Inertia nav.] Inertia navigation central aligning (steady).
-  \item[Radar] Radar failure (blinking).
-  \item[Transponder] Identification transponder failure (steady).
-  \item[Alpha] Failure in angle of attack sensor (blinking).
-  \item[Oxygen] Oxygen supply closed, or low pressure (blinking).
-  \item[Outlet temp] High exhaust gas temperature (blinking).
-  \item[Fuel amount] Low fuel quantity (blinking).
-  \item[Weapons] Weapon systems failure (blinking).
-\end{description}
+\subsection{Left Side}
+\begin{tabular}{llp{0.45\textwidth}}
+  Swedish & English & Description \\
+  \hline
+  BRAND       & FIRE        & Engine fire \\
+  BRÄ UPPF    & FUEL DIST   & Fuel distributor failure \\
+  X-TANK BRÄ  & X-TANK FUEL & External tank pump low pressure \\
+  TANK PUMP   & TANK PUMP   & Fuel feed pump low pressure \\
+  LANDSTÄLL   & GEAR        & Steady: landing gear in movement. \\
+              &             & Blinking: gear failure, or gear retracted at low speed and altitude. \\
+  FÖRV FÖRBJ  & NO REVR ARM & Risk of reverser engaging without WoW \\
+  NOS-/V-/H-STÄLL & NOSE-/L-/R-GEAR & Gear down and locked \\
+\AJSonly{
+  TIPP VÄXEL  & PITCH GEAR  & Elevator reduction gearing failure. \\
+}
+  \ifbool{AJS}{ELFEL}{ELFÖRS} & ELEC FAIL & Failure of electrical system \\
+\ifbool{AJS}{
+  RESERVEFF   & RES POWER   & Backup hydraulic pump low pressure or emergency ram air turbine failure \\
+}{
+  ELREVERS    & ELEC RES    & Emergency ram air turbine failure \\
+}
+  HYDR-TR 1/2 & HYD PRESS 1/2 & Low pressure in main hydraulic systems \\
+  AFK \AJSonly{FEL} & A/T \AJSonly{FAIL} & Steady: auto-throttle disengaged.  \\
+              &             & Blinking: A/T failure or abnormal disengagement. \\
+  EJ REV      & NO REVR     & Reverser or tertiary air intake failure \\
+\JAonly{
+  HYDRRESERV  & HYD RES     & Backup hydraulic pump low pressure \\
+}
+  OLJETRYCK   & OIL PRESS   & Low pressure in engine oil system \\
+  OLJETEMP    & OIL TEMP    & High engine oil temperature
+\end{tabular}
+
+\subsection{Left Side}
+\begin{tabular}{llp{0.45\textwidth}}
+  Swedish & English & Description \\
+  \hline
+  SPAK        & STICK       & Stability assist failure (press any autopilot button to reset after acknowledgment) \\
+\ifbool{AJS}{
+  HÅLL-FUNK   & AUTOPILOT   & Autopilot failure (idem) \\
+  RHM FEL     & RAD ALT FAIL& Radar altimeter failure \\
+  ROLL VÄXEL  & ROLL GEAR   & Roll reduction gearing failure \\
+  CK          & COMPUTER    & Primary computer failure \\
+}{
+  ATT         & ATT         & Attitude hold failure (idem) \\
+  HÖJD        & ALT         & Altitude hold failure (idem) \\
+  BRAND GTS   & FIRE GTS    & Engine starter turbine fire \\
+  TIPP VÄXEL  & PITCH GEAR  & Failure of elevation reduction gearing \\
+}
+  KABINHÖJD   & CABIN ALT   & Low cabin pressure \\
+  HUV o STOL  & CANOPY/SEAT & Canopy open or ejection seat disarmed \\
+  TÄNDSYS     & IGN SYS     & Engine ignition system active \\
+  STARTSYST   & START SYS   & Starting sequence in progress \\
+  MAN BR REG  & MAN FUEL    & Manuel fuel injection regulation \\
+\JAonly{
+  CD          & COMPUTER    & Primary computer failure \\
+  PRIMÄRDATA  & PRI DATA    & Flight data computer failure \\
+  TN          & INS         & Inertial navigation central failure \\
+  RADAR       & RADAR       & Radar failure \\
+  IKS         & IFF         & Military identification transponder failure \\
+  ALFA        & ALPHA       & Angle-of-attack sensor failure \\
+}
+  SYRGAS      & OXYGEN      & Oxygen mask low pressure \\
+\ifbool{AJS}{
+  BRÄ < 24    & FUEL < 24   & Low fuel quantity \\
+  BRAND GTS   & FIRE GTS    & Engine starter turbine fire \\
+  TILS        & TILS        & Receiving TILS signal (blinking: no vertical signal) \\
+  NAV-SYST    & NAV-SYS     & Navigation systems failure \\
+  KB-V SLUT   & KB-L QTY    & Low chaff quantity in left pod (blinking at 10\%, steady when empty) \\
+  KB-H/KA SL  & KB-R/KA QTY & Low chaff quantity in right pod (idem), or failure of KA / U-22 ECM pod \\
+  FACKL SL    & FLARES QTY  & Low flares quantity (idem) \\
+  MOTVERK     & CHAFF/ECM   & Releasing chaffs or ECM pod active \\
+  LUFTBROMS   & AIR BRAKES  & Air brakes extended \\
+}{
+  UTL TEMP    & EXH TEMP    & High exhaust gas temperature \\
+  BRÄ MÄNGD   & FUEL QTY    & Low fuel quantity \\
+  ANP 37      & ANP 37      & Weapon computer failure
+}
+\end{tabular}
 
 \section{Other Indicator Lights}
 \paragraph{Master Warning (\cockpitref{fig:front-panel}{item:master-warning})}
-The master warning consists of two flashing red lights, together with a sound warning.
-It generally lights up together with a light on the warning panels.
-Pressing the button between the lights acknowledges the warning.
-Depending on the nature of the warning,
-the master warning lights may remain steady after acknowledgement.
+The master warning consists of two flashing red lights,
+\ifbool{AJS}{together with a sound warning.}{sometimes accompanied by a sound warning, depending on the cause.}
+It generally lights up together with a blinking light on the warning panels.
+Pressing the button between the lights acknowledges the warning,
+which causes the corresponding light on the warning panels to become steady.
 
 \paragraph{Reverser (\cockpitref{fig:front-panel}{item:rev-light})}
 Green light, indicates that the reverser handle
