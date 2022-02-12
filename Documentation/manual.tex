@@ -43,6 +43,17 @@
 \setcounter{tocdepth}{2}
 
 
+% Reference of the form (figure:item).
+% Two arguments: figure reference and item reference in the figure.
+\labelcrefmultiformat{enumi}{#2#1#3}{,#2#1#3}{,#2#1#3}{,#2#1#3}
+\labelcrefmultiformat{enumii}{#2#1#3}{,#2#1#3}{,#2#1#3}{,#2#1#3}
+\labelcrefmultiformat{enumiii}{#2#1#3}{,#2#1#3}{,#2#1#3}{,#2#1#3}
+\labelcrefrangeformat{enumi}{#3#1#4--#5#2#6}
+\labelcrefrangeformat{enumii}{#3#1#4--#5#2#6}
+\labelcrefrangeformat{enumiii}{#3#1#4--#5#2#6}
+\newcommand{\figref}[2]{{\cref{#1}\hspace{0.1em}:\hspace{0.1em}\labelcref{#2}}}
+
+
 \begin{document}
 \newgeometry{bottom=2cm}
 \ThisCenterWallPaper{1.0}{images/title}
@@ -293,11 +304,6 @@ Using the latest stable FlightGear version is generally recommended.
   \label{fig:right-panel}
 \end{figure}
 
-
-% Reference to the 'Cockpit Overview' chapter figures.
-% Two arguments: figure reference and item reference in the figure.
-\newcommand{\cockpitref}[2]{\hyperref[#2]{fig~\labelcref*{#1}:\labelcref*{#2}}}
-
 \chapter{Instrumentation and Indicators}
 
 \newcommand{\sidepicture}[2]{%
@@ -318,7 +324,7 @@ Using the latest stable FlightGear version is generally recommended.
 
 \section{Flight Instruments}
 \sidepicture{
-  \paragraph{Altitude Indicator (\cockpitref{fig:front-panel}{item:altimeter})}
+  \paragraph{Altitude Indicator (\figref{fig:front-panel}{item:altimeter})}
   The long pointer is graduated in 100m, the short one in 1000m.
   The indicator can only display altitudes in the range 0--10km, after which it will cycle back to 0.
 
@@ -331,7 +337,7 @@ Using the latest stable FlightGear version is generally recommended.
 }{\includegraphics[width=\textwidth]{images/instruments/altimeter}}
 
 \sidepicture{
-  \paragraph{Airspeed/Mach Indicator (\cockpitref{fig:front-panel}{item:airspeed})}
+  \paragraph{Airspeed/Mach Indicator (\figref{fig:front-panel}{item:airspeed})}
   The airspeed indicator is graduated in km/h on a pseudo-logarithmic scale,
   up to \ifbool{AJS}{1400}{1500}km/h.
   The airspeed indicator is fully mechanical.
@@ -348,7 +354,7 @@ Using the latest stable FlightGear version is generally recommended.
 
 \ifbool{AJS}{
 \sidepicture{
-  \paragraph{Heading Indicator (\cockpitref{fig:front-panel}{item:CI})}
+  \paragraph{Heading Indicator (\figref{fig:front-panel}{item:CI})}
   The heading indicator forms a ring around the radar display (CI).
   The heading scale ring itself rotates, and is read against a fixed index.
   A second yellow moving index indicates bearing to the next waypoint.
@@ -358,7 +364,7 @@ Using the latest stable FlightGear version is generally recommended.
 }{\includegraphics[width=\textwidth]{images/instruments/heading-AJS}}
 }{
 \sidepicture{
-  \paragraph{Heading Indicator (\cockpitref{fig:front-panel}{item:heading})}
+  \paragraph{Heading Indicator (\figref{fig:front-panel}{item:heading})}
   The heading scale itself rotates to indicate aircraft heading, read against a fixed index.
   The thin pointer indicates commanded heading, or bearing to the destination.
   The wide pointer indicates track angle to the target, or runway direction (at landing).
@@ -369,14 +375,14 @@ Using the latest stable FlightGear version is generally recommended.
 }
 
 \sidepicture{
-  \paragraph{Attitude/Director Indicator (\cockpitref{fig:front-panel}{item:adi})}
+  \paragraph{Attitude/Director Indicator (\figref{fig:front-panel}{item:adi})}
   The ADI consists of a sphere which rotates in 3 axes, indicating pitch, roll, and course.
   The two flight director needles (horizontal and vertical) show ILS deviation for landing.
   The ADI requires AC power. A red flag indicates power failure.
 }{\includegraphics[width=\textwidth]{images/instruments/adi}}
 
 \sidepicture{
-  \paragraph{Angle-of-Attack Indicator (\cockpitref{fig:front-panel}{item:aoa})}
+  \paragraph{Angle-of-Attack Indicator (\figref{fig:front-panel}{item:aoa})}
   The AoA indicator is graduated in degrees, from -4\textdegree{} to 30\textdegree{}.
   When on the ground, the indicator displays pitch angle instead of AoA.
   The AoA indicator requires DC power.
@@ -384,7 +390,7 @@ Using the latest stable FlightGear version is generally recommended.
 }{\includegraphics[width=0.8\textwidth]{images/instruments/alpha}}
 
 \sidepicture{
-  \paragraph{Accelerometer (\cockpitref{fig:front-panel}{item:gmeter})}
+  \paragraph{Accelerometer (\figref{fig:front-panel}{item:gmeter})}
   The accelerometer shows G-load (acceleration along the vertical axis), between -2g and +9g.
   A second pointer shows the maximum (positive) acceleration reached.
   The button resets the maximum acceleration pointer.
@@ -393,7 +399,7 @@ Using the latest stable FlightGear version is generally recommended.
 
 
 \sidepicture{
-  \paragraph{Chronometer \ifbool{AJS}{(\cockpitref{fig:front-panel}{item:clock})}{(\cockpitref{fig:right-panel}{item:clock})}}
+  \paragraph{Chronometer \ifbool{AJS}{(\figref{fig:front-panel}{item:clock})}{(\figref{fig:right-panel}{item:clock})}}
   The chronometer has two scales. The inner scale and the white pointers indicate time.
   The outer scale and the yellow pointers are used for the stopwatch.
   The lower-left knob is used to adjust time.
@@ -403,7 +409,7 @@ Using the latest stable FlightGear version is generally recommended.
 
 \AJSonly{
 \sidepicture{
-  \paragraph{Waypoint Distance Indicator (\cockpitref{fig:front-panel}{item:wpdist})}
+  \paragraph{Waypoint Distance Indicator (\figref{fig:front-panel}{item:wpdist})}
   Indicates the distance to the next waypoint.
   At distances <40km, the scale is graduated in km.
   At distances >40km, the scale is graduated in Nordic miles (1mil = 10km), and indicates distances up to 400km.
@@ -411,7 +417,7 @@ Using the latest stable FlightGear version is generally recommended.
 }{\includegraphics[width=0.8\textwidth]{images/instruments/distance}}
 
 \sidepicture{
-  \paragraph{Destination Indicator (\cockpitref{fig:front-panel}{item:wpnum})}
+  \paragraph{Destination Indicator (\figref{fig:front-panel}{item:wpnum})}
   Indicates the type and number of the next waypoint.
   The first character indicates waypoint type: B for regular waypoints,
   L for departure and landing bases.
@@ -421,7 +427,7 @@ Using the latest stable FlightGear version is generally recommended.
 
 \section{Backup Instruments}
 \sidepicture{
-  \paragraph{Backup Altimeter (\cockpitref{fig:front-panel}{item:altimeter-bck})}
+  \paragraph{Backup Altimeter (\figref{fig:front-panel}{item:altimeter-bck})}
   The long pointer is graduated in 100m, the short one in 1000m.
   The indicator can only display altitudes in the range 0--10km, after which it will cycle back to 0.
   The knob is used to set reference pressure, which is displayed in hPa on a digital counter.
@@ -430,20 +436,20 @@ Using the latest stable FlightGear version is generally recommended.
 
 \AJSonly{
 \sidepicture{
-  \paragraph{Backup Airspeed Indicator (\cockpitref{fig:front-panel}{item:airspeed-bck})}
+  \paragraph{Backup Airspeed Indicator (\figref{fig:front-panel}{item:airspeed-bck})}
   The backup airspeed indicator is graduated in km/h on a pseudo-logarithmic scale, up to 800km/h.
   It is fully mechanical.
 }{\includegraphics[width=0.7\textwidth]{images/instruments/airspeed_backup}}
 
 \sidepicture{
-  \paragraph{Backup Heading Indicator (\cockpitref{fig:front-panel}{item:heading-bck})}
+  \paragraph{Backup Heading Indicator (\figref{fig:front-panel}{item:heading-bck})}
   The backup heading pointer indicates aircraft heading on a fixed scale.
   The backup heading indicator requires AC power.
 }{\includegraphics[width=0.7\textwidth]{images/instruments/heading_backup}}
 }
 
 \JAonly{
-\paragraph{Backup Heading Indicator (\cockpitref{fig:front-panel}{item:heading-bck-but})}
+\paragraph{Backup Heading Indicator (\figref{fig:front-panel}{item:heading-bck-but})}
 \label{sec:backup-heading}
 The JA 37 does not have a separate backup heading indicator.
 Instead the main heading indicator can display the output of the backup gyrocompass.
@@ -453,7 +459,7 @@ The backup gyrocompass requires AC power.
 }
 
 \sidepicture{
-  \paragraph{Backup Attitude Indicator (\cockpitref{fig:front-panel}{item:attitude-bck})}
+  \paragraph{Backup Attitude Indicator (\figref{fig:front-panel}{item:attitude-bck})}
   The backup horizon indicates pitch and roll angles.
   The display is mechanical, but the gyro uses AC power.
   A red-white flag indicates power failure.
@@ -462,33 +468,33 @@ The backup gyrocompass requires AC power.
 
 \section{Engine Instruments}
 \sidepicture{
-  \paragraph{RPM Indicator (\cockpitref{fig:front-panel}{item:rpm})}
+  \paragraph{RPM Indicator (\figref{fig:front-panel}{item:rpm})}
   The RPM indicator shows the high pressure compressor speed (N2), on a scale graduated up to 110\%.
   It requires AC power.
 }{\includegraphics[width=0.7\textwidth]{images/instruments/rpm}}
 
 \sidepicture{
-  \paragraph{Engine Pressure Ratio Indicator (\cockpitref{fig:front-panel}{item:epr})}
+  \paragraph{Engine Pressure Ratio Indicator (\figref{fig:front-panel}{item:epr})}
   The EPR indicator shows the pressure ratio between the intake and the outlet of the turbine
   (before the afterburner stage).
   It requires AC power.
 }{\includegraphics[width=0.7\textwidth]{images/instruments/epr}}
 
 \sidepicture{
-  \paragraph{Exhaust Gas Temperature Indicator (\cockpitref{fig:right-panel}{item:egt})}
+  \paragraph{Exhaust Gas Temperature Indicator (\figref{fig:right-panel}{item:egt})}
   The EGT gauge indicates gas temperature after the turbine
   (before the afterburner stage) in \textdegree{}C.
   It requires DC power.
 }{\includegraphics[width=0.7\textwidth]{images/instruments/egt}}
 
 \sidepicture{
-  \paragraph{Nozzle Position Indicator (\cockpitref{fig:right-panel}{item:nozzle})}
+  \paragraph{Nozzle Position Indicator (\figref{fig:right-panel}{item:nozzle})}
   The nozzle indicator shows the position of the engine exhaust nozzle and the current afterburner zone.
   It requires DC power.
 }{\includegraphics[width=0.7\textwidth]{images/instruments/nozzle}}
 
 \sidepicture{
-  \paragraph{Afterburner Zone Indicator (\cockpitref{fig:front-panel}{item:zone})}
+  \paragraph{Afterburner Zone Indicator (\figref{fig:front-panel}{item:zone})}
   The afterburner zone lights activate to indicate the afterburner zones (1 to 3)
   commanded by the throttle lever position.
   The lights are commanded purely by the throttle position,
@@ -498,7 +504,7 @@ The backup gyrocompass requires AC power.
 }{\includegraphics[width=\textwidth]{images/instruments/zone}}
 
 \sidepicture{
-  \paragraph{Fuel Gauge (\cockpitref{fig:front-panel}{item:fuel})}
+  \paragraph{Fuel Gauge (\figref{fig:front-panel}{item:fuel})}
   The fuel gauge indicates fuel quantity as a percentage.
   Under standard conditions, the gauge indicates \ifbool{AJS}{107}{112}\% with full internal tanks,
   and \ifbool{AJS}{132}{136}\% with the external tank in addition.
@@ -515,7 +521,7 @@ The backup gyrocompass requires AC power.
   \includegraphics[width=0.40\textwidth]{
     \ifbool{AJS}{images/panels/AJS-right-warning-panel}{images/panels/JA-right-warning-panel}
   }
-  \caption{Left and right warning panels (\cockpitref{fig:front-panel}{item:left-warning,item:right-warning})}
+  \caption{Left and right warning panels (\figref{fig:front-panel}{item:left-warning,item:right-warning})}
   \label{fig:warning-panels}
 \end{figure}
 
@@ -599,19 +605,19 @@ The backup gyrocompass requires AC power.
 \end{tabular}
 
 \section{Other Indicator Lights}
-\paragraph{Master Warning (\cockpitref{fig:front-panel}{item:master-warning})}
+\paragraph{Master Warning (\figref{fig:front-panel}{item:master-warning})}
 The master warning consists of two flashing red lights,
 \ifbool{AJS}{together with a sound warning.}{sometimes accompanied by a sound warning, depending on the cause.}
 It generally lights up together with a blinking light on the warning panels.
 Pressing the button between the lights acknowledges the warning,
 which causes the corresponding light on the warning panels to become steady.
 
-\paragraph{Reverser (\cockpitref{fig:front-panel}{item:rev-light})}
+\paragraph{Reverser (\figref{fig:front-panel}{item:rev-light})}
 Green light, indicates that the reverser handle
-(\cockpitref{fig:front-panel}{item:rev-handle}) is pulled,
+(\figref{fig:front-panel}{item:rev-handle}) is pulled,
 and the reverser is armed (but not necessarily active).
 
-\paragraph{Autopilot (\cockpitref{fig:front-panel}{item:autopilot})}
+\paragraph{Autopilot (\figref{fig:front-panel}{item:autopilot})}
 Three green pushbuttons/lights.
 Used to select one of the autopilot modes: stability assist (STICK/SPAK),
 attitude hold (ATT), altitude hold (ALT/HÖJD).
@@ -619,12 +625,12 @@ When an autopilot mode is active, the light for it and any lower mode are lit.
 The lights can blink to indicate special flight conditions under which the
 autopilot is not fully functional.
 
-\paragraph{Autothrottle (\cockpitref{fig:front-panel}{item:autothrottle-lights})}
+\paragraph{Autothrottle (\figref{fig:front-panel}{item:autothrottle-lights})}
 The orange A/T (AFK) light indicates that autothrottle is active.
 The pushbutton/light 15,5\textdegree{} is used to select the high-alpha landing mode
 (requires landing gear down).
 
-\paragraph{Transonic / Low Speed Reverse(\cockpitref{fig:front-panel}{item:transonic})}
+\paragraph{Transonic / Low Speed Reverse(\figref{fig:front-panel}{item:transonic})}
 Yellow light, indicates that the aircraft is in the transonic regime.
 
 On the ground, it instead indicates that the reverser is active at low airspeed,
@@ -632,7 +638,7 @@ causing a risk of hot air ingestion and engine fire.
 A low throttle setting (EPR<1.4) should be maintained in this case.
 
 \AJSonly{
-\paragraph{Weapon Released (\cockpitref{fig:front-panel}{item:release})}
+\paragraph{Weapon Released (\figref{fig:front-panel}{item:release})}
 When using Rb 04, Rb 15, and m/71, a steady light indicates that the weapon release sequence is complete.
 The light goes off when securing the trigger safety.
 
@@ -640,7 +646,7 @@ A blinking light indicates that a weapon was not properly released.
 }
 
 % Not implemented
-%\paragraph{Fast Reset (\cockpitref{fig:front-panel}{item:fast-reset})}}
+%\paragraph{Fast Reset (\figref{fig:front-panel}{item:fast-reset})}}
 
 
 \chapter{Control Panels}
@@ -648,7 +654,7 @@ A blinking light indicates that a weapon was not properly released.
 \AJSonly{
 \sidepicture{
   \section{Main Mode Selector}
-  The main mode selector knob \cockpitref{fig:left-panel}{item:main-mode}
+  The main mode selector knob \figref{fig:left-panel}{item:main-mode}
   is located on the radar panel, next to the throttle.
   It selects an aircraft main operation mode, corresponding to different phases of a flight.
   The knob can be rotated with the keybindings \keys{M} / \keys{\shift+M}.
@@ -721,12 +727,12 @@ by the following operations (called `flip-flop').
 
 \subsection{FR \ifbool{AJS}{24}{29} Radio Panel}
 \ifbool{AJS}{%
-  The FR 24 radio panel (\cockpitref{fig:left-panel}{item:fr29}) is used to set
+  The FR 24 radio panel (\figref{fig:left-panel}{item:fr29}) is used to set
   the operating mode and volume of both the FR 22 and FR 24, as well as the FR 24 channel.
   In FlightGear, it is not correctly modelled, and is replaced by the FR 29 panel
   from the JA variant, which has a similar purpose.
 }{
-  The FR 29 radio panel (\cockpitref{fig:left-panel}{item:fr29}) is used to set 
+  The FR 29 radio panel (\figref{fig:left-panel}{item:fr29}) is used to set 
   the operating mode and volume of the FR 29.
 }
 \begin{figure}[h]
@@ -744,7 +750,7 @@ by the following operations (called `flip-flop').
 \end{figure}
 
 The radio operation modes, selected with the \ifbool{AJS}{FR 24}{FR 29} panel knob
-(\cockpitref{fig:fr29}{item:knob-mode}) are the following.
+(\figref{fig:fr29}{item:knob-mode}) are the following.
 \begin{description}
   \item[N+L (NORM+LARM)] \ifbool{AJS}{%
       FR 22 radio is active, its frequency is set with the FR 22 channel and frequency selectors.
@@ -761,8 +767,8 @@ The radio operation modes, selected with the \ifbool{AJS}{FR 24}{FR 29} panel kn
 \ifbool{AJS}{
   \subsection{FR 22 Channel and Frequency Selectors}
   Frequency or channel for the FR 22 radio is set through the
-  FR 22 channel selector (\cockpitref{fig:left-panel}{item:fr22})
-  and frequency selector (\cockpitref{fig:front-panel}{item:frequency-sel}).
+  FR 22 channel selector (\figref{fig:left-panel}{item:fr22})
+  and frequency selector (\figref{fig:front-panel}{item:frequency-sel}).
 
   \begin{figure}[h]
     \centering
@@ -782,30 +788,30 @@ The radio operation modes, selected with the \ifbool{AJS}{FR 24}{FR 29} panel kn
     \label{fig:fr22}
   \end{figure}
 
-  To directly select a frequency, press button `--' (\cockpitref{fig:fr22}{item:channel-freq})
+  To directly select a frequency, press button `--' (\figref{fig:fr22}{item:channel-freq})
   and set the frequency on the frequency selector panel.
   Note that invalid frequencies can be set (e.g.\ outside of the FR 22 bands,
   or with invalid spacing in the UHF band) in which case the FR 22 will not work.
 
   To select the guard channel H (121.5MHz) or one of the special channels S1,S2,S3,
-  press the corresponding button (\cockpitref{fig:fr22}{item:channel-guard} or
-  \cockpitref{fig:fr22}{item:channel-special}).
+  press the corresponding button (\figref{fig:fr22}{item:channel-guard} or
+  \figref{fig:fr22}{item:channel-special}).
 
-  To select an airbase channel, set the airbase number with the airbase knob (\cockpitref{fig:fr22}{item:knob-base})
-  and select the channel with one of the airbase channel buttons (\cockpitref{fig:fr22}{item:channel-base}).
+  To select an airbase channel, set the airbase number with the airbase knob (\figref{fig:fr22}{item:knob-base})
+  and select the channel with one of the airbase channel buttons (\figref{fig:fr22}{item:channel-base}).
   For instance, set the airbase number to 21 and press button A/G for channel 21A.
 
-  To select one of the global channels E,F,G, set the airbase knob (\cockpitref{fig:fr22}{item:knob-base})
+  To select one of the global channels E,F,G, set the airbase knob (\figref{fig:fr22}{item:knob-base})
   to one of the positions ALLM (every 6th position), and select the channel
-  with one of buttons A/G, C/F, D/E (\cockpitref{fig:fr22}{item:channel-base}).
+  with one of buttons A/G, C/F, D/E (\figref{fig:fr22}{item:channel-base}).
 
-  To select a generic channel, set the channel group with the group knob (\cockpitref{fig:fr22}{item:knob-group})
-  and select the channel with one of the channel buttons (\cockpitref{fig:fr22}{item:channel-group}).
+  To select a generic channel, set the channel group with the group knob (\figref{fig:fr22}{item:knob-group})
+  and select the channel with one of the channel buttons (\figref{fig:fr22}{item:channel-group}).
   For instance, set the group number to 06 and press button 2 for channel 062.
 }{
   \subsection{KV1 and KV3 Channel Selectors}
-  The KV1 (\cockpitref{fig:left-panel}{item:kv1}) is used to set the channel of frequency for the FR 29 comm radio.
-  The KV3 (\cockpitref{fig:left-panel}{item:kv3}) is used to set the datalink channel.
+  The KV1 (\figref{fig:left-panel}{item:kv1}) is used to set the channel of frequency for the FR 29 comm radio.
+  The KV3 (\figref{fig:left-panel}{item:kv3}) is used to set the datalink channel.
 
   \begin{figure}[h]
     \centering
@@ -827,9 +833,9 @@ The radio operation modes, selected with the \ifbool{AJS}{FR 24}{FR 29} panel kn
   \end{figure}
 
   To enter a frequency or channel on one of the four screens
-  (\cockpitref{fig:kv1}{item:kv3-display,item:kv1-base-screen,item:kv1-nr-screen,item:kv1-mhz-screen}),
+  (\figref{fig:kv1}{item:kv3-display,item:kv1-base-screen,item:kv1-nr-screen,item:kv1-mhz-screen}),
   press the corresponding `clear' button and input the new value using the KV1 keypad
-  (\cockpitref{fig:kv1}{item:kv1-keypad}).
+  (\figref{fig:kv1}{item:kv1-keypad}).
   \begin{itemize}[noitemsep]
     \item Airbase channels are input in the format XXC, where XX is the airbase number, and C is the channel letter.
       For instance channel 21B is selected in \cref{fig:kv1}.
@@ -841,7 +847,7 @@ The radio operation modes, selected with the \ifbool{AJS}{FR 24}{FR 29} panel kn
       Since frequencies have 25KHz spacing, the last digit must be one of 0,2,5,7.
   \end{itemize}
 
-  The three mode buttons (\cockpitref{fig:kv1}{item:kv1-base-button,item:kv1-nr-button,item:kv1-mhz-button}),
+  The three mode buttons (\figref{fig:kv1}{item:kv1-base-button,item:kv1-nr-button,item:kv1-mhz-button}),
   are used to select whether the airbase channel, generic channel, or frequency is used.
   When a screen is cleared for input, its previous value remains in use until the new input is complete and correct.
   The old value is restored on the screen when pressing the corresponding mode button,
@@ -854,7 +860,7 @@ The radio operation modes, selected with the \ifbool{AJS}{FR 24}{FR 29} panel kn
   respectively generic channel.
   E.g.\ if airbase channel 21A is in use, pressing button 1/B will switch to channel 21B.
 
-  \subsection{FR 31 Radio Panel (\cockpitref{fig:right-panel}{item:fr31})}
+  \subsection{FR 31 Radio Panel (\figref{fig:right-panel}{item:fr31})}
   \begin{figure}[h]
     \centering
     \includegraphics[width=0.6\textwidth]{images/controls/fr31.png}
@@ -873,8 +879,8 @@ The radio operation modes, selected with the \ifbool{AJS}{FR 24}{FR 29} panel kn
   \end{figure}
   To enter a frequency or channel, select the airbase channel, generic
   channel, or frequency mode with the respective buttons if it is different
-  from the current mode, (\cockpitref{fig:fr31}{item:base,item:nr,item:mhz}),
-  then press the `clear' button and enter the new value with the keypad (\cockpitref{fig:fr31}{item:keypad}).
+  from the current mode, (\figref{fig:fr31}{item:base,item:nr,item:mhz}),
+  then press the `clear' button and enter the new value with the keypad (\figref{fig:fr31}{item:keypad}).
   The previous channel or frequency remains in use until the new input is complete.
   Invalid key presses are ignored.
   \begin{itemize}[noitemsep]
@@ -932,7 +938,7 @@ By default the file \directory{Aircraft/JA37/Nasal/radios/channels-default.txt} 
   This information is displayed on the TI.
 
   Datalink is activated with the DL button in the SYST page on the TI.
-  The KV3 screen (\cockpitref{fig:kv1}{item:kv3-display}) is used to set the datalink channel
+  The KV3 screen (\figref{fig:kv1}{item:kv3-display}) is used to set the datalink channel
   on the last 3 digits, and a datalink identifier on the first digit.
   Aircrafts must be on the same datalink channel to communicate.
   The identifier helps to distinguish between aircrafts on a same datalink channel.
@@ -984,7 +990,7 @@ it can be identified by other aircrafts, but can not identify them.
   \vspace{0pt}
   \setlength{\parindent}{1em}
   \paragraph{Control Panel}
-  The IFF control panel \cockpitref{fig:right-panel}{item:iff}
+  The IFF control panel \figref{fig:right-panel}{item:iff}
   is located on the rear right side of the cockpit.
   The right knob is the power knob, with 3 positions: OFF/FRÅN, AUTO (on when airborne), ON/TILL.
   The left knob is used to set the query code, between 1 and 11.
@@ -1020,7 +1026,7 @@ This allows to operate with other aircrafts which do not have a compatible IFF s
 \AJSonly{
 \section{Weapon Panel}
 \label{sec:weapon-panel}
-The weapon panel (\cockpitref{fig:right-panel}{item:wpn-panel})
+The weapon panel (\figref{fig:right-panel}{item:wpn-panel})
 is used to select weapons and adjust their settings.
 
 \begin{figure}[ht]
@@ -1043,12 +1049,12 @@ is used to select weapons and adjust their settings.
 
 \paragraph{Jettison Buttons}
 There are two jettison buttons, guarded by a cover.
-The first (\cockpitref{fig:wpn-panel}{item:jett-payload}) jettisons all external load,
+The first (\figref{fig:wpn-panel}{item:jett-payload}) jettisons all external load,
 except for the outer wing pylons.
-The second (\cockpitref{fig:wpn-panel}{item:jett-tank}) jettisons only the external fuel tank.
+The second (\figref{fig:wpn-panel}{item:jett-tank}) jettisons only the external fuel tank.
 
 \paragraph{Weapon Selector}
-The weapon selection knob (\cockpitref{fig:wpn-panel}{item:wpn-sel}) is used to select weapon types,
+The weapon selection knob (\figref{fig:wpn-panel}{item:wpn-sel}) is used to select weapon types,
 as well as special aiming modes for some weapons.
 The positions allow to select the following weapons.
 \begin{description}
@@ -1067,18 +1073,18 @@ Remarks:
     See \cref{sec:loadout} for more details.
   \item Position IR-RB is an exception: different types of sidewinders can be loaded together,
     and are selected simultaneously by this position.
-    Use button IR-RB FRAMSTEGN (\cockpitref{fig:left-panel}{item:ir-framstegn}) to cycle pylons.
+    Use button IR-RB FRAMSTEGN (\figref{fig:left-panel}{item:ir-framstegn}) to cycle pylons.
   \item The different bomb aiming modes are not implemented. Only a generic CCIP exists.
   \item Rb 05 MARK and SJÖ modes differ only by the fuse setting, which is not implemented.
 \end{itemize}
 
 \paragraph{Wingspan and Bomb Interval Selector}
-This knob (\cockpitref{fig:wpn-panel}{item:dist-sel}) is used to set the bomb release interval,
+This knob (\figref{fig:wpn-panel}{item:dist-sel}) is used to set the bomb release interval,
 and the target wingspan for the HUD in A/A aiming modes. It is graduated in meters from 10m to 60m.
 The three leftmost positions (VÄ, RAKT, HÖ) are used for illumination bombs, which are not implemented.
 
 \paragraph{Sequence Release and ARAK Long Range Mode}
-The switch SERIE/IMPULS (\cockpitref{fig:wpn-panel}{item:impuls})
+The switch SERIE/IMPULS (\figref{fig:wpn-panel}{item:impuls})
 has different functions depending on the selected weapon.
 \begin{description}
   \item[Rb 04 / Rb 15] The switch controls sequence release.
@@ -1363,7 +1369,7 @@ The generic weapon employment procedure is the following.
     }
   \ifbool{AJS}{
   \item Set main mode selector to ANF/CBT
-    (\cockpitref{fig:left-panel}{item:main-mode}, \keys{M} / \keys{\shift+M}).
+    (\figref{fig:left-panel}{item:main-mode}, \keys{M} / \keys{\shift+M}).
   }{
   \item If desired, engage aiming mode with \keys{H}.
   }
