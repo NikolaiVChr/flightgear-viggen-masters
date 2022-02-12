@@ -40,7 +40,7 @@
 \titleformat{\chapter}[hang]{\bfseries\Huge}{\thechapter{}.}{1.2ex}{}
 \titlespacing{\chapter}{0pt}{*0}{*3}
 
-\setcounter{tocdepth}{1}
+\setcounter{tocdepth}{2}
 
 
 \begin{document}
@@ -519,7 +519,7 @@ The backup gyrocompass requires AC power.
   \label{fig:warning-panels}
 \end{figure}
 
-\subsection{Left Side}
+\subsection*{Left Side}
 \begin{tabular}{llp{0.45\textwidth}}
   Swedish & English & Description \\
   \hline
@@ -551,7 +551,7 @@ The backup gyrocompass requires AC power.
   OLJETEMP    & OIL TEMP    & High engine oil temperature
 \end{tabular}
 
-\subsection{Left Side}
+\subsection*{Right Side}
 \begin{tabular}{llp{0.45\textwidth}}
   Swedish & English & Description \\
   \hline
@@ -654,7 +654,6 @@ A blinking light indicates that a weapon was not properly released.
   The knob can be rotated with the keybindings \keys{M} / \keys{\shift+M}.
 }{\includegraphics[width=\textwidth]{images/controls/mode-selector}}
 
-\subsection{Main Modes}
 \begin{description}
   \item[FK/TST] Built-in test. Not implemented (does the same as BER/PRE).
   \item[BER/PRE] Standby mode used for start-up and taxi.  Displays (HUD and CI) are turned off.
@@ -667,7 +666,6 @@ A blinking light indicates that a weapon was not properly released.
   \item[LANDING P/O] Visual landing mode.
 \end{description}
 
-\subsection{Example of Use}
 A typical flight may use the following modes.
 Initially, the mode is BER/PRE.
 Shortly before takeoff (when entering the runway), the mode is switched to NAV.
@@ -681,7 +679,6 @@ LANDING P/O simply gives indicates runway heading and nominal glide slope on the
 One can also begin the approach in LANDING NAV mode,
 and later switch to LANDING P/O to finish the approach visually.
 
-\subsection{Alternative Landing Approaches}
 For the LANDING NAV mode, the approach pattern can be changed
 by the following operations (called `flip-flop').
 \begin{itemize}
