@@ -247,11 +247,11 @@ The following indication lights and buttons are located around the MI display.
   \item[ID/J] Radar modes (not implemented)
   \item[TNF] Inertia navigation alignment indicator
   \item[TLS] TILS signal indicator
-  \item[IK] Identification transponder (not implemented)
+  \item[IK] IFF interrogation
 \end{description}
 
 \paragraph{Bottom buttons (\cockpitref{fig:mi}{item:bot-buttons})}
-Pressing button P3 displays a help text on the MI (\cockpitref{fig:mi-screen}{item:text-help}).
+Pressing button P3 displays a help text on the MI.
 
 \begin{tabular}{lll}
   button & help text & function \\
@@ -267,44 +267,34 @@ Pressing button P3 displays a help text on the MI (\cockpitref{fig:mi-screen}{it
 
 Other buttons have no functionality in the real aircraft.
 
-\subsection{Display Overview}
+\subsection{Flight Indications}
 \begin{figure}[!ht]
   \centering
-  \includegraphics[width=0.48\textwidth]{images/displays/MI-overview1.png}
-  \includegraphics[width=0.48\textwidth]{images/displays/MI-overview2.png}
+  \includegraphics[width=0.5\textwidth]{images/displays/MI-flight.png}
 
   \begin{multicols}{2}
     \begin{enumerate}[nosep]
-      \item \label{item:tgt-info} Selected contact information
+      \item \label{item:heading-bug} Destination bearing
       \item \label{item:heading} Heading scale
-      \item \label{item:distance} Distance scale
-      \item \label{item:selected} Selected radar contact
-      \item \label{item:contact} Other radar contact
-      \item \label{item:cursor} Cursor
-      \item \label{item:altitude} Altitude scale
-      \item \label{item:azimuth} Selected contact azimuth / elevation
+      \item \label{item:dig-alt} Digital altitude
+      \item \label{item:horizon} Artificial horizon
+      \item \label{item:fpv} Flight path marker
+      \item \label{item:gpw-arrow} Ground proximity warning
+      \item \label{item:alt-bars} Altitude reference bars
+      \item \label{item:rhm-index} Radar altitude index
+      \item \label{item:alt-scale} Altitude scale
       \item \label{item:ground} Ground proximity indicator
       \item \label{item:alt-index} Altitude index
-      \item \label{item:text-sikt} Text: HUD aiming mode
-      \item \label{item:dig-alt} Digital altitude
-      \item \label{item:fpv} Flight path marker
-      \item \label{item:horizon} Artificial horizon
-      \item \label{item:alt-bars} Altitude reference bars
-      \item \label{item:text-tyst} Text: radar silent
-      \item \label{item:text-mach} Bottom left text (here: Mach indicator)
-      \item \label{item:text-help} Bottom text: (here: buttons help)
-      \item \label{item:text-mreg} Bottom right text (here: manual event)
     \end{enumerate}
   \end{multicols}
 
-  \caption{MI display overview}
-  \label{fig:mi-screen}
+  \caption{MI flight symbology}
+  \label{fig:mi-flight}
 \end{figure}
 
-\subsection{Flight Indications}
 \paragraph{%
-  Artificial Horizon (\cockpitref{fig:mi-screen}{item:horizon})
-  and Flight Path Marker (\cockpitref{fig:mi-screen}{item:fpv})
+  Artificial Horizon (\cockpitref{fig:mi-flight}{item:horizon})
+  and Flight Path Marker (\cockpitref{fig:mi-flight}{item:fpv})
 }
 The flight path marker is fixed, and serves as a reference for the artificial horizon.
 The artificial horizon line rotates to indicate roll,
@@ -312,11 +302,11 @@ and deviates from the flight path marker to indicate flight path angle.
 Deviation is proportional to the sine of the flight path angle.
 
 \paragraph{Altitude Indications}
-Digital altitude (\cockpitref{fig:mi-screen}{item:dig-alt}) is displayed above the artificial horizon.
-A marker (\cockpitref{fig:mi-screen}{item:alt-index}) indicates altitude
-on the altitude scale (\cockpitref{fig:mi-screen}{item:altitude}), on the right side.
+Digital altitude (\cockpitref{fig:mi-flight}{item:dig-alt}) is displayed above the artificial horizon.
+A marker (\cockpitref{fig:mi-flight}{item:alt-index}) indicates altitude
+on the altitude scale (\cockpitref{fig:mi-flight}{item:alt-scale}), on the right side.
 
-Altitude bars (\cockpitref{fig:mi-screen}{item:alt-bars}) are read against the artificial horizon,
+Altitude bars (\cockpitref{fig:mi-flight}{item:alt-bars}) are read against the artificial horizon,
 and indicate reference altitude relative to the current altitude.
 The top of the altitude bars represents reference altitude,
 while the artificial horizon represents current altitude.
@@ -325,100 +315,229 @@ If the top of the bars is above (resp.\ below) the horizon,
 the aircraft is below (resp.\ above) the commanded altitude.
 Altitude bars are displayed below 1000m, or when autopilot altitude hold is active.
 
-Ground height measured by the radar altimeter is displayed by a chevron index on each altitude bar,
-when the radar altitude is less than 600m.
+Ground height measured by the radar altimeter is displayed by a chevron index on each altitude bar
+(\cockpitref{fig:mi-flight}{item:rhm-index}), when the radar altitude is less than 600m.
+
+\paragraph{Heading Indications}
+The heading scale (\cockpitref{fig:mi-flight}{item:heading}) shows current heading with a fixed central marker,
+and heading to next waypoint with a second marker (\cockpitref{fig:mi-flight}{item:heading-bug}).
 
 \paragraph{Ground Proximity Warning}
-The distance between the ground symbol (\cockpitref{fig:mi-screen}{item:ground})
-and the flight path marker (\cockpitref{fig:mi-screen}{item:fpv})
+The distance between the ground symbol (\cockpitref{fig:mi-flight}{item:ground})
+and the flight path marker (\cockpitref{fig:mi-flight}{item:fpv})
 indicates margin from a ground proximity warning.
 When the ground symbol touches the flight path marker, a ground proximity warning occurs.
-On the MI, it is indicated by a flashing arrow on the flight path marker pointing in the pull-up direction,
+On the MI, it is indicated by a flashing arrow on the flight path marker
+pointing in the pull-up direction (\cockpitref{fig:mi-flight}{item:gpw-arrow}),
 as well as the flashing ground proximity warning light (\cockpitref{fig:mi}{item:gpw}).
 
 \subsection{Text Messages}
-The following text indications can be displayed on the MI.
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.5\textwidth]{images/displays/MI-text.png}
 
-\paragraph{SIKT / AIM (\cockpitref{fig:mi-screen}{item:text-sikt})}
+  \begin{multicols}{2}
+    \begin{enumerate}[nosep]
+      \item \label{item:text-sikt} SIKT / AIM
+      \item \label{item:text-tyst} TYST / SILENT
+      \item \label{item:text-bl1} Left upper text, here weapon type
+      \item \label{item:text-bl2} Left lower text, here flare and chaff
+      \item \label{item:text-br1} Right upper text, here manual event
+      \item \label{item:text-br2} Right lower text, here Rb 99 datalink
+    \end{enumerate}
+  \end{multicols}
+
+  \caption{MI text messages}
+  \label{fig:mi-text}
+\end{figure}
+
+
+\paragraph{SIKT / AIM (\cockpitref{fig:mi-text}{item:text-sikt})}
 Indicates that the HUD is in aiming mode.
 
-\paragraph{TYST / SILENT (\cockpitref{fig:mi-screen}{item:text-tyst})}
+\paragraph{TYST / SILENT (\cockpitref{fig:mi-text}{item:text-tyst})}
 Indicates that the radar is off.
 
-\paragraph{Bottom left (\cockpitref{fig:mi-screen}{item:text-mach})}
-The following indications can be displayed, by order of priority:
+\paragraph{Bottom left upper text(\cockpitref{fig:mi-text}{item:text-bl1})}
+The following can be displayed, by order of priority:
 \begin{enumerate}[nosep]
   \item Altimeter setting warning `QFE' (flashing). Same conditions as on the HUD.
   \item Selected weapon type, if any.
   \item Mach number, at M>0.4.
 \end{enumerate}
 
-\paragraph{Bottom right (\cockpitref{fig:mi-screen}{item:text-mreg})}
-The following indications can be displayed, by order of priority:
+\paragraph{Bottom right upper text (\cockpitref{fig:mi-text}{item:text-br1})}
+The following can be displayed, by order of priority:
 \begin{enumerate}[nosep]
   \item MREG, indicating a manually registered event (button X3 below the MI \cockpitref{fig:mi}{item:bot-buttons})
   \item FÖ / FAIL, indicating an aircraft failure. Goes off when consulting the TI failure page.
 \end{enumerate}
 
-\paragraph{Bottom (\cockpitref{fig:mi-screen}{item:text-help})}
-The following indications can be displayed, by order of priority:
+\paragraph{Bottom (\cockpitref{fig:mi-text}{item:text-bl2,item:text-br2})}
+The following can be displayed, by order of priority:
 \begin{enumerate}[nosep]
   \item Memo for the MI lower buttons (\cockpitref{fig:mi}{item:bot-buttons}),
     when pressing button `P3' (cf.~\cref{sec:mi-overview}).
-  \item RB 99 datalink estimated time to target and chance of hit,
-    enabled with button X2.
+  \item On the left, number of remaining chaff and flares.
+    On the right, RB99 datalink estimated time to target and chance of hit, enabled with button X2.
 \end{enumerate}
 
 \subsection{Radar Display}
-The radar display, at the center of the MI screen, is a B-scope,
-i.e.\ the x-axis represents bearing, read against the heading scale (\cockpitref{fig:mi-screen}{item:heading}),
-and the y-axis represents distance, read against the distance scale (\cockpitref{fig:mi-screen}{item:distance}).
-The heading scale has a range of $\pm 60\degree$ around the aircraft heading.
-The distance scale range is the same as the radar range (modified with \keys{[}/\keys{]}).
-Radar echoes are displayed as small bars (\cockpitref{fig:mi-screen}{item:contact}).
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.45\textwidth]{images/displays/MI-radar1.png}
+  \includegraphics[width=0.45\textwidth]{images/displays/MI-radar2.png}
 
-\paragraph{Selected Contact}
-The cursor (\cockpitref{fig:mi-screen}{item:cursor}) can be moved across the radar display.
-Selecting a radar contact allows to track it. See \cref{sec:cursor} for controls.
-When a radar contact is tracked, it is displayed on the HUD and TI,
-and additional information on that contact is displayed on the MI.
-On the radar display, the selected echo is surrounded by a \# sign (\cockpitref{fig:mi-screen}{item:selected}),
-and a line starting from the selected echo indicates its heading and true speed.
-The contact speed (Mach), distance, and altitude are displayed
-at the top of the MI (\cockpitref{fig:mi-screen}{item:tgt-info}).
-In FlightGear, the contact callsign and aircraft type are also displayed just below
-(\keys{I} to toggle between callsign and type).
-A dot (\cockpitref{fig:mi-screen}{item:azimuth}) indicates the contact azimuth and elevation,
-read relative to the flight path marker.
+  \begin{multicols}{2}
+    \begin{enumerate}[nosep]
+      \item \label{item:head-scale} Heading scale
+      \item \label{item:dist-scale} Distance scale
+      \item \label{item:scan-arc} Radar scan arc
+      \item \label{item:sweep} Radar sweep marker
+      \item \label{item:cursor} Cursor
+      \item \label{item:lost-lock} Lost or not yet acquired contact
+      \item \label{item:friendly} Echo with friendly IFF response
+      \item \label{item:target-info} Primary target information
+      \item \label{item:primary} Primary target
+      \item \label{item:secondary} Secondary target
+      \item \label{item:echo} Other radar echo
+      \item \label{item:azi-elev} Primary target azimuth and elevation
+      \item \label{item:tgt-alt} Primary target altitude
+      \item \label{item:vert-scan-arc} Radar scan altitude limits
+    \end{enumerate}
+  \end{multicols}
 
-\paragraph{IFF}
-When a contact is selected, an IFF interogation is automatically performed.
-Furthermore, manual IFF queries can be done by moving the cursor over a radar echo and pressing \keys{\ctrl+F}.
-In either case, if the radar contact is friendly, a cross will be displayed over it.
-For the selected contact, this cross replaces the usual \# sign.
-In case of a manual IFF query, a small square indicates that the echo did not give a friendly return.
-These symbols are summarized in \cref{fig:mi-iff}.
-See also \cref{sec:iff} regarding the IFF system.
-
-\begin{figure}
-  \begin{tikzpicture}
-    \draw node at (0,0) {\includegraphics[width=0.3\textwidth]{images/displays/MI-iff.png}};
-    \draw node at (-5,1) {Selected radar contact};
-    \draw node at (-5,-1) {Manual IFF query};
-    \draw node at (-1.2,2.5) {Hostile};
-    \draw node at (1.2,2.5) {Friendly};
-  \end{tikzpicture}
-
-  \caption{MI IFF symbols.}
-  \label{fig:mi-iff}
+  \caption{MI radar symbology}
+  \label{fig:mi-radar}
 \end{figure}
 
-\subsection{Missile Launch Zone Indication}
-If a missile is selected, armed, and locked on the tracked radar contact,
+The radar display, at the center of the MI screen, is a B-scope,
+i.e.\ the x-axis represents bearing, read against the heading scale (\cockpitref{fig:mi-radar}{item:head-scale}),
+and the y-axis represents distance, read against the distance scale (\cockpitref{fig:mi-radar}{item:dist-scale}).
+The heading scale has a range of $\pm 60\degree$ around the aircraft heading.
+The distance scale range is the same as the radar range.
+
+\paragraph{Radar Scan}
+Horizontal lines at the bottom and top of the radar display indicate
+radar scan arc width (\cockpitref{fig:mi-radar}{item:scan-arc}).
+On the bottom line, a sweeping cursor indicates current radar azimuth (\cockpitref{fig:mi-radar}{item:sweep}).
+
+Vertically, a thick bar on the altitude scale indicates the range of altitudes
+scanned by the radar scale (\cockpitref{fig:mi-radar}{item:vert-scan-arc}).
+This altitude range is computed at a reference distance which is either
+that of the MI cursor, or that of the primary target.
+
+\paragraph{Radar Echoes and Tracks}
+Radar echoes are displayed as trails of small bars (\cockpitref{fig:mi-radar}{item:echo}).
+A tracked contact is covered by an additional symbol, and a vector indicating speed and heading.
+Before acquiring lock, the primary target is displayed as a square.
+After lock, the sides of the square collapse, forming a `\#' (\cockpitref{fig:mi-radar}{item:primary}).
+For a secondary target, the symbols are similar,
+except the middle of each line is missing (\cockpitref{fig:mi-radar}{item:secondary,item:lost-lock}).
+A radar echo with a friendly IFF response is covered with a cross (\cockpitref{fig:mi-radar}{item:friendly}).
+See also \cref{sec:iff} regarding the IFF system.
+
+\paragraph{Primary Target Information}
+When a primary target is selected, the MI displays the following additional information.
+At the top, numerical speed, distance, and altitude of the primary target
+are shown (\cockpitref{fig:mi-radar}{item:target-info}).
+On the altitude scale, a thick horizontal dash indicates target altitude (\cockpitref{fig:mi-radar}{item:tgt-alt}).
+A large dot indicates target azimuth and elevation, read relative to the artificial horizon
+and flight path marker (\cockpitref{fig:mi-radar}{item:azi-elev}).
+
+\subsection{Radar Operation}
+Radar is turned on or off with \keys{R}.
+It can not be turned on when the nose gear is compressed.
+Radar range is controlled with \keys{[}/\keys{]}, between 15km and 120km,
+Tracking modes are primary controlled through the MI cursor (\cockpitref{fig:mi-radar}{item:cursor}).
+Refer to \cref{sec:cursor} regarding cursor control options.
+
+The radar has four operation modes.
+\begin{description}
+  \item[Scan] A wide search mode, with 120\textdegree{} lateral search arc and 12\textdegree{} vertical search arc.
+    It is not possible to track contacts in this mode.
+  \item[STT (Single Target Track)] The radar focuses on a single target, and is blind to anything else.
+    This mode is required to guide Rb 71 semi-active radar missiles.
+  \item[TWS (Track While Scan)] A narrow search mode, with 60\textdegree{} lateral search arc and 8\textdegree{} vertical search arc.
+    This mode allows tracking up to 4 contacts at once, while continuing to scan.
+  \item[Disk search] The radar scans a disk of radius 10\textdegree{} straight ahead,
+    and locks (STT) on any contact found. It is intended for close range engagements (dogfight).
+\end{description}
+
+\paragraph{Normal Operation}
+At any time, scan mode can be selected with \keys{F}. This cancels tracking of any contact.
+In scan mode, a radar echo can be selected by moving the MI cursor over it and `clicking'.
+This engages STT mode, designates this echo as primary target and starts tracking it.
+In STT mode, the MI cursor is disabled.
+Clicking with the cursor returns back to the previous mode and restores the cursor.
+
+At any time, TWS mode can be selected with \keys{\shift+F}.
+Similarly to scan mode, the MI cursor can be used to designate a radar echo as primary target.
+However, doing so in TWS does not engage STT, remaining in TWS instead.
+In TWS with a primary target designated, the cursor is again disabled.
+Clicking cancels the primary target, but continues to track it, making it a secondary target.
+This restores the cursor, allowing to select a new primary target.
+By this process, up to 4 targets can be tracked simultaneously.
+The primary target can be changed with \keys{m}, cycling through the secondary targets.
+When a primary target is designated in TWS, it is possible to switch to STT mode with \keys{\ctrl+F}.
+This stops tracking any secondary target.
+Inversely, switching from STT to TWS will continue tracking the primary target.
+
+\paragraph{Scan Direction Controls}
+In scan and TWS mode, the radar scan direction can be controlled vertically.
+In TWS mode, it can additionally be controlled in azimuth.
+When a primary target is selected, these controls are inhibited:
+the radar scan pattern is always centered on the primary target.
+Otherwise, the radar elevation is controlled manually with \keys{<}/\keys{>},
+up to 20\textdegree{} above or below the horizon,
+while the horizontal scan direction follows the MI cursor.
+As long as the radar is on, vertical and horizontal scan limits are read on
+the corresponding MI indications (\cockpitref{fig:mi-radar}{item:scan-arc,item:vert-scan-arc}).
+
+\paragraph{Dogfight}
+Radar disk search mode is intended for engagement within visual range.
+It is not the same as the HUD aiming mode, but the two are often used together, and interact.
+
+Aiming mode is switched on or off with \keys{H}, provided the landing gear is up and locked.
+In aiming mode, SIKT / AIM is displayed at the top of the MI (\cockpitref{fig:mi-text}{item:text-sikt}).
+The button \keys{R} has a different behaviour:
+in aiming mode it always turns the radar off, instead of switching on or off.
+
+Pressing \keys{\shift+N} will engage aiming mode, turn the radar on, and engage disk search mode.
+In this mode, the radar follows a quick scan pattern in a disk of radius 10\textdegree{},
+centered a bit above the middle of the HUD.
+The range is fixed to 15km, and cursor and elevation controls are disabled.
+As soon as the radar detects a contact, it will lock it, switching to STT.
+One can return to disk search mode by pressing \keys{\shift+N} again, or with a cursor click.
+
+Aiming mode is disabled with \keys{H}, while disk search mode is disabled by switching to scan or TWS mode.
+
+
+\subsection{Missile Launch Indications}
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.4\textwidth]{images/displays/MI-launch.png}
+
+  \begin{multicols}{2}
+    \begin{enumerate}[nosep]
+      \item \label{item:dlz-disk} Dynamic launch zone circle
+      \item \label{item:wpn-range} Weapon range limit brackets
+    \end{enumerate}
+  \end{multicols}
+
+  \caption{MI missile launch symbology}
+  \label{fig:mi-launch}
+\end{figure}
+
+When a weapon is selected, four brackets in the radar display show the weapon minimum firing range
+and optimistic firing range (\cockpitref{fig:mi-launch}{item:wpn-range}).
+Horizontally, these brackets follow the radar scan arc indicator.
+
+When furthermore a missile is selected, armed, and locked on the primary target,
 several cues are displayed at the center of the MI,
-indicating target range relative to missile performance.
+indicating target range relative to missile performance (\cockpitref{fig:mi-launch}{item:dlz-disk}).
 The cues appear in the following order, as the target distance diminishes:
-\begin{enumerate}[nosep]
+\begin{enumerate}[noitemsep]
   \item At the maximum firing range, a circle arc with the top-left quadrant missing appears.
   \item As the target range decreases, this circle grows until reaching optimistic launch range.
   \item When the target is in the no-escape-zone, the top-left arc appears, completing the circle.
