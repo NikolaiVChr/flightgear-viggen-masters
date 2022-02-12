@@ -960,9 +960,6 @@ By default the file \directory{Aircraft/JA37/Nasal/radios/channels-default.txt} 
   Furthermore, an aircraft A connected through datalink
   may transmit information about an aircraft B which it is tracking.
   Then, aircraft B is displayed as \dltarget{} with the identifier of A below it, if any.
-  Aircraft A may also transmit an IFF information for aircraft B.
-  The symbol for B is green if A has identified B as friendly, red if it has identified B as hostile,
-  and yellow if no IFF information is transmitted.
 }
 
 
@@ -1004,14 +1001,17 @@ it can be identified by other aircrafts, but can not identify them.
 
 \JAonly{
 \paragraph{Identification of Contacts}
-When a radar contact is selected, an IFF interrogation is automatically performed.
-If the aircraft is identified as friendly, it is displayed with a cross on the MI and the HUD,
-and with a green symbol on the TI.
+IFF interrogation is done with \keys{N}, and lasts 10 seconds, during which the IK light on the MI frame is lit.
+The IFF radar is a secondary radar physically tied to the primary radar,
+which will interrogate any contact in the primary radar search area.
+Friendly responses are displayed with a cross on the MI.
 
-Additionally, pressing \keys{\ctrl+F} sends an IFF interrogation
-to the radar contact on which the MI cursor is pointing.
-If it is identified as friendly, a cross is displayed over this contact on the MI
-(such manual IFF interrogation are not displayed on the HUD or the TI).
+For any tracked radar contact, the IFF response or lack thereof is stored, as long as tracking is maintained.
+It is displayed on the HUD and the TI with a cross over friendly contacts.
+Additionally, the TI uses a color code: green for friendly contacts,
+red for contacts which failed to answer an IFF interrogation,
+and yellow for contacts which were not interrogated.
+The IFF information displayed on the TI and HUD can also use information transmitted by other aircrafts on datalink.
 
 \paragraph{Friendly Callsigns}
 The menu \menu{JA-37Di>Friends (IFF)} allows to set a list of friendly callsigns.
