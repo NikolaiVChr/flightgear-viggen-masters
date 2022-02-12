@@ -394,7 +394,7 @@ The following can be displayed, by order of priority:
       \item \label{item:dist-scale} Distance scale
       \item \label{item:scan-arc} Radar scan arc
       \item \label{item:sweep} Radar sweep marker
-      \item \label{item:cursor} Cursor
+      \item \label{item:cursor} Cursor (here: STT designate)
       \item \label{item:lost-lock} Lost or not yet acquired contact
       \item \label{item:friendly} Echo with friendly IFF response
       \item \label{item:target-info} Primary target information
@@ -449,39 +449,47 @@ and flight path marker (\figref{fig:mi-radar}{item:azi-elev}).
 Radar is turned on or off with \keys{R}.
 It can not be turned on when the nose gear is compressed.
 Radar range is controlled with \keys{[}/\keys{]}, between 15km and 120km,
-Tracking modes are primary controlled through the MI cursor (\figref{fig:mi-radar}{item:cursor}).
-Refer to \cref{sec:cursor} regarding cursor control options.
 
 The radar has four operation modes.
 \begin{description}
   \item[Scan] A wide search mode, with 120\textdegree{} lateral search arc and 12\textdegree{} vertical search arc.
     It is not possible to track contacts in this mode.
+    Scan mode can be selected with \keys{\shift+F}.
   \item[STT (Single Target Track)] The radar focuses on a single target, and is blind to anything else.
     This mode is required to guide Rb 71 semi-active radar missiles.
   \item[TWS (Track While Scan)] A narrow search mode, with 60\textdegree{} lateral search arc and 8\textdegree{} vertical search arc.
     This mode allows tracking up to 4 contacts at once, while continuing to scan.
+    TWS mode can be selected with \keys{\ctrl+F}.
   \item[Disk search] The radar scans a disk of radius 10\textdegree{} straight ahead,
-    and locks (STT) on any contact found. It is intended for close range engagements (dogfight).
+    and locks (STT) on any contact found. It is intended for close range engagements.
+    It is selected with \keys{\shift+N}.
 \end{description}
 
-\paragraph{Normal Operation}
-At any time, scan mode can be selected with \keys{F}. This cancels tracking of any contact.
-In scan mode, a radar echo can be selected by moving the MI cursor over it and `clicking'.
-This engages STT mode, designates this echo as primary target and starts tracking it.
-In STT mode, the MI cursor is disabled.
-Clicking with the cursor returns back to the previous mode and restores the cursor.
+\paragraph{Target Designation}
+In scan or TWS modes, the MI cursor (\figref{fig:mi-radar}{item:cursor})
+is used to designate contacts to track, by moving the cursor over the contact and `clicking'.
+Refer to \cref{sec:cursor} regarding general cursor controls.
 
-At any time, TWS mode can be selected with \keys{\shift+F}.
-Similarly to scan mode, the MI cursor can be used to designate a radar echo as primary target.
-However, doing so in TWS does not engage STT, remaining in TWS instead.
-In TWS with a primary target designated, the cursor is again disabled.
-Clicking cancels the primary target, but continues to track it, making it a secondary target.
-This restores the cursor, allowing to select a new primary target.
-By this process, up to 4 targets can be tracked simultaneously.
-The primary target can be changed with \keys{m}, cycling through the secondary targets.
-When a primary target is designated in TWS, it is possible to switch to STT mode with \keys{\ctrl+F}.
-This stops tracking any secondary target.
-Inversely, switching from STT to TWS will continue tracking the primary target.
+The cursor has two modes: STT and TWS designation---corresponding to the radar mode
+obtained after designating a contact to track.
+In STT designation mode, the cursor consists of a chevron with vertical bars above and below it.
+In TWS designation mode, the cursor is a cross.
+When the cursor is active, pressing \keys{F} switches between the two cursor modes.
+
+Regardless of cursor mode, designating a contact makes it the primary tracked target,
+and causes the MI cursor to disappear.
+While a primary target is designated, pressing \keys{F} switches
+between radar STT and TWS modes, while continuing to track this target.
+Clicking a second time un-designates the primary target, and restores the MI cursor.
+In STT mode, doing so also cancels tracking of the primary target, and returns to the previous radar mode.
+In TWS mode, this instead continues to track the primary target as a secondary track,
+allowing to designate another contact to track.
+
+Repeating the previous process in TWS mode allows to track up to four contacts at once:
+one primary target and three secondary tracks, or four secondary tracks.
+Once this limit is reached, designating a new contact will cancel tracking of the oldest target.
+The primary target can be changed with \keys{M}, cycling through all the secondary tracks.
+Alternatively, one can make a secondary track the primary target by designating it with the cursor.
 
 \paragraph{Scan Direction Controls}
 In scan and TWS mode, the radar scan direction can be controlled vertically.
