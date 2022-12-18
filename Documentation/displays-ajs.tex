@@ -1,15 +1,8 @@
-\section{Generalities}
-All primary displays use electrical power from the secondary AC bus.
-The displays are turned on when switching the main mode selector
-(\figref{fig:left-panel}{item:main-mode}) from BER/PRE to NAV.
-
-Displays require some preheating before being functional:
-\begin{itemize}
-  \item The HUD can turn on 30 seconds after AC power is available.
-  \item The CI can turn on 30 seconds after switching to mode NAV.
-\end{itemize}
-
 \section{Head Up Display (HUD)}
+The HUD is turned on when switching the main mode selector
+(\figref{fig:left-panel}{item:main-mode}) from~BER/PRE to~NAV.
+It is powered by the secondary AC bus, and requires 30 seconds with AC power available before starting.
+
 \subsection{Overview}
 \begin{figure}[!ht]
   \centering
@@ -56,6 +49,7 @@ The switch automatically goes back to position LD (BAR) at altitude >2450m
 and during landing final phase.
 
 \subsection{Navigation Mode}
+\label{sec:hud-nav}
 \paragraph{Artificial Horizon (\figref{fig:hud}{item:horizon})}
 The artificial horizon and the $\pm 5 \degree$ pitch lines provide an attitude reference.
 The HUD does not have a full pitch scale, only the horizon and the $\pm 5 \degree$ lines.
@@ -146,8 +140,7 @@ A vertical center mark, and in some modes two side marks, represent the events.
     The side marks indicate recommended rotation speed.
   \item In navigation mode, the line represents time to the next waypoint.
     It appears 60 seconds before the waypoint, and shrinks until reaching the waypoint.
-  \item In cannon or rocket aiming modes, the line indicates distance to target,
-    and the side marks indicate minimum firing distance.
+  \item In aiming modes, the line represents distance to the target. See \cref{chap:weapons} for details.
 \end{itemize}
 
 \subsection{Low Altitude Declutter}
@@ -170,7 +163,6 @@ The time line indicates airspeed, with the side markers corresponding to rotatio
 
 When the rotation angle reaches 5\textdegree{},
 the time line is hidden and the heading scale moves to its normal position.
-
 Takeoff mode stops once the airspeed exceeds M 0.35,
 when the climb angle is at least 3\textdegree{},
 or at landing gear retraction.
@@ -193,7 +185,6 @@ and the heading scale is moved under the horizon.
 \paragraph{Speed / AoA Indicator}
 In landing mode, the vertical fin (`tail') of the flight path vector symbol
 moves vertically to indicate deviation from the target speed or angle of attack.
-
 The speed is correct when the bottom of the tail is on the FPV circle
 (default position in navigation mode).
 If the tail is higher than the circle, the aircraft speed is too high.
@@ -227,3 +218,90 @@ If radar altitude is unavailable, transition to flare mode occurs at 30m.
 Some weapons have specific combat HUD presentations (aiming mode),
 enabled by switching to ANF/CBT mode or arming the weapon.
 See \cref{chap:weapons} for details.
+
+
+\section{Radar Display (CI)}
+The PS-37/A radar mounted on the AJS-37 is an X-band monopulse non-doppler radar.
+It is designed as navigation aid, and to detect ships---and to some extent aircrafts.
+It is somewhat similar to the radars commonly found on ships for navigation and collision avoidance.
+The radar picture is displayed with only relatively basic filters applied:
+interpreting it is up to the pilot.
+In particular, the radar is not capable of locking or tracking targets.
+
+\begin{figure}[!ht]
+  \centering
+  \includegraphics[width=0.6\textwidth]{images/displays/CI-overview.png}
+
+  \begin{enumerate}[nosep]
+    \item \label{item:alt-warning} Altitude warning light
+    \item \label{item:heading} Heading indicator (see \cref{sec:flight-instruments})
+    \item \label{item:rwr-lights} Radar Warning Receiver (6 lights in a ring)
+    \item \label{item:radar-range} Radar range indicator, in km
+    \item \label{item:CI-polaroid-filter} CI polarizing filter (adjusts brightness and color of display)
+  \end{enumerate}
+
+  \caption{Overview of the CI display}
+  \label{fig:CI}
+\end{figure}
+
+\subsection{Display}
+
+\paragraph{Radar Picture}
+The CI radar display is a Plan Projection Indicator (PPI),
+showing an undistorted map of the terrain in front of the aircraft.
+The aircraft position is represented by the bottom corner.
+The radar sector spans 61.5\textdegree{} on either side of the center line,
+and extends to up to 120km, depending on the radar range.
+Dark parts of the radar picture correspond to strong radar echoes.
+
+\paragraph{Radar Symbols}
+The following reference lines are displayed in black on the radar picture.
+\begin{itemize}
+  \item Three azimuth reference lines, straight ahead and 30\textdegree{} on either sides.
+  \item Up to four distance reference arcs, at 10km, 20km, 40km, and 80km.
+    These distances remain the same regardless of the radar range:
+    when radar range is 15km only the 10km arc will be visible,
+    while when radar range is 120km all four arcs are visible.
+\end{itemize}
+
+\paragraph{Navigation Symbols}
+The following bright navigation symbols are overlayed on the radar picture.
+\begin{itemize}
+  \item Whenever a waypoint is selected as destination,
+    it is displayed as a circle (\cref{fig:CI-navigation-waypoint}).
+  \item In addition, when the selected waypoint is the departure or arrival airbase,
+    a 20km long line representing the approach path for the selected runway is added
+    (\cref{fig:CI-navigation-runway}).
+  \item In landing mode, during the initial approach phase, a circle with radius 4.1km
+    is displayed tangent to the approach line, at the end opposite of the runway (\cref{fig:CI-navigation-landing}).
+    The aircraft should fly along the border of this circle until it is aligned with the approach line.
+\end{itemize}
+
+\begin{figure}[!ht]
+  \centering
+  \begin{subfigure}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{images/displays/CI-waypoint.png}
+    \caption{Waypoint circle}
+    \label{fig:CI-navigation-waypoint}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{images/displays/CI-runway.png}
+    \caption{Approach line}
+    \label{fig:CI-navigation-runway}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.3\textwidth}
+    \includegraphics[width=\textwidth]{images/displays/CI-landing.png}
+    \caption{Landing mode}
+    \label{fig:CI-navigation-landing}
+  \end{subfigure}
+
+  \caption{CI navigation symbols}
+  \label{fig:CI-navigation}
+\end{figure}
+
+\paragraph{Artificial Horizon}
+An artificial horizon is displayed across the CI with bright symbols.
+It consists of a fixed reference mark (two short horizontal lines in the center) representing the flight path vector,
+the horizon itself moving around this mark,
+as well as altitude bars, altitude reference bars, and radar altimeter indices.
+These display the same information as the HUD, see \cref{sec:hud-nav}.
