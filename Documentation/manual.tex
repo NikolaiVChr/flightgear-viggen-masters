@@ -1291,12 +1291,11 @@ The following entries are present.
 \label{sec:options-dialog}
 The dialog \menu{\ifbool{AJS}{AJS-37}{JA-37Di}>Options} contains the following configuration options.
 \begin{description}
-  \item[\menu{G-suit quality}] Changes resistance to blackout under high G-load.
   \item[\menu{Head shaking}] Head shaking during ground roll and at high alpha.
     May conflict with other view control scripts, e.g.\ headtracking.
   \item[\menu{Cockpit labels in Swedish}] Enable historical Swedish cockpit,
     instead of the English translation.
-    (Cockpit translation is very incomplete.)
+    (Cockpit translation is incomplete.)
 \JAonly{
 
     This option is for \emph{physical labels} only, and should not be confused
@@ -1312,13 +1311,11 @@ The dialog \menu{\ifbool{AJS}{AJS-37}{JA-37Di}>Options} contains the following c
     Enable download of the world map displayed on the TI (HSD).
 }
 \AJSonly{
+  \item[\menu{Ground radar quality}]
+    Adjusts the resolution of the AJS ground radar. This significantly affects performances.
   \item[\menu{Automatic ground crew weapon panel settings}]
     Automatically adjust ground crew weapon panel for current loadout.
 }
-  \item[\menu{Rust on fuselage}]
-    Purely visual. Only available when using the Atmospheric Light Scattering (ALS) FlightGear renderer.
-  \item[\menu{Rust in cockpit}]
-    Purely visual. Only available when using the Atmospheric Light Scattering (ALS) FlightGear renderer.
   \item[\menu{Arrow keys control radar cursor}]
     When enabled, the arrow keys will control the radar stick to move the
     cursor on the different displays, and \keys{\return} is used to `click'
