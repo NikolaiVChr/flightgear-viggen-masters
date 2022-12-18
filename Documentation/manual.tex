@@ -1183,10 +1183,19 @@ A summary of the key bindings can also be found in \menu{Help>Aircraft Help}.
 \paragraph{Radar Controls}
 See also \cref{sec:cursor}.
 \begin{description}
-  \item[\keys{R}] Toggle radar. \JAonly{In aiming mode: turn radar off.}
+\ifbool{AJS}{
+  \item[\keys{R} / \keys{F}] Radar on/off.
+}{
+  \item[\keys{R}] Toggle radar. In aiming mode: turn radar off.
+}
   \item[\keys{[} / \keys{]}] Decrease/increase radar range (positions: 15km, 30km, 60km, 120km).
   \item[\keys{<} / \keys{>}] Adjust radar elevation down / up.
-\JAonly{
+\ifbool{AJS}{
+  \item[\keys{\shift+F}] Memory mode.
+  \item[\keys{\ctrl+F}] Terrain navigation mode.
+  \item[\keys{\{} / \keys{\}}] Decrease/increase radar picture gain.
+  \item[\keys{\ctrl+L}] Toggle logarithmic or linear radar picture gain.
+}{
   \item[\keys{\shift+F}] Wide scan mode.
   \item[\keys{\ctrl+F}] TWS (Track While Scan) mode.
   \item[\keys{F}] Toggle STT (Single Target Track) or TWS mode.
