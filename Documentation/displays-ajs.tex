@@ -305,3 +305,80 @@ It consists of a fixed reference mark (two short horizontal lines in the center)
 the horizon itself moving around this mark,
 as well as altitude bars, altitude reference bars, and radar altimeter indices.
 These display the same information as the HUD, see \cref{sec:hud-nav}.
+
+
+\subsection{Radar and CI Operation}
+
+\paragraph{Power}
+The CI is powered by the secondary AC bus.
+After switching from mode BER/PRE to NAV with AC power available,
+the CI begins a 30 seconds startup and preheating sequence.
+After this, the CI is turned on/off with \keys{R}/\keys{F}.
+In landing modes, or when passive reconnaissance is selected on the radar panel,
+The CI will also always remain on.
+
+The radar itself is also turned on/off with \keys{R}/\keys{F},
+when the following conditions are met:
+\begin{itemize}[nosep]
+  \item Secondary bus AC, secondary bus DC, and hydraulic power are available.
+  \item Power has been available for 3 minutes, for the radar to complete startup and pre-heating.
+  \item Nose landing gear is uncompressed.
+  \item Main mode selector (\figref{fig:left-panel}{item:main-mode}) is not in mode~BER/PRE or~FK/TST.
+\end{itemize}
+
+\paragraph{Radar Modes}
+The following radar modes are obtained with main mode selector in position NAV, SPA/REC, or LANDING.
+\begin{description}
+  \item[Normal mode]
+    This is the radar mode obtained when starting the radar.
+    The radar scans a sector of 61.5\textdegree{} on either side, at a rate of $110\degree{}/s$.
+    The radar antenna is tilted between $0.5\degree{}$ and $3\degree{}$ down
+    depending on altitude and radar range.
+    This angle is convenient to scan the terrain at altitudes of a few hundred meters.
+
+    To return to normal mode, turn the radar off and on again.
+  \item[Memory mode]
+    Obtained by pressing \keys{\shift+F} in normal mode.
+    The radar turns off, and the CI continues to show the last radar image.
+    This image will slowly decay, it remains readable for at least 30 seconds.
+  \item[Terrain mode]
+    Obtained by pressing \keys{\ctrl+F} in normal or memory mode.
+    Similar to normal mode except (1) the radar antenna tilt angle is 0\textdegree{},
+    and (2) the radar beam is narrower in height.
+    This strongly highlights any terrain at the same altitude as the aircraft,
+    thus helping to avoid collision with terrain in low level flight.
+\end{description}
+
+When the main mode selector is in position ANF/CBT, the radar mode depends on the selected weapon:
+\begin{description}
+  \item[Rb 04, Rb 15, m/90] Similar to normal mode.
+    The CI center line rotates slightly to indicate the aircraft ground track, thus helping with aiming.
+    For the Rb 04 only, two short arcs are added to the center line, indicating minimum and maximum firing range.
+    The memory submode is available, but not the terrain submode.
+  \item[A/A mode] (Sidewinders, AKAN or Rb 05 in A/A mode)
+    Similar to normal mode, but the radar antenna is tilted 1.5\textdegree{} up,
+    and the radar beam is narrower in height.
+    Memory and terrain submodes are unavailable.
+  \item[A/A ranging mode] In A/A mode, press \keys{L} to enter A/A ranging mode.
+    The radar antenna is aligned with the HUD aiming reticle,
+    and measures range to an aircraft behind this reticle (if any).
+    The range is displayed by the distance line on the HUD.
+    The CI is off in this mode. Turn the radar off and on again to return to A/A mode.
+  \item[A/G ranging mode] (AKAN, ARAK, bombs, Rb 05, Rb 75)
+    CI turns off. Depending on the weapon and aircraft attitude,
+    the radar may be used to measure distance to ground, which is displayed by the HUD distance line.
+\end{description}
+
+\paragraph{Antenna angle}
+The radar antenna default tilt angle is determined by the radar mode, see above.
+This tilt angle can be adjusted $\pm 10 \degree$ from the default position with \keys{<}/\keys{>}.
+A `click' is heard when returning to the default position.
+In A/A mode only, an antenna tilt angle indicator is displayed at the top of the CI.
+It consists of a mark moving along an horizontal line (left is down, right is up).
+
+\paragraph{Radar gain}
+The radar gain (strength of displayed radar echoes) can be adjusted with \keys{\{}/\keys{\}}.
+The default setting is appropriate for sea navigation, with all coastline giving fairly strong returns.
+Over land, it is usually convenient to lower the radar gain
+to get better contrast between different types of terrain.
+A `click' is heard when returning to the default gain position.
