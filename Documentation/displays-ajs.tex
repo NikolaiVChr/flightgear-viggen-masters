@@ -382,3 +382,54 @@ The default setting is appropriate for sea navigation, with all coastline giving
 Over land, it is usually convenient to lower the radar gain
 to get better contrast between different types of terrain.
 A `click' is heard when returning to the default gain position.
+
+
+\subsection{Interpreting Radar Pictures}
+To understand what is displayed by the radar,
+it is useful to know how different types of terrain reflect radar waves.
+\begin{description}
+  \item[Water] forms a relatively smooth surface, which tends to reflect radar waves \emph{away} from the aircraft.
+    Thus water gives very little radar returns, and shows as bright areas.
+    Strong waves may make it more noisy.
+
+  \item[Land] is more irregular, and tends to diffuse radar waves in all direction,
+    thus giving stronger radar returns than water.
+    They appear in intermediate tones, varying with relief and terrain type.
+
+  \item[Hills] facing the aircraft have a significant area which can
+    reflect or diffuse radar waves towards the aircraft, thus giving very strong radar returns.
+    Furthermore, the area behind the hills is obstructed, and gives no radar returns.
+    Thus close side of hills appears as a very dark band, followed by an empty area for the obstructed side.
+
+  \item[Urban areas] tend to give strong radar returns because buildings
+    can reflect radar waves towards the aircraft, and even act as corner reflector.
+    They appear as dark and noisy areas.
+\end{description}
+See \cref{fig:CI-radar} for an example of such terrain types:
+\begin{enumerate}[nosep]
+  \item The bright area in the middle is a lake.
+  \item Immediately to the right of the lake is some relatively flat land, in mid tones.
+  \item Further is a large ridgeline, appearing as a black band.
+    Terrain beyond this ridge is not visible, the corresponding area of the CI is empty.
+  \item On the left is a more irregular terrain, which shows as a mix
+    of dark patches (hills facing the aircraft) and empty zones (hidden terrain).
+\end{enumerate}
+
+\begin{figure}[!ht]
+  \centering
+  \begin{subfigure}[t]{0.49\textwidth}
+    \includegraphics[width=\textwidth]{images/displays/CI-radar.png}
+    \caption{Radar picture.}
+  \end{subfigure}
+  \begin{subfigure}[t]{0.49\textwidth}
+    \includegraphics[width=\textwidth]{images/displays/léman_map_stamen.png}
+    \caption{Map of the same area.}
+
+    {\centering \footnotesize Map tiles by Stamen Design, data by OpenStreetMap.}
+  \end{subfigure}
+
+  \caption{%
+    Example of radar picture over Lac Léman with easily identifiable terrain features.
+  }
+  \label{fig:CI-radar}
+\end{figure}
