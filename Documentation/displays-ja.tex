@@ -14,9 +14,9 @@ The HUD requires 40 seconds of preheating after AC power is available, before tu
 
   \begin{multicols}{2}
     \begin{enumerate}[nosep]
-      \item \label{item:fpv} Flight path vector
-      \item \label{item:horizon} Artificial horizon and pitch lines
-      \item \label{item:heading} Heading scale
+      \item \label{item:fpv-hud} Flight path vector
+      \item \label{item:horizon-hud} Artificial horizon and pitch lines
+      \item \label{item:heading-hud} Heading scale
       \item \label{item:dest} Destination bearing
       \item \label{item:altitude} Altitude scale
       \item \label{item:rhm} Radar altimeter index and reference
@@ -30,18 +30,18 @@ The HUD requires 40 seconds of preheating after AC power is available, before tu
   \label{fig:hud}
 \end{figure}
 
-\paragraph{Artificial Horizon (\figref{fig:hud}{item:horizon})}
+\paragraph{Artificial Horizon (\figref{fig:hud}{item:horizon-hud})}
 The artificial horizon and pitch scale provide an attitude reference.
 The pitch scale consists of a line every 5 degrees.
 Lines above the horizon are solid, lines below the horizon are dashed.
 The artificial horizon itself is distinguished by six center dots.
 Only the three pitch lines closest to the flight path vector are displayed.
 
-\paragraph{Flight Path Vector (\figref{fig:hud}{item:fpv})}
+\paragraph{Flight Path Vector (\figref{fig:hud}{item:fpv-hud})}
 The FPV marker indicates the aircraft path direction relative to the ground.
 Most of the HUD is centered around the FPV marker.
 
-\paragraph{Heading Scale (\figref{fig:hud}{item:heading})}
+\paragraph{Heading Scale (\figref{fig:hud}{item:heading-hud})}
 The heading scale is located above the FPV.
 The fixed wedge index indicates aircraft track angle.
 The second index consisting of 3 vertical lines
@@ -275,10 +275,10 @@ Other buttons have no functionality in the real aircraft.
   \begin{multicols}{2}
     \begin{enumerate}[nosep]
       \item \label{item:heading-bug} Destination bearing
-      \item \label{item:heading} Heading scale
+      \item \label{item:heading-mi} Heading scale
       \item \label{item:dig-alt} Digital altitude
-      \item \label{item:horizon} Artificial horizon
-      \item \label{item:fpv} Flight path marker
+      \item \label{item:horizon-mi} Artificial horizon
+      \item \label{item:fpv-mi} Flight path marker
       \item \label{item:gpw-arrow} Ground proximity warning
       \item \label{item:alt-bars} Altitude reference bars
       \item \label{item:rhm-index} Radar altitude index
@@ -293,8 +293,8 @@ Other buttons have no functionality in the real aircraft.
 \end{figure}
 
 \paragraph{%
-  Artificial Horizon (\figref{fig:mi-flight}{item:horizon})
-  and Flight Path Marker (\figref{fig:mi-flight}{item:fpv})
+  Artificial Horizon (\figref{fig:mi-flight}{item:horizon-mi})
+  and Flight Path Marker (\figref{fig:mi-flight}{item:fpv-mi})
 }
 The flight path marker is fixed, and serves as a reference for the artificial horizon.
 The artificial horizon line rotates to indicate roll,
@@ -319,12 +319,12 @@ Ground height measured by the radar altimeter is displayed by a chevron index on
 (\figref{fig:mi-flight}{item:rhm-index}), when the radar altitude is less than 600m.
 
 \paragraph{Heading Indications}
-The heading scale (\figref{fig:mi-flight}{item:heading}) shows current heading with a fixed central marker,
+The heading scale (\figref{fig:mi-flight}{item:heading-mi}) shows current heading with a fixed central marker,
 and heading to next waypoint with a second marker (\figref{fig:mi-flight}{item:heading-bug}).
 
 \paragraph{Ground Proximity Warning}
 The distance between the ground symbol (\figref{fig:mi-flight}{item:ground})
-and the flight path marker (\figref{fig:mi-flight}{item:fpv})
+and the flight path marker (\figref{fig:mi-flight}{item:fpv-mi})
 indicates margin from a ground proximity warning.
 When the ground symbol touches the flight path marker, a ground proximity warning occurs.
 On the MI, it is indicated by a flashing arrow on the flight path marker
