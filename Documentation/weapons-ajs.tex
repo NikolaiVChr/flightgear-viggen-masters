@@ -12,7 +12,7 @@ The general idea is that whenever the cursor is used, the pilot holds T1. TV act
 \begin{itemize}[nosep]
   \item for target fix, holding T1 enters fix mode, releasing it cancels, pressing to TV selects new position.
   \item for Rb75, holding T1 allows to move the seeker, releasing it recenters, pressing to TV locks (you can then release).
-  \item When lock, do T0 -> T1 -> T0 to unlock).
+  \item When lock, do T0 -> T1 -> T0 to unlock.
 \end{itemize}
 
 To control all of that in the FlightGear Viggen:
@@ -189,5 +189,14 @@ The range for the Rb-04E is between 12 and 24 km \textasciimacron for the Rb-15F
 To make sure that the missiles doe not splash into the ocean after release:
 \begin{itemize}
   \item The launch speed should be around M0.9 (which also makes sure that the missiles reach the max range).
-  \item Drop altitude should be above 50 metres - but not above many hundred metres. I.e. you need to pop-up somewhat.
+  \item Drop altitude should be above 50 metres. I.e. you need to pop-up somewhat. According to the original manual for the Rb-04 you need to be between 50-425 metres (recommended 240). For the Rb-15 the aircraft needs to be between 50-2000 metres (recommended 600).
 \end{itemize}
+
+\section{m/90}
+The Bombkapsel 90 (BK90) is gliding stand-off submunitions dispenser (cluster bomb) with 72 submunitions. The range depends on the speed of the launching aircraft and height and how much the m/90 needs to turn during gliding. According to the original manual when releasing at 100 metres above terrain:
+\begin{itemize}
+  \item At M0.7 the range is ca. 1200-3000 metres
+  \item At M0.9 the range is ca. 2000-7000 metres
+\end{itemize}
+
+The m/90 can be release between 50 and 500 metres above terrain. It flies to the selected waypoint marked as target. You need to hold T1 before releasing and you need to make sure that the target height corresponds to the chosen QFE.
