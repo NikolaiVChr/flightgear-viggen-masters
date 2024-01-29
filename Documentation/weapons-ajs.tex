@@ -1,3 +1,33 @@
+\section{Radar Stick Usage in A/G Aiming Mode}
+In A/G aiming mode (AKAN, ARAK, m/71, Rb 75), the target waypoint position is shown as a small circle in the HUD which goes away when unsafing. The waypoint is shown at altitude 0 (for whatever altitude the HUD is showing), so check your altimeter setting if you want it to be useful.
+
+The radar stick in the real AJS has a two stage trigger. Positions are:
+\begin{itemize}[nosep]
+  \item T0 (released)
+  \item T1 (1st stage)
+  \item TV (fully pressed)
+\end{itemize}
+
+The general idea is that whenever the cursor is used, the pilot holds T1. TV actually 'clicks'. Therefore:
+\begin{itemize}[nosep]
+  \item for target fix, holding T1 enters fix mode, releasing it cancels, pressing to TV selects new position.
+  \item for Rb75, holding T1 allows to move the seeker, releasing it recenters, pressing to TV locks (you can then release).
+  \item When lock, do T0 -> T1 -> T0 to unlock).
+\end{itemize}
+
+To control all of that in the FlightGear Viggen:
+\begin{itemize}[nosep]
+  \item \keys{O} is T1
+  \item \keys{\shift+O} toggles holding T1
+  \item \keys{L} is TV
+\end{itemize}
+
+For joysticks:
+\begin{itemize}[nosep]
+  \item \begin{alltt}/controls/displays/cursor-click-stage1\end{alltt} for T1
+  \item \begin{alltt}/controls/displays/cursor-click\end{alltt} for TV
+\end{itemize}
+
 \section{AKAN and ARAK}
 The m/55 AKAN cannon pods and m/70 ARAK rocket pods share
 the same sighting mechanisms and firing procedures.
@@ -149,4 +179,15 @@ Remarks.
   \item The missile flies for ca.\ 24 seconds, giving it a maximum effective range of ca.\ 9 km.
   \item It is easiest to aim the missile using the collimation principle:
     try to keep the missile flare covering the target at all time.
+\end{itemize}
+
+\section{Rb-04E and Rb-15F}
+These sea target missiles are fire and forget without locking on a target by the pilot. The missiles will find their way to a target somewhat in the direction of the nose at release point. Currently, it is not modelled that the missiles follow waypoints.
+
+The range for the Rb-04E is between 12 and 24 km \textasciimacron for the Rb-15F around 70 km.
+
+To make sure that the missiles doe not splash into the ocean after release:
+\begin{itemize}
+  \item The launch speed should be around M0.9 (which also makes sure that the missiles reach the max range).
+  \item Drop altitude should be above 50 metres - but not above many hundred metres. I.e. you need to pop-up somewhat.
 \end{itemize}
