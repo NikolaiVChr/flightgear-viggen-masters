@@ -1,32 +1,42 @@
-\section{Radar Stick Usage in A/G Aiming Mode}
-In A/G aiming mode (AKAN, ARAK, m/71, Rb 75), the target waypoint position is shown as a small circle in the HUD which goes away when unsafing. The waypoint is shown at altitude 0 (for whatever altitude the HUD is showing), so check your altimeter setting if you want it to be useful.
+\section{Target waypoints}\label{sec:target-wpt}
+Any waypoint can be marked as being a target, with a checkbox in the route manager dialog.
+\begin{enumerate}
+  \item On the waypoint indicator (\figref{fig:front-panel}{item:wpnum}),
+    target waypoints show as~M1--M9 (swedish) / T1--T9 (english) instead of~B1--B9 / S1--S9.
+  \item In air to ground aiming modes, the position of the target waypoint
+    is shown on the HUD prior to unsecuring the trigger.
+  \item The position of target waypoints can be adjusted with the CI;
+    this is called a \emph{target fix}.
+\end{enumerate}
 
-The radar stick in the real AJS has a two stage trigger. Positions are:
-\begin{itemize}[nosep]
-  \item T0 (released)
-  \item T1 (1st stage)
-  \item TV (fully pressed)
+\paragraph{Target waypoint in aiming modes}
+When using the m/71, ARAK, or AKAN in A/G mode,
+the position of the current waypoint is displayed on the HUD as a small circle, under the following conditions:
+\begin{itemize}[noitemsep]
+  \item the current waypoint is marked as a target waypoint,
+  \item main mode selector is ANF/CBT,
+  \item and trigger is secured.
 \end{itemize}
+The waypoint is displayed as if its altitude was~0 (for whatever altitude the HUD is showing).
+Thus, for this display to be helpful, it is crucial for the altimeter to be correctly calibrated,
+by either 1.\ setting the altimeter to the target QFE,
+or 2.\ using radar-altimeter corrected altitude (switch HÖJD CI SI in position RHM).
 
-The general idea is that whenever the cursor is used, the pilot holds T1. TV actually 'clicks'. Therefore:
-\begin{itemize}[nosep]
-  \item for target fix, holding T1 enters fix mode, releasing it cancels, pressing to TV selects new position.
-  \item for Rb75, holding T1 allows to move the seeker, releasing it recenters, pressing to TV locks (you can then release).
-  \item When lock, do T0 -> T1 -> T0 to unlock.
-\end{itemize}
+\paragraph{Target fix}
+A target fix allows to update a target waypoint position using the CI.
+Usually, this is done to move the waypoint on the precise location of a target spotted with the radar.
+\begin{enumerate}
+  \item To start a target fix, the current waypoint must be a target waypoint,
+    and the radar must be active, and neither in terrain avoidance or A/A mode.
+  \item Holding the radar stick trigger T1 (press \keys{\shift+O}) starts the target fix.
+    A black cross appears on the CI at the current waypoint position.
+    Its position can be adjusted with the radar stick.
+  \item Releasing T1 exits fix mode, leaving the waypoint at its old position.
+  \item Pressing the trigger TV (\keys{L}) confirms the new waypoint position.
+    T1 can be released afterwards (press \keys{\shift+O} again).
+\end{enumerate}
+See \cref{sec:cursor} for an overview of the radar stick controls.
 
-To control all of that in the FlightGear Viggen:
-\begin{itemize}[nosep]
-  \item \keys{O} is T1
-  \item \keys{\shift+O} toggles holding T1
-  \item \keys{L} is TV
-\end{itemize}
-
-For joysticks:
-\begin{itemize}[nosep]
-  \item \begin{alltt}/controls/displays/cursor-click-stage1\end{alltt} for T1
-  \item \begin{alltt}/controls/displays/cursor-click\end{alltt} for TV
-\end{itemize}
 
 \section{AKAN and ARAK}
 The m/55 AKAN cannon pods and m/70 ARAK rocket pods share
@@ -117,7 +127,7 @@ The position of the aiming reticle is correct starting 3 seconds before computed
 The aiming reticle includes wind compensation.
 
 
-\section{Rb 75}
+\section{Rb 75}\label{sec:rb75}
 The Rb 75 is a Swedish version of the AGM-65A television-guided missile.
 It is designed for use against ground targets.
 The pilot locks on the target by manually slewing the Rb 75 seeker head using the radar stick.
@@ -127,8 +137,15 @@ In the real Viggen, the EP-13 screen to the right of the HUD displayed the Rb
 
 In FlightGear, the EP-13 screen is not functional.
 Instead, the seeker position is displayed as a small circle on the HUD.
-The seeker is controlled with the radar stick (see \cref{sec:cursor}).
-When the seeker is over the target, it can be locked using the radar stick click/select.
+The seeker is controlled with the radar stick (see \cref{sec:cursor}):
+\begin{itemize}[noitemsep]
+  \item Initially, the seeker is locked straight ahead.
+  \item Holding the radar stick trigger T1 (press \keys{\shift+O}) unlocks the seeker,
+    which is then controlled with the radar stick.
+  \item Releasing T1 (press \keys{\shift+O} again) re-centers the seeker.
+  \item Pressing TV (\keys{L}) locks to a target. After lock, T1 can be released without losing lock.
+  \item To unlock the seeker, release T1, then press it again.
+\end{itemize}
 
 \section{Rb 05A}
 The Rb 05A is a remote-controlled missile.
@@ -193,10 +210,20 @@ To make sure that the missiles doe not splash into the ocean after release:
 \end{itemize}
 
 \section{m/90}
-The Bombkapsel 90 (BK90) is gliding stand-off submunitions dispenser (cluster bomb) with 72 submunitions. The range depends on the speed of the launching aircraft and height and how much the m/90 needs to turn during gliding. According to the original manual when releasing at 100 metres above terrain:
+The Bombkapsel m/90 is gliding stand-off submunitions dispenser (cluster bomb) with 72 submunitions.
+After release, it flies to and detonates over the current waypoint.
+Thus,
 \begin{itemize}
-  \item At M0.7 the range is ca. 1200-3000 metres
-  \item At M0.9 the range is ca. 2000-7000 metres
+  \item Precise positioning of the waypoint is essential:
+    consider doing a target fix (see \cref{sec:target-wpt}).
+  \item The altimeter must be correctly set so that the m/90 aims for the correct altitude:
+    set the altimeter to the target QFE, or switch the HUD to radar altimeter.
 \end{itemize}
 
-The m/90 can be release between 50 and 500 metres above terrain. It flies to the selected waypoint marked as target. You need to hold T1 before releasing and you need to make sure that the target height corresponds to the chosen QFE.
+The m/90 can be released between 50 and 500 metres above terrain.
+Its range depends on the speed and height of the launching aircraft and how much the m/90 needs to turn during gliding.
+According to the original manual when releasing at 100 metres above terrain:
+\begin{itemize}[nosep]
+  \item At M0.7 the range is ca.\ 1.2--3km.
+  \item At M0.9 the range is ca.\ 2--7km.
+\end{itemize}
