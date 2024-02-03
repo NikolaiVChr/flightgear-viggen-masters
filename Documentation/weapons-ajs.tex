@@ -186,10 +186,10 @@ In FlightGear, the Rb 05A uses the same controls as the radar stick, cf.\ \cref{
 
 Remarks.
 \begin{itemize}
-  \item Recommended speed is 700-1150 km/h.
+  \item Recommended speed is 700--1150 km/h.
   \item Recommended attitude is a level flight or slight dive,
     so as to not loose sight of the target and the missile.
-  \item Recommended altitude is 300-400 meters above ground.
+  \item Recommended altitude is 300--400 meters above ground.
   \item The target do not need to be directly in front of the aircraft
     as the missile can be guided considerably to the side.
     However, doing so makes it harder to aim the missile, and reduces effective range.
@@ -199,14 +199,20 @@ Remarks.
 \end{itemize}
 
 \section{Rb-04E and Rb-15F}
-These sea target missiles are fire and forget without locking on a target by the pilot. The missiles will find their way to a target somewhat in the direction of the nose at release point. Currently, it is not modelled that the missiles follow waypoints.
+These sea target missiles are fire and forget without locking on a target by the pilot.
+The missiles will find their way to a target somewhat in the direction of the nose at release point.
+The Rb-15F was also able to follow a preset route, this is not currently modelled.
 
-The range for the Rb-04E is between 12 and 24 km \textasciimacron for the Rb-15F around 70 km.
+The release range for the Rb-04E is between minimum 12km and maximum 24km;
+for the Rb-15F it is up to 70km.
+Sufficient release speed (around~M0.9) is important to reach maximum range.
 
-To make sure that the missiles doe not splash into the ocean after release:
+To make sure that the missiles do not splash into the ocean after release:
 \begin{itemize}
-  \item The launch speed should be around M0.9 (which also makes sure that the missiles reach the max range).
-  \item Drop altitude should be above 50 metres. I.e. you need to pop-up somewhat. According to the original manual for the Rb-04 you need to be between 50-425 metres (recommended 240). For the Rb-15 the aircraft needs to be between 50-2000 metres (recommended 600).
+  \item The launch speed should be M0.7--M0.9.
+  \item Drop altitude should be above 50 metres, i.e.\ you need to pop-up somewhat.
+    According to the original manual for the Rb-04 you need to be between 50--425 metres (recommended 240).
+    For the Rb-15 the aircraft needs to be between 50--2000 metres (recommended 600).
 \end{itemize}
 
 \section{m/90}
